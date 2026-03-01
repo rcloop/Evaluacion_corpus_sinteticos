@@ -1,0 +1,27 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Resultados de evaluaciones
+privacy_evaluation_results/
+*.json
+!requirements.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+

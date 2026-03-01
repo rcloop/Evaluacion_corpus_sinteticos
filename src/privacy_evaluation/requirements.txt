@@ -1,0 +1,42 @@
+# Core dependencies for privacy evaluation suite
+# ================================================
+
+# Numerical computing and array operations
+# Note: numpy 2.x is compatible and has pre-built wheels for Windows
+numpy>=1.24.0
+
+# Machine learning utilities
+# - Used for: TF-IDF vectorization, logistic regression attacks, similarity metrics
+scikit-learn>=1.0.0,<2.0.0
+
+# Sentence transformers for semantic similarity
+# - Used for: Nearest neighbor search, semantic similarity detection
+sentence-transformers>=2.2.0,<3.0.0
+
+# PyTorch (dependency of sentence-transformers)
+# - Used for: Neural network models in sentence-transformers
+torch>=1.10.0
+
+# Transformers library (dependency of sentence-transformers)
+# - Used for: Pre-trained models
+transformers>=4.20.0,<5.0.0
+
+# Natural Language Processing (for naturalness evaluation)
+# - Used for: Tokenization, sentence splitting, linguistic analysis
+nltk>=3.8.0
+
+# Statistical analysis (for naturalness evaluation)
+# - Used for: Statistical tests, distribution comparisons
+scipy>=1.9.0
+
+# Optional but recommended for better performance
+# ==============================================
+# Uncomment if you have a GPU and want faster processing:
+# torch>=1.10.0+cu118  # CUDA version for GPU support
+
+# Development/Testing (optional)
+# ===============================
+# pytest>=7.0.0  # For running tests (if you add tests)
+# black>=22.0.0  # Code formatting
+# flake8>=4.0.0  # Linting
+

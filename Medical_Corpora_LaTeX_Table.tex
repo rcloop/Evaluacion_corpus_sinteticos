@@ -1,0 +1,73 @@
+% LaTeX Table for Medical Corpora Comparison
+% Suitable for academic papers
+
+\begin{table*}[htbp]
+\centering
+\caption{Comparative Analysis of Medical Corpora Across Languages: Quality and Quantity Metrics}
+\label{tab:corpora_comparison}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllccc}
+\toprule
+\textbf{Language} & \textbf{Corpus} & \textbf{Type} & \textbf{Documents} & \textbf{Entities} & \textbf{Quality} \\
+\midrule
+\multirow{3}{*}{\textbf{English}} 
+& i2b2 Challenges & Clinical narratives & 826--1,304+ & Extensive & >95\% precision \\
+& MIMIC-III & Critical care & $\sim$2M notes & Structured data & Excellent \\
+& i2b2 Temporal & Temporal relations & Multiple & Events, relations & High \\
+\midrule
+\multirow{4}{*}{\textbf{Spanish}}
+& MEDDOCAN & Case reports & $\sim$1,000 & PHI (IOB2) & Good \\
+& CARMEN-I & Clinical records & $\sim$2,000 & Medical entities & Good \\
+& E3C (Spanish) & Clinical cases & Part of E3C & Diseases, relations & Good \\
+& Mantra GSC & Biomedical & 250 & UMLS concepts & Gold standard \\
+\midrule
+\multirow{3}{*}{\textbf{French}}
+& FRASIMED & Synthetic cases & 2,051 & Medical entities & Good \\
+& Quaero & Biomedical & 103K words & 10 UMLS categories & High \\
+& E3C (French) & Clinical cases & Part of E3C & Diseases, relations & Good \\
+\midrule
+\textbf{German} & BRONCO & Discharge summaries & 200 & Medical entities & Fair \\
+\midrule
+\multirow{2}{*}{\textbf{Portuguese}}
+& SemClinBr & Clinical notes & 1,000 & 65,117 entities & Good \\
+& ReBEC & Clinical trials & 1,188 & Parallel corpus & Good \\
+\midrule
+\textbf{Romanian} & MoNERo & Biomedical & 154K tokens & 23,188 entities & Fair \\
+\midrule
+\textbf{Chinese} & ParaMed & Parallel corpus & 1.27M pairs & Aligned sentences & Good \\
+\midrule
+\multirow{2}{*}{\textbf{Multilingual}}
+& E3C & Clinical cases & 5+ languages & Diseases, relations & Good \\
+& Mantra GSC & Biomedical & 250/lang (5 langs) & UMLS concepts & Gold standard \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{0.2cm}
+\footnotesize
+\textit{Note: Quality metrics based on annotation depth, inter-annotator agreement, and validation. English corpora substantially exceed non-English equivalents in volume and achieve >95\% precision in sensitive entity recognition through hybrid architectures.}
+\end{table*}
+
+% Summary Statistics Table
+\begin{table}[htbp]
+\centering
+\caption{Summary Statistics by Language}
+\label{tab:summary_stats}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Language} & \textbf{Total Documents} & \textbf{Total Entities} & \textbf{DL Ready} \\
+\midrule
+English & >100,000+ & Millions & \checkmark Yes \\
+Spanish & $\sim$3,000--4,000 & $\sim$100,000+ & \textcolor{orange}{Limited} \\
+French & $\sim$2,500--3,000 & $\sim$50,000+ & \textcolor{orange}{Limited} \\
+Portuguese & $\sim$2,200 & $\sim$65,000+ & \textcolor{orange}{Limited} \\
+German & $\sim$500--1,000 & $\sim$20,000+ & \textcolor{red}{No} \\
+Italian & $\sim$500--1,000 & $\sim$10,000+ & \textcolor{red}{No} \\
+Romanian & $\sim$500 & $\sim$23,000 & \textcolor{red}{No} \\
+Chinese & $\sim$1,000+ & $\sim$50,000+ & \textcolor{orange}{Limited} \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\footnotesize
+\textit{DL Ready = Sufficient scale for training contemporary deep learning models.}
+\end{table}
+

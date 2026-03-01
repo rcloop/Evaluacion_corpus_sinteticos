@@ -1,0 +1,36 @@
+# Corpus repository (too large for git)
+corpus_repo/
+corpus/
+*.txt
+!requirements.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Privacy evaluation results
+privacy_evaluation_results/
+*.json
+!package.json
+!tsconfig.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+activate_temp.bat
+*.log
+
