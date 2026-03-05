@@ -3,3 +3,6 @@ numpy>=1.21.0,<3.0.0
 scipy>=1.9.0
 matplotlib>=3.7.0
 
+# WEAT (opcional, para barras de progreso)
+tqdm>=4.60.0
+

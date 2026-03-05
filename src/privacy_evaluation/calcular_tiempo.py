@@ -57,7 +57,6 @@ base_times = {
     'membership': 1.5,  # minutos por 1000 docs
     'attribute': 2.0,   # minutos por 1000 docs
     'memorization': 1.0, # minutos por 1000 docs (sin semántica)
-    'canary': 1.0,      # minutos por 1000 docs
 }
 
 # Calcular tiempos
@@ -68,7 +67,6 @@ for key, base in base_times.items():
 print(f"\n1. Membership Inference:      {times['membership']:.1f} - {times['membership']*1.5:.1f} minutos")
 print(f"2. Attribute Inference:        {times['attribute']:.1f} - {times['attribute']*1.5:.1f} minutos")
 print(f"3. Memorization Detection:      {times['memorization']:.1f} - {times['memorization']*1.5:.1f} minutos")
-print(f"4. Canary Insertion:            {times['canary']:.1f} - {times['canary']*1.5:.1f} minutos")
 
 total_min = sum(times.values())
 total_max = sum(t * 1.5 for t in times.values())

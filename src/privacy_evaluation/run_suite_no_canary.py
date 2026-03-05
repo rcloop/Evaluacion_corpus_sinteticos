@@ -1,13 +1,10 @@
 """
-Single-file runner for the privacy evaluation suite (no canary).
+Single-file runner for the privacy evaluation suite.
 
-This script executes the evaluations directly (without calling the other runner):
+This script executes the evaluations directly:
   1) Membership inference
   2) Attribute inference
   3) Memorization detection (exact + optional semantic similarity)
-
-Always skips:
-  - Canary insertion
 """
 
 from __future__ import annotations
@@ -43,7 +40,7 @@ def _default_output_dir(corpus_path: Path) -> Path:
     # Keep outputs next to the suite for easy discovery.
     suite_dir = Path(__file__).resolve().parent
     name = corpus_path.name or "corpus"
-    return suite_dir / f"privacy_evaluation_results_{name}_no_canary"
+    return suite_dir / f"privacy_evaluation_results_{name}"
 
 
 def _risk_level_from_score(score: float) -> str:
@@ -152,7 +149,7 @@ def _print_summary(consolidated: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Run privacy evaluation suite (no canary insertion)."
+        description="Run privacy evaluation suite."
     )
     parser.add_argument(
         "--corpus_path",
@@ -275,15 +272,6 @@ def main() -> int:
     except Exception as e:
         print(f"Error in memorization detection: {e}")
         all_results["memorization_detection"] = {"error": str(e)}
-
-    print("\n" + "=" * 80)
-    print("4. CANARY INSERTION TEST")
-    print("=" * 80)
-    print("[SKIPPED] Canary insertion test skipped (this runner is no-canary).")
-    all_results["canary_insertion"] = {
-        "skipped": True,
-        "reason": "No-canary runner",
-    }
 
     consolidated = {
         "corpus_info": {

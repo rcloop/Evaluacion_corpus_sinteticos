@@ -35,3 +35,6 @@ Thumbs.db
 activate_temp.bat
 *.log
 
+# Archived suite docs (internal/paper/analysis, not needed to run suites)
+_archive_suite_docs/
+

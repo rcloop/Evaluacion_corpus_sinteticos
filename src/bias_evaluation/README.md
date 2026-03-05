@@ -140,6 +140,37 @@ Salida:
 - `bias_evaluation_results/institution_bias.json`
 - `bias_evaluation_results/institution_lorenz.png` (si `matplotlib` está instalado)
 
+## WEAT — Sesgo de género (embedding association)
+
+Análisis **Word Embedding Association Test** (Caliskan et al., 2017) sobre el texto del corpus: asociación de profesiones médicas con términos masculinos vs femeninos. Usa embeddings por co-ocurrencia + SVD y test de permutación para el p-value.
+
+Referencia: [weat_gender_analysis.py](https://github.com/ramsestein/generate_corpus_anonimizacion/blob/main/src/weat_gender_analysis.py)
+
+```powershell
+cd .\src\bias_evaluation
+.\venv\Scripts\Activate.ps1
+python .\weat_gender_analysis.py `
+  --documents_path "..\..\corpus_repo\corpus_v1\documents" `
+  --max_docs 5000
+```
+
+Salida: `bias_evaluation_results/weat_gender_analysis.json` (effect size, p-value, ratio de menciones, co-ocurrencias profesión–género).
+
+## Métricas adicionales (corpus only)
+
+Integradas en `run_bias_suite_corpus_v1.py`:
+
+- **Interseccionalidad** (`intersectional_corpus_bias.json`): género×edad, género×geografía, edad×geografía (tablas contingencia, χ²).
+- **Diagnóstico × demografía** (`diagnosis_demography_bias.json`): diagnóstico×género y diagnóstico×edad por documento.
+- **Género vs objetivo** (`gender_target_proportion.json`): desviación de la proporción observada respecto a un objetivo (ej. 50/50).
+- **Edad vs referencia** (`age_reference_comparison.json`): JSD/L1 entre histograma de edades y distribución de referencia (`--age_reference_path`).
+- **Cobertura/completitud** (`coverage_completeness.json`): % de documentos con género, edad, geografía (y combinaciones).
+- **Resumen diversidad** (`diversity_summary.json`): variety y balance (entropía) para geografía, instituciones y diagnósticos.
+
+Referencias de ejemplo: `reference_diagnosis_flat.json` (1.6), `reference_age_flat.json` (edad). Ver `BIAS_METRICS_CORPUS_ONLY_ROADMAP.md`.
+
+---
+
 ## Métrica 1.6: Sesgo en diagnósticos/condiciones (si hay secciones clínicas)
 
 Extrae diagnósticos/condiciones desde `documents/*.txt` por heurística (headers tipo `Diagnóstico:` y frases tipo `diagnóstico de ...`).

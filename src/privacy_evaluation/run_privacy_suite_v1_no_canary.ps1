@@ -1,4 +1,4 @@
-# Privacy suite: corpus v1, sin canary insertion, con similitud semántica
+# Privacy suite: corpus v1, con similitud semántica
 # Ejecutar desde la raíz del proyecto o desde src/privacy_evaluation
 
 $ErrorActionPreference = "Stop"
@@ -15,13 +15,11 @@ if (-not (Test-Path $CorpusV1)) {
 Set-Location $ScriptDir
 Write-Host "Corpus: $CorpusV1"
 Write-Host "Salida: $OutputDir"
-Write-Host "Opciones: sin canary, con similitud semantica"
 Write-Host ""
 
 & python run_all_privacy_evaluations.py `
     --corpus_path $CorpusV1 `
     --annotations_path (Join-Path $CorpusV1 "entidades") `
-    --output_dir $OutputDir `
-    --skip_canary
+    --output_dir $OutputDir
 
 Set-Location $ProjectRoot

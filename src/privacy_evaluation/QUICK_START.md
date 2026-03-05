@@ -122,11 +122,6 @@ python attribute_inference.py --corpus_path ..\..\corpus --output_path attribute
 python nearest_neighbor_memorization.py --corpus_path ..\..\corpus\documents --annotations_path ..\..\corpus\entidades --output_path memorization_results.json
 ```
 
-**4. Canary Insertion:**
-```bash
-python canary_insertion.py --original_corpus_path ..\..\corpus\documents --generated_corpus_path ..\..\corpus\documents --output_path canary_results.json
-```
-
 ### Paso 5: Revisar los Resultados
 
 Los resultados se guardarán en:
@@ -137,7 +132,6 @@ Los resultados se guardarán en:
 - `membership_inference.json` - Resultados de membership inference
 - `attribute_inference.json` - Resultados de attribute inference
 - `memorization_detection.json` - Resultados de detección de memorización
-- `canary_insertion.json` - Resultados de canary insertion
 - `consolidated_privacy_report.json` - Reporte consolidado con evaluación de riesgo general
 
 **Ver resultados:**

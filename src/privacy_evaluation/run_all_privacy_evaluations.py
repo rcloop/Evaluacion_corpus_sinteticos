@@ -3,7 +3,6 @@ Main script to run all privacy evaluations:
 1. Membership Inference
 2. Attribute Inference
 3. Nearest Neighbor Memorization Detection
-4. Canary Insertion Test
 """
 
 import argparse
@@ -12,7 +11,6 @@ from pathlib import Path
 from membership_inference import evaluate_membership_inference
 from attribute_inference import evaluate_attribute_inference
 from nearest_neighbor_memorization import evaluate_memorization
-from canary_insertion import evaluate_canary_insertion
 
 
 def run_all_evaluations(
@@ -22,7 +20,6 @@ def run_all_evaluations(
     output_dir: str = "privacy_evaluation_results",
     semantic_model: str = "paraphrase-multilingual-MiniLM-L12-v2",
     skip_semantic: bool = False,
-    skip_canary: bool = False
 ):
     """
     Run all privacy evaluations and generate consolidated report.
@@ -89,33 +86,6 @@ def run_all_evaluations(
         print(f"Error in memorization detection: {e}")
         all_results['memorization_detection'] = {'error': str(e)}
     
-    # 4. Canary Insertion
-    if skip_canary:
-        print("\n" + "=" * 80)
-        print("4. CANARY INSERTION TEST")
-        print("=" * 80)
-        print("[SKIPPED] Canary insertion test skipped as requested.")
-        all_results['canary_insertion'] = {'skipped': True, 'reason': 'User requested skip'}
-    else:
-        print("\n" + "=" * 80)
-        print("4. CANARY INSERTION TEST")
-        print("=" * 80)
-        print("[WARNING] Canary insertion test is a SIMULATION only.")
-        print("[WARNING] Valid canary insertion requires inserting canaries in generation prompts.")
-        print("[WARNING] Since corpus is already generated, this test cannot detect real memorization.")
-        try:
-            canary_results = evaluate_canary_insertion(
-                original_corpus_path=corpus_path,
-                generated_corpus_path=corpus_path,  # Using same corpus for simulation
-                output_path=str(output_path / "canary_insertion.json")
-            )
-            all_results['canary_insertion'] = canary_results
-            if not canary_results.get('test_validity', {}).get('is_valid_test', False):
-                print("[NOTE] Canary insertion results are from a simulation, not a valid test")
-        except Exception as e:
-            print(f"Error in canary insertion: {e}")
-            all_results['canary_insertion'] = {'error': str(e)}
-    
     # Generate consolidated report
     print("\n" + "=" * 80)
     print("CONSOLIDATED PRIVACY REPORT")
@@ -181,17 +151,6 @@ def generate_overall_risk_assessment(results: dict) -> dict:
             'test': 'memorization',
             'score': mem_score,
             'risk': mem_risk.get('risk_level', 'unknown')
-        })
-    
-    # Canary leakage risk
-    canary = results.get('canary_insertion', {})
-    if 'leakage_detection' in canary:
-        leakage_rate = canary['leakage_detection'].get('leakage_rate', 0.0)
-        risk_scores.append(leakage_rate)
-        risk_details.append({
-            'test': 'canary_insertion',
-            'score': leakage_rate,
-            'risk': canary.get('risk_assessment', {}).get('risk_level', 'unknown')
         })
     
     # Overall risk
@@ -301,11 +260,6 @@ if __name__ == "__main__":
         action="store_true",
         help="Skip semantic similarity search (only exact similarity in memorization detection)"
     )
-    parser.add_argument(
-        "--skip_canary",
-        action="store_true",
-        help="Skip canary insertion test"
-    )
     
     args = parser.parse_args()
     
@@ -316,6 +270,5 @@ if __name__ == "__main__":
         output_dir=args.output_dir,
         semantic_model=args.semantic_model,
         skip_semantic=args.skip_semantic,
-        skip_canary=args.skip_canary
     )
 

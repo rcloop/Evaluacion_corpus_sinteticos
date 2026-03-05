@@ -6,12 +6,11 @@ This directory contains scripts for comprehensive privacy evaluation of the synt
 
 ## Overview
 
-The privacy evaluation suite includes four main evaluations:
+The privacy evaluation suite includes three main evaluations:
 
 1. **Membership Inference**: Tests whether an attacker can determine if a specific text was in the training corpus
 2. **Attribute Inference**: Tests whether an attacker can infer sensitive attributes (PHI types) from texts
 3. **Memorization Detection**: Detects potential memorization of names/identifiers through exact and semantic similarity search
-4. **Canary Insertion**: Inserts unique canary strings and tests for leakage in generated outputs
 
 ## Installation
 
@@ -113,17 +112,6 @@ python nearest_neighbor_memorization.py \
     --similarity_threshold 0.85
 ```
 
-#### Canary Insertion
-
-```bash
-python canary_insertion.py \
-    --original_corpus_path ../corpus/documents \
-    --generated_corpus_path ../corpus/documents \
-    --num_canaries 50 \
-    --insertion_rate 0.1 \
-    --output_path canary_results.json
-```
-
 ## Output Format
 
 Each evaluation generates a JSON file with:
@@ -153,12 +141,6 @@ The consolidated report (`consolidated_privacy_report.json`) includes:
 - **Medium risk**: 10-50 repeated entities, 5-20 high-similarity pairs
 - **High risk**: 50-200 repeated entities, 20-100 high-similarity pairs
 - **Critical risk**: > 200 repeated entities, > 100 high-similarity pairs
-
-### Canary Insertion
-- **Low risk**: < 1% leakage rate
-- **Medium risk**: 1-5% leakage rate
-- **High risk**: 5-20% leakage rate
-- **Critical risk**: ≥ 20% leakage rate
 
 ## Requirements
 
@@ -197,7 +179,6 @@ pip install -r requirements-dev.txt
 
 - The semantic similarity search requires a sentence transformer model. By default, it uses `paraphrase-multilingual-MiniLM-L12-v2` which supports multiple languages including Spanish.
 - For large corpora (14,035 texts), the semantic similarity search may take several hours. Consider using a GPU for faster processing.
-- The canary insertion test requires both an original corpus (where canaries are inserted) and a generated corpus (where canaries are searched). If only one corpus is provided, the script will simulate by using the same corpus for both.
 - **GPU Support**: If you have a CUDA-compatible GPU, install PyTorch with CUDA support for faster processing:
   ```bash
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

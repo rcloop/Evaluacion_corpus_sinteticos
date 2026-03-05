@@ -36,12 +36,11 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from name_gender_distribution import (
     DEFAULT_TARGET_LABELS,
-    extract_first_name,
-    infer_gender,
     iter_entities_from_annotation_obj,
     load_entities,
     load_lexicon,
     normalize_name,
+    infer_gender_personnel,
 )
 
 
@@ -218,7 +217,7 @@ def evaluate_role_profession_gender_bias(
 
             genders = []
             for n in names:
-                g = infer_gender(extract_first_name(n), lexicon)
+                g = infer_gender_personnel(n, lexicon)
                 genders.append(g)
 
             roles = []
@@ -245,7 +244,7 @@ def evaluate_role_profession_gender_bias(
         names = [t for (lab, t) in entities if lab.upper().strip() in set(name_labels_u)]
         profs = [t for (lab, t) in entities if lab.upper().strip() in set(profession_labels_u)]
         for n in names:
-            g = infer_gender(extract_first_name(n), lexicon)
+            g = infer_gender_personnel(n, lexicon)
             if profs:
                 for pr in profs:
                     counts[g][infer_role_from_text(pr)] += 1

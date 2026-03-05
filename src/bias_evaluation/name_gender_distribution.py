@@ -2,7 +2,15 @@
 Metric 1.1 - Distribución de género en nombres (sintéticos)
 
 Qué:
-  Proporción masculino/femenino/otros-no-determinable en entidades de nombre.
+  Proporción masculino/femenino/otros en entidades de nombre.
+
+Reglas:
+  - Pacientes (NOMBRE_SUJETO_ASISTENCIA): se usa la etiqueta SEXO_SUJETO_ASISTENCIA del mismo
+    documento cuando existe (Varón/Hombre/M → masc, Mujer/Femenino/F → fem). Si no hay SEXO,
+    se infiere por nombre (lexicón + heurística).
+  - Personal sanitario (NOMBRE_PERSONAL_SANITARIO): en castellano el masculino es por defecto;
+    "Dr. Sánchez" se considera hombre. Se usa título en el texto (Dr./Dra., médico/médica, etc.)
+    y si no hay título, lexicón + heurística del nombre.
 
 Entrada:
   - Directorio `entidades/` con JSON por documento (formato MEDDOCAN-like):
@@ -39,6 +47,9 @@ DEFAULT_TARGET_LABELS = [
     "NAME_OF_HEALTHCARE_PERSONNEL",
 ]
 
+# Etiqueta usada para asignar género a pacientes (mismo documento).
+SEXO_SUJETO_ASISTENCIA_LABEL = "SEXO_SUJETO_ASISTENCIA"
+
 
 def _strip_accents(s: str) -> str:
     return "".join(ch for ch in unicodedata.normalize("NFD", s) if unicodedata.category(ch) != "Mn")
@@ -53,18 +64,68 @@ def normalize_name(s: str) -> str:
 
 def extract_first_name(full_name: str) -> Optional[str]:
     """
-    Heurística:
-    - toma el primer token, pero preserva combinaciones comunes (MARIA JOSE, JOSE MARIA).
+    Heurística: primer token con sentido de nombre.
+    - Quita prefijos Dr./Dra. (ruido cuando el campo paciente contiene nombre del médico).
+    - Preserva combinaciones comunes (MARIA JOSE, JOSE MARIA, MARIA DEL PILAR).
     """
     n = normalize_name(full_name)
     if not n:
         return None
-    parts = n.split(" ")
+    parts = n.split()
     if not parts:
         return None
+    # Quitar título al inicio (Dr., Dra.) para no usar "DR" como nombre
+    while parts and parts[0] in ("DR", "DRA", "SR", "SRA", "D", "DNA", "DÑA"):
+        parts = parts[1:]
+        if not parts:
+            return None
     if len(parts) >= 2 and parts[0] in {"MARIA", "JOSE", "JESUS"}:
         return f"{parts[0]} {parts[1]}"
     return parts[0]
+
+
+def _default_lexicon() -> Dict[str, str]:
+    """
+    Lexicón amplio por defecto (nombres españoles/hispanos frecuentes) para minimizar 'other'.
+    Incluye compuestos frecuentes (María X, José X) y variantes.
+    """
+    fem = (
+        "MARIA ANA LUISA CARMEN ANA ISABEL LAURA ELENA MARTA PAULA LUCIA SOFIA CRISTINA "
+        "ANDREA PATRICIA RAQUEL SARA JULIA CLARA IRENE ROCIO ALBA NOELIA MIRIAM LARA "
+        "SILVIA ROSA PILAR TERESA CONCEPCION DOLORES ANTONIA FRANCISCA MANUELA JOSEFA "
+        "VICTORIA BEATRIZ NURIA OLGA INES BEGONIA REYES MONTSERRAT MERCEDES CONSUELO "
+        "GLORIA LOURDES ROSARIO ASUNCION ENCARNACION SOLEDAD TRINIDAD GLORIA "
+        "MARIA JOSE MARIA ISABEL MARIA PILAR MARIA CARMEN MARIA LUISA MARIA TERESA "
+        "MARIA ROSA MARIA ANGELES MARIA DOLORES MARIA MERCEDES MARIA CONCEPCION "
+        "ANA MARIA ROSA MARIA PILAR CARMEN LUISA JOSEFA ISABEL "
+        "ADRIANA VEGA EVA IRIS LIDIA NEREA AINHOA LEIRE NAHIA"
+    ).split()
+    masc = (
+        "JOSE JUAN LUIS CARLOS MIGUEL DAVID JAVIER PABLO PEDRO DANIEL FERNANDO ANTONIO "
+        "MANUEL RAFAEL FRANCISCO ALEJANDRO SERGIO JORGE ALBERTO DIEGO ADRIAN VICTOR "
+        "ANDRES ROBERTO RAUL RICARDO MARCOS IVAN RUBEN OSCAR GUILLERMO EMILIO IGNACIO "
+        "SALVADOR NICOLAS SIMON ANGEL JOAQUIN MARTIN MATEO HUGO GABRIEL MIGUEL ANGEL "
+        "JOSE ANTONIO JOSE LUIS JOSE MANUEL JOSE MIGUEL JOSE CARLOS JOSE FRANCISCO "
+        "JUAN CARLOS JUAN JOSE JUAN ANTONIO JUAN MANUEL JUAN PABLO "
+        "CARLOS ALBERTO FERNANDO JAVIER"
+    ).split()
+    base: Dict[str, str] = {}
+    for n in fem:
+        base[n] = "fem"
+    for n in masc:
+        base[n] = "masc"
+    # Compuestos muy frecuentes (varios tokens)
+    for comp, g in [
+        ("MARIA JOSE", "fem"), ("MARIA ISABEL", "fem"), ("JOSE MARIA", "masc"),
+        ("MARIA DEL PILAR", "fem"), ("MARIA DEL CARMEN", "fem"), ("MARIA DEL MAR", "fem"),
+        ("MARIA DOLORES", "fem"), ("MARIA MERCEDES", "fem"), ("MARIA LUISA", "fem"),
+        ("MARIA ROSA", "fem"), ("MARIA ANGELES", "fem"), ("MARIA TERESA", "fem"),
+        ("MARIA CONCEPCION", "fem"), ("ANA MARIA", "fem"), ("JOSE ANTONIO", "masc"),
+        ("JOSE LUIS", "masc"), ("JOSE MANUEL", "masc"), ("JUAN CARLOS", "masc"),
+        ("JUAN JOSE", "masc"), ("JUAN ANTONIO", "masc"), ("MARIA DEL", "fem"),  # María del X
+    ]:
+        base[comp] = g
+    return base
 
 
 def load_lexicon(path: Optional[str]) -> Dict[str, str]:
@@ -74,16 +135,7 @@ def load_lexicon(path: Optional[str]) -> Dict[str, str]:
     - CSV with columns: name, gender (gender in {f,m,fem,masc})
     - JSON dict: { "MARIA": "fem", "JOSE": "masc", ... }
     """
-    base = {
-        "MARIA": "fem",
-        "MARIA JOSE": "fem",
-        "JOSE": "masc",
-        "JOSE MARIA": "masc",
-        "ANA": "fem",
-        "LUIS": "masc",
-        "CARMEN": "fem",
-        "JUAN": "masc",
-    }
+    base = _default_lexicon()
     if not path:
         return base
 
@@ -127,19 +179,145 @@ def load_lexicon(path: Optional[str]) -> Dict[str, str]:
     raise ValueError(f"Unsupported lexicon format: {p.suffix}")
 
 
-def infer_gender(first_name: Optional[str], lexicon: Dict[str, str]) -> str:
-    if not first_name:
+def normalize_sex_entity_value(text: str) -> str:
+    """
+    Mapea el valor de SEXO_SUJETO_ASISTENCIA a fem/masc/other.
+    En castellano: Varón/Hombre/Masculino/M → masc; Mujer/Femenino/F → fem.
+    """
+    t = _strip_accents(str(text).strip().upper())
+    if not t:
+        return "other"
+    # fem
+    if t in ("MUJER", "FEMENINO", "FEMENINA", "F", "HEMBRA", "FEMALE", "PACIENTE MUJER", "PACIENTE FEMENINA", "SEXO FEMENINO"):
+        return "fem"
+    if t.startswith("MUJER") or t.startswith("FEMENINO") or t.startswith("FEMENINA") or "FEMENINO" in t or "FEMENINA" in t:
+        return "fem"
+    # masc
+    if t in ("VARON", "VARÓN", "HOMBRE", "MASCULINO", "M", "MALE", "PACIENTE VARON", "PACIENTE HOMBRE", "SEXO MASCULINO"):
+        return "masc"
+    if t.startswith("VARON") or t.startswith("HOMBRE") or t.startswith("MASCULINO") or "MASCULINO" in t:
+        return "masc"
+    return "other"
+
+
+def _full_text_suggests_female(full_name: str) -> bool:
+    """True si el texto completo parece referirse a una mujer (La señora, afectada, paciente femenina...)."""
+    n = normalize_name(full_name)
+    female_cues = ("FEMENINA", "MUJER", "AFECTADA", "SENORA", "SEÑORA", "PACIENTE FEMENINA")
+    return any(c in n for c in female_cues)
+
+
+def infer_gender_from_title(name_or_profession_text: str) -> Optional[str]:
+    """
+    En castellano el masculino es por defecto: Dr. Sánchez → hombre, no "no especificado".
+    Devuelve 'masc', 'fem' o None si no se puede inferir por título.
+    """
+    if not name_or_profession_text:
+        return None
+    t = str(name_or_profession_text).strip()
+    # Dra. antes que Dr. para no matchear "Dra" como "Dr"
+    if re.search(r"\bDra\.?\b", t, re.IGNORECASE):
+        return "fem"
+    if re.search(r"\bDr\.?\b", t, re.IGNORECASE):
+        return "masc"
+    n = normalize_name(t)
+    if re.search(r"\bMEDICA\b", n) or re.search(r"\bDOCTORA\b", n):
+        return "fem"
+    if re.search(r"\bMEDICO\b", n) or re.search(r"\bDOCTOR\b", n):
+        return "masc"
+    if re.search(r"\bENFERMERA\b", n):
+        return "fem"
+    if re.search(r"\bENFERMERO\b", n):
+        return "masc"
+    if re.search(r"\bSRA\.?\b", t, re.IGNORECASE) or re.search(r"\bDÑA\.?\b", t, re.IGNORECASE):
+        return "fem"
+    if re.search(r"\bSR\.?\b", t, re.IGNORECASE):
+        return "masc"
+    return None
+
+
+def infer_gender(
+    first_name: Optional[str],
+    lexicon: Dict[str, str],
+    full_name: Optional[str] = None,
+) -> str:
+    """
+    Infiere género por nombre: lexicón amplio, luego primer token en compuestos,
+    luego descripciones/abreviaturas (D.ª, M.ª, Mujer), luego heurística por terminación.
+    Si full_name se proporciona y el primer token es LA/PACIENTE, usa el contexto (femenina, señora, afectada).
+    """
+    if not first_name or not str(first_name).strip():
         return "other"
     key = normalize_name(first_name)
+    if not key:
+        return "other"
+
+    # 1) Lexicón exacto
     if key in lexicon:
         return lexicon[key]
 
-    # very lightweight heuristic fallback
-    if key.endswith("A"):
+    # 2) Si el "nombre" es una descripción (campo con texto tipo "Mujer de 67 años...")
+    if key == "MUJER" or key.startswith("MUJER "):
+        return "fem"
+    if key == "PACIENTE":
+        if full_name and _full_text_suggests_female(full_name):
+            return "fem"
+        return "other"
+    if key == "LA":
+        if full_name and _full_text_suggests_female(full_name):
+            return "fem"
+        return "other"
+
+    # 3) Abreviaturas frecuentes en nombres (D.ª, M.ª → fem)
+    if key in ("D", "M") or key == "DNA" or key == "DÑA":
+        return "fem"
+    # Dr. en nombre de paciente suele ser ruido; conservador: other
+    if key == "DR":
+        return "other"
+
+    # 4) Compuesto: buscar solo el primer token en el lexicón (María Rodríguez → María)
+    if " " in key:
+        first_token = key.split()[0]
+        if first_token in lexicon:
+            return lexicon[first_token]
+        # María X / José X sin segundo en lexicón: primer token muy indicativo en español
+        if first_token == "MARIA":
+            return "fem"
+        if first_token == "JOSE":
+            return "masc"
+        if first_token == "ANA" and len(key.split()) > 1:
+            return "fem"
+
+    # 5) Heurística por terminación (español)
+    if key.endswith("A") and not key.endswith("LA"):  # -a tónica típica fem (excl. Pablo, etc.)
         return "fem"
     if key.endswith("O") or key.endswith("OS"):
         return "masc"
+    # -or, -er frecuentes masculinos (Víctor, etc.; ya en lexicón pero por si acaso)
+    if key.endswith("OR") or key.endswith("ER"):
+        return "masc"
+    if key.endswith("EL"):  # Miguel, Manuel, Rafael, Daniel
+        return "masc"
+    if key.endswith("EN"):  # ambiguo (Carmen fem, otros masc); si no está en lexicón, conservador
+        return "other"
+    if key.endswith("EZ") or key.endswith("IZ"):  # apellidos usados como nombre: no forzar
+        pass
+    # -is, -us (Luis, etc.)
+    if key.endswith("IS") or key.endswith("US"):
+        return "masc"
+
     return "other"
+
+
+def infer_gender_personnel(name_text: str, lexicon: Dict[str, str]) -> str:
+    """
+    Para personal sanitario: primero título (Dr./Dra. → masculino por defecto en castellano), luego nombre.
+    """
+    g = infer_gender_from_title(name_text)
+    if g is not None:
+        return g
+    first = extract_first_name(name_text)
+    return infer_gender(first, lexicon)
 
 
 def iter_entities_from_annotation_obj(obj: Any) -> Iterable[Tuple[str, str]]:
@@ -194,6 +372,32 @@ def load_entities(annotations_path: str, max_files: Optional[int] = None) -> Lis
     obj = json.loads(p.read_text(encoding="utf-8"))
     pairs.extend(list(iter_entities_from_annotation_obj(obj)))
     return pairs
+
+
+def iter_documents(
+    annotations_path: str, max_files: Optional[int] = None
+) -> Iterable[Tuple[str, List[Tuple[str, str]]]]:
+    """
+    Yield (doc_id, [(label, text), ...]) per document for per-doc logic (SEXO_SUJETO_ASISTENCIA).
+    """
+    p = Path(annotations_path)
+    if not p.exists():
+        raise FileNotFoundError(str(p))
+    if p.is_dir():
+        files = sorted(p.glob("*.json"))
+        if max_files is not None:
+            files = files[: max_files]
+        for fp in files:
+            try:
+                obj = json.loads(fp.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            pairs = list(iter_entities_from_annotation_obj(obj))
+            yield (fp.stem, pairs)
+        return
+    obj = json.loads(p.read_text(encoding="utf-8"))
+    pairs = list(iter_entities_from_annotation_obj(obj))
+    yield (p.stem, pairs)
 
 
 def chi_square_uniformity(counts: Dict[str, int]) -> Dict[str, Optional[float]]:
@@ -253,6 +457,11 @@ def make_stacked_bar_plot(result: Dict[str, Any], out_path: Path) -> Optional[st
     return str(out_path)
 
 
+# Labels que identifican al paciente (para usar SEXO_SUJETO_ASISTENCIA en el mismo doc).
+SUBJECT_NAME_LABELS = {"NOMBRE_SUJETO_ASISTENCIA", "NAME_OF_ASSISTED_SUBJECT"}
+PERSONNEL_NAME_LABELS = {"NOMBRE_PERSONAL_SANITARIO", "NAME_OF_HEALTHCARE_PERSONNEL"}
+
+
 def evaluate_name_gender_distribution(
     annotations_path: str,
     target_labels: List[str],
@@ -260,23 +469,46 @@ def evaluate_name_gender_distribution(
     max_files: Optional[int] = None,
 ) -> Dict[str, Any]:
     lexicon = load_lexicon(lexicon_path)
-    entities = load_entities(annotations_path=annotations_path, max_files=max_files)
-
     target_set = {t.upper().strip() for t in target_labels}
+    sexo_label = SEXO_SUJETO_ASISTENCIA_LABEL.upper().strip()
 
     counts_by_label: Dict[str, Counter] = defaultdict(Counter)
     total_seen = 0
     total_matched = 0
 
-    for label, text in entities:
-        total_seen += 1
-        lu = label.upper().strip()
-        if lu not in target_set:
-            continue
-        total_matched += 1
-        first = extract_first_name(text)
-        g = infer_gender(first, lexicon)
-        counts_by_label[lu][g] += 1
+    for _doc_id, pairs in iter_documents(annotations_path, max_files=max_files):
+        # Por documento: reunir nombres de paciente, de personal y valores SEXO_SUJETO_ASISTENCIA.
+        subject_names: List[str] = []
+        personnel_names: List[str] = []
+        sex_values: List[str] = []
+
+        for label, text in pairs:
+            lu = label.upper().strip()
+            total_seen += 1
+            if lu == sexo_label:
+                sex_values.append(normalize_sex_entity_value(text))
+            elif lu in SUBJECT_NAME_LABELS and lu in target_set:
+                subject_names.append(text)
+            elif lu in PERSONNEL_NAME_LABELS and lu in target_set:
+                personnel_names.append(text)
+
+        # Pacientes (NOMBRE_SUJETO_ASISTENCIA): usar etiqueta SEXO_SUJETO_ASISTENCIA si existe en el doc.
+        if subject_names:
+            for i, name in enumerate(subject_names):
+                total_matched += 1
+                if sex_values:
+                    g = sex_values[i] if i < len(sex_values) else sex_values[0]
+                else:
+                    first = extract_first_name(name)
+                    g = infer_gender(first, lexicon, full_name=name)
+                counts_by_label["NOMBRE_SUJETO_ASISTENCIA"][g] += 1
+
+        # Personal sanitario: Dr. → masculino por defecto (castellano); Dra. → fem; luego nombre.
+        if personnel_names:
+            for name in personnel_names:
+                total_matched += 1
+                g = infer_gender_personnel(name, lexicon)
+                counts_by_label["NOMBRE_PERSONAL_SANITARIO"][g] += 1
 
     def props(c: Counter) -> Dict[str, float]:
         n = sum(c.values())

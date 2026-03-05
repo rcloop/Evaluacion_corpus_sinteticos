@@ -136,12 +136,12 @@ def compare_distributions(
             'kolmogorov_smirnov': {
                 'statistic': float(ks_statistic),
                 'pvalue': float(ks_pvalue),
-                'significant': ks_pvalue < 0.05
+                'significant': bool(ks_pvalue < 0.05)
             },
             'mann_whitney_u': {
                 'statistic': float(u_statistic),
                 'pvalue': float(u_pvalue),
-                'significant': u_pvalue < 0.05
+                'significant': bool(u_pvalue < 0.05)
             }
         },
         'relative_difference': {
@@ -222,20 +222,20 @@ def evaluate_statistical_comparison(
         if 'error' not in comparison:
             comparisons[feature] = comparison
     
-    # Summary
-    significant_differences = sum(
+    # Summary (use native int/float for JSON)
+    significant_differences = int(sum(
         1 for comp in comparisons.values()
         if comp['statistical_tests']['kolmogorov_smirnov']['significant']
-    )
-    
+    ))
+    n_comp = len(comparisons)
     results = {
-        'generated_corpus_size': len(generated_texts),
-        'real_corpus_size': len(real_texts),
+        'generated_corpus_size': int(len(generated_texts)),
+        'real_corpus_size': int(len(real_texts)),
         'comparisons': comparisons,
         'summary': {
-            'total_features_compared': len(comparisons),
+            'total_features_compared': int(n_comp),
             'significant_differences': significant_differences,
-            'similarity_score': (len(comparisons) - significant_differences) / len(comparisons) if comparisons else 0.0
+            'similarity_score': float((n_comp - significant_differences) / n_comp) if n_comp else 0.0
         }
     }
     

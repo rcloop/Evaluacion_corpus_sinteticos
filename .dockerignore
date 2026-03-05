@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+ENV/
+.venv
+
+# Corpus y datos grandes (montar como volumen si hace falta)
+corpus/
+corpus_repo/
+corpus_repo_old_backup/
+
+# Resultados locales
+results/
+*_results/
+privacy_evaluation_results/
+bias_evaluation_results/
+naturalness_evaluation_results/
+
+# IDE y OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Logs y temporales
+*.log
+*.txt
+!requirements.txt
+
+# Documentación y bibliography (opcional: quitar si quieres incluirla en la imagen)
+# bibliography/
