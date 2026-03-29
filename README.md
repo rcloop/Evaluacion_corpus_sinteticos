@@ -12,7 +12,8 @@ Evaluación de corpus sintéticos: sesgo (bias), privacidad y naturalidad sobre 
   - **`utils/`** – Utilidades compartidas (opcional; ver carpeta)
   - **`models/`** – Referencias o artefactos relacionados con modelos, si los hay
 - **`test/`** – Tests pytest y datos mínimos (`test/data/`)
-- **`data/`** – Datos de referencia (por ejemplo corpus real de validación para comparaciones)
+- **`corpus_repo/corpus_v1/`** – Corpus sintético versionado (textos en `documents/`, anotaciones en `entidades/`). El corpus de validación **real** bajo `corpus_repo/real_validation_corpus/` no se incluye en git (ver `.gitignore`).
+- **`data/`** – Datos de referencia adicionales (por ejemplo muestras o lexicones pequeños)
 - **`results/`** – **Salidas numéricas** de los experimentos (JSON, etc.; ver siguiente apartado)
 - **`interpretacion/`** – Textos de interpretación y apoyo al paper (Markdown); **no se versiona** (`.gitignore`).
 - **`scripts/`** – Scripts auxiliares (preparación de datos, utilidades)
@@ -33,7 +34,7 @@ Convención del proyecto: **escribir siempre bajo `results/` en la raíz del rep
 
 Los resultados por experimento existen **una sola vez**, bajo `results/` en la raíz (no bajo `src/`).
 
-La **interpretación** (textos para paper, notas) es **manual** y puede vivir en **`interpretacion/`** (local, `.gitignore`). El repo publica **resultados planos** bajo `results/` (p. ej. JSON de métricas). En `.gitignore`, `*.json` es global por defecto, pero **sí se versionan** los JSON de **`results/`** y los de **`test/data/`** (fixtures), para que quien clone el repo pueda ver números y ejecutar tests. Los **`.txt`** del corpus grande siguen fuera porque las carpetas `corpus/` y `corpus_repo/` están ignoradas; los **`.txt`** de **`test/data/`** sí pueden versionarse. Los `.txt` tipo log bajo `results/` se ignoran.
+La **interpretación** (textos para paper, notas) es **manual** y puede vivir en **`interpretacion/`** (local, `.gitignore`). El repo publica **resultados planos** bajo `results/` (p. ej. JSON de métricas). En `.gitignore`, `*.json` es global por defecto, pero **sí se versionan** los JSON de **`results/`**, **`test/data/`** y **`corpus_repo/corpus_v1/entidades/`**. Los **`.txt`** de **`test/data/`** y del **corpus sintético v1** se versionan; los `.txt` tipo log bajo `results/` se ignoran.
 
 ## Requisitos
 

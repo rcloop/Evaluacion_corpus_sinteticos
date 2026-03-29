@@ -1,7 +1,9 @@
-# Corpus repository (too large for git)
-corpus_repo/
+# Corpus: se versiona el sintético v1 (~14k docs) bajo corpus_repo/corpus_v1/.
+# No subir corpus de validación real ni derivados sensibles desde esta raíz (tienen su propio .gitignore dentro de corpus_repo).
 corpus/
-# No usar *.txt global: bloquea fixtures de test (test/data/.../*.txt). Los corpus grandes ya van en corpus*/
+corpus_repo/real_validation_corpus/
+corpus_repo/real_validation_set.json
+# No usar *.txt global: bloquea fixtures de test (test/data/.../*.txt).
 # Logs locales de ejecución bajo results/ (no métricas JSON)
 results/**/*.txt
 
@@ -23,6 +25,7 @@ privacy_evaluation_results/
 # Excepciones: métricas versionadas y fixtures de tests (el patrón global *.json sigue ignorando el resto)
 !results/**/*.json
 !test/data/**/*.json
+!corpus_repo/corpus_v1/**/*.json
 
 # IDEs
 .vscode/
