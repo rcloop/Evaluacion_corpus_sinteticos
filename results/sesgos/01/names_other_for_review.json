@@ -1,0 +1,11 @@
+{
+  "description": "Nombres que quedaron como 'other'. Revisa y asigna fem/masc en el CSV.",
+  "items": [
+    {
+      "first_name": "LA",
+      "full_text_example": "La paciente refiere",
+      "entity_label": "NOMBRE_SUJETO_ASISTENCIA",
+      "count": 10
+    }
+  ]
+}

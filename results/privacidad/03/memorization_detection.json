@@ -1,0 +1,1975 @@
+{
+  "corpus_size": 14035,
+  "_occurrences_meaning": "occurrences = number of documents that contain the entity at least once (not total mentions)",
+  "exact_duplicates": {
+    "person": {
+      "total_repeated": 215,
+      "top_repeated": [
+        {
+          "entity": "Sra. Elena Castillo Domínguez",
+          "occurrences": 328,
+          "documents": [
+            {
+              "filename": "0285456a-1f5d-4948-a00c-c13e677a1b71.txt",
+              "doc_id": "0285456a-1f5d-4948-a00c-c13e677a1b71",
+              "text_preview": "NOTA DE EVOLUCIÓN - CONSULTA EXTERNA Paciente M.ª José Fernández, familiar que acude a consulta para seguimiento en el Clínica Periférica Norte. Refiere mejoría parcial de su sintomatología respirator"
+            },
+            {
+              "filename": "05331116-9c6d-4300-a942-5ae5248f1f10.txt",
+              "doc_id": "05331116-9c6d-4300-a942-5ae5248f1f10",
+              "text_preview": "A continuación se presenta el informe de consulta externa de seguimiento. La paciente La tutora legal, con  Paciente de sexo femenino, acude para control evolutivo. Se identifica con el  HC-22-887430 "
+            },
+            {
+              "filename": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c.txt",
+              "doc_id": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c",
+              "text_preview": "Informe de Consulta de Seguimiento En la consulta de seguimiento se reevalúa a la paciente de sexo Sexo femenino, quien acude para control postoperatorio. La evolución clínica resulta satisfactoria, c"
+            }
+          ]
+        },
+        {
+          "entity": "Marcos Vidal Peña",
+          "occurrences": 320,
+          "documents": [
+            {
+              "filename": "04d2c9e7-ec8a-47e3-837f-b850f96dedbf.txt",
+              "doc_id": "04d2c9e7-ec8a-47e3-837f-b850f96dedbf",
+              "text_preview": "Informe de Interconsulta - Cirugía General En la valoración preoperatoria realizada en consultas externas, se presenta a la paciente Marcos Vidal Peña, identificada con el número de historia EMP-MED-3"
+            },
+            {
+              "filename": "052be51f-4c9d-4101-8ea0-036ee79e8713.txt",
+              "doc_id": "052be51f-4c9d-4101-8ea0-036ee79e8713",
+              "text_preview": "Informe de Consulta Externa A la atención de los servicios médicos del Hospital General Metropolitano, se presenta la paciente Marcos Vidal Peña para valoración y seguimiento. La paciente, de Paciente"
+            },
+            {
+              "filename": "06d7375c-41bd-48b1-b1bc-8a931f12045e.txt",
+              "doc_id": "06d7375c-41bd-48b1-b1bc-8a931f12045e",
+              "text_preview": "En la valoración inicial se procede a la identificación biométrica del paciente mediante sistema de reconocimiento dactilar, verificándose la correspondencia de la Biometría dactilar del pulgar derech"
+            }
+          ]
+        },
+        {
+          "entity": "D.ª Clara Robles Soto",
+          "occurrences": 310,
+          "documents": [
+            {
+              "filename": "02931efc-7a8c-4e12-b054-4fec7cd3985e.txt",
+              "doc_id": "02931efc-7a8c-4e12-b054-4fec7cd3985e",
+              "text_preview": "Nota de Evolución Hospitalaria A continuación se presenta la valoración clínica de la paciente D.ª Clara Robles Soto, quien fue evaluada en consulta externa el julio de 2023. La paciente refiere mejor"
+            },
+            {
+              "filename": "043ec583-b15a-49c6-a970-7d7e65bba85f.txt",
+              "doc_id": "043ec583-b15a-49c6-a970-7d7e65bba85f",
+              "text_preview": "En la valoración clínica realizada en el Centro Médico Familiar Los Pinos, se documenta el seguimiento del estado de salud de D.ª Clara Robles Soto, quien presenta un cuadro compatible con infección r"
+            },
+            {
+              "filename": "0447ec51-d631-40ef-88ab-d2c37ad632dc.txt",
+              "doc_id": "0447ec51-d631-40ef-88ab-d2c37ad632dc",
+              "text_preview": "A la atención de consulta externa se presenta la paciente D.ª Clara Robles Soto para seguimiento de su proceso crónico. La paciente es identificada en nuestro sistema con el HC-2024-334455 y su A-1234"
+            }
+          ]
+        },
+        {
+          "entity": "Víctor Manuel Herrera Gil",
+          "occurrences": 307,
+          "documents": [
+            {
+              "filename": "0246a862-3b80-4a24-b77c-9117086beed4.txt",
+              "doc_id": "0246a862-3b80-4a24-b77c-9117086beed4",
+              "text_preview": "INFORME DE CONSULTA DE CARDIOLOGÍA Paciente que acude para valoración y seguimiento en consultas externas de cardiología. Refiere mejoría de la sintomatología inicial con el tratamiento instaurado, ma"
+            },
+            {
+              "filename": "03750b1e-9546-43a6-97b1-e4ffa27b81f8.txt",
+              "doc_id": "03750b1e-9546-43a6-97b1-e4ffa27b81f8",
+              "text_preview": "Informe de Consulta Externa A la atención del servicio correspondiente, se remite el presente informe clínico de la paciente identificada bajo el código ID-SALUD-456, quien acude para valoración y seg"
+            },
+            {
+              "filename": "0388f5a1-354b-4ccf-9ab5-b6b9c876012c.txt",
+              "doc_id": "0388f5a1-354b-4ccf-9ab5-b6b9c876012c",
+              "text_preview": "En la valoración clínica realizada en el Puesto de Salud La Esperanza, se presenta la paciente Víctor Manuel Herrera Gil, de 67 años de edad de edad, quien acude para seguimiento de su situación clíni"
+            }
+          ]
+        },
+        {
+          "entity": "Ana Belén Jiménez Ríos",
+          "occurrences": 304,
+          "documents": [
+            {
+              "filename": "02364f44-800a-411f-afb3-d0934d1a743a.txt",
+              "doc_id": "02364f44-800a-411f-afb3-d0934d1a743a",
+              "text_preview": "Informe de Consulta de Cardiología Paciente: María Rodríguez Martínez que acude a revisión programada tras intervención quirúrgica. La paciente refiere evolución favorable con buena tolerancia a la ac"
+            },
+            {
+              "filename": "023fc93d-49dc-4515-bb86-d5e3913aaaf8.txt",
+              "doc_id": "023fc93d-49dc-4515-bb86-d5e3913aaaf8",
+              "text_preview": "INFORME DE CONSULTA EXTERNA DE CIRUGÍA GENERAL Se evalúa en consulta a la paciente Javier Torres Moreno para seguimiento postoperatorio. La paciente refiere evolución favorable de su proceso, con adec"
+            },
+            {
+              "filename": "0474a9b1-2f43-48d4-816b-71ab99d73980.txt",
+              "doc_id": "0474a9b1-2f43-48d4-816b-71ab99d73980",
+              "text_preview": "INFORME DE CONSULTA EXTERNA - ENDOCRINOLOGÍA Fecha de la consulta: 15-07-2023 Paciente: Ana Belén Jiménez Ríos Identificación: ALB9870123K Sexo: Género femenino Motivo de consulta: Seguimiento de diab"
+            }
+          ]
+        }
+      ]
+    },
+    "id": {
+      "total_repeated": 802,
+      "top_repeated": [
+        {
+          "entity": "HC-2024-654321",
+          "occurrences": 414,
+          "documents": [
+            {
+              "filename": "0048cc97-c3e5-462f-b8c9-2acb398fad05.txt",
+              "doc_id": "0048cc97-c3e5-462f-b8c9-2acb398fad05",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control evolutivo. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persiste cierto grado de malestar general"
+            },
+            {
+              "filename": "02707ffd-1271-4305-a4ac-affcc1106d24.txt",
+              "doc_id": "02707ffd-1271-4305-a4ac-affcc1106d24",
+              "text_preview": "Informe de Seguimiento Psiquiátrico El paciente acude a consulta de seguimiento mostrando una mejoría moderada en la sintomatología ansiosa generalizada. Se mantiene con el esquema farmacológico estab"
+            },
+            {
+              "filename": "0372ce57-fb8a-47c3-b138-2f70e39e52c4.txt",
+              "doc_id": "0372ce57-fb8a-47c3-b138-2f70e39e52c4",
+              "text_preview": "Informe de Consulta de Cirugía General Paciente valorado en consulta externa para seguimiento postoperatorio. Se revisa la evolución clínica y se constata una adecuada recuperación del procedimiento q"
+            }
+          ]
+        },
+        {
+          "entity": "Placas XYZ-123",
+          "occurrences": 360,
+          "documents": [
+            {
+              "filename": "038a813e-bba9-4a01-b551-c5bb69339cfc.txt",
+              "doc_id": "038a813e-bba9-4a01-b551-c5bb69339cfc",
+              "text_preview": "Informe de Consulta Externa de Cardiología Paciente que acude para valoración y seguimiento en consultas externas. Se identifica con el documento de identidad 234-88-9012. La exploración física actual"
+            },
+            {
+              "filename": "0425030a-9488-40b0-8a30-43876e24dba6.txt",
+              "doc_id": "0425030a-9488-40b0-8a30-43876e24dba6",
+              "text_preview": "En la valoración inicial del sujeto asistencial, se procede al registro de sus datos identificativos principales, entre los que se incluye el código ID-ASIST-99234. La exploración física se complement"
+            },
+            {
+              "filename": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c.txt",
+              "doc_id": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c",
+              "text_preview": "Informe de Consulta de Seguimiento En la consulta de seguimiento se reevalúa a la paciente de sexo Sexo femenino, quien acude para control postoperatorio. La evolución clínica resulta satisfactoria, c"
+            }
+          ]
+        },
+        {
+          "entity": "VIN 1HGCM82633A123456",
+          "occurrences": 358,
+          "documents": [
+            {
+              "filename": "0616ba52-3efa-4aa7-bcab-c6831d00481a.txt",
+              "doc_id": "0616ba52-3efa-4aa7-bcab-c6831d00481a",
+              "text_preview": "Informe de Valoración Preoperatoria Se procede a la valoración preoperatoria de la paciente, cuyo identificador de sujeto de asistencia es S890123456, previa a la intervención quirúrgica programada. L"
+            },
+            {
+              "filename": "06611071-fcc0-40a5-904d-00417fb680d3.txt",
+              "doc_id": "06611071-fcc0-40a5-904d-00417fb680d3",
+              "text_preview": "En la valoración de seguimiento correspondiente al 10 de julio de 2023, se revisan los estudios complementarios previamente solicitados. Los hallazgos de la resonancia magnética, asociados al número d"
+            },
+            {
+              "filename": "06960763-c7ea-475e-9f48-e3aaca098fa5.txt",
+              "doc_id": "06960763-c7ea-475e-9f48-e3aaca098fa5",
+              "text_preview": "Informe de Seguimiento de Consulta Externa La paciente Isabel Gutiérrez Mendoza acude a revisión programada en el Ambulatorio Urbano San Benito para el control de su patología crónica. Durante la cons"
+            }
+          ]
+        },
+        {
+          "entity": "Número de chasis WBA1234567890ABCD",
+          "occurrences": 349,
+          "documents": [
+            {
+              "filename": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0.txt",
+              "doc_id": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0",
+              "text_preview": "En la valoración clínica realizada, se procede a la revisión exhaustiva del caso. Los hallazgos exploratorios muestran una tensión arterial de 125/80 mmHg y frecuencia cardíaca de 72 lpm, con ausculta"
+            },
+            {
+              "filename": "03d4339e-2cbd-48e6-82b6-c52de00ccd39.txt",
+              "doc_id": "03d4339e-2cbd-48e6-82b6-c52de00ccd39",
+              "text_preview": "En la evolución del paciente atendido en consulta externa, se procede a la actualización de su historia clínica principal con referencia HC-2024-789013. El seguimiento habitual se realiza desde el Pue"
+            },
+            {
+              "filename": "0447ec51-d631-40ef-88ab-d2c37ad632dc.txt",
+              "doc_id": "0447ec51-d631-40ef-88ab-d2c37ad632dc",
+              "text_preview": "A la atención de consulta externa se presenta la paciente D.ª Clara Robles Soto para seguimiento de su proceso crónico. La paciente es identificada en nuestro sistema con el HC-2024-334455 y su A-1234"
+            }
+          ]
+        },
+        {
+          "entity": "Placas ABC-789",
+          "occurrences": 343,
+          "documents": [
+            {
+              "filename": "03de2190-ad3c-4a3f-be75-30d9fd338050.txt",
+              "doc_id": "03de2190-ad3c-4a3f-be75-30d9fd338050",
+              "text_preview": "En la valoración integral del paciente, se procede a la revisión de la documentación clínica disponible a través de la plataforma institucional accesible en https://hc.clinicavalle.es/paciente/OP12398"
+            },
+            {
+              "filename": "046ec5b9-899f-47f9-b6f0-969eee604011.txt",
+              "doc_id": "046ec5b9-899f-47f9-b6f0-969eee604011",
+              "text_preview": "En el contexto de la valoración integral del paciente, se procede a la revisión de su historia clínica digital accesible a través de https://historiaclinica.hgugm.es/paciente/12345678. Durante la anam"
+            },
+            {
+              "filename": "056fcdbb-94f7-4592-b501-32575fcca730.txt",
+              "doc_id": "056fcdbb-94f7-4592-b501-32575fcca730",
+              "text_preview": "Informe de Consulta Externa Se evalúa al paciente en consulta de seguimiento tras su último ingreso. El estado general es satisfactorio, manteniéndose estable desde su alta. A la exploración física ac"
+            }
+          ]
+        }
+      ]
+    },
+    "date": {
+      "total_repeated": 17,
+      "top_repeated": [
+        {
+          "entity": "Junio 2023",
+          "occurrences": 364,
+          "documents": [
+            {
+              "filename": "0171892e-dd8c-46a1-b5d2-b2132cdb021c.txt",
+              "doc_id": "0171892e-dd8c-46a1-b5d2-b2132cdb021c",
+              "text_preview": "Informe de Consulta Externa En la visita de seguimiento realizada el Junio 2023, se reevalúa a la paciente María del Pilar Fernández Castro quien acude para control evolutivo. La exploración física ac"
+            },
+            {
+              "filename": "019ec4b7-1b15-4cf1-bb2c-61b21780f632.txt",
+              "doc_id": "019ec4b7-1b15-4cf1-bb2c-61b21780f632",
+              "text_preview": "A la atención de la Unidad de Hematología. Se remite informe de valoración clínica correspondiente a la consulta realizada el Junio 2023. La paciente, de sexo Paciente de sexo femenino, acude para seg"
+            },
+            {
+              "filename": "02b33a17-3bf3-411f-a6bc-d25f476ac760.txt",
+              "doc_id": "02b33a17-3bf3-411f-a6bc-d25f476ac760",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica de base. Refiere estabilidad clínica general, sin aparición de nuevos síntomas o signos de alarma desd"
+            }
+          ]
+        },
+        {
+          "entity": "13 de julio de 2023",
+          "occurrences": 364,
+          "documents": [
+            {
+              "filename": "01a3ffb9-7878-411b-8949-9fca6a004a2b.txt",
+              "doc_id": "01a3ffb9-7878-411b-8949-9fca6a004a2b",
+              "text_preview": "INFORME DE CONSULTA EXTERNA DATOS DE IDENTIFICACIÓN Paciente: Cristina Pons Mir, con identificación b-58293472. Sexo Paciente mujer. Residente en Calle de la Victoria 15, dentro del territorio de la R"
+            },
+            {
+              "filename": "031d5dd7-ccae-4634-aae4-b1427c4e83e8.txt",
+              "doc_id": "031d5dd7-ccae-4634-aae4-b1427c4e83e8",
+              "text_preview": "A continuación se presenta el informe de evolución correspondiente a la consulta de seguimiento realizada en el Centro de Salud Las Rosas. La valoración clínica del paciente con identificador HC-2024-"
+            },
+            {
+              "filename": "0472cf7e-c28d-415b-a9cb-a6eaef1ea47c.txt",
+              "doc_id": "0472cf7e-c28d-415b-a9cb-a6eaef1ea47c",
+              "text_preview": "A continuación, se presenta el informe de consulta externa de seguimiento. Paciente: Isabel Gutiérrez Mendoza. Sexo F, de paciente sexagenario de edad. Acude a revisión programada para control de su p"
+            }
+          ]
+        },
+        {
+          "entity": "15-07-2023",
+          "occurrences": 341,
+          "documents": [
+            {
+              "filename": "02a7ad3e-cc1c-409a-89c2-369aeafe15de.txt",
+              "doc_id": "02a7ad3e-cc1c-409a-89c2-369aeafe15de",
+              "text_preview": "En el informe de evolución correspondiente a la consulta de seguimiento del día 15-07-2023, se documenta la estabilidad del cuadro. La analítica de control realizada muestra un hemograma dentro de ran"
+            },
+            {
+              "filename": "04007ed9-4f9b-4697-9174-b0404ed78ce7.txt",
+              "doc_id": "04007ed9-4f9b-4697-9174-b0404ed78ce7",
+              "text_preview": "En la valoración clínica realizada, se documenta un cuadro de evolución aguda caracterizado por sintomatología inespecífica que motiva la consulta. La exploración física muestra constantes vitales den"
+            },
+            {
+              "filename": "043f97fc-045e-426f-80cf-b368ae93e15f.txt",
+              "doc_id": "043f97fc-045e-426f-80cf-b368ae93e15f",
+              "text_preview": "A continuación se presenta el informe de valoración integral correspondiente a la consulta de seguimiento. El paciente refiere mejoría parcial de la sintomatología inicial, manteniendo algún episodio "
+            }
+          ]
+        },
+        {
+          "entity": "07/2023",
+          "occurrences": 336,
+          "documents": [
+            {
+              "filename": "0195aa77-1519-4e6f-b3f2-d2e4c324043d.txt",
+              "doc_id": "0195aa77-1519-4e6f-b3f2-d2e4c324043d",
+              "text_preview": "Informe de Consulta Externa A fecha de 07/2023, se procede a la evaluación y seguimiento de la paciente María del Carmen Fernández López. La paciente, que se identifica como Carmen López Díaz para tem"
+            },
+            {
+              "filename": "0210e5ca-b89f-42c9-acc5-f81c2fd3bcea.txt",
+              "doc_id": "0210e5ca-b89f-42c9-acc5-f81c2fd3bcea",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Se presenta a consulta la paciente de sexo Mujer para seguimiento y control evolutivo. La exploración física actual muestra un estado general conservado, con constantes vit"
+            },
+            {
+              "filename": "0305ecb3-9db7-413e-be2c-e7719e5cff1d.txt",
+              "doc_id": "0305ecb3-9db7-413e-be2c-e7719e5cff1d",
+              "text_preview": "Informe de Consulta Externa Paciente: María Teresa Méndez Iglesias. Número de beneficiaria del plan de salud: B-458713269. Evaluada en consulta externa el 07/2023 por presentar cuadro de cefalea tensi"
+            }
+          ]
+        },
+        {
+          "entity": "Agosto 2023",
+          "occurrences": 333,
+          "documents": [
+            {
+              "filename": "02e92a74-4bfb-4228-a388-d4711bc84539.txt",
+              "doc_id": "02e92a74-4bfb-4228-a388-d4711bc84539",
+              "text_preview": "En el contexto de la valoración quirúrgica realizada, se procede a la elaboración del presente informe. La paciente, María Gutiérrez López, acudió a consulta acompañada de sus para la discusión de los"
+            },
+            {
+              "filename": "03763a4f-5f5f-4a6b-93e7-1ac473982ed1.txt",
+              "doc_id": "03763a4f-5f5f-4a6b-93e7-1ac473982ed1",
+              "text_preview": "A continuación se presenta el informe de consulta externa correspondiente a la revisión programada. La paciente, de sexo Mujer adulta, acudió a la consulta para seguimiento de su condición crónica, mo"
+            },
+            {
+              "filename": "03cb7dce-0514-48a2-a724-1d7cb45dbc25.txt",
+              "doc_id": "03cb7dce-0514-48a2-a724-1d7cb45dbc25",
+              "text_preview": "Informe de Consulta Externa A fecha de Agosto 2023, se procede a la redacción del presente informe de seguimiento para la paciente Cristina Pons Mir. La exploración física actual muestra un estado gen"
+            }
+          ]
+        }
+      ]
+    },
+    "location": {
+      "total_repeated": 169,
+      "top_repeated": [
+        {
+          "entity": "Francia",
+          "occurrences": 399,
+          "documents": [
+            {
+              "filename": "01f3f019-2ab4-4009-ba1d-416c47855928.txt",
+              "doc_id": "01f3f019-2ab4-4009-ba1d-416c47855928",
+              "text_preview": "Informe de Consulta de Segunda Opinión En la consulta de segunda opinión realizada el día julio de 2023, se revisa la documentación clínica del paciente de paciente de 70 años disponible en los portal"
+            },
+            {
+              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
+              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
+              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
+            },
+            {
+              "filename": "028f6255-dc63-478c-b61e-2565ba827834.txt",
+              "doc_id": "028f6255-dc63-478c-b61e-2565ba827834",
+              "text_preview": "Informe de Valoración Geriátrica Integral Se procede a la valoración integral de M.ª Luisa Fernández Castro, con paciente sexagenario, atendida en nuestro Centro de Salud y Bienestar La Colina, ubicad"
+            }
+          ]
+        },
+        {
+          "entity": "Italia",
+          "occurrences": 387,
+          "documents": [
+            {
+              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
+              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
+              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
+            },
+            {
+              "filename": "02975218-436c-4d8f-8c50-8314b9ff9249.txt",
+              "doc_id": "02975218-436c-4d8f-8c50-8314b9ff9249",
+              "text_preview": "En el contexto del seguimiento del paciente, se procede a la actualización de la historia clínica digital. La documentación asociada al episodio actual queda registrada bajo el código de identificació"
+            },
+            {
+              "filename": "031d5dd7-ccae-4634-aae4-b1427c4e83e8.txt",
+              "doc_id": "031d5dd7-ccae-4634-aae4-b1427c4e83e8",
+              "text_preview": "A continuación se presenta el informe de evolución correspondiente a la consulta de seguimiento realizada en el Centro de Salud Las Rosas. La valoración clínica del paciente con identificador HC-2024-"
+            }
+          ]
+        },
+        {
+          "entity": "Consultorio Local Santa Clara",
+          "occurrences": 385,
+          "documents": [
+            {
+              "filename": "020c07da-6e4b-4781-977a-47bc35ec79ab.txt",
+              "doc_id": "020c07da-6e4b-4781-977a-47bc35ec79ab",
+              "text_preview": "Nota de Evolución - Consulta Externa Paciente que acude a consulta para seguimiento. Refiere mejoría de la sintomatología respiratoria que motivó la consulta previa, aunque persiste tos irritativa oca"
+            },
+            {
+              "filename": "03b23b6d-56d8-4d45-91b8-ba668972f390.txt",
+              "doc_id": "03b23b6d-56d8-4d45-91b8-ba668972f390",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Fecha de la consulta: Principios de agosto de 2023. Atención realizada en el Consultorio Local Santa Clara, bajo la dependencia orgánica de la Hospital Infanta Sofía y en e"
+            },
+            {
+              "filename": "046417cf-4592-4758-9475-c3c69a645dd9.txt",
+              "doc_id": "046417cf-4592-4758-9475-c3c69a645dd9",
+              "text_preview": "INFORME DE CONSULTA DE ONCOLOGÍA A la atención de la Dr. Miguel Ángel Ruiz: Se remite a su servicio a la paciente Isabel Gutiérrez Mendoza para valoración y seguimiento especializado. La paciente, con"
+            }
+          ]
+        },
+        {
+          "entity": "Portugal",
+          "occurrences": 380,
+          "documents": [
+            {
+              "filename": "017e202c-61c2-45b4-9539-99a9a39de0f7.txt",
+              "doc_id": "017e202c-61c2-45b4-9539-99a9a39de0f7",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología respiratoria crónica. Refiere mejoría sintomática tras la última modificación terapéutica, con disminución significativa"
+            },
+            {
+              "filename": "01e581f9-e88b-49b2-bdcc-92aef45d84b3.txt",
+              "doc_id": "01e581f9-e88b-49b2-bdcc-92aef45d84b3",
+              "text_preview": "INFORME DE CONSULTA DE CARDIOLOGÍA Paciente que acude para valoración y seguimiento en consultas externas de cardiología. Se trata de una persona de sexo Individuo de sexo femenino, cuyo identificador"
+            },
+            {
+              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
+              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
+              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
+            }
+          ]
+        },
+        {
+          "entity": "Colombia",
+          "occurrences": 359,
+          "documents": [
+            {
+              "filename": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0.txt",
+              "doc_id": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0",
+              "text_preview": "Informe de Consulta Externa Paciente que acude a revisión presentando un cuadro de sintomatología inespecífica consistente en astenia y cefalea de varias semanas de evolución. Refiere haber realizado "
+            },
+            {
+              "filename": "01866583-58c4-4093-b43e-05c044237e84.txt",
+              "doc_id": "01866583-58c4-4093-b43e-05c044237e84",
+              "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni crepitantes. El abdomen "
+            },
+            {
+              "filename": "02580def-c31d-482a-8a4f-03730f7150c7.txt",
+              "doc_id": "02580def-c31d-482a-8a4f-03730f7150c7",
+              "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento y valoración de su proceso. Se trata de una persona de sexo Hembra que se encuentra estable clínicamente. En la anamnesis por"
+            }
+          ]
+        }
+      ]
+    },
+    "phone": {
+      "total_repeated": 86,
+      "top_repeated": [
+        {
+          "entity": "+34 91 345 09 87",
+          "occurrences": 365,
+          "documents": [
+            {
+              "filename": "017e202c-61c2-45b4-9539-99a9a39de0f7.txt",
+              "doc_id": "017e202c-61c2-45b4-9539-99a9a39de0f7",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología respiratoria crónica. Refiere mejoría sintomática tras la última modificación terapéutica, con disminución significativa"
+            },
+            {
+              "filename": "04d6a5cb-73d2-475c-8e5d-04bfa4fd2645.txt",
+              "doc_id": "04d6a5cb-73d2-475c-8e5d-04bfa4fd2645",
+              "text_preview": "En el informe de evolución correspondiente a la fecha de 10 de julio de 2023, se procede a la actualización de la documentación clínica. La paciente, de sexo Femenina, acude para seguimiento del posto"
+            },
+            {
+              "filename": "04eb2fd5-afb4-4b1d-95aa-3b17a3111613.txt",
+              "doc_id": "04eb2fd5-afb4-4b1d-95aa-3b17a3111613",
+              "text_preview": "En la valoración clínica realizada, se documenta que el sujeto asistencial con identificación BRC5538901P presenta un cuadro de infección respiratoria alta de características leves. La exploración fís"
+            }
+          ]
+        },
+        {
+          "entity": "+34 952 88 76 54",
+          "occurrences": 357,
+          "documents": [
+            {
+              "filename": "01f3f019-2ab4-4009-ba1d-416c47855928.txt",
+              "doc_id": "01f3f019-2ab4-4009-ba1d-416c47855928",
+              "text_preview": "Informe de Consulta de Segunda Opinión En la consulta de segunda opinión realizada el día julio de 2023, se revisa la documentación clínica del paciente de paciente de 70 años disponible en los portal"
+            },
+            {
+              "filename": "03371fe8-f209-40b1-9acf-db2cb092ca4d.txt",
+              "doc_id": "03371fe8-f209-40b1-9acf-db2cb092ca4d",
+              "text_preview": "En la valoración inicial se recoge que el sujeto de asistencia es de sexo F y su residencia habitual se encuentra en la Levante.. Durante la anamnesis, la paciente refirió que su domicilio actual es e"
+            },
+            {
+              "filename": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0.txt",
+              "doc_id": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0",
+              "text_preview": "En la valoración clínica realizada, se procede a la revisión exhaustiva del caso. Los hallazgos exploratorios muestran una tensión arterial de 125/80 mmHg y frecuencia cardíaca de 72 lpm, con ausculta"
+            }
+          ]
+        },
+        {
+          "entity": "555-345-6789",
+          "occurrences": 357,
+          "documents": [
+            {
+              "filename": "0420c1b5-3b4b-4ef5-97cf-9d828bfc98a2.txt",
+              "doc_id": "0420c1b5-3b4b-4ef5-97cf-9d828bfc98a2",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para valoración y seguimiento en consultas externas del Hospital Virgen del Rocío. La exploración física actual muestra buen estado general, con constant"
+            },
+            {
+              "filename": "046ec5b9-899f-47f9-b6f0-969eee604011.txt",
+              "doc_id": "046ec5b9-899f-47f9-b6f0-969eee604011",
+              "text_preview": "En el contexto de la valoración integral del paciente, se procede a la revisión de su historia clínica digital accesible a través de https://historiaclinica.hgugm.es/paciente/12345678. Durante la anam"
+            },
+            {
+              "filename": "0472cf7e-c28d-415b-a9cb-a6eaef1ea47c.txt",
+              "doc_id": "0472cf7e-c28d-415b-a9cb-a6eaef1ea47c",
+              "text_preview": "A continuación, se presenta el informe de consulta externa de seguimiento. Paciente: Isabel Gutiérrez Mendoza. Sexo F, de paciente sexagenario de edad. Acude a revisión programada para control de su p"
+            }
+          ]
+        },
+        {
+          "entity": "555-123-4567",
+          "occurrences": 340,
+          "documents": [
+            {
+              "filename": "05d569d1-12da-44bd-b0c0-4b1410658c38.txt",
+              "doc_id": "05d569d1-12da-44bd-b0c0-4b1410658c38",
+              "text_preview": "En el seguimiento de la evolución del cuadro, se procedió a contactar con el paciente para comunicarle los resultados de las pruebas complementarias y ajustar el plan terapéutico. Dado que no fue posi"
+            },
+            {
+              "filename": "06ad6385-f5b3-4e8d-8837-562e590f4c1b.txt",
+              "doc_id": "06ad6385-f5b3-4e8d-8837-562e590f4c1b",
+              "text_preview": "Nota de Evolución Hospitalaria A la revisión de la mañana, la paciente se presenta consciente y orientada, refiriendo mejoría parcial de la sintomatología digestiva que motivó su ingreso. Se mantiene "
+            },
+            {
+              "filename": "06cc7d36-ced1-4701-902d-2fb8881f2852.txt",
+              "doc_id": "06cc7d36-ced1-4701-902d-2fb8881f2852",
+              "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en el Centro de Salud y Bienestar La Colina identificado con el número de historia clínica HC-2023-345678. Se trata de un ciudadano de México "
+            }
+          ]
+        },
+        {
+          "entity": "555-456-7890",
+          "occurrences": 334,
+          "documents": [
+            {
+              "filename": "02931efc-7a8c-4e12-b054-4fec7cd3985e.txt",
+              "doc_id": "02931efc-7a8c-4e12-b054-4fec7cd3985e",
+              "text_preview": "Nota de Evolución Hospitalaria A continuación se presenta la valoración clínica de la paciente D.ª Clara Robles Soto, quien fue evaluada en consulta externa el julio de 2023. La paciente refiere mejor"
+            },
+            {
+              "filename": "031d5dd7-ccae-4634-aae4-b1427c4e83e8.txt",
+              "doc_id": "031d5dd7-ccae-4634-aae4-b1427c4e83e8",
+              "text_preview": "A continuación se presenta el informe de evolución correspondiente a la consulta de seguimiento realizada en el Centro de Salud Las Rosas. La valoración clínica del paciente con identificador HC-2024-"
+            },
+            {
+              "filename": "036e2167-db17-468b-9b22-c5c8f76c8c15.txt",
+              "doc_id": "036e2167-db17-468b-9b22-c5c8f76c8c15",
+              "text_preview": "En el informe de evolución correspondiente a la consulta de seguimiento postoperatorio, se recoge la valoración del estado actual del paciente. La intervención quirúrgica, programada y ejecutada con é"
+            }
+          ]
+        }
+      ]
+    },
+    "email": {
+      "total_repeated": 66,
+      "top_repeated": [
+        {
+          "entity": "cmartinez@hospitallapaz.es",
+          "occurrences": 228,
+          "documents": [
+            {
+              "filename": "017acf83-8440-4874-acd7-0efc43af509e.txt",
+              "doc_id": "017acf83-8440-4874-acd7-0efc43af509e",
+              "text_preview": "En el contexto del procedimiento de verificación de identidad para el acceso al sistema de historia clínica electrónica, se ha procedido a la validación biométrica del personal autorizado. La autentic"
+            },
+            {
+              "filename": "022a1f5c-1c14-4e7a-abbf-482f6742c62a.txt",
+              "doc_id": "022a1f5c-1c14-4e7a-abbf-482f6742c62a",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Paciente: María Luisa Fernández Gutiérrez que acude para seguimiento de su proceso. Refiere mejoría sintomática desde la última revisión, con buena tolerancia al tratamient"
+            },
+            {
+              "filename": "050c009c-7547-4158-8b70-fc9eddca5b5a.txt",
+              "doc_id": "050c009c-7547-4158-8b70-fc9eddca5b5a",
+              "text_preview": "Informe de Consulta Externa A la consulta de seguimiento se presenta la paciente Antonio José Navarro Linares, quien acude para control evolutivo de su patología crónica. La paciente refiere encontrar"
+            }
+          ]
+        },
+        {
+          "entity": "carlos.martinez@hospitalcentral.org",
+          "occurrences": 222,
+          "documents": [
+            {
+              "filename": "0195aa77-1519-4e6f-b3f2-d2e4c324043d.txt",
+              "doc_id": "0195aa77-1519-4e6f-b3f2-d2e4c324043d",
+              "text_preview": "Informe de Consulta Externa A fecha de 07/2023, se procede a la evaluación y seguimiento de la paciente María del Carmen Fernández López. La paciente, que se identifica como Carmen López Díaz para tem"
+            },
+            {
+              "filename": "01e48671-de92-4970-a3cc-c359a66a92d8.txt",
+              "doc_id": "01e48671-de92-4970-a3cc-c359a66a92d8",
+              "text_preview": "Informe de Seguimiento de Consulta Externa A la atención del facultativo que continúe el seguimiento de esta paciente. Se realiza control evolutivo correspondiente al último trimestre. La paciente, de"
+            },
+            {
+              "filename": "02cc7f86-0d3b-4c34-b9d9-d9a97aaef409.txt",
+              "doc_id": "02cc7f86-0d3b-4c34-b9d9-d9a97aaef409",
+              "text_preview": "En la valoración clínica realizada, se constata una mejoría significativa de los síntomas de ansiedad previamente referidos por el paciente. La exploración física actual muestra constantes dentro de l"
+            }
+          ]
+        },
+        {
+          "entity": "c.martinez@fundacioncardiologica.es",
+          "occurrences": 217,
+          "documents": [
+            {
+              "filename": "01f66e8a-564b-408e-8697-9abcd5cade74.txt",
+              "doc_id": "01f66e8a-564b-408e-8697-9abcd5cade74",
+              "text_preview": "En la valoración clínica realizada, se documenta el seguimiento de la paciente laura díaz garcía, quien continúa con el plan terapéutico establecido para el manejo de su sintomatología. La exploración"
+            },
+            {
+              "filename": "02364f44-800a-411f-afb3-d0934d1a743a.txt",
+              "doc_id": "02364f44-800a-411f-afb3-d0934d1a743a",
+              "text_preview": "Informe de Consulta de Cardiología Paciente: María Rodríguez Martínez que acude a revisión programada tras intervención quirúrgica. La paciente refiere evolución favorable con buena tolerancia a la ac"
+            },
+            {
+              "filename": "02eeb1b3-294c-4aa5-988a-afab0b9337fd.txt",
+              "doc_id": "02eeb1b3-294c-4aa5-988a-afab0b9337fd",
+              "text_preview": "Informe de Consulta Externa de Neurología Se evalúa en consulta a la paciente Ana María Fernández López para seguimiento de su cuadro neurológico. La exploración física actual muestra un examen de par"
+            }
+          ]
+        },
+        {
+          "entity": "cmartinez@centrodesaludvital.es",
+          "occurrences": 215,
+          "documents": [
+            {
+              "filename": "019b3e5b-e5d4-4ecf-ba18-dba6f8f17168.txt",
+              "doc_id": "019b3e5b-e5d4-4ecf-ba18-dba6f8f17168",
+              "text_preview": "Informe de Interconsulta Fecha de elaboración del informe: 05 de julio de 2023. Estimados colegas: Mediante el presente, se remite informe de valoración para continuidad asistencial. El manejo del pac"
+            },
+            {
+              "filename": "01f3f019-2ab4-4009-ba1d-416c47855928.txt",
+              "doc_id": "01f3f019-2ab4-4009-ba1d-416c47855928",
+              "text_preview": "Informe de Consulta de Segunda Opinión En la consulta de segunda opinión realizada el día julio de 2023, se revisa la documentación clínica del paciente de paciente de 70 años disponible en los portal"
+            },
+            {
+              "filename": "023956a2-23a2-47fc-86d3-be81135c22e4.txt",
+              "doc_id": "023956a2-23a2-47fc-86d3-be81135c22e4",
+              "text_preview": "En la valoración clínica realizada en el Centro de Salud y Bienestar La Colina, se procede a la identificación biométrica de la paciente mediante la verificación de la Patrón dactilar del dedo índice "
+            }
+          ]
+        },
+        {
+          "entity": "cmartinez@sanitassalud.es",
+          "occurrences": 212,
+          "documents": [
+            {
+              "filename": "01ef27f4-6fc2-4d47-b43c-ab0744e6bf29.txt",
+              "doc_id": "01ef27f4-6fc2-4d47-b43c-ab0744e6bf29",
+              "text_preview": "Informe de Interconsulta Se remite al paciente con identificador ref-2024-582935 para valoración por el servicio de cirugía del Hospital Clínico Universitario de Valencia. El paciente, que forma parte"
+            },
+            {
+              "filename": "03371fe8-f209-40b1-9acf-db2cb092ca4d.txt",
+              "doc_id": "03371fe8-f209-40b1-9acf-db2cb092ca4d",
+              "text_preview": "En la valoración inicial se recoge que el sujeto de asistencia es de sexo F y su residencia habitual se encuentra en la Levante.. Durante la anamnesis, la paciente refirió que su domicilio actual es e"
+            },
+            {
+              "filename": "037e5143-2407-454c-8520-85b3510ead0d.txt",
+              "doc_id": "037e5143-2407-454c-8520-85b3510ead0d",
+              "text_preview": "Informe de Valoración Cardiológica Preoperatoria Se remite al servicio de cardiología para valoración preoperatoria de paciente que será intervenido por el círujano cardiovascular de referencia. La ev"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "semantic_similarities": [
+    {
+      "doc1": {
+        "filename": "700bb8f8-a449-4442-b9fa-aa7c95714242.txt",
+        "doc_id": "700bb8f8-a449-4442-b9fa-aa7c95714242",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se obj"
+      },
+      "doc2": {
+        "filename": "988e651a-a832-4860-a573-ab869f276b4a.txt",
+        "doc_id": "988e651a-a832-4860-a573-ab869f276b4a",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su patología crónica. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se o"
+      },
+      "similarity": 0.9965105056762695
+    },
+    {
+      "doc1": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9960098266601562
+    },
+    {
+      "doc1": {
+        "filename": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647.txt",
+        "doc_id": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "doc2": {
+        "filename": "3bf25c5f-c74f-4f7c-956c-fd917acd49d9.txt",
+        "doc_id": "3bf25c5f-c74f-4f7c-956c-fd917acd49d9",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "similarity": 0.9949632287025452
+    },
+    {
+      "doc1": {
+        "filename": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647.txt",
+        "doc_id": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "doc2": {
+        "filename": "9cf9ad43-881b-4157-9d88-0bf435a0fb68.txt",
+        "doc_id": "9cf9ad43-881b-4157-9d88-0bf435a0fb68",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "similarity": 0.9942169189453125
+    },
+    {
+      "doc1": {
+        "filename": "318daf0c-7e8d-432d-9599-2e79e88984dd.txt",
+        "doc_id": "318daf0c-7e8d-432d-9599-2e79e88984dd",
+        "text_preview": "En la valoración inicial se constata un cuadro de dolor abdominal inespecífico de 48 horas de evolución. A la exploración física, el abdomen se presenta blando y depresible, con dolor a la palpación e"
+      },
+      "doc2": {
+        "filename": "d75600bf-bf3b-4ad6-85fd-c5a69c98464b.txt",
+        "doc_id": "d75600bf-bf3b-4ad6-85fd-c5a69c98464b",
+        "text_preview": "En la valoración inicial se constata un cuadro de dolor abdominal inespecífico de 48 horas de evolución. A la exploración física, el abdomen se presenta blando y depresible, con dolor a la palpación e"
+      },
+      "similarity": 0.9936463236808777
+    },
+    {
+      "doc1": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9931787252426147
+    },
+    {
+      "doc1": {
+        "filename": "0ed44298-e16f-441f-8a9f-70dd44ccdf9d.txt",
+        "doc_id": "0ed44298-e16f-441f-8a9f-70dd44ccdf9d",
+        "text_preview": "Informe de Seguimiento y Derivación Paciente valorado en consulta de atención primaria para seguimiento de su patología crónica. Se mantiene estable desde el punto de vista clínico, con buena adherenc"
+      },
+      "doc2": {
+        "filename": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f.txt",
+        "doc_id": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por patología crónica de base en seguimiento habitual. Se encuentra estable desde el punto de vista clínico, refiriendo buen cumplimiento tera"
+      },
+      "similarity": 0.9931617975234985
+    },
+    {
+      "doc1": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9930691123008728
+    },
+    {
+      "doc1": {
+        "filename": "3bf25c5f-c74f-4f7c-956c-fd917acd49d9.txt",
+        "doc_id": "3bf25c5f-c74f-4f7c-956c-fd917acd49d9",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "doc2": {
+        "filename": "9cf9ad43-881b-4157-9d88-0bf435a0fb68.txt",
+        "doc_id": "9cf9ad43-881b-4157-9d88-0bf435a0fb68",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "similarity": 0.9929351210594177
+    },
+    {
+      "doc1": {
+        "filename": "700bb8f8-a449-4442-b9fa-aa7c95714242.txt",
+        "doc_id": "700bb8f8-a449-4442-b9fa-aa7c95714242",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se obj"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9925541877746582
+    },
+    {
+      "doc1": {
+        "filename": "89d35860-8369-411b-b56e-4e857c86ebc8.txt",
+        "doc_id": "89d35860-8369-411b-b56e-4e857c86ebc8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9921588897705078
+    },
+    {
+      "doc1": {
+        "filename": "2ba0657a-bc93-4278-8f96-4f9846f8eb2d.txt",
+        "doc_id": "2ba0657a-bc93-4278-8f96-4f9846f8eb2d",
+        "text_preview": "Informe de Consulta Externa de Neurología Paciente que acude a revisión por cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la última visita, aunque persisten episodios de men"
+      },
+      "doc2": {
+        "filename": "ab82e448-f488-4408-a2ac-df1815473a39.txt",
+        "doc_id": "ab82e448-f488-4408-a2ac-df1815473a39",
+        "text_preview": "Informe de Consulta Externa de Neurología Paciente que acude a consulta para seguimiento de cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la última visita, aunque persisten "
+      },
+      "similarity": 0.9920976161956787
+    },
+    {
+      "doc1": {
+        "filename": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28.txt",
+        "doc_id": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "doc2": {
+        "filename": "89d35860-8369-411b-b56e-4e857c86ebc8.txt",
+        "doc_id": "89d35860-8369-411b-b56e-4e857c86ebc8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9920194149017334
+    },
+    {
+      "doc1": {
+        "filename": "5dee3bb3-6af9-4da0-886e-84e73d6a2208.txt",
+        "doc_id": "5dee3bb3-6af9-4da0-886e-84e73d6a2208",
+        "text_preview": "En la valoración clínica realizada, se procede a la actualización de la documentación asistencial correspondiente. La exploración física muestra un paciente consciente y orientado, con presión arteria"
+      },
+      "doc2": {
+        "filename": "d21aa7c6-052b-4b32-a0ab-876976464d11.txt",
+        "doc_id": "d21aa7c6-052b-4b32-a0ab-876976464d11",
+        "text_preview": "En el contexto de la valoración integral del paciente, se procede a la revisión de la documentación clínica disponible. La exploración física actual muestra un paciente consciente y orientado, con pre"
+      },
+      "similarity": 0.9919106960296631
+    },
+    {
+      "doc1": {
+        "filename": "27472e13-05de-41a4-97eb-0712f73adc9b.txt",
+        "doc_id": "27472e13-05de-41a4-97eb-0712f73adc9b",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en el Centro de Salud Las Rosas para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su s"
+      },
+      "doc2": {
+        "filename": "9945ce19-834d-4dc4-b506-682ee4068465.txt",
+        "doc_id": "9945ce19-834d-4dc4-b506-682ee4068465",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para valoración y seguimiento de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La e"
+      },
+      "similarity": 0.9917869567871094
+    },
+    {
+      "doc1": {
+        "filename": "6622564b-30b3-4315-be89-5aaf4e9610f6.txt",
+        "doc_id": "6622564b-30b3-4315-be89-5aaf4e9610f6",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado de la paciente que se presenta para seguimiento. La exploración física revela abdomen blando y depresible, sin masas palpables ni megalias. L"
+      },
+      "doc2": {
+        "filename": "e54862fa-c0e0-4d8e-bd1d-68c945abb21d.txt",
+        "doc_id": "e54862fa-c0e0-4d8e-bd1d-68c945abb21d",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado de la paciente que se presenta para seguimiento. La exploración física muestra abdomen blando y depresible, sin masas palpables ni megalias. "
+      },
+      "similarity": 0.9916949272155762
+    },
+    {
+      "doc1": {
+        "filename": "5f26e7b8-2cba-4c0e-ba76-c4d90709e00b.txt",
+        "doc_id": "5f26e7b8-2cba-4c0e-ba76-c4d90709e00b",
+        "text_preview": "En la valoración subjetiva, el paciente refiere mejoría parcial de la sintomatología digestiva que motivó la consulta inicial, aunque persiste cierta intolerancia a alimentos grasos. La exploración fí"
+      },
+      "doc2": {
+        "filename": "b1819dda-ee63-432d-8667-b6b11f46381d.txt",
+        "doc_id": "b1819dda-ee63-432d-8667-b6b11f46381d",
+        "text_preview": "En la valoración subjetiva, el paciente refiere mejoría parcial de la sintomatología digestiva que motivó la consulta inicial, aunque persiste cierta intolerancia a alimentos grasos. La exploración fí"
+      },
+      "similarity": 0.9916789531707764
+    },
+    {
+      "doc1": {
+        "filename": "988e651a-a832-4860-a573-ab869f276b4a.txt",
+        "doc_id": "988e651a-a832-4860-a573-ab869f276b4a",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su patología crónica. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se o"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.991568922996521
+    },
+    {
+      "doc1": {
+        "filename": "89d35860-8369-411b-b56e-4e857c86ebc8.txt",
+        "doc_id": "89d35860-8369-411b-b56e-4e857c86ebc8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9915395379066467
+    },
+    {
+      "doc1": {
+        "filename": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28.txt",
+        "doc_id": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9912704229354858
+    },
+    {
+      "doc1": {
+        "filename": "0bf15529-7d43-410e-ae0e-47cbdeb4ec8e.txt",
+        "doc_id": "0bf15529-7d43-410e-ae0e-47cbdeb4ec8e",
+        "text_preview": "Informe de Consulta Externa En la valoración realizada en consulta externa, se procede a la revisión exhaustiva del caso clínico. La exploración física actual muestra buen estado general, con tensión "
+      },
+      "doc2": {
+        "filename": "fa55ef83-030b-4b5f-a3ba-20a8523b57a3.txt",
+        "doc_id": "fa55ef83-030b-4b5f-a3ba-20a8523b57a3",
+        "text_preview": "Informe de Consulta de Seguimiento En la valoración clínica realizada en consulta externa, se procede a la revisión del caso. La exploración física actual muestra buen estado general, con tensión arte"
+      },
+      "similarity": 0.991233229637146
+    },
+    {
+      "doc1": {
+        "filename": "bb4dd364-6450-4043-a032-566eeeb363a5.txt",
+        "doc_id": "bb4dd364-6450-4043-a032-566eeeb363a5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. La expl"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9910799860954285
+    },
+    {
+      "doc1": {
+        "filename": "27472e13-05de-41a4-97eb-0712f73adc9b.txt",
+        "doc_id": "27472e13-05de-41a4-97eb-0712f73adc9b",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en el Centro de Salud Las Rosas para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su s"
+      },
+      "doc2": {
+        "filename": "3bc5a375-8e40-4b62-a077-cf4e1de41a82.txt",
+        "doc_id": "3bc5a375-8e40-4b62-a077-cf4e1de41a82",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control evolutivo de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de bas"
+      },
+      "similarity": 0.9910333752632141
+    },
+    {
+      "doc1": {
+        "filename": "2ba0657a-bc93-4278-8f96-4f9846f8eb2d.txt",
+        "doc_id": "2ba0657a-bc93-4278-8f96-4f9846f8eb2d",
+        "text_preview": "Informe de Consulta Externa de Neurología Paciente que acude a revisión por cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la última visita, aunque persisten episodios de men"
+      },
+      "doc2": {
+        "filename": "2bd1271f-30f9-4ae9-81cf-fa90082b60aa.txt",
+        "doc_id": "2bd1271f-30f9-4ae9-81cf-fa90082b60aa",
+        "text_preview": "Informe de Consulta de Neurología Paciente que se presenta para seguimiento por cuadro de cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la visita anterior, aunque persisten "
+      },
+      "similarity": 0.9909029006958008
+    },
+    {
+      "doc1": {
+        "filename": "a305befa-7894-4f54-885f-60b92142ae05.txt",
+        "doc_id": "a305befa-7894-4f54-885f-60b92142ae05",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios ocasio"
+      },
+      "doc2": {
+        "filename": "e9c42390-fe91-4515-b3ce-870195d60215.txt",
+        "doc_id": "e9c42390-fe91-4515-b3ce-870195d60215",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios leves."
+      },
+      "similarity": 0.9908900260925293
+    },
+    {
+      "doc1": {
+        "filename": "2bd1271f-30f9-4ae9-81cf-fa90082b60aa.txt",
+        "doc_id": "2bd1271f-30f9-4ae9-81cf-fa90082b60aa",
+        "text_preview": "Informe de Consulta de Neurología Paciente que se presenta para seguimiento por cuadro de cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la visita anterior, aunque persisten "
+      },
+      "doc2": {
+        "filename": "ab82e448-f488-4408-a2ac-df1815473a39.txt",
+        "doc_id": "ab82e448-f488-4408-a2ac-df1815473a39",
+        "text_preview": "Informe de Consulta Externa de Neurología Paciente que acude a consulta para seguimiento de cefalea crónica. Refiere mejoría parcial con la medicación instaurada en la última visita, aunque persisten "
+      },
+      "similarity": 0.9907116293907166
+    },
+    {
+      "doc1": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "doc2": {
+        "filename": "700bb8f8-a449-4442-b9fa-aa7c95714242.txt",
+        "doc_id": "700bb8f8-a449-4442-b9fa-aa7c95714242",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se obj"
+      },
+      "similarity": 0.9906664490699768
+    },
+    {
+      "doc1": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "doc2": {
+        "filename": "bb4dd364-6450-4043-a032-566eeeb363a5.txt",
+        "doc_id": "bb4dd364-6450-4043-a032-566eeeb363a5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. La expl"
+      },
+      "similarity": 0.9906637668609619
+    },
+    {
+      "doc1": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "doc2": {
+        "filename": "bb4dd364-6450-4043-a032-566eeeb363a5.txt",
+        "doc_id": "bb4dd364-6450-4043-a032-566eeeb363a5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. La expl"
+      },
+      "similarity": 0.9906399846076965
+    },
+    {
+      "doc1": {
+        "filename": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f.txt",
+        "doc_id": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por patología crónica de base en seguimiento habitual. Se encuentra estable desde el punto de vista clínico, refiriendo buen cumplimiento tera"
+      },
+      "doc2": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "similarity": 0.9904885292053223
+    },
+    {
+      "doc1": {
+        "filename": "5b544c08-356e-4716-9209-d7657d51a9ad.txt",
+        "doc_id": "5b544c08-356e-4716-9209-d7657d51a9ad",
+        "text_preview": "A la exploración física actual, el paciente se presenta consciente y orientado, en regular estado general. A la auscultación cardíaca, se evidencian ruidos rítmicos sin soplos añadidos. En la ausculta"
+      },
+      "doc2": {
+        "filename": "915567d2-6bd0-4ba4-a49f-ec8686478550.txt",
+        "doc_id": "915567d2-6bd0-4ba4-a49f-ec8686478550",
+        "text_preview": "A la exploración física actual, el paciente se presenta consciente y orientado, en regular estado general. A la auscultación cardíaca, se evidencian ruidos rítmicos sin soplos añadidos. En la ausculta"
+      },
+      "similarity": 0.9903911352157593
+    },
+    {
+      "doc1": {
+        "filename": "180a4e7b-eb85-4297-93a5-031a414c9e58.txt",
+        "doc_id": "180a4e7b-eb85-4297-93a5-031a414c9e58",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude para control evolutivo tras su última visita. Refiere mejoría subjetiva de la sintomatología previamente referida, con estabilidad clínica general"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9903765320777893
+    },
+    {
+      "doc1": {
+        "filename": "13d13814-79b3-4191-9b6f-1160809d1959.txt",
+        "doc_id": "13d13814-79b3-4191-9b6f-1160809d1959",
+        "text_preview": "En la valoración clínica realizada, se documenta la situación actual de la paciente. La exploración física muestra un estado general conservado, con tensión arterial de 125/80 mmHg y frecuencia cardía"
+      },
+      "doc2": {
+        "filename": "685562bb-85b1-4463-ab28-2bcbac85dd18.txt",
+        "doc_id": "685562bb-85b1-4463-ab28-2bcbac85dd18",
+        "text_preview": "En la valoración clínica realizada en el Centro Médico Familiar Los Pinos, se documenta la situación actual del paciente. La exploración física revela un estado general conservado, con tensión arteria"
+      },
+      "similarity": 0.9903120994567871
+    },
+    {
+      "doc1": {
+        "filename": "a441de2f-f1f5-41cb-8140-1352bac08881.txt",
+        "doc_id": "a441de2f-f1f5-41cb-8140-1352bac08881",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin aparición de nuevos síntomas en las últimas semanas. La explo"
+      },
+      "doc2": {
+        "filename": "dd90c575-9374-4afe-904c-4750653379b5.txt",
+        "doc_id": "dd90c575-9374-4afe-904c-4750653379b5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología crónica de base. Refiere estabilidad clínica general sin aparición de nuevos síntomas. En la exploración física actual, "
+      },
+      "similarity": 0.9902856349945068
+    },
+    {
+      "doc1": {
+        "filename": "3bc5a375-8e40-4b62-a077-cf4e1de41a82.txt",
+        "doc_id": "3bc5a375-8e40-4b62-a077-cf4e1de41a82",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control evolutivo de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de bas"
+      },
+      "doc2": {
+        "filename": "9945ce19-834d-4dc4-b506-682ee4068465.txt",
+        "doc_id": "9945ce19-834d-4dc4-b506-682ee4068465",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para valoración y seguimiento de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La e"
+      },
+      "similarity": 0.9901397824287415
+    },
+    {
+      "doc1": {
+        "filename": "da492dd2-2cb8-4c50-9a03-ae134dadd9d2.txt",
+        "doc_id": "da492dd2-2cb8-4c50-9a03-ae134dadd9d2",
+        "text_preview": "Informe de Consulta Externa Durante la valoración en consultas externas, se procede a la revisión del cuadro clínico actual. La exploración física revela buen estado general, con presión arterial de 1"
+      },
+      "doc2": {
+        "filename": "e990a25d-cfb0-4710-a91c-9e24ad89996a.txt",
+        "doc_id": "e990a25d-cfb0-4710-a91c-9e24ad89996a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por patología crónica de base en seguimiento habitual. En la exploración física actual, se objetiva tensión arterial de 128/76 mmHg, frecuenci"
+      },
+      "similarity": 0.9901078343391418
+    },
+    {
+      "doc1": {
+        "filename": "b4a58c74-3c9d-41e3-ba40-6bf4549b6575.txt",
+        "doc_id": "b4a58c74-3c9d-41e3-ba40-6bf4549b6575",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su cuadro clínico. En la exploración física actual se constata un estado general conservado, con tensión arterial de 128"
+      },
+      "doc2": {
+        "filename": "fb836aa8-532e-449d-b03b-d3059fac56e6.txt",
+        "doc_id": "fb836aa8-532e-449d-b03b-d3059fac56e6",
+        "text_preview": "Informe de Valoración Clínica Paciente que acude para valoración y seguimiento de su proceso. En la exploración física actual se constata un estado general conservado, con tensión arterial de 125/80 m"
+      },
+      "similarity": 0.9900540709495544
+    },
+    {
+      "doc1": {
+        "filename": "4dbe8b41-5310-4416-b0ba-a8a2255aeba0.txt",
+        "doc_id": "4dbe8b41-5310-4416-b0ba-a8a2255aeba0",
+        "text_preview": "Informe de Consulta Externa En la valoración realizada en consultas externas, se procede a la revisión del caso. La exploración física actual muestra un paciente consciente y orientado, con presión ar"
+      },
+      "doc2": {
+        "filename": "da492dd2-2cb8-4c50-9a03-ae134dadd9d2.txt",
+        "doc_id": "da492dd2-2cb8-4c50-9a03-ae134dadd9d2",
+        "text_preview": "Informe de Consulta Externa Durante la valoración en consultas externas, se procede a la revisión del cuadro clínico actual. La exploración física revela buen estado general, con presión arterial de 1"
+      },
+      "similarity": 0.9900007247924805
+    },
+    {
+      "doc1": {
+        "filename": "04e8dc9c-099f-4222-9e98-d88538423a28.txt",
+        "doc_id": "04e8dc9c-099f-4222-9e98-d88538423a28",
+        "text_preview": "En la valoración inicial se documenta un cuadro de dolor abdominal localizado en fosa ilíaca derecha de 48 horas de evolución, con signos de irritación peritoneal en la exploración física. Los hallazg"
+      },
+      "doc2": {
+        "filename": "362e1753-0afa-497d-82bf-7d151eda18f9.txt",
+        "doc_id": "362e1753-0afa-497d-82bf-7d151eda18f9",
+        "text_preview": "En la valoración inicial del paciente se constata un cuadro de dolor abdominal localizado en fosa ilíaca derecha de 48 horas de evolución, con signos de irritación peritoneal en la exploración física."
+      },
+      "similarity": 0.9899734258651733
+    },
+    {
+      "doc1": {
+        "filename": "700bb8f8-a449-4442-b9fa-aa7c95714242.txt",
+        "doc_id": "700bb8f8-a449-4442-b9fa-aa7c95714242",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se obj"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.989946722984314
+    },
+    {
+      "doc1": {
+        "filename": "89600edf-bd82-4051-9cff-cf3b2317e668.txt",
+        "doc_id": "89600edf-bd82-4051-9cff-cf3b2317e668",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiopulmonar es rítmica y sin soplos, con murmullo vesicular conservado y sin ruidos sobr"
+      },
+      "doc2": {
+        "filename": "ea44277c-eca1-4461-806d-c570affd0ad9.txt",
+        "doc_id": "ea44277c-eca1-4461-806d-c570affd0ad9",
+        "text_preview": "A la exploración física actual, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiopulmonar es rítmica y sin soplos, con murmullo vesicular conservado y sin ruid"
+      },
+      "similarity": 0.9899420738220215
+    },
+    {
+      "doc1": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "doc2": {
+        "filename": "89d35860-8369-411b-b56e-4e857c86ebc8.txt",
+        "doc_id": "89d35860-8369-411b-b56e-4e857c86ebc8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9898549318313599
+    },
+    {
+      "doc1": {
+        "filename": "d98b7dba-f2f0-4ac5-b93f-c7bee9ae7c0d.txt",
+        "doc_id": "d98b7dba-f2f0-4ac5-b93f-c7bee9ae7c0d",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude a consulta para control evolutivo de su patología crónica. Se mantiene en situación clínica estable, sin cambios significativos en su estado gener"
+      },
+      "doc2": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "similarity": 0.9897364377975464
+    },
+    {
+      "doc1": {
+        "filename": "225dd116-07da-4f45-b614-cfd8cfd6a8c5.txt",
+        "doc_id": "225dd116-07da-4f45-b614-cfd8cfd6a8c5",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria demuestra un murmul"
+      },
+      "doc2": {
+        "filename": "3de6ac16-da16-4c74-bbc7-bba16a82d924.txt",
+        "doc_id": "3de6ac16-da16-4c74-bbc7-bba16a82d924",
+        "text_preview": "A la exploración física, la paciente se presenta consciente y orientada en las tres esferas. La auscultación cardíaca revela ritmo regular sin soplos audibles, y la respiratoria presenta murmullo vesi"
+      },
+      "similarity": 0.9897207021713257
+    },
+    {
+      "doc1": {
+        "filename": "988e651a-a832-4860-a573-ab869f276b4a.txt",
+        "doc_id": "988e651a-a832-4860-a573-ab869f276b4a",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su patología crónica. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se o"
+      },
+      "doc2": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "similarity": 0.9897118210792542
+    },
+    {
+      "doc1": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9896445274353027
+    },
+    {
+      "doc1": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "doc2": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "similarity": 0.9896352291107178
+    },
+    {
+      "doc1": {
+        "filename": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28.txt",
+        "doc_id": "4c101e57-dd0c-48fc-94a5-a7fb6eca3d28",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9895585179328918
+    },
+    {
+      "doc1": {
+        "filename": "bb4dd364-6450-4043-a032-566eeeb363a5.txt",
+        "doc_id": "bb4dd364-6450-4043-a032-566eeeb363a5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. La expl"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9895226955413818
+    },
+    {
+      "doc1": {
+        "filename": "243d12a4-e3af-4e43-a23a-309542305655.txt",
+        "doc_id": "243d12a4-e3af-4e43-a23a-309542305655",
+        "text_preview": "Informe de Consulta Externa A la presente consulta acude la paciente para seguimiento de su proceso crónico. La exploración física actual muestra un estado general conservado, con constantes vitales d"
+      },
+      "doc2": {
+        "filename": "5a03ea1f-3c4a-430f-ac7f-43fc93974b50.txt",
+        "doc_id": "5a03ea1f-3c4a-430f-ac7f-43fc93974b50",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso. La exploración física actual muestra un estado general conservado, con constantes vitales dentro de la normali"
+      },
+      "similarity": 0.9894857406616211
+    },
+    {
+      "doc1": {
+        "filename": "712a8ab9-4819-4e01-ba34-7150675baf62.txt",
+        "doc_id": "712a8ab9-4819-4e01-ba34-7150675baf62",
+        "text_preview": "En la valoración clínica realizada hoy, se documenta el estado del paciente identificado con el código LTS4098176. La exploración física muestra buenas condiciones generales con presión arterial de 12"
+      },
+      "doc2": {
+        "filename": "e00d6ede-4e28-4a84-bef1-5f071e80564a.txt",
+        "doc_id": "e00d6ede-4e28-4a84-bef1-5f071e80564a",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado del paciente identificado con el código A7724C819. La exploración física muestra buenas condiciones generales con presión arterial de 125/80 "
+      },
+      "similarity": 0.9893954992294312
+    },
+    {
+      "doc1": {
+        "filename": "aab5311c-224d-4a7b-bdd2-8776c3f26c3b.txt",
+        "doc_id": "aab5311c-224d-4a7b-bdd2-8776c3f26c3b",
+        "text_preview": "En el contexto del seguimiento clínico establecido, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un paciente consciente y orienta"
+      },
+      "doc2": {
+        "filename": "cbd14b43-fb43-40c4-9eb8-b3098f1888ad.txt",
+        "doc_id": "cbd14b43-fb43-40c4-9eb8-b3098f1888ad",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial. La exploración física actual muestra un paciente consciente y orientado, con presión"
+      },
+      "similarity": 0.9893518090248108
+    },
+    {
+      "doc1": {
+        "filename": "84e73f50-334a-4fc9-a9ad-375c41c67905.txt",
+        "doc_id": "84e73f50-334a-4fc9-a9ad-375c41c67905",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. En la exploración física actual, se"
+      },
+      "doc2": {
+        "filename": "988e651a-a832-4860-a573-ab869f276b4a.txt",
+        "doc_id": "988e651a-a832-4860-a573-ab869f276b4a",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su patología crónica. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se o"
+      },
+      "similarity": 0.9893442392349243
+    },
+    {
+      "doc1": {
+        "filename": "10014d86-c7a9-47ac-a4f0-54864bdc4176.txt",
+        "doc_id": "10014d86-c7a9-47ac-a4f0-54864bdc4176",
+        "text_preview": "Informe de Consulta Externa La paciente acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología basal. Se mantiene "
+      },
+      "doc2": {
+        "filename": "957c3814-bb16-42c8-bb8b-90316cfe99f1.txt",
+        "doc_id": "957c3814-bb16-42c8-bb8b-90316cfe99f1",
+        "text_preview": "Nota de Evolución - Consulta Externa Paciente que acude para seguimiento de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología basal. Se mantien"
+      },
+      "similarity": 0.9893389940261841
+    },
+    {
+      "doc1": {
+        "filename": "180a4e7b-eb85-4297-93a5-031a414c9e58.txt",
+        "doc_id": "180a4e7b-eb85-4297-93a5-031a414c9e58",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude para control evolutivo tras su última visita. Refiere mejoría subjetiva de la sintomatología previamente referida, con estabilidad clínica general"
+      },
+      "doc2": {
+        "filename": "b49c97d0-65ff-46a2-aea3-91411ecc8e6c.txt",
+        "doc_id": "b49c97d0-65ff-46a2-aea3-91411ecc8e6c",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por evolución favorable de su cuadro. Refiere mejoría significativa de la sintomatología previa, con normalización progresiva de su estado gen"
+      },
+      "similarity": 0.9893252849578857
+    },
+    {
+      "doc1": {
+        "filename": "37e6b7a2-8b39-4055-832d-eab4e6913ced.txt",
+        "doc_id": "37e6b7a2-8b39-4055-832d-eab4e6913ced",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. En"
+      },
+      "doc2": {
+        "filename": "601b68c4-f724-4800-9dae-8e902963bf3d.txt",
+        "doc_id": "601b68c4-f724-4800-9dae-8e902963bf3d",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. En"
+      },
+      "similarity": 0.9892650842666626
+    },
+    {
+      "doc1": {
+        "filename": "8b774938-447f-4f2f-be3f-8c9adc356ebe.txt",
+        "doc_id": "8b774938-447f-4f2f-be3f-8c9adc356ebe",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial. La exploración física actual muestra un estado general conservado, con tensión arter"
+      },
+      "doc2": {
+        "filename": "9cf9ad43-881b-4157-9d88-0bf435a0fb68.txt",
+        "doc_id": "9cf9ad43-881b-4157-9d88-0bf435a0fb68",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "similarity": 0.9892463684082031
+    },
+    {
+      "doc1": {
+        "filename": "284bb169-e90a-47bd-ae34-7bb1ec325542.txt",
+        "doc_id": "284bb169-e90a-47bd-ae34-7bb1ec325542",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en consultas externas para seguimiento de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algu"
+      },
+      "doc2": {
+        "filename": "c8da24f6-1f2f-4ee6-a69e-7c424ac3a92d.txt",
+        "doc_id": "c8da24f6-1f2f-4ee6-a69e-7c424ac3a92d",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios ocasio"
+      },
+      "similarity": 0.989151120185852
+    },
+    {
+      "doc1": {
+        "filename": "64216f94-a3d6-4b10-b332-81de73572bcc.txt",
+        "doc_id": "64216f94-a3d6-4b10-b332-81de73572bcc",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. En"
+      },
+      "doc2": {
+        "filename": "e8cd8a64-3264-4e0b-8093-e2607f5bcb2b.txt",
+        "doc_id": "e8cd8a64-3264-4e0b-8093-e2607f5bcb2b",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. En"
+      },
+      "similarity": 0.9891473054885864
+    },
+    {
+      "doc1": {
+        "filename": "150eb7a7-7547-4020-a45c-a7cfa4369ccc.txt",
+        "doc_id": "150eb7a7-7547-4020-a45c-a7cfa4369ccc",
+        "text_preview": "INFORME DE CONSULTA EXTERNA DE CARDIOLOGÍA Paciente que acude para seguimiento y valoración de su cardiopatía isquémica crónica. Refiere estabilidad clínica con buena tolerancia al esfuerzo habitual, "
+      },
+      "doc2": {
+        "filename": "93fd018e-1d2c-481e-b468-56de60a38bd3.txt",
+        "doc_id": "93fd018e-1d2c-481e-b468-56de60a38bd3",
+        "text_preview": "INFORME DE CONSULTA EXTERNA DE CARDIOLOGÍA Paciente que acude para valoración y seguimiento de su cardiopatía isquémica crónica. Refiere estabilidad clínica con buena tolerancia al esfuerzo habitual, "
+      },
+      "similarity": 0.9890991449356079
+    },
+    {
+      "doc1": {
+        "filename": "00039e89-4b9a-4a81-bb08-334cf20b482c.txt",
+        "doc_id": "00039e89-4b9a-4a81-bb08-334cf20b482c",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado del paciente con número de historia clínica hc-2024-987654. La exploración física muestra un paciente consciente y orientado, con presión art"
+      },
+      "doc2": {
+        "filename": "02469b29-5666-41a5-a9e6-b0b61a2a413e.txt",
+        "doc_id": "02469b29-5666-41a5-a9e6-b0b61a2a413e",
+        "text_preview": "En la valoración clínica realizada el julio 13, 2023, se documenta el estado del paciente identificado con el código b-78423916. La exploración física revela un paciente consciente y orientado, con pr"
+      },
+      "similarity": 0.9890298843383789
+    },
+    {
+      "doc1": {
+        "filename": "712a8ab9-4819-4e01-ba34-7150675baf62.txt",
+        "doc_id": "712a8ab9-4819-4e01-ba34-7150675baf62",
+        "text_preview": "En la valoración clínica realizada hoy, se documenta el estado del paciente identificado con el código LTS4098176. La exploración física muestra buenas condiciones generales con presión arterial de 12"
+      },
+      "doc2": {
+        "filename": "d0d84638-b16a-4b0f-a9bf-eff0d7a80a02.txt",
+        "doc_id": "d0d84638-b16a-4b0f-a9bf-eff0d7a80a02",
+        "text_preview": "En la valoración clínica realizada hoy, se documenta el estado del paciente identificado con el documento M67891204F. La exploración física muestra buenas condiciones generales con presión arterial de"
+      },
+      "similarity": 0.9889950156211853
+    },
+    {
+      "doc1": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "doc2": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "similarity": 0.9888806343078613
+    },
+    {
+      "doc1": {
+        "filename": "4a217cb2-1801-48f8-8cc9-d76f98c373d0.txt",
+        "doc_id": "4a217cb2-1801-48f8-8cc9-d76f98c373d0",
+        "text_preview": "En la valoración clínica realizada se documenta el estado actual del paciente, destacando en la exploración física una tensión arterial de 125/80 mmHg, frecuencia cardíaca de 72 lpm y saturación de ox"
+      },
+      "doc2": {
+        "filename": "686b1b1f-ab2e-4946-857e-5ccfefe17f7f.txt",
+        "doc_id": "686b1b1f-ab2e-4946-857e-5ccfefe17f7f",
+        "text_preview": "En la valoración clínica realizada se documenta el estado actual del paciente, destacando en la exploración física una tensión arterial de 125/80 mmHg, frecuencia cardíaca de 72 lpm y saturación de ox"
+      },
+      "similarity": 0.9888405203819275
+    },
+    {
+      "doc1": {
+        "filename": "a305befa-7894-4f54-885f-60b92142ae05.txt",
+        "doc_id": "a305befa-7894-4f54-885f-60b92142ae05",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios ocasio"
+      },
+      "doc2": {
+        "filename": "db35968d-74ac-462e-b78d-b9edd5aa4203.txt",
+        "doc_id": "db35968d-74ac-462e-b78d-b9edd5aa4203",
+        "text_preview": "Informe de Consulta Externa Paciente que se presenta para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios "
+      },
+      "similarity": 0.9888292551040649
+    },
+    {
+      "doc1": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "doc2": {
+        "filename": "9bd9b844-15f0-492a-a785-7549fdf1ffd5.txt",
+        "doc_id": "9bd9b844-15f0-492a-a785-7549fdf1ffd5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la exp"
+      },
+      "similarity": 0.9888192415237427
+    },
+    {
+      "doc1": {
+        "filename": "bdd05605-9591-4f96-9014-bf80bd5e720a.txt",
+        "doc_id": "bdd05605-9591-4f96-9014-bf80bd5e720a",
+        "text_preview": "En la valoración clínica realizada, se documenta que el paciente presenta un cuadro de dolor abdominal inespecífico de 48 horas de evolución. A la exploración física, el abdomen es blando y depresible"
+      },
+      "doc2": {
+        "filename": "e31d2cbe-e026-43c1-a08b-04d5b7dcceac.txt",
+        "doc_id": "e31d2cbe-e026-43c1-a08b-04d5b7dcceac",
+        "text_preview": "En la valoración inicial del paciente, se constata un cuadro de dolor abdominal inespecífico de 48 horas de evolución. La exploración física revela abdomen blando y depresible, con dolor a la palpació"
+      },
+      "similarity": 0.9887850880622864
+    },
+    {
+      "doc1": {
+        "filename": "700bb8f8-a449-4442-b9fa-aa7c95714242.txt",
+        "doc_id": "700bb8f8-a449-4442-b9fa-aa7c95714242",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se obj"
+      },
+      "doc2": {
+        "filename": "89d35860-8369-411b-b56e-4e857c86ebc8.txt",
+        "doc_id": "89d35860-8369-411b-b56e-4e857c86ebc8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9887791872024536
+    },
+    {
+      "doc1": {
+        "filename": "7b7e2159-dfe4-4cf1-bbd3-a5d8fac12752.txt",
+        "doc_id": "7b7e2159-dfe4-4cf1-bbd3-a5d8fac12752",
+        "text_preview": "Informe de Consulta Externa Se evalúa al paciente en consulta externa para seguimiento de su proceso crónico. El paciente refiere estabilidad clínica general, sin cambios significativos en su sintomat"
+      },
+      "doc2": {
+        "filename": "ad696ee6-c781-4837-840d-58323eab006e.txt",
+        "doc_id": "ad696ee6-c781-4837-840d-58323eab006e",
+        "text_preview": "Informe de Consulta Externa Se evalúa al paciente en consulta externa para seguimiento de su proceso crónico. El paciente refiere estabilidad clínica general, sin cambios significativos en su sintomat"
+      },
+      "similarity": 0.9887466430664062
+    },
+    {
+      "doc1": {
+        "filename": "0ed44298-e16f-441f-8a9f-70dd44ccdf9d.txt",
+        "doc_id": "0ed44298-e16f-441f-8a9f-70dd44ccdf9d",
+        "text_preview": "Informe de Seguimiento y Derivación Paciente valorado en consulta de atención primaria para seguimiento de su patología crónica. Se mantiene estable desde el punto de vista clínico, con buena adherenc"
+      },
+      "doc2": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "similarity": 0.9887381792068481
+    },
+    {
+      "doc1": {
+        "filename": "225dd116-07da-4f45-b614-cfd8cfd6a8c5.txt",
+        "doc_id": "225dd116-07da-4f45-b614-cfd8cfd6a8c5",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria demuestra un murmul"
+      },
+      "doc2": {
+        "filename": "28649921-fe6a-459c-8909-2f56d332000b.txt",
+        "doc_id": "28649921-fe6a-459c-8909-2f56d332000b",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria presenta murmullo v"
+      },
+      "similarity": 0.988709568977356
+    },
+    {
+      "doc1": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "doc2": {
+        "filename": "c8da24f6-1f2f-4ee6-a69e-7c424ac3a92d.txt",
+        "doc_id": "c8da24f6-1f2f-4ee6-a69e-7c424ac3a92d",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios ocasio"
+      },
+      "similarity": 0.9887086153030396
+    },
+    {
+      "doc1": {
+        "filename": "7a07afd5-322e-4c3f-ad0a-9205591ca0ef.txt",
+        "doc_id": "7a07afd5-322e-4c3f-ad0a-9205591ca0ef",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base desde la"
+      },
+      "doc2": {
+        "filename": "9945ce19-834d-4dc4-b506-682ee4068465.txt",
+        "doc_id": "9945ce19-834d-4dc4-b506-682ee4068465",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para valoración y seguimiento de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La e"
+      },
+      "similarity": 0.9886183142662048
+    },
+    {
+      "doc1": {
+        "filename": "988e651a-a832-4860-a573-ab869f276b4a.txt",
+        "doc_id": "988e651a-a832-4860-a573-ab869f276b4a",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su patología crónica. Refiere estabilidad clínica general sin cambios significativos en su sintomatología basal. En la exploración física actual, se o"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9885890483856201
+    },
+    {
+      "doc1": {
+        "filename": "7f07dbf7-661e-4315-aa07-72f714561be2.txt",
+        "doc_id": "7f07dbf7-661e-4315-aa07-72f714561be2",
+        "text_preview": "A la exploración física actual, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiopulmonar es rítmica y sin soplos, con murmullo vesicular conservado y sin ruid"
+      },
+      "doc2": {
+        "filename": "92628778-b722-4162-a64b-62483bd00358.txt",
+        "doc_id": "92628778-b722-4162-a64b-62483bd00358",
+        "text_preview": "A la exploración física actual, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiopulmonar es rítmica y sin soplos, con murmullo vesicular conservado y sin ruid"
+      },
+      "similarity": 0.9885765314102173
+    },
+    {
+      "doc1": {
+        "filename": "163e5ee3-df68-4135-b553-256ce65bb491.txt",
+        "doc_id": "163e5ee3-df68-4135-b553-256ce65bb491",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado actual del paciente con hallazgos objetivos relevantes. La exploración física muestra presión arterial de 128/76 mmHg, frecuencia cardíaca de"
+      },
+      "doc2": {
+        "filename": "4b4e2a5f-f1d4-4520-8745-e125db860cbd.txt",
+        "doc_id": "4b4e2a5f-f1d4-4520-8745-e125db860cbd",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado del paciente que acude para seguimiento de su patología crónica. La exploración física actual muestra presión arterial de 128/78 mmHg, frecue"
+      },
+      "similarity": 0.9884481430053711
+    },
+    {
+      "doc1": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "doc2": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "similarity": 0.9884122610092163
+    },
+    {
+      "doc1": {
+        "filename": "5c36f1ff-3a80-45b0-88e0-2cebdd04674e.txt",
+        "doc_id": "5c36f1ff-3a80-45b0-88e0-2cebdd04674e",
+        "text_preview": "A la exploración física, la paciente se presenta consciente y orientada en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de los límites de la normalidad, sin soplos ni ruidos so"
+      },
+      "doc2": {
+        "filename": "e684d3b4-194f-43b2-baa2-093da264f199.txt",
+        "doc_id": "e684d3b4-194f-43b2-baa2-093da264f199",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. El"
+      },
+      "similarity": 0.9883469939231873
+    },
+    {
+      "doc1": {
+        "filename": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f.txt",
+        "doc_id": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por patología crónica de base en seguimiento habitual. Se encuentra estable desde el punto de vista clínico, refiriendo buen cumplimiento tera"
+      },
+      "doc2": {
+        "filename": "e93924b0-f709-4de3-8b96-a3e18aab926f.txt",
+        "doc_id": "e93924b0-f709-4de3-8b96-a3e18aab926f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica. Se encuentra estable, refiriendo buen cumplimiento terapéutico. En la exploración física actual, p"
+      },
+      "similarity": 0.9882375001907349
+    },
+    {
+      "doc1": {
+        "filename": "bb4dd364-6450-4043-a032-566eeeb363a5.txt",
+        "doc_id": "bb4dd364-6450-4043-a032-566eeeb363a5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. La expl"
+      },
+      "doc2": {
+        "filename": "dff6db81-339b-417d-8d6b-76ee89ccc7f8.txt",
+        "doc_id": "dff6db81-339b-417d-8d6b-76ee89ccc7f8",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su patología crónica de base. Refiere estabilidad clínica general, sin cambios significativos en su estado funcional des"
+      },
+      "similarity": 0.9881691932678223
+    },
+    {
+      "doc1": {
+        "filename": "180a4e7b-eb85-4297-93a5-031a414c9e58.txt",
+        "doc_id": "180a4e7b-eb85-4297-93a5-031a414c9e58",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude para control evolutivo tras su última visita. Refiere mejoría subjetiva de la sintomatología previamente referida, con estabilidad clínica general"
+      },
+      "doc2": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "similarity": 0.9881635904312134
+    },
+    {
+      "doc1": {
+        "filename": "dd90c575-9374-4afe-904c-4750653379b5.txt",
+        "doc_id": "dd90c575-9374-4afe-904c-4750653379b5",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología crónica de base. Refiere estabilidad clínica general sin aparición de nuevos síntomas. En la exploración física actual, "
+      },
+      "doc2": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "similarity": 0.9881361722946167
+    },
+    {
+      "doc1": {
+        "filename": "515b5495-8358-4899-9dcc-6ce0a560c546.txt",
+        "doc_id": "515b5495-8358-4899-9dcc-6ce0a560c546",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su cuadro clínico. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios"
+      },
+      "doc2": {
+        "filename": "a305befa-7894-4f54-885f-60b92142ae05.txt",
+        "doc_id": "a305befa-7894-4f54-885f-60b92142ae05",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios ocasio"
+      },
+      "similarity": 0.9880949854850769
+    },
+    {
+      "doc1": {
+        "filename": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f.txt",
+        "doc_id": "85bb2db1-1cd8-4450-97fc-0e03d2b12d9f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión por patología crónica de base en seguimiento habitual. Se encuentra estable desde el punto de vista clínico, refiriendo buen cumplimiento tera"
+      },
+      "doc2": {
+        "filename": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a.txt",
+        "doc_id": "5d72e8d5-ecfe-4eb1-9124-b38e3724aa9a",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su proceso crónico. Refiere estabilidad clínica general, manteniendo la misma sintomatología basal que en controles previos. A la exp"
+      },
+      "similarity": 0.9880856275558472
+    },
+    {
+      "doc1": {
+        "filename": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647.txt",
+        "doc_id": "2898000b-ffdc-4a0d-9b7b-ec5a875c8647",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial correspondiente. La exploración física actual muestra un estado general conservado, c"
+      },
+      "doc2": {
+        "filename": "8b774938-447f-4f2f-be3f-8c9adc356ebe.txt",
+        "doc_id": "8b774938-447f-4f2f-be3f-8c9adc356ebe",
+        "text_preview": "En el contexto del seguimiento clínico del paciente, se procede a la actualización de la documentación asistencial. La exploración física actual muestra un estado general conservado, con tensión arter"
+      },
+      "similarity": 0.9880362153053284
+    },
+    {
+      "doc1": {
+        "filename": "170ae4fa-0a51-4570-8195-7c0dbd20d0b2.txt",
+        "doc_id": "170ae4fa-0a51-4570-8195-7c0dbd20d0b2",
+        "text_preview": "En el contexto del seguimiento del paciente, se procede a la actualización de la historia clínica tras la última valoración. La exploración física revela un estado general conservado, con presión arte"
+      },
+      "doc2": {
+        "filename": "b89440de-de81-4a53-a903-c1436526dd29.txt",
+        "doc_id": "b89440de-de81-4a53-a903-c1436526dd29",
+        "text_preview": "En el contexto de la valoración integral del paciente, se procede a la elaboración del presente informe clínico. La exploración física actual revela un estado general conservado, con presión arterial "
+      },
+      "similarity": 0.9880164861679077
+    },
+    {
+      "doc1": {
+        "filename": "6cb88109-6fa7-44ba-be80-5acf29c8f3e2.txt",
+        "doc_id": "6cb88109-6fa7-44ba-be80-5acf29c8f3e2",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria presenta murmullo v"
+      },
+      "doc2": {
+        "filename": "7e21d407-55b4-4089-a285-4cf3f9e2b426.txt",
+        "doc_id": "7e21d407-55b4-4089-a285-4cf3f9e2b426",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria presenta murmullo v"
+      },
+      "similarity": 0.9879549145698547
+    },
+    {
+      "doc1": {
+        "filename": "cfcc6c0f-5100-42c8-adfd-ae6fdaf6bd19.txt",
+        "doc_id": "cfcc6c0f-5100-42c8-adfd-ae6fdaf6bd19",
+        "text_preview": "En el contexto de la valoración integral del paciente, se procede a la elaboración del presente informe clínico. La exploración física actual revela un estado general conservado, con presión arterial "
+      },
+      "doc2": {
+        "filename": "d33911df-27a2-4115-aa86-ffee3352218d.txt",
+        "doc_id": "d33911df-27a2-4115-aa86-ffee3352218d",
+        "text_preview": "En la valoración clínica realizada, se procede a documentar los hallazgos correspondientes al caso. La exploración física revela un estado general conservado, con presión arterial de 125/80 mmHg y fre"
+      },
+      "similarity": 0.9878878593444824
+    },
+    {
+      "doc1": {
+        "filename": "01e3416b-e0e5-488d-92bd-09898230605b.txt",
+        "doc_id": "01e3416b-e0e5-488d-92bd-09898230605b",
+        "text_preview": "A la exploración física, la paciente se presenta consciente y orientada en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. El"
+      },
+      "doc2": {
+        "filename": "e1534fd8-a56c-42e4-a15f-67af8e6e450d.txt",
+        "doc_id": "e1534fd8-a56c-42e4-a15f-67af8e6e450d",
+        "text_preview": "A la exploración física, la paciente se presenta consciente y orientada en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni ruidos sobreañadidos. El"
+      },
+      "similarity": 0.9878868460655212
+    },
+    {
+      "doc1": {
+        "filename": "515b5495-8358-4899-9dcc-6ce0a560c546.txt",
+        "doc_id": "515b5495-8358-4899-9dcc-6ce0a560c546",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su cuadro clínico. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios"
+      },
+      "doc2": {
+        "filename": "e9c42390-fe91-4515-b3ce-870195d60215.txt",
+        "doc_id": "e9c42390-fe91-4515-b3ce-870195d60215",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persisten algunos episodios leves."
+      },
+      "similarity": 0.9878454208374023
+    },
+    {
+      "doc1": {
+        "filename": "20b4e2fe-ecf5-4b84-8ccf-355a52a4edfe.txt",
+        "doc_id": "20b4e2fe-ecf5-4b84-8ccf-355a52a4edfe",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado del sujeto asistencial identificado con el número M67891204F. La exploración física muestra buenas condiciones generales con presión arterial"
+      },
+      "doc2": {
+        "filename": "6b7cc4ad-d39c-4fae-87a9-7af1ed2d84dc.txt",
+        "doc_id": "6b7cc4ad-d39c-4fae-87a9-7af1ed2d84dc",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado del sujeto asistencial identificado con el código 234-88-9012. La exploración física muestra buenas condiciones generales con presión arteria"
+      },
+      "similarity": 0.9877209663391113
+    },
+    {
+      "doc1": {
+        "filename": "e5e13885-2568-4fad-b0f7-956aba16a9aa.txt",
+        "doc_id": "e5e13885-2568-4fad-b0f7-956aba16a9aa",
+        "text_preview": "A continuación se presenta el informe de valoración integral correspondiente a la paciente. La exploración física revela un estado general conservado, con constantes vitales dentro de los parámetros d"
+      },
+      "doc2": {
+        "filename": "e9a6eba7-420f-4ccb-aa99-630fe41ccb25.txt",
+        "doc_id": "e9a6eba7-420f-4ccb-aa99-630fe41ccb25",
+        "text_preview": "A continuación se presenta el resumen de la valoración integral realizada a la paciente. La exploración física revela un estado general conservado, con constantes vitales dentro de los parámetros norm"
+      },
+      "similarity": 0.9875239729881287
+    },
+    {
+      "doc1": {
+        "filename": "225dd116-07da-4f45-b614-cfd8cfd6a8c5.txt",
+        "doc_id": "225dd116-07da-4f45-b614-cfd8cfd6a8c5",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria demuestra un murmul"
+      },
+      "doc2": {
+        "filename": "f7b0f744-564a-4533-a5ac-0b1203e1f949.txt",
+        "doc_id": "f7b0f744-564a-4533-a5ac-0b1203e1f949",
+        "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardíaca revela un ritmo regular sin soplos audibles, y la respiratoria muestra un murmullo"
+      },
+      "similarity": 0.9874625205993652
+    },
+    {
+      "doc1": {
+        "filename": "180a4e7b-eb85-4297-93a5-031a414c9e58.txt",
+        "doc_id": "180a4e7b-eb85-4297-93a5-031a414c9e58",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude para control evolutivo tras su última visita. Refiere mejoría subjetiva de la sintomatología previamente referida, con estabilidad clínica general"
+      },
+      "doc2": {
+        "filename": "1e4d79c4-692a-4541-8758-bb1ac3c5f968.txt",
+        "doc_id": "1e4d79c4-692a-4541-8758-bb1ac3c5f968",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. En la e"
+      },
+      "similarity": 0.9874392747879028
+    },
+    {
+      "doc1": {
+        "filename": "84e73f50-334a-4fc9-a9ad-375c41c67905.txt",
+        "doc_id": "84e73f50-334a-4fc9-a9ad-375c41c67905",
+        "text_preview": "Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología habitual. En la exploración física actual, se"
+      },
+      "doc2": {
+        "filename": "e46a14fa-2d75-4dc4-881a-6534285e58db.txt",
+        "doc_id": "e46a14fa-2d75-4dc4-881a-6534285e58db",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento de su proceso crónico. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. La explo"
+      },
+      "similarity": 0.9874197244644165
+    },
+    {
+      "doc1": {
+        "filename": "68330f42-8dfe-4544-8318-5bc62db3ee68.txt",
+        "doc_id": "68330f42-8dfe-4544-8318-5bc62db3ee68",
+        "text_preview": "Informe de Consulta Externa A la atención del servicio de documentación clínica, se presenta el siguiente resumen de la valoración realizada en consultas externas. La exploración física revela un esta"
+      },
+      "doc2": {
+        "filename": "bb144252-7ea9-40a6-9f63-a8ef54693835.txt",
+        "doc_id": "bb144252-7ea9-40a6-9f63-a8ef54693835",
+        "text_preview": "Informe de Consulta Externa En la valoración realizada hoy, se documenta la evolución del cuadro clínico que motiva la consulta. La exploración física muestra un estado general conservado, con constan"
+      },
+      "similarity": 0.987329363822937
+    },
+    {
+      "doc1": {
+        "filename": "27472e13-05de-41a4-97eb-0712f73adc9b.txt",
+        "doc_id": "27472e13-05de-41a4-97eb-0712f73adc9b",
+        "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en el Centro de Salud Las Rosas para seguimiento de su proceso crónico. Refiere estabilidad clínica general sin cambios significativos en su s"
+      },
+      "doc2": {
+        "filename": "9452fc39-3fe1-4d36-a5c6-ad4241d5f10f.txt",
+        "doc_id": "9452fc39-3fe1-4d36-a5c6-ad4241d5f10f",
+        "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica. Refiere estabilidad clínica general, sin cambios significativos en su sintomatología de base. A la ex"
+      },
+      "similarity": 0.9873228073120117
+    },
+    {
+      "doc1": {
+        "filename": "732bcc17-098a-47f9-9a59-29342f720747.txt",
+        "doc_id": "732bcc17-098a-47f9-9a59-29342f720747",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente de varón de 67 años que acude para control evolutivo de su patología crónica. En la valoración actual se mantiene en situación clínica estable, sin cambios "
+      },
+      "doc2": {
+        "filename": "d98b7dba-f2f0-4ac5-b93f-c7bee9ae7c0d.txt",
+        "doc_id": "d98b7dba-f2f0-4ac5-b93f-c7bee9ae7c0d",
+        "text_preview": "Informe de Consulta de Seguimiento Paciente que acude a consulta para control evolutivo de su patología crónica. Se mantiene en situación clínica estable, sin cambios significativos en su estado gener"
+      },
+      "similarity": 0.9873145818710327
+    },
+    {
+      "doc1": {
+        "filename": "19372db4-2ae2-4a45-8544-9a291450dce4.txt",
+        "doc_id": "19372db4-2ae2-4a45-8544-9a291450dce4",
+        "text_preview": "En la valoración clínica realizada, se documenta el estado de la paciente atendida. La exploración física muestra un adecuado estado general, con tensión arterial de 125/80 mmHg, frecuencia cardíaca d"
+      },
+      "doc2": {
+        "filename": "5dee3bb3-6af9-4da0-886e-84e73d6a2208.txt",
+        "doc_id": "5dee3bb3-6af9-4da0-886e-84e73d6a2208",
+        "text_preview": "En la valoración clínica realizada, se procede a la actualización de la documentación asistencial correspondiente. La exploración física muestra un paciente consciente y orientado, con presión arteria"
+      },
+      "similarity": 0.9872804880142212
+    },
+    {
+      "doc1": {
+        "filename": "5dee3bb3-6af9-4da0-886e-84e73d6a2208.txt",
+        "doc_id": "5dee3bb3-6af9-4da0-886e-84e73d6a2208",
+        "text_preview": "En la valoración clínica realizada, se procede a la actualización de la documentación asistencial correspondiente. La exploración física muestra un paciente consciente y orientado, con presión arteria"
+      },
+      "doc2": {
+        "filename": "fb5d3f74-da2b-488f-acfd-9c561d5ddd22.txt",
+        "doc_id": "fb5d3f74-da2b-488f-acfd-9c561d5ddd22",
+        "text_preview": "Informe de Consulta Externa En la valoración realizada el día Agosto 2023, se procede a la revisión y actualización del cuadro clínico. La exploración física actual muestra un paciente consciente y or"
+      },
+      "similarity": 0.9872610569000244
+    }
+  ],
+  "memorization_risk": {
+    "total_repeated_phi_entities": 1355,
+    "high_similarity_pairs": 100,
+    "semantic_skipped": false,
+    "risk_level": "critical",
+    "interpretation": "Critical memorization risk. Extensive repetition detected. Immediate review required."
+  }
+}

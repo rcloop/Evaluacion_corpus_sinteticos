@@ -1,0 +1,22 @@
+{
+  "total_documents": 14035,
+  "self_bleu": {
+    "n2": 0.1199147980154174,
+    "n3": 0.03493548256222463,
+    "n4": 0.014538056695608887,
+    "mean": 0.05646277909108365
+  },
+  "distinct_ngrams": {
+    "n1": 0.004416703281448792,
+    "n2": 0.0433242387246095,
+    "n3": 0.1392453294924019
+  },
+  "repetition_ratio": {
+    "phrases_min_5_words": 0.22858717721944719
+  },
+  "interpretation": {
+    "self_bleu_target": "< 0.3 (lower is better)",
+    "distinct_ngrams_target": "> 0.4 (higher is better)",
+    "repetition_ratio_target": "< 0.05 (lower is better)"
+  }
+}

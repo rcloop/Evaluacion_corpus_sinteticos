@@ -11,8 +11,8 @@ OUTPUT_DIR = REPO_ROOT / "results" / "sesgos" / "10"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "age_reference_comparison.json"
 
-BIAS_DIR = REPO_ROOT / "src" / "bias_evaluation"
-sys.path.insert(0, str(BIAS_DIR))
+LIB_DIR = Path(__file__).resolve().parent / "_lib"
+sys.path.insert(0, str(LIB_DIR))
 
 from age_distribution import evaluate_age_distribution
 from age_reference_comparison import evaluate_age_reference_comparison
@@ -26,6 +26,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     entidades = Path(args.corpus_root) / "entidades"
     max_files = None if (args.max_docs is not None and args.max_docs <= 0) else args.max_docs
+    n_files = len(list(entidades.glob("*.json"))) if entidades.is_dir() else 1
+    if max_files is not None:
+        n_files = min(n_files, max_files)
+    print(f"Experimento 10 – Age reference comparison. Corpus: {args.corpus_root} | Documentos: {n_files}")
     result_1_4 = evaluate_age_distribution(
         annotations_path=str(entidades),
         max_files=max_files,
@@ -37,4 +41,4 @@ if __name__ == "__main__":
         result_1_4=result_1_4,
     )
     OUTPUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print("Resultados:", OUTPUT_FILE)
+    print(f"Listo. Resultados: {OUTPUT_FILE}")

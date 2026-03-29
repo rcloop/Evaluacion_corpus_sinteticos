@@ -10,8 +10,8 @@ OUTPUT_DIR = REPO_ROOT / "results" / "naturalidad" / "01"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "ai_detection_results.json"
 
-NAT_DIR = REPO_ROOT / "src" / "privacy_evaluation" / "naturalness_evaluation"
-sys.path.insert(0, str(NAT_DIR))
+LIB_DIR = Path(__file__).resolve().parent / "_lib"
+sys.path.insert(0, str(LIB_DIR))
 
 from ai_text_detection import evaluate_ai_detection
 import argparse
@@ -22,9 +22,12 @@ if __name__ == "__main__":
     parser.add_argument("--human_corpus", default=None, help="Ruta a corpus humano (opcional)")
     parser.add_argument("--output_path", default=str(OUTPUT_FILE))
     args = parser.parse_args()
+    p = Path(args.generated_corpus)
+    n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+    print(f"Experimento 01 – Naturalidad: AI text detection. Corpus generado: {args.generated_corpus} | Documentos: {n}")
     evaluate_ai_detection(
         generated_corpus_path=args.generated_corpus,
         human_corpus_path=args.human_corpus,
         output_path=args.output_path,
     )
-    print("Resultados:", args.output_path)
+    print(f"Listo. Resultados: {args.output_path}")

@@ -1,0 +1,140 @@
+{
+  "metric": "1.2_role_profession_vs_gender",
+  "timestamp_utc": "2026-03-08T20:29:11.470550+00:00",
+  "input_summary": {
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
+    "name_labels": [
+      "NOMBRE_SUJETO_ASISTENCIA",
+      "NOMBRE_PERSONAL_SANITARIO"
+    ],
+    "profession_labels": [
+      "PROFESION",
+      "PROFESSION"
+    ],
+    "lexicon_path": null,
+    "max_files": null,
+    "association_mode": "cartesian",
+    "docs_seen": 14035,
+    "docs_used": 5953
+  },
+  "contingency": {
+    "row_labels": [
+      "fem",
+      "masc",
+      "other"
+    ],
+    "col_labels": [
+      "doctor",
+      "nurse",
+      "other",
+      "pharmacist",
+      "technician"
+    ],
+    "table": [
+      [
+        3626,
+        28,
+        3838,
+        6,
+        3
+      ],
+      [
+        2327,
+        23,
+        2013,
+        4,
+        2
+      ],
+      [
+        17,
+        0,
+        97,
+        0,
+        0
+      ]
+    ],
+    "counts_by_gender": {
+      "fem": {
+        "other": 3838,
+        "doctor": 3626,
+        "nurse": 28,
+        "technician": 3,
+        "pharmacist": 6
+      },
+      "masc": {
+        "other": 2013,
+        "doctor": 2327,
+        "nurse": 23,
+        "pharmacist": 4,
+        "technician": 2
+      },
+      "other": {
+        "other": 97,
+        "doctor": 17
+      }
+    }
+  },
+  "chi_square_independence": {
+    "chi2": 87.36493217298852,
+    "p_value": 1.591724803523212e-15,
+    "df": 8.0,
+    "cramers_v": 0.060374378627588474
+  },
+  "prevalence_ratios": {
+    "doctor": {
+      "prevalence": {
+        "fem": 0.4834022130382616,
+        "masc": 0.5326161593041886
+      },
+      "prevalence_ratio_vs_ref": {
+        "fem": 0.9075995998127051,
+        "masc": 1.0
+      },
+      "ref_gender": "masc"
+    },
+    "nurse": {
+      "prevalence": {
+        "fem": 0.0037328356219170776,
+        "masc": 0.005264362554360266
+      },
+      "prevalence_ratio_vs_ref": {
+        "fem": 0.7090764709632917,
+        "masc": 1.0
+      },
+      "ref_gender": "masc"
+    },
+    "other": {
+      "prevalence": {
+        "fem": 0.5116651113184909,
+        "masc": 0.46074616617074843
+      },
+      "prevalence_ratio_vs_ref": {
+        "fem": 1.1105140940638285,
+        "masc": 1.0
+      },
+      "ref_gender": "masc"
+    },
+    "pharmacist": {
+      "prevalence": {
+        "fem": 0.0007998933475536596,
+        "masc": 0.0009155413138017853
+      },
+      "prevalence_ratio_vs_ref": {
+        "fem": 0.8736835088654846,
+        "masc": 1.0
+      },
+      "ref_gender": "masc"
+    },
+    "technician": {
+      "prevalence": {
+        "fem": 0.0003999466737768298,
+        "masc": 0.00045777065690089265
+      },
+      "prevalence_ratio_vs_ref": {
+        "fem": 0.8736835088654846,
+        "masc": 1.0
+      },
+      "ref_gender": "masc"
+    }
+  }
+}

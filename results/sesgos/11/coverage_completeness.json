@@ -1,0 +1,109 @@
+{
+  "metric": "coverage_completeness",
+  "timestamp_utc": "2026-03-08T20:31:14.149089+00:00",
+  "input_summary": {
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
+    "max_files": null,
+    "docs_total": 14035
+  },
+  "by_dimension": {
+    "has_gender": {
+      "count": 6158,
+      "percent": 43.876024225151404
+    },
+    "has_age": {
+      "count": 2501,
+      "percent": 17.819736373352335
+    },
+    "has_geography": {
+      "count": 5914,
+      "percent": 42.137513359458495
+    }
+  },
+  "by_combination": {
+    "has_gender_and_age": {
+      "count": 1238,
+      "percent": 8.820805130032063
+    },
+    "has_gender_and_geography": {
+      "count": 2687,
+      "percent": 19.1449946562166
+    },
+    "has_age_and_geography": {
+      "count": 1071,
+      "percent": 7.630922693266833
+    },
+    "has_all_three": {
+      "count": 549,
+      "percent": 3.9116494478090487
+    }
+  },
+  "completeness_cooccurrence": {
+    "(gender, age, geo)": [
+      {
+        "key": [
+          0,
+          0,
+          0
+        ],
+        "count": 3909
+      },
+      {
+        "key": [
+          0,
+          0,
+          1
+        ],
+        "count": 2705
+      },
+      {
+        "key": [
+          0,
+          1,
+          0
+        ],
+        "count": 741
+      },
+      {
+        "key": [
+          0,
+          1,
+          1
+        ],
+        "count": 522
+      },
+      {
+        "key": [
+          1,
+          0,
+          0
+        ],
+        "count": 2782
+      },
+      {
+        "key": [
+          1,
+          0,
+          1
+        ],
+        "count": 2138
+      },
+      {
+        "key": [
+          1,
+          1,
+          0
+        ],
+        "count": 689
+      },
+      {
+        "key": [
+          1,
+          1,
+          1
+        ],
+        "count": 549
+      }
+    ]
+  }
+}

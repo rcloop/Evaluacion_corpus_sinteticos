@@ -10,8 +10,8 @@ OUTPUT_DIR = REPO_ROOT / "results" / "privacidad" / "03"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_PATH = OUTPUT_DIR / "memorization_detection.json"
 
-PRIV_DIR = REPO_ROOT / "src" / "privacy_evaluation"
-sys.path.insert(0, str(PRIV_DIR))
+LIB_DIR = Path(__file__).resolve().parent / "_lib"
+sys.path.insert(0, str(LIB_DIR))
 
 from nearest_neighbor_memorization import evaluate_memorization
 import argparse
@@ -23,12 +23,19 @@ if __name__ == "__main__":
     parser.add_argument("--output_path", default=str(OUTPUT_PATH))
     parser.add_argument("--semantic_model", default="paraphrase-multilingual-MiniLM-L12-v2")
     parser.add_argument("--skip_semantic", action="store_true", help="Solo duplicados exactos")
+    parser.add_argument("--max_docs", type=int, default=None, help="Máx. documentos a evaluar (para corpus grandes)")
     args = parser.parse_args()
+    docs_dir = Path(args.corpus_path) / "documents" if (Path(args.corpus_path) / "documents").exists() else Path(args.corpus_path)
+    n = len(list(docs_dir.glob("*.txt"))) if docs_dir.is_dir() else 0
+    if args.max_docs is not None and args.max_docs > 0:
+        n = min(n, args.max_docs)
+    print(f"Experimento 03 – Privacidad: Memorization Detection. Corpus: {args.corpus_path} | Documentos: {n}")
     evaluate_memorization(
         corpus_path=args.corpus_path,
         annotations_path=args.annotations_path,
         output_path=args.output_path,
         semantic_model=args.semantic_model,
         skip_semantic=args.skip_semantic,
+        max_docs=args.max_docs,
     )
-    print("Resultados:", args.output_path)
+    print(f"Listo. Resultados: {args.output_path}")

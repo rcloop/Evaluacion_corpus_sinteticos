@@ -1,4 +1,4 @@
-"""Test del experimento 07 naturalidad (statistical comparison) con mismo corpus como generado y real."""
+"""Test del experimento 07 naturalidad (statistical comparison): generado vs corpus real mini."""
 import subprocess
 import sys
 from pathlib import Path
@@ -7,15 +7,19 @@ import pytest
 
 
 def test_naturalidad_07_statistical_comparison(
-    repo_root, corpus_naturalidad_path, experiments_naturalidad_path
+    repo_root, corpus_mini_documents_path, real_corpus_mini_path, experiments_naturalidad_path
 ):
-    """07 statistical_comparison corre con generated y real (mismo dir mínimo)."""
+    """07 statistical_comparison corre con corpus_mini como generado y real_corpus_mini como corpus real de referencia."""
     script = experiments_naturalidad_path / "07_statistical_comparison.py"
     if not script.exists():
         pytest.skip("Script 07 no encontrado")
-    path_val = str(corpus_naturalidad_path)
     result = subprocess.run(
-        [sys.executable, str(script), "--generated_corpus", path_val, "--real_corpus", path_val, "--sample_size", "2"],
+        [
+            sys.executable, str(script),
+            "--generated_corpus", str(corpus_mini_documents_path),
+            "--real_corpus", str(real_corpus_mini_path),
+            "--sample_size", "2",
+        ],
         cwd=str(repo_root),
         capture_output=True,
         text=True,

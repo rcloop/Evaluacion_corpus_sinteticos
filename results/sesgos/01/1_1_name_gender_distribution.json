@@ -1,0 +1,127 @@
+{
+  "metric": "1.1_name_gender_distribution",
+  "input_summary": {
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
+    "target_labels": [
+      "NOMBRE_PERSONAL_SANITARIO",
+      "NOMBRE_SUJETO_ASISTENCIA"
+    ],
+    "max_files": null,
+    "entities_seen_total": 116253,
+    "entities_matched_total": 8023,
+    "lexicon_path": null,
+    "lexicon_path_effective": "C:\\Users\\Usuario\\Documents\\anonimizacion\\data\\sesgos\\name_gender_lexicon.json",
+    "lexicon_entries": 124
+  },
+  "overall": {
+    "counts": {
+      "fem": 5369,
+      "masc": 2654,
+      "other": 0,
+      "n": 8023
+    },
+    "proportions": {
+      "p_fem": 0.669201046989904,
+      "p_masc": 0.330798953010096,
+      "p_other": 0.0
+    },
+    "proportions_ci_95": {
+      "p_fem_ci": [
+        0.6588266995350853,
+        0.679413437158281
+      ],
+      "p_masc_ci": [
+        0.32058656284171894,
+        0.34117330046491456
+      ],
+      "p_other_ci": [
+        0.0,
+        0.00047859422067080524
+      ]
+    },
+    "chi_square_uniformity": {
+      "chi2": 5389.642527732768,
+      "p_value": 0.0,
+      "df": 2.0,
+      "cohens_w": 0.819618182945497
+    }
+  },
+  "per_label": {
+    "NOMBRE_PERSONAL_SANITARIO": {
+      "counts": {
+        "fem": 2480,
+        "masc": 1627,
+        "other": 0,
+        "n": 4107
+      },
+      "proportions": {
+        "p_fem": 0.6038470903335769,
+        "p_masc": 0.3961529096664232,
+        "p_other": 0.0
+      },
+      "proportions_ci_95": {
+        "p_fem_ci": [
+          0.5887982005942516,
+          0.6187018889251306
+        ],
+        "p_masc_ci": [
+          0.38129811107486955,
+          0.4112017994057484
+        ],
+        "p_other_ci": [
+          0.0,
+          0.0009345045063278526
+        ]
+      },
+      "chi_square_uniformity": {
+        "chi2": 2319.2447041636233,
+        "p_value": 0.0,
+        "df": 2.0,
+        "cohens_w": 0.751468767830374
+      },
+      "determinable": {
+        "n_fem_masc": 4107,
+        "p_max_over_fem_masc": 0.6038470903335769,
+        "flag_extreme_imbalance_70_30": false
+      }
+    },
+    "NOMBRE_SUJETO_ASISTENCIA": {
+      "counts": {
+        "fem": 2889,
+        "masc": 1027,
+        "other": 0,
+        "n": 3916
+      },
+      "proportions": {
+        "p_fem": 0.7377425944841676,
+        "p_masc": 0.2622574055158325,
+        "p_other": 0.0
+      },
+      "proportions_ci_95": {
+        "p_fem_ci": [
+          0.7237374936628533,
+          0.7512817009903185
+        ],
+        "p_masc_ci": [
+          0.2487182990096816,
+          0.2762625063371467
+        ],
+        "p_other_ci": [
+          0.0,
+          0.0009800396016002278
+        ]
+      },
+      "chi_square_uniformity": {
+        "chi2": 3286.03013278856,
+        "p_value": 0.0,
+        "df": 2.0,
+        "cohens_w": 0.9160399813285335
+      },
+      "determinable": {
+        "n_fem_masc": 3916,
+        "p_max_over_fem_masc": 0.7377425944841676,
+        "flag_extreme_imbalance_70_30": true
+      }
+    }
+  }
+}

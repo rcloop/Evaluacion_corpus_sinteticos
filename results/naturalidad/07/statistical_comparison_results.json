@@ -1,0 +1,219 @@
+{
+  "generated_corpus_size": 14035,
+  "real_corpus_size": 500,
+  "comparisons": {
+    "word_count": {
+      "feature": "word_count",
+      "generated": {
+        "mean": 229.94613466334164,
+        "median": 227.0,
+        "std": 46.987795092174615,
+        "count": 14035
+      },
+      "real": {
+        "mean": 2111.51,
+        "median": 2516.5,
+        "std": 1337.8150761222569,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.8253224082650517,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 775341.5,
+          "pvalue": 3.6377213013908517e-193,
+          "significant": true,
+          "rank_biserial_r": 0.7790262914143213,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 89.10987233480583,
+        "median_diff_percent": 90.97953506854759
+      }
+    },
+    "sentence_count": {
+      "feature": "sentence_count",
+      "generated": {
+        "mean": 11.03156394727467,
+        "median": 11.0,
+        "std": 2.7924655253211985,
+        "count": 14035
+      },
+      "real": {
+        "mean": 177.936,
+        "median": 214.5,
+        "std": 120.9148622130464,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.8580448877805487,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 537492.5,
+          "pvalue": 2.290712349631801e-230,
+          "significant": true,
+          "rank_biserial_r": 0.8468136800855005,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 93.80026304554747,
+        "median_diff_percent": 94.87179487179486
+      }
+    },
+    "avg_word_length": {
+      "feature": "avg_word_length",
+      "generated": {
+        "mean": 5.511116324305258,
+        "median": 5.5048076923076925,
+        "std": 0.27771389527898865,
+        "count": 14035
+      },
+      "real": {
+        "mean": 4.4926559434704325,
+        "median": 4.466077750334465,
+        "std": 0.2810275234132956,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.9326661916636978,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 6920856.5,
+          "pvalue": 8.411744635510769e-300,
+          "significant": true,
+          "rank_biserial_r": -0.9724564303526897,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 22.66944973418323,
+        "median_diff_percent": 23.25821447903447
+      }
+    },
+    "avg_sentence_length": {
+      "feature": "avg_sentence_length",
+      "generated": {
+        "mean": 21.341240795180262,
+        "median": 21.076923076923077,
+        "std": 3.3509105658092277,
+        "count": 14035
+      },
+      "real": {
+        "mean": 13.056191258911083,
+        "median": 12.321323714453486,
+        "std": 3.8678500314397772,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.8286184538653366,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 6694674.0,
+          "pvalue": 1.1871134231930328e-261,
+          "significant": true,
+          "rank_biserial_r": -0.9079940149625936,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 63.45686404229477,
+        "median_diff_percent": 71.06054158936563
+      }
+    },
+    "char_count": {
+      "feature": "char_count",
+      "generated": {
+        "mean": 1472.7122194513715,
+        "median": 1452.0,
+        "std": 300.26515377061236,
+        "count": 14035
+      },
+      "real": {
+        "mean": 12381.288,
+        "median": 14109.5,
+        "std": 8009.622700293441,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.8103762023512646,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 835740.0,
+          "pvalue": 8.307178628079496e-185,
+          "significant": true,
+          "rank_biserial_r": 0.7618126113288208,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 88.10533912585369,
+        "median_diff_percent": 89.70906127077501
+      }
+    },
+    "type_token_ratio": {
+      "feature": "type_token_ratio",
+      "generated": {
+        "mean": 0.6137642069041249,
+        "median": 0.6139534883720931,
+        "std": 0.03925541653602527,
+        "count": 14035
+      },
+      "real": {
+        "mean": 0.414160550527632,
+        "median": 0.3507295831528313,
+        "std": 0.14227287817995848,
+        "count": 500
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.749841111506947,
+          "pvalue": 2.184949662169844e-281,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 6194203.5,
+          "pvalue": 1.6369868887910719e-186,
+          "significant": true,
+          "rank_biserial_r": -0.7653590309939438,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 48.194753489245166,
+        "median_diff_percent": 75.05038578526786
+      }
+    }
+  },
+  "summary": {
+    "total_features_compared": 6,
+    "alpha": 0.05,
+    "alpha_bonferroni": 0.008333333333333333,
+    "significant_differences": 6,
+    "significant_differences_bonferroni": 6,
+    "similarity_score": 0.0,
+    "similarity_score_bonferroni": 0.0
+  }
+}

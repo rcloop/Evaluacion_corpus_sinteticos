@@ -1,0 +1,26 @@
+{
+  "corpus_size": 14035,
+  "external_size": 0,
+  "attack_metrics": {
+    "accuracy": 0.8331849213416445,
+    "auc_roc": 0.4207088405067656,
+    "auc_roc_ci_95": [
+      0.3951883070151759,
+      0.4454741805970163
+    ],
+    "auc_pr": 0.8032251864426353,
+    "precision": 1.0,
+    "recall": 0.0
+  },
+  "baseline_accuracy": 0.8333333333333334,
+  "privacy_risk": {
+    "low_risk": true,
+    "medium_risk": false,
+    "high_risk": false,
+    "critical_risk": false
+  },
+  "interpretation": {
+    "auc_roc_interpretation": "Low risk (<0.6)",
+    "recommendation": "No significant membership inference risk detected. The model does not memorize training examples in a way that allows reliable membership inference."
+  }
+}

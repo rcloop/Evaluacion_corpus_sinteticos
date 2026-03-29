@@ -10,8 +10,8 @@ OUTPUT_DIR = REPO_ROOT / "results" / "naturalidad" / "03"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "vocabulary_richness_results.json"
 
-NAT_DIR = REPO_ROOT / "src" / "privacy_evaluation" / "naturalness_evaluation"
-sys.path.insert(0, str(NAT_DIR))
+LIB_DIR = Path(__file__).resolve().parent / "_lib"
+sys.path.insert(0, str(LIB_DIR))
 
 from vocabulary_richness import evaluate_vocabulary_richness
 import argparse
@@ -22,9 +22,12 @@ if __name__ == "__main__":
     parser.add_argument("--output_path", default=str(OUTPUT_FILE))
     parser.add_argument("--sample_size", type=int, default=None)
     args = parser.parse_args()
+    p = Path(args.corpus_path)
+    n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+    print(f"Experimento 03 – Naturalidad: Vocabulary richness. Corpus: {args.corpus_path} | Documentos: {n}")
     evaluate_vocabulary_richness(
         corpus_path=args.corpus_path,
         output_path=args.output_path,
         sample_size=args.sample_size,
     )
-    print("Resultados:", args.output_path)
+    print(f"Listo. Resultados: {args.output_path}")

@@ -1,0 +1,25 @@
+{
+  "model_name": "dccuchile/bert-base-spanish-wwm-uncased",
+  "model_type": "mlm",
+  "total_documents": 14035,
+  "successful_calculations": 14035,
+  "failed_calculations": 0,
+  "perplexity": {
+    "mean": 26.289869939860477,
+    "mean_ci_95": [
+      25.935607218999152,
+      26.6441326607218
+    ],
+    "median": 23.80201530456543,
+    "std": 21.412905036816035,
+    "min": 4.852898597717285,
+    "max": 1674.180419921875,
+    "percentiles": {
+      "25th": 17.807948112487793,
+      "50th": 23.80201530456543,
+      "75th": 31.671256065368652,
+      "90th": 40.37927703857422,
+      "95th": 46.57124404907225
+    }
+  }
+}
