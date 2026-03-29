@@ -1,5 +1,5 @@
 {
-  "corpus_size": 14035,
+  "corpus_size": 8,
   "attributes_evaluated": [
     "has_person",
     "has_date",
@@ -12,100 +12,62 @@
   "attribute_results": {
     "has_person": {
       "attribute": "has_person",
-      "accuracy": 0.9048806555040969,
-      "auc_roc": 0.9686816184288674,
+      "accuracy": 1.0,
+      "auc_roc": 0.0,
       "auc_roc_ci_95": [
-        0.9628966946573858,
-        0.9737413315705116
+        null,
+        null
       ],
-      "positive_rate": 0.7005343783398646,
-      "baseline_accuracy": 0.7005343783398646,
-      "risk_level": "critical"
+      "positive_rate": 0.25,
+      "baseline_accuracy": 0.75,
+      "risk_level": "low"
     },
     "has_date": {
-      "attribute": "has_date",
-      "accuracy": 0.9764873530459566,
-      "auc_roc": 0.9987643351389393,
-      "auc_roc_ci_95": [
-        0.9979619298232331,
-        0.9993303041251181
-      ],
-      "positive_rate": 0.24859280370502315,
-      "baseline_accuracy": 0.7514071962949769,
-      "risk_level": "critical"
+      "skipped": true,
+      "reason": "Constant attribute (all same value)"
     },
     "has_location": {
       "attribute": "has_location",
-      "accuracy": 0.9134307089419309,
-      "auc_roc": 0.9762469197873155,
+      "accuracy": 0.0,
+      "auc_roc": 0.0,
       "auc_roc_ci_95": [
-        0.9714210091235755,
-        0.9805688499579118
+        null,
+        null
       ],
-      "positive_rate": 0.7762023512646954,
-      "baseline_accuracy": 0.7762023512646954,
-      "risk_level": "critical"
+      "positive_rate": 0.125,
+      "baseline_accuracy": 0.875,
+      "skipped": true,
+      "reason": "Insufficient samples after train/test split for corpus mini",
+      "risk_level": "skipped"
     },
     "has_id": {
-      "attribute": "has_id",
-      "accuracy": 0.9415746348414678,
-      "auc_roc": 0.982817829502383,
-      "auc_roc_ci_95": [
-        0.9782814217450821,
-        0.9871301839349496
-      ],
-      "positive_rate": 0.9293908086925543,
-      "baseline_accuracy": 0.9293908086925543,
-      "risk_level": "critical"
+      "skipped": true,
+      "reason": "Constant attribute (all same value)"
     },
     "has_age": {
-      "attribute": "has_age",
-      "accuracy": 0.9707873174207339,
-      "auc_roc": 0.9968934083342029,
-      "auc_roc_ci_95": [
-        0.9952849633287847,
-        0.998301543180685
-      ],
-      "positive_rate": 0.20099750623441395,
-      "baseline_accuracy": 0.7990024937655861,
-      "risk_level": "critical"
+      "skipped": true,
+      "reason": "Constant attribute (all same value)"
     },
     "has_contact": {
-      "attribute": "has_contact",
-      "accuracy": 0.9672247951549697,
-      "auc_roc": 0.9957376178599546,
-      "auc_roc_ci_95": [
-        0.9943806860411822,
-        0.9969947726099159
-      ],
-      "positive_rate": 0.5655860349127182,
-      "baseline_accuracy": 0.5655860349127182,
-      "risk_level": "critical"
+      "skipped": true,
+      "reason": "Constant attribute (all same value)"
     },
     "has_medical_condition": {
       "attribute": "has_medical_condition",
-      "accuracy": 0.9668685429283933,
-      "auc_roc": 0.9769533762435271,
+      "accuracy": 1.0,
+      "auc_roc": 0.0,
       "auc_roc_ci_95": [
-        0.9677669461156577,
-        0.9846257812851981
+        null,
+        null
       ],
-      "positive_rate": 0.05742785892411827,
-      "baseline_accuracy": 0.9425721410758817,
-      "risk_level": "critical"
+      "positive_rate": 0.125,
+      "baseline_accuracy": 0.875,
+      "risk_level": "low"
     }
   },
   "overall_risk": {
-    "max_auc_roc": 0.9987643351389393,
-    "mean_auc_roc": 0.9851564436135984,
-    "high_risk_attributes": [
-      "has_person",
-      "has_date",
-      "has_location",
-      "has_id",
-      "has_age",
-      "has_contact",
-      "has_medical_condition"
-    ]
+    "max_auc_roc": 0.0,
+    "mean_auc_roc": 0.0,
+    "high_risk_attributes": []
   }
 }

@@ -39,7 +39,7 @@ This section documents all design choices for the evaluation suite, to support r
 ### 0.5 Naturalness
 
 - **Diversity (4.5):** Computed on the **full corpus** (no document cap). Previously a 5 000-document sample was used; the current pipeline uses all documents to avoid sampling variability.
-- **Statistical comparison (4.7):** The “real” reference corpus is **corpus_repo/real_validation_corpus**. The experiment **fails** if this directory is missing (no fallback to the generated corpus), ensuring that reported comparisons are always against a real validation set. Features compared include word count, sentence count, average word length, average sentence length, and **type–token ratio** (TTR). For each feature we report Kolmogorov–Smirnov and Mann–Whitney tests, with Bonferroni-adjusted significance and rank-biserial r.
+- **Statistical comparison (4.7):** The “real” reference corpus is **data/real_validation_corpus**. The experiment **fails** if this directory is missing (no fallback to the generated corpus), ensuring that reported comparisons are always against a real validation set. Features compared include word count, sentence count, average word length, average sentence length, and **type–token ratio** (TTR). For each feature we report Kolmogorov–Smirnov and Mann–Whitney tests, with Bonferroni-adjusted significance and rank-biserial r.
 
 ### 0.6 Privacy risk levels
 
@@ -345,7 +345,7 @@ Clasificador binario (¿documento contiene atributo?) sobre 14 035 documentos.
 
 ### 4.7 Comparación estadística (generado vs real)
 
-*Corpus real: **corpus_repo/real_validation_corpus** (500 documentos). Generado: 14 035 documentos. Características: word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, type_token_ratio. Tests: Kolmogorov–Smirnov y Mann–Whitney; Bonferroni α/k con k=6 (α_Bonferroni = 0,0083). Fuente: `results/naturalidad/07/statistical_comparison_results.json`.*
+*Corpus real: **data/real_validation_corpus** (500 documentos). Generado: 14 035 documentos. Características: word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, type_token_ratio. Tests: Kolmogorov–Smirnov y Mann–Whitney; Bonferroni α/k con k=6 (α_Bonferroni = 0,0083). Fuente: `results/naturalidad/07/statistical_comparison_results.json`.*
 
 | Característica | Media generado | Media real | Diferencia relativa (media) | rank_biserial_r | Significativo (Bonferroni) |
 |----------------|----------------|------------|-----------------------------|-----------------|----------------------------|
@@ -411,7 +411,7 @@ Clasificador binario (¿documento contiene atributo?) sobre 14 035 documentos.
 
 - **Sesgos:** El corpus presenta desbalance de género (más nombres femeninos y desviación respecto a paridad 50/50), asociación significativa género–profesión, y concentración de edad en 60–79 años con poca representación de 80+. La diversidad geográfica, institucional y diagnóstica es alta; WEAT de género no significativo.
 - **Privacidad:** Alta predictibilidad de atributos PHI (riesgo crítico de inferencia de atributos). Riesgo bajo de membership inference. Memorización crítica: repetición elevada de entidades PHI y pares de documentos muy similares.
-- **Naturalidad:** Los textos sintéticos son difíciles de distinguir de humanos (AI detection ~40% accuracy). Perplejidad y TTR coherentes con texto médico; coherencia (0,32, IC 95% reportado) y repetición de frases (22,9%) son puntos a mejorar. La **comparación estadística con corpus real** (real_validation_corpus, 500 documentos) muestra diferencias significativas en las seis características (word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, TTR) incluso tras Bonferroni: el corpus sintético tiene documentos más cortos que el real; en cambio, oración más larga y TTR más alto en el sintético. Conviene explicar en el paper el origen y uso esperado de ambos corpus (p. ej. notas breves vs informes largos) para interpretar estas diferencias.
+- **Naturalidad:** Los textos sintéticos son difíciles de distinguir de humanos (AI detection ~40% accuracy). Perplejidad y TTR coherentes con texto médico; coherencia (0,32, IC 95% reportado) y repetición de frases (22,9%) son puntos a mejorar. La **comparación estadística con corpus real** (`data/real_validation_corpus`, 500 documentos) muestra diferencias significativas en las seis características (word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, TTR) incluso tras Bonferroni: el corpus sintético tiene documentos más cortos que el real; en cambio, oración más larga y TTR más alto en el sintético. Conviene explicar en el paper el origen y uso esperado de ambos corpus (p. ej. notas breves vs informes largos) para interpretar estas diferencias.
 
 ---
 
@@ -420,12 +420,45 @@ Clasificador binario (¿documento contiene atributo?) sobre 14 035 documentos.
 ## 7. Reproducibilidad
 
 - **Comando de la suite:** `python run_all_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus`
-- **Corpus:** corpus_v1 (14 035 documentos); para experimento 4.7 es obligatorio `corpus_repo/real_validation_corpus`.
+- **Corpus:** corpus_v1 (14 035 documentos); para experimento 4.7 es obligatorio `data/real_validation_corpus`.
 - **Resultados:** `results/sesgos`, `results/privacidad`, `results/naturalidad`. Los JSON incluyen, cuando aplica: proporciones con IC Wilson, Cohen's w, Cramér's V, p_value_bonferroni, auc_roc_ci_95, mean_ci_95, rank_biserial_r, similarity_score_bonferroni.
 - **Parámetros fijos:** Ver `interpretacion/EVALUATION_PARAMETERS.md`.
 
 ### Estado de la última ejecución
 
-Este documento refleja los resultados de la suite ejecutada con corpus completo (14 035 documentos) y corpus real `corpus_repo/real_validation_corpus` (500 documentos) para el experimento 4.7. Las secciones 4.5, 4.6 y 4.7 incorporan los valores de `results/naturalidad/05/`, `06/` y `07/`. Sesgos, privacidad y el resto de naturalidad se mantienen según los JSON en `results/sesgos`, `results/privacidad` y `results/naturalidad`.
+Este documento refleja los resultados de la suite ejecutada con corpus completo (14 035 documentos) y corpus real `data/real_validation_corpus` (500 documentos) para el experimento 4.7. Las secciones 4.5, 4.6 y 4.7 incorporan los valores de `results/naturalidad/05/`, `06/` y `07/`. Sesgos, privacidad y el resto de naturalidad se mantienen según los JSON en `results/sesgos`, `results/privacidad` y `results/naturalidad`.
+
+---
+
+## 8. Limitaciones estadísticas (experimento 07: comparación generado vs real)
+
+La comparación usa, **por cada una de varias métricas textuales** (p. ej. recuentos, longitudes, TTR), tests como **Kolmogorov–Smirnov (KS)** y **Mann–Whitney U**, y un ajuste **Bonferroni** porque se realizan **varias hipótesis a la vez** (una por característica). Eso es razonable como **análisis exploratorio** (“¿en qué dimensiones el sintético se desvía del corpus de referencia?”), pero conviene explicitar límites que un revisor puede señalar.
+
+### 8.1. Supuestos y naturaleza de las variables
+
+- **KS de dos muestras** está pensado para distribuciones continuas; muchas métricas del 07 son **discretas** (conteos) o presentan **empates frecuentes**. No implica que el uso sea siempre incorrecto, pero la interpretación clásica puede ser debatible.
+- **Mann–Whitney** a veces se describe como “comparación de medianas”; en rigor contrasta si una muestra tiende a dar valores **mayores** que la otra (**orden estocástico**). Si se interpreta como diferencia de medianas, las **formas** de las distribuciones deberían ser parecidas en lo posible.
+
+### 8.2. Múltiples comparaciones y Bonferroni
+
+- Al probar **varias características**, sube la probabilidad de obtener al menos un p “bajo” por azar si no se ajusta.
+- **Bonferroni** (dividir α entre el número de tests) es **conservador**: reduce falsos positivos a costa de **menor potencia** (más falsos negativos). Además, las métricas pueden estar **correlacionadas** (p. ej. recuentos de palabras y caracteres), y Bonferroni asume independencia aproximada entre contrastes. Alternativas que a veces piden los revisores: **control de FDR** (p. ej. Benjamini–Hochberg) o **pre-registrar** un subconjunto principal de hipótesis.
+
+### 8.3. Significación estadística vs relevancia práctica
+
+- Con **muestras grandes**, diferencias **pequeñas** pueden ser “significativas” en el sentido de p-valor sin ser **relevantes** para un uso clínico o lingüístico concreto.
+- Por eso es útil reportar **magnitud del efecto** además del p-valor. En el flujo del 07 ya aparece, donde aplica, **rank-biserial r** asociado a Mann–Whitney: ayuda a separar “diferencia detectada” de “diferencia sustancial”.
+- Las **diferencias relativas de medias/medianas** (%) aportan escala interpretable junto al contraste formal.
+
+### 8.4. Tamaño de muestra y diseño del corpus
+
+- Los tamaños **N** (generado) y **M** (real) condicionan la **potencia** y la interpretación: con N y M muy grandes, casi cualquier desajuste puede volverse significativo.
+- Si los dos corpus difieren en **género textual**, **fuente**, **periodo** o **tipo de documento** (p. ej. notas breves frente a informes largos), parte de la “diferencia” puede deberse al **diseño** del conjunto de referencia, no solo al hecho de ser sintético. Eso debe reconocerse al discutir los resultados.
+
+### 8.5. Párrafo modelo (Métodos / Discusión / Limitaciones)
+
+*Las comparaciones entre corpus generado y real son observacionales y exploratorias: los tests contrastan distribuciones de características superficiales del texto, no causalidad ni idoneidad clínica. Utilizamos KS y Mann–Whitney por característica y corregimos la inflación de tipo I con Bonferroni; reconocemos que este ajuste es conservador y que varias métricas pueden estar correlacionadas. Interpretamos la significación conjuntamente con medidas de magnitud (incl. rank-biserial donde aplica) y con el contexto de los corpus (origen, tipo de documento, tamaño muestral).*
+
+---
 
 *Documento actualizado con metodología, decisiones de diseño y resultados actuales para redacción del paper (Q1 informática/medicina).*

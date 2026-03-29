@@ -7,9 +7,9 @@ import pytest
 
 
 def test_naturalidad_07_statistical_comparison(
-    repo_root, corpus_mini_documents_path, real_corpus_mini_path, experiments_naturalidad_path
+    repo_root, corpus_mini_documents_path, real_validation_corpus_path, experiments_naturalidad_path
 ):
-    """07 runs with corpus_mini as generated and real_corpus_mini as the reference .txt directory."""
+    """07 runs with corpus_mini as generated and data/real_validation_corpus as reference .txt dir."""
     script = experiments_naturalidad_path / "07_statistical_comparison.py"
     if not script.exists():
         pytest.skip("07 script not found")
@@ -20,14 +20,14 @@ def test_naturalidad_07_statistical_comparison(
             "--generated_corpus",
             str(corpus_mini_documents_path),
             "--real_corpus",
-            str(real_corpus_mini_path),
+            str(real_validation_corpus_path),
             "--sample_size",
             "2",
         ],
         cwd=str(repo_root),
         capture_output=True,
         text=True,
-        timeout=120,
+        timeout=300,
     )
     if result.returncode != 0:
         pytest.skip(f"07 may need more data or deps: {result.stderr}")

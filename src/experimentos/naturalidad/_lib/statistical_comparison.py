@@ -195,7 +195,16 @@ def evaluate_statistical_comparison(
     print(f"\n2. Loading real corpus: {real_corpus_path}")
     real_texts = load_corpus(real_corpus_path)
     print(f"   Loaded {len(real_texts)} real documents")
-    
+
+    if not generated_texts:
+        raise ValueError(
+            f"No documents loaded from generated corpus (empty or unreadable): {generated_corpus_path}"
+        )
+    if not real_texts:
+        raise ValueError(
+            f"No documents loaded from real corpus (empty or unreadable): {real_corpus_path}"
+        )
+
     # Sample if requested
     if sample_size:
         import random

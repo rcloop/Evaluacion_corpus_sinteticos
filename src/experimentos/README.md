@@ -4,7 +4,7 @@ Numbered experiments for **bias (`sesgos`)**, **privacy (`privacidad`)**, and **
 
 Default paths are centralized in **`repo_paths.py`** at the repository root (`DEFAULT_SYNTHETIC_CORPUS_ROOT`, `DEFAULT_REAL_VALIDATION_DOCS_DIR`).
 
-**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** compares generated `.txt` files to the real-reference directory **`data/real_validation_corpus`** (create it with `scripts/generate_real_validation_corpus.py` or `corpus_repo/export_real_validation_corpus.py --output_dir <repo>/data/real_validation_corpus`).
+**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** compares generated `.txt` files to **`data/real_validation_corpus`**, which you must populate with **your** real validation `.txt` files (e.g. `corpus_repo/export_real_validation_corpus.py --output_dir <repo>/data/real_validation_corpus`). The script fails if that folder has no `.txt` files.
 
 **Single source of truth:** all evaluation code is under this tree. Each suite has a **`_lib/`** package (bias metrics; privacy attacks; naturalness metrics). The 23 experiment scripts use only these entry points and `_lib/`. Optional legacy copies may exist locally under `restos/` (gitignored).
 

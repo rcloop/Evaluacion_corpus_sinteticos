@@ -1,108 +1,27 @@
 {
   "metric": "1.6_diagnosis_condition_bias",
-  "timestamp_utc": "2026-03-08T20:30:16.298956+00:00",
+  "timestamp_utc": "2026-03-29T18:52:20.403590+00:00",
   "input_summary": {
-    "documents_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\documents",
+    "documents_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\test\\data\\corpus_mini\\documents",
     "reference_path": null,
     "top_k": 20,
-    "max_files": null,
+    "max_files": 2,
     "use_sections": true,
     "use_phrases": true,
-    "docs_seen": 14035,
-    "docs_with_diagnosis_extracted": 441,
-    "diagnosis_mentions_extracted": 623
+    "docs_seen": 2,
+    "docs_with_diagnosis_extracted": 0,
+    "diagnosis_mentions_extracted": 0
   },
   "overall": {
-    "n_unique": 435,
-    "n_total_mentions": 623,
+    "n_unique": 0,
+    "n_total_mentions": 0,
     "entropy": {
-      "entropy_bits": 8.182770062683705,
-      "normalized_entropy": 0.9335869873247624,
-      "support": 435
+      "entropy_bits": null,
+      "normalized_entropy": null,
+      "support": 0
     }
   },
-  "top_k": [
-    [
-      "PRESUNCION",
-      51
-    ],
-    [
-      "APENDICITIS AGUDA",
-      18
-    ],
-    [
-      "PROCESO NEUMONICO",
-      10
-    ],
-    [
-      "PRESUNCION INICIAL",
-      6
-    ],
-    [
-      "REFERENCIA",
-      6
-    ],
-    [
-      "COLELITIASIS",
-      6
-    ],
-    [
-      "SIN SIGNOS DE COMPLICACIONES AGUDAS",
-      6
-    ],
-    [
-      "SOSPECHA",
-      6
-    ],
-    [
-      "SU CARDIOPATIA DE BASE",
-      6
-    ],
-    [
-      "UNA INFECCION DE VIAS RESPIRATORIAS ALTAS",
-      5
-    ],
-    [
-      "SU EDAD",
-      5
-    ],
-    [
-      "UNA INFECCION RESPIRATORIA ALTA DE PROBABLE ETIOLOGIA VIRAL",
-      5
-    ],
-    [
-      "UN PROCESO INFECCIOSO DE VIAS RESPIRATORIAS ALTAS",
-      4
-    ],
-    [
-      "APENDICITIS AGUDA NO COMPLICADA",
-      4
-    ],
-    [
-      "UN PROCESO INFECCIOSO RESPIRATORIO ALTO",
-      4
-    ],
-    [
-      "SIN EVIDENCIA DE COMPLICACIONES AGUDAS",
-      4
-    ],
-    [
-      "UNA LUMBALGIA MECANICA AGUDA",
-      4
-    ],
-    [
-      "SEGUIMIENTO",
-      4
-    ],
-    [
-      "BASE",
-      4
-    ],
-    [
-      "UNA CEFALEA TENSIONAL EPISODICA",
-      3
-    ]
-  ],
+  "top_k": [],
   "js_divergence_bits": null,
   "reference_summary": {
     "provided": false,

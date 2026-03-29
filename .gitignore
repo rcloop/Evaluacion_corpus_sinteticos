@@ -1,5 +1,6 @@
 # Paths excluded from version control (corpus size / sensitivity)
 corpus/
+data/real_validation_corpus/
 corpus_repo/real_validation_corpus/
 corpus_repo/real_validation_set.json
 

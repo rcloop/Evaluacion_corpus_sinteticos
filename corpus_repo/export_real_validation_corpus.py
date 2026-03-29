@@ -5,8 +5,10 @@ Export real_validation_set.json to a directory of .txt files (real-only corpus).
 This corpus is used for comparative naturalness experiments (e.g. as --real_corpus
 in 07_statistical_comparison.py, or --human_corpus in 01_ai_detection.py).
 
-Usage (from repo root or corpus_repo):
-  python corpus_repo/export_real_validation_corpus.py [--output_dir corpus_repo/real_validation_corpus]
+Usage (from repo root):
+  python corpus_repo/export_real_validation_corpus.py [--output_dir data/real_validation_corpus]
+
+Default output matches repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR (experiment 07).
 
 Output: one .txt per document, filename = {id}.txt (e.g. 1.txt, 2.txt, ...).
 """
@@ -16,8 +18,9 @@ import json
 import sys
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
 DEFAULT_JSON = SCRIPT_DIR / "real_validation_set.json"
-DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "real_validation_corpus"
+DEFAULT_OUTPUT_DIR = REPO_ROOT / "data" / "real_validation_corpus"
 
 
 def export_corpus(json_path: Path, output_dir: Path) -> int:

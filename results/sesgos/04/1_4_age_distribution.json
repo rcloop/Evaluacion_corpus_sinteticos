@@ -1,16 +1,16 @@
 {
   "metric": "1.4_age_distribution",
-  "timestamp_utc": "2026-03-08T20:29:27.860677+00:00",
+  "timestamp_utc": "2026-03-29T18:52:20.014456+00:00",
   "input_summary": {
-    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\test\\data\\corpus_mini\\entidades",
     "age_labels": [
       "AGE_OF_SUBJECT",
       "EDAD_SUJETO_ASISTENCIA"
     ],
-    "max_files": null,
-    "docs_seen": 14035,
-    "ages_entities_seen": 3240,
-    "ages_parsed": 2804,
+    "max_files": 2,
+    "docs_seen": 2,
+    "ages_entities_seen": 0,
+    "ages_parsed": 0,
     "max_decade": 120
   },
   "histogram": {
@@ -32,13 +32,13 @@
     "counts": [
       0,
       0,
-      15,
-      11,
-      13,
-      20,
-      1763,
-      980,
-      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -47,42 +47,42 @@
     "percentages": [
       0.0,
       0.0,
-      0.5349500713266762,
-      0.39229671897289586,
-      0.463623395149786,
-      0.7132667617689016,
-      62.87446504992867,
-      34.950071326676174,
-      0.07132667617689016,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
-    "n": 2804
+    "n": 0
   },
   "entropy": {
-    "entropy_bits": 1.1169740891187834,
-    "normalized_entropy": 0.3978741983575471,
-    "support": 7
+    "entropy_bits": null,
+    "normalized_entropy": null,
+    "support": 0
   },
   "underrepresentation_checks": [
     {
       "bin": "80-89",
-      "percent": 0.07132667617689016,
-      "flag_underrepresented": true,
+      "percent": 0.0,
+      "flag_underrepresented": null,
       "threshold_percent": 5.0
     },
     {
       "bin": "90-99",
       "percent": 0.0,
-      "flag_underrepresented": true,
+      "flag_underrepresented": null,
       "threshold_percent": 5.0
     },
     {
       "bin": "120+",
       "percent": 0.0,
-      "flag_underrepresented": true,
+      "flag_underrepresented": null,
       "threshold_percent": 5.0
     }
   ]

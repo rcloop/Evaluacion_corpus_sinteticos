@@ -2,8 +2,9 @@
 Experiment 07 – Naturalness: statistical comparison (generated vs real reference texts).
 Outputs: results/naturalidad/07
 
-Requires a directory of real-reference .txt files (default: data/real_validation_corpus).
-Generate it with: python scripts/generate_real_validation_corpus.py
+Requires non-empty directories of .txt files for both sides (default real path:
+data/real_validation_corpus). There is no synthetic fallback—populate the real
+folder with your own validation export (see corpus_repo/export_real_validation_corpus.py).
 """
 from pathlib import Path
 import sys
@@ -42,10 +43,28 @@ if __name__ == "__main__":
     print(
         f"Experiment 07 – Statistical comparison. Generated: {args.generated_corpus} ({ng} docs) | Real: {args.real_corpus} ({nr} docs)"
     )
-    evaluate_statistical_comparison(
-        generated_corpus_path=args.generated_corpus,
-        real_corpus_path=args.real_corpus,
-        output_path=args.output_path,
-        sample_size=args.sample_size,
-    )
+    if ng < 1:
+        print(
+            f"Error: generated corpus has no .txt files: {g}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    if nr < 1:
+        print(
+            f"Error: real-reference corpus has no .txt files: {r}\n"
+            "Add your validation .txt files there (or pass --real_corpus). "
+            "This repo does not generate placeholder real data.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    try:
+        evaluate_statistical_comparison(
+            generated_corpus_path=args.generated_corpus,
+            real_corpus_path=args.real_corpus,
+            output_path=args.output_path,
+            sample_size=args.sample_size,
+        )
+    except ValueError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        sys.exit(1)
     print(f"Done. Results: {args.output_path}")

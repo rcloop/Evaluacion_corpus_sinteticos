@@ -1,6 +1,6 @@
 {
   "metric": "diversity_summary",
-  "timestamp_utc": "2026-03-08T20:32:46.735827+00:00",
+  "timestamp_utc": "2026-03-29T18:52:24.042329+00:00",
   "input_summary": {
     "path_1_3": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\03\\1_3_geographic_toponymic_bias.json",
     "path_1_5": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\05\\1_5_institution_bias.json",
@@ -8,19 +8,19 @@
   },
   "dimensions": {
     "geography": {
-      "variety": 21654,
-      "balance_normalized_entropy": 0.7914370567553708,
-      "entropy_bits": 6.730242813239926
+      "variety": 1,
+      "balance_normalized_entropy": null,
+      "entropy_bits": 0.0
     },
     "institutions": {
-      "variety": 10524,
-      "hhi": 0.02185023939778344,
-      "gini": 0.7618598619168744
+      "variety": 1,
+      "hhi": 1.0,
+      "gini": 0.0
     },
     "diagnosis": {
-      "variety": 435,
-      "balance_normalized_entropy": 0.9335869873247624,
-      "entropy_bits": 8.182770062683705
+      "variety": 0,
+      "balance_normalized_entropy": null,
+      "entropy_bits": null
     }
   },
   "description": "Variety = number of distinct categories; balance = normalized entropy (or HHI/Gini for institutions)."

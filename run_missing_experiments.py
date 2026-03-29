@@ -101,7 +101,7 @@ def main():
     corpus_root = Path(args.corpus_root).resolve() if args.corpus_root else None
     corpus_docs = Path(args.corpus_docs).resolve() if args.corpus_docs else None
     real_corpus = Path(args.real_corpus).resolve() if args.real_corpus else None
-    if real_corpus is not None and (not real_corpus.is_dir() or real_corpus == corpus_root):
+    if real_corpus is not None and real_corpus == corpus_root:
         real_corpus = None
 
     if corpus_docs is not None and not corpus_docs.is_dir():
@@ -126,6 +126,13 @@ def main():
         sys.exit(1)
 
     real_corpus_path = real_corpus
+    skipped_07_logged = False
+
+    def real_validation_txt_count() -> tuple[Path, int]:
+        p = real_corpus_path if real_corpus_path is not None else DEFAULT_REAL_VALIDATION_DOCS_DIR
+        n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+        return p, n
+
     cfg = {
         "docs_dir": docs_dir,
         "ents_dir": ents_dir,
@@ -164,8 +171,17 @@ def main():
                     to_run.append(("privacidad", script, build(cfg), result_path, script_name))
 
     for rel, script_name, build in NATURALIDAD_RESULTS:
-        if "07_statistical" in script_name and real_corpus_path is None:
-            continue
+        if "07_statistical" in script_name:
+            _rp, _n = real_validation_txt_count()
+            if _n < 1:
+                if not skipped_07_logged:
+                    print(
+                        f"Skipping naturalidad/07: need at least one .txt under {_rp} "
+                        "(populate with your real validation export).",
+                        flush=True,
+                    )
+                    skipped_07_logged = True
+                continue
         result_path = RESULTS / rel
         if args.force or not result_complete(result_path):
             script = NATURALIDAD / script_name

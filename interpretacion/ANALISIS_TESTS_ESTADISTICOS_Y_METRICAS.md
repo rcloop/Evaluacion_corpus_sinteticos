@@ -387,7 +387,7 @@ Las siguientes mejoras del análisis están ya implementadas y los resultados in
 - **Naturalidad:**  
   - **Diversity (05):** Calculado sobre **corpus completo** (14 035 documentos); Self-BLEU media 0,056; repetición frases 22,9%; distinct n-gramas reportados.  
   - **Coherence (06):** Media 0,322 con **mean_ci_95** [0,321; 0,323].  
-  - **Statistical comparison (07):** Corpus real **corpus_repo/real_validation_corpus** (500 documentos). Se comparan 6 características (word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, type_token_ratio). Para cada una: KS y Mann-Whitney; **Bonferroni** (α=0,0083) y **rank_biserial r**. Resultado: las 6 características difieren significativamente (generado más corto que real; oración más larga y TTR más alto en generado). Justificación para el paper: describir el origen de ambos corpus (notas breves vs informes largos) para interpretar las diferencias de longitud.
+  - **Statistical comparison (07):** Corpus real **data/real_validation_corpus** (500 documentos). Se comparan 6 características (word_count, sentence_count, avg_word_length, avg_sentence_length, char_count, type_token_ratio). Para cada una: KS y Mann-Whitney; **Bonferroni** (α=0,0083) y **rank_biserial r**. Resultado: las 6 características difieren significativamente (generado más corto que real; oración más larga y TTR más alto en generado). Justificación para el paper: describir el origen de ambos corpus (notas breves vs informes largos) para interpretar las diferencias de longitud.
 
 Los parámetros fijos (α, semillas, umbrales, métodos de IC) están documentados en **interpretacion/EVALUATION_PARAMETERS.md**.
 

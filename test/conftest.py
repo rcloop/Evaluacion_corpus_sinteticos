@@ -3,13 +3,17 @@ Pytest fixtures for experiment tests (privacy, bias, naturalness).
 
 A single minimal corpus (`corpus_mini`) backs all suites. Structure:
 `test/data/corpus_mini` with `documents/` (`.txt`) and `entidades/` (`.json`).
-Experiment 07 (statistical comparison) also needs a small real-style reference
-corpus: `test/data/real_corpus_mini`.
+Experiment 07 (statistical comparison) uses the same real-reference directory
+as production runs (`data/real_validation_corpus`); the test is skipped if it
+is missing or has no `.txt` files.
 """
+import sys
 import pytest
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR
 
 
 @pytest.fixture(scope="session")
@@ -34,14 +38,15 @@ def corpus_mini_documents_path(corpus_mini_path):
 
 
 @pytest.fixture(scope="session")
-def real_corpus_mini_path(repo_root):
-    """Small real-style corpus for experiment 07 (generated vs real). Required like other fixtures."""
-    p = repo_root / "test" / "data" / "real_corpus_mini"
-    assert p.exists(), (
-        f"Missing real_corpus_mini: {p}. "
-        "Create with: python scripts/generate_real_validation_corpus.py "
-        "--output_dir test/data/real_corpus_mini --num_docs 10"
-    )
+def real_validation_corpus_path(repo_root):
+    """Same path as experiment 07 default; skipped when no real .txt files are present."""
+    p = DEFAULT_REAL_VALIDATION_DOCS_DIR
+    n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+    if not p.is_dir() or n < 1:
+        pytest.skip(
+            f"Experiment 07 needs {p} with at least one .txt (found {n}). "
+            "Copy or export your real validation texts there; nothing is auto-generated."
+        )
     return p
 
 

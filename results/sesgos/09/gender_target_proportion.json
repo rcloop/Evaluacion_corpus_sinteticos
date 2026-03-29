@@ -1,18 +1,18 @@
 {
   "metric": "gender_target_proportion",
-  "timestamp_utc": "2026-03-08T20:30:55.717770+00:00",
+  "timestamp_utc": "2026-03-29T18:52:22.885327+00:00",
   "input_summary": {
     "annotations_path": null,
-    "max_files": null,
+    "max_files": 2,
     "target_fem": 0.5,
     "target_masc": 0.5,
     "target_other": 0.0,
     "max_abs_diff_threshold": 0.1
   },
   "observed": {
-    "fem": 0.669201046989904,
-    "masc": 0.330798953010096,
-    "other": 0.0
+    "fem": 0.25,
+    "masc": 0.25,
+    "other": 0.5
   },
   "target": {
     "fem": 0.5,
@@ -20,12 +20,12 @@
     "other": 0.0
   },
   "difference": {
-    "fem": 0.169201046989904,
-    "masc": -0.169201046989904,
-    "other": 0.0
+    "fem": -0.25,
+    "masc": -0.25,
+    "other": 0.5
   },
-  "l1_distance": 0.338402093979808,
-  "max_abs_difference": 0.169201046989904,
+  "l1_distance": 1.0,
+  "max_abs_difference": 0.5,
   "flag_exceeds_threshold": true,
-  "n": 8023
+  "n": 4
 }

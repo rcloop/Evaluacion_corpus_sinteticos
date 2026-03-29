@@ -1,6 +1,6 @@
 # Experiment tests (privacy, bias, naturalness)
 
-Tests for the synthetic-corpus evaluation scripts. A single **`corpus_mini`** drives privacy, bias, and naturalness smoke tests; experiment **07** additionally uses a small **`real_corpus_mini`** reference. The goal is **smoke coverage** (scripts exit successfully) plus light **structure / sanity** checks on produced JSON.
+Tests for the synthetic-corpus evaluation scripts. A single **`corpus_mini`** drives privacy, bias, and naturalness smoke tests; experiment **07** uses **`data/real_validation_corpus`** (same as a real run) and is **skipped** if that directory has no `.txt` files. The goal is **smoke coverage** where data exists, plus light **structure / sanity** checks on produced JSON.
 
 ## Design: no generator model access
 
@@ -16,17 +16,13 @@ If you later add **canaries** for membership inference, document them here.
 
 ## Test data
 
-The same minimal **`corpus_mini`** backs all suites: six documents under `documents/` and JSON entities under `entidades/`. Experiment **07** also requires **`real_corpus_mini`**.
+The same minimal **`corpus_mini`** backs all suites: six documents under `documents/` and JSON entities under `entidades/`. Experiment **07** uses **`data/real_validation_corpus/`** with at least one `.txt`; otherwise the 07 test is skipped.
 
 | Fixture | Path | Purpose |
 |---------|------|---------|
 | `corpus_mini_path` | `test/data/corpus_mini/` | Root: `documents/` (`.txt`) + `entidades/` (`.json`) |
 | `corpus_mini_documents_path` | `test/data/corpus_mini/documents/` | `.txt` only; naturalness 01–06 and generated side of 07 |
-| `real_corpus_mini_path` | `test/data/real_corpus_mini/` | Small real-style clinical `.txt` set for 07 (`--real_corpus`) |
-
-If `real_corpus_mini` is missing, generate a tiny set with:
-
-`python scripts/generate_real_validation_corpus.py --output_dir test/data/real_corpus_mini --num_docs 10`
+| `real_validation_corpus_path` | `data/real_validation_corpus/` | Real-reference `.txt` for 07; **skipped** if missing/empty |
 
 Tests do **not** assert production thresholds or generator quality—only successful runs and plausible JSON shapes.
 
@@ -60,4 +56,4 @@ pytest test/test_experimentos_naturalidad.py -v
 - **Smoke:** each script runs on the mini corpus with `returncode == 0`.
 - **Structure:** for bias 01 and privacy 01, JSON keys and basic ranges (proportions in `[0,1]`, AUC in `[0,1]`, valid `risk_level`).
 - **Naturalness 03:** vocabulary JSON exposes `corpus_level`, `document_level`, and numeric metrics.
-- **Fixtures:** `corpus_mini` and `real_corpus_mini` are **required**—missing data fails fast. Heavy optional deps (e.g. PyTorch, sentence-transformers) may trigger **skip** so the rest of the suite can run.
+- **Fixtures:** `corpus_mini` is **required**—missing data fails fast. **`real_validation_corpus`** is optional for the overall suite (07 skipped if absent). Heavy optional deps (e.g. PyTorch, sentence-transformers) may trigger **skip** so the rest of the suite can run.
