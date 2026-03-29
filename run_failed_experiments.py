@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Re-ejecuta solo los experimentos listados en results/failed_experiments.txt
-con el mismo corpus (completo). Úsalo después de corregir el código de los fallidos.
+Re-run only experiments listed in results/failed_experiments.txt using the same corpus layout.
 
-Uso: python run_failed_experiments.py [--corpus_root corpus_repo/corpus_v1]
+Usage: python run_failed_experiments.py [--corpus_root corpus_repo/corpus_v1]
 """
 import argparse
 import re
@@ -11,7 +10,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT
+
 SESGOS = REPO_ROOT / "src" / "experimentos" / "sesgos"
 PRIVACIDAD = REPO_ROOT / "src" / "experimentos" / "privacidad"
 NATURALIDAD = REPO_ROOT / "src" / "experimentos" / "naturalidad"
@@ -26,7 +26,6 @@ HEAVY_TIMEOUT_SCRIPTS = {
 
 
 def get_args_for(category: str, script_name: str, corpus: Path, docs_dir: Path, ents_dir: Path) -> list:
-    """Build argv for the script (without python -u script)."""
     corpus_str = str(corpus)
     docs_str = str(docs_dir)
     ents_str = str(ents_dir)
@@ -38,21 +37,18 @@ def get_args_for(category: str, script_name: str, corpus: Path, docs_dir: Path, 
         args = ["--corpus_path", corpus_str]
         if script_name in ("01_attribute_inference.py", "03_memorization_detection.py"):
             args.extend(["--annotations_path", ents_str])
-        # full corpus: no --max_docs for 03 (use all docs)
         return args
     if category == "naturalidad":
         if script_name == "01_ai_detection.py":
             return ["--generated_corpus", docs_str]
         if script_name == "07_statistical_comparison.py":
-            real_dir = REPO_ROOT / "corpus_repo" / "real_validation_corpus"
-            return ["--generated_corpus", docs_str, "--real_corpus", str(real_dir)]
-        # 02-06
+            return ["--generated_corpus", docs_str, "--real_corpus", str(DEFAULT_REAL_VALIDATION_DOCS_DIR)]
         return ["--corpus_path", docs_str]
     return []
 
 
 def main():
-    p = argparse.ArgumentParser(description="Re-ejecutar experimentos fallidos con corpus completo")
+    p = argparse.ArgumentParser(description="Re-run failed experiments from results/failed_experiments.txt")
     p.add_argument("--corpus_root", type=str, default="corpus_repo/corpus_v1")
     p.add_argument("--timeout", type=int, default=7200)
     p.add_argument("--timeout_heavy", type=int, default=14400)
@@ -61,15 +57,14 @@ def main():
     docs_dir = corpus / "documents"
     ents_dir = corpus / "entidades"
     if not corpus.is_dir() or not docs_dir.is_dir():
-        print(f"Error: corpus no encontrado: {corpus}")
+        print(f"Error: corpus not found: {corpus}")
         sys.exit(1)
 
     if not FAILED_LOG.exists():
-        print(f"No hay lista de fallidos: {FAILED_LOG}")
-        print("Ejecuta antes: python run_all_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus")
+        print(f"No failed list: {FAILED_LOG}")
+        print("Run first: python run_all_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus")
         sys.exit(0)
 
-    # Parse "suite script_name" lines (ignore stderr blocks)
     to_rerun = []
     with open(FAILED_LOG, encoding="utf-8") as f:
         for line in f:
@@ -79,20 +74,20 @@ def main():
                 to_rerun.append((m.group(1), m.group(2)))
 
     if not to_rerun:
-        print("No se encontraron líneas 'suite script.py' en failed_experiments.txt")
+        print("No 'suite script.py' lines found in failed_experiments.txt")
         sys.exit(0)
 
-    print(f"Re-ejecutando {len(to_rerun)} experimento(s) con corpus completo ...")
+    print(f"Re-running {len(to_rerun)} experiment(s) ...")
     script_dirs = {"sesgos": SESGOS, "privacidad": PRIVACIDAD, "naturalidad": NATURALIDAD}
     failed_again = []
     for category, script_name in to_rerun:
         script_dir = script_dirs.get(category)
         if not script_dir:
-            print(f"  Ignorado: categoría desconocida {category}")
+            print(f"  Skip: unknown category {category}")
             continue
         script = script_dir / script_name
         if not script.exists():
-            print(f"  Ignorado: no existe {script}")
+            print(f"  Skip: missing {script}")
             continue
         run_args = get_args_for(category, script_name, corpus, docs_dir, ents_dir)
         timeout = args.timeout_heavy if script_name in HEAVY_TIMEOUT_SCRIPTS else args.timeout
@@ -101,17 +96,17 @@ def main():
         r = subprocess.run(cmd, cwd=str(REPO_ROOT), capture_output=True, text=True, timeout=timeout)
         if r.returncode != 0:
             err = (r.stderr or r.stdout or "")[:500]
-            print(f"  FALLO: {err}", flush=True)
+            print(f"  FAIL: {err}", flush=True)
             failed_again.append((category, script_name))
         else:
-            print(f"  OK", flush=True)
+            print("  OK", flush=True)
 
     if failed_again:
-        print(f"\n--- Siguen fallando {len(failed_again)} ---")
+        print(f"\n--- Still failing: {len(failed_again)} ---")
         for c, n in failed_again:
             print(f"  {c} {n}")
         sys.exit(1)
-    print("\n--- Todos los re-ejecutados terminaron correctamente ---")
+    print("\n--- All re-runs finished successfully ---")
 
 
 if __name__ == "__main__":

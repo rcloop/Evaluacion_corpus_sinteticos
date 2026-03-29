@@ -2,7 +2,9 @@
 
 Numbered experiments for **bias (`sesgos`)**, **privacy (`privacidad`)**, and **naturalness (`naturalidad`)**. Each index has a matching folder under `results/<type>/<NN>`.
 
-**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** (statistical comparison) compares that synthetic corpus to the real reference corpus at **`data/real_validation_corpus`**.
+Default paths are centralized in **`repo_paths.py`** at the repository root (`DEFAULT_SYNTHETIC_CORPUS_ROOT`, `DEFAULT_REAL_VALIDATION_DOCS_DIR`).
+
+**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** compares generated `.txt` files to the real-reference directory **`data/real_validation_corpus`** (create it with `scripts/generate_real_validation_corpus.py` or `corpus_repo/export_real_validation_corpus.py --output_dir <repo>/data/real_validation_corpus`).
 
 **Single source of truth:** all evaluation code is under this tree. Each suite has a **`_lib/`** package (bias metrics; privacy attacks; naturalness metrics). The 23 experiment scripts use only these entry points and `_lib/`. Optional legacy copies may exist locally under `restos/` (gitignored).
 

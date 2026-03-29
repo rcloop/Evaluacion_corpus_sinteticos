@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Ejecuta la suite completa y, si hay fallos, re-ejecuta los experimentos fallidos
-con el corpus completo (una ronda de reintento).
+Run the full suite; if there are failures, re-run listed failed experiments once.
 
-Uso: python run_suite_then_retry.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
+Usage: python run_suite_then_retry.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
 """
 import argparse
 import subprocess
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent
+from repo_paths import REPO_ROOT
+
 FAILED_LOG = REPO_ROOT / "results" / "failed_experiments.txt"
 
 
 def main():
-    p = argparse.ArgumentParser(description="Suite completa y luego reintento de fallidos")
+    p = argparse.ArgumentParser(description="Full suite then one retry pass for failures")
     p.add_argument("--corpus_root", type=str, default="corpus_repo/corpus_v1")
     p.add_argument("--full_corpus", action="store_true")
     args = p.parse_args()
@@ -23,10 +23,10 @@ def main():
     if args.full_corpus:
         argv.append("--full_corpus")
 
-    print("=== Ejecutando suite completa ===\n")
+    print("=== Running full suite ===\n")
     r = subprocess.run([sys.executable, "-u"] + argv, cwd=str(REPO_ROOT))
     if r.returncode != 0 and FAILED_LOG.exists():
-        print("\n=== Re-ejecutando experimentos fallidos (corpus completo) ===\n")
+        print("\n=== Re-running failed experiments ===\n")
         r2 = subprocess.run(
             [sys.executable, "-u", str(REPO_ROOT / "run_failed_experiments.py"), "--corpus_root", args.corpus_root],
             cwd=str(REPO_ROOT),

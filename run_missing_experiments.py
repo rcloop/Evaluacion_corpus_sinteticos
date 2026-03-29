@@ -1,36 +1,34 @@
 #!/usr/bin/env python3
 """
-Run only experiments that do not yet have a complete result (full corpus).
-All experiments use corpus_repo/corpus_v1 (documents/ + entidades/). Experiment 07 compares
-that corpus (generated) with the real corpus data/real_validation_corpus.
+Run only experiments that do not yet have a complete result file.
+All suites use corpus_repo/corpus_v1 (documents/ + entidades/) by default.
+Experiment 07 compares generated texts to the real-reference directory (default: data/real_validation_corpus).
 
 Usage:
   python run_missing_experiments.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
   python run_missing_experiments.py --force  # re-run all (overwrite)
 
-  --corpus_root: corpus sintético (documents/ y entidades/). Default: corpus_repo/corpus_v1.
-  --corpus_docs: override documents directory only (if set without corpus_root, only naturalidad 01-06 run).
-  --real_corpus: corpus real para el exp 07 (comparación con corpus_v1). Default: data/real_validation_corpus.
-  --full_corpus: no sampling (sample_size=0, max_docs=0).
-  --force: re-run even if result exists (overwrite).
+  --corpus_root: synthetic annotated corpus. Default: corpus_repo/corpus_v1
+  --corpus_docs: documents directory only (if set without corpus_root, only naturalness 01–06 run)
+  --real_corpus: real-reference .txt directory for exp 07. Default: data/real_validation_corpus
+  --full_corpus: no sampling (sample_size=0 / max_docs=0 where applicable)
+  --force: re-run even if a non-empty result exists
 """
 import argparse
 import subprocess
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT
+
 RESULTS = REPO_ROOT / "results"
 SESGOS = REPO_ROOT / "src" / "experimentos" / "sesgos"
 PRIVACIDAD = REPO_ROOT / "src" / "experimentos" / "privacidad"
 NATURALIDAD = REPO_ROOT / "src" / "experimentos" / "naturalidad"
 
-HEAVY_TIMEOUT = 14400  # 4h for perplexity, memorization, WEAT, coherence
-NORMAL_TIMEOUT = 7200  # 2h
+HEAVY_TIMEOUT = 14400
+NORMAL_TIMEOUT = 7200
 
-
-# (result_path relative to results/, script path, args builder)
-# args_builder(cfg) -> list of str. cfg has: docs_dir, ents_dir, corpus_root, full_corpus, has_entidades
 SESGO_RESULTS = [
     ("sesgos/01/1_1_name_gender_distribution.json", "01_name_gender_distribution.py", lambda c: ["--corpus_root", str(c["corpus_root"])]),
     ("sesgos/02/1_2_role_profession_gender_bias.json", "02_role_profession_gender_bias.py", lambda c: ["--corpus_root", str(c["corpus_root"])]),
@@ -53,7 +51,6 @@ PRIVACIDAD_RESULTS = [
     ("privacidad/03/memorization_detection.json", "03_memorization_detection.py", lambda c: ["--corpus_path", str(c["corpus_root"]), "--annotations_path", str(c["ents_dir"])]),
 ]
 
-# Naturalidad 01-06: usan docs_dir (corpus_v1/documents). 07 solo si real_corpus_path está definido y distinto de docs_dir.
 NATURALIDAD_RESULTS = [
     ("naturalidad/01/ai_detection_results.json", "01_ai_detection.py", lambda c: ["--generated_corpus", str(c["docs_dir"])]),
     ("naturalidad/02/perplexity_results.json", "02_perplexity.py", lambda c: ["--corpus_path", str(c["docs_dir"])] + (["--sample_size", "0"] if c["full_corpus"] else [])),
@@ -75,11 +72,27 @@ def result_complete(result_path: Path) -> bool:
 
 
 def main():
-    p = argparse.ArgumentParser(description="Run only experiments that don't have a complete result (full corpus).")
-    p.add_argument("--corpus_root", type=str, default="corpus_repo/corpus_v1", help="Corpus sintético anotado (documents/ y entidades/). Default: corpus_repo/corpus_v1")
-    p.add_argument("--corpus_docs", type=str, default=None, help="Documents directory only (e.g. real_validation_corpus). If set without corpus_root, only naturalidad runs.")
-    p.add_argument("--real_corpus", type=str, default="data/real_validation_corpus", help="Corpus real para exp 07 (comparación con corpus_v1). Default: data/real_validation_corpus")
-    p.add_argument("--full_corpus", action="store_true", help="No sampling: perplexity/memorization/diversity sample_size or max_docs = 0")
+    default_real = DEFAULT_REAL_VALIDATION_DOCS_DIR.relative_to(REPO_ROOT).as_posix()
+    p = argparse.ArgumentParser(description="Run experiments that lack a complete result file.")
+    p.add_argument(
+        "--corpus_root",
+        type=str,
+        default="corpus_repo/corpus_v1",
+        help="Synthetic annotated corpus (documents/ + entidades/). Default: corpus_repo/corpus_v1",
+    )
+    p.add_argument(
+        "--corpus_docs",
+        type=str,
+        default=None,
+        help="Documents directory only. If set without corpus_root, only naturalness runs.",
+    )
+    p.add_argument(
+        "--real_corpus",
+        type=str,
+        default=default_real,
+        help=f"Real-reference .txt directory for exp 07. Default: {default_real}",
+    )
+    p.add_argument("--full_corpus", action="store_true", help="No sampling (full data)")
     p.add_argument("--force", action="store_true", help="Re-run even if result exists")
     p.add_argument("--timeout", type=int, default=NORMAL_TIMEOUT)
     p.add_argument("--timeout_heavy", type=int, default=HEAVY_TIMEOUT)
@@ -89,17 +102,16 @@ def main():
     corpus_docs = Path(args.corpus_docs).resolve() if args.corpus_docs else None
     real_corpus = Path(args.real_corpus).resolve() if args.real_corpus else None
     if real_corpus is not None and (not real_corpus.is_dir() or real_corpus == corpus_root):
-        real_corpus = None  # 07 se omite si la ruta no existe o coincide con el corpus generado
+        real_corpus = None
 
     if corpus_docs is not None and not corpus_docs.is_dir():
-        print(f"Error: corpus_docs no existe o no es directorio: {corpus_docs}", file=sys.stderr)
+        print(f"Error: corpus_docs is not a directory: {corpus_docs}", file=sys.stderr)
         sys.exit(1)
 
     if corpus_root is not None and not corpus_root.is_dir():
-        print(f"Error: corpus_root no existe o no es directorio: {corpus_root}", file=sys.stderr)
+        print(f"Error: corpus_root is not a directory: {corpus_root}", file=sys.stderr)
         sys.exit(1)
 
-    # Resolve docs_dir and ents_dir
     if corpus_root is not None:
         docs_dir = (corpus_root / "documents") if (corpus_root / "documents").is_dir() else corpus_root
         ents_dir = corpus_root / "entidades"
@@ -110,10 +122,9 @@ def main():
         has_entidades = False
 
     if docs_dir is None:
-        print("Error: indique --corpus_root o --corpus_docs", file=sys.stderr)
+        print("Error: pass --corpus_root or --corpus_docs", file=sys.stderr)
         sys.exit(1)
 
-    # Experiment 07: generated = corpus_v1/documents, real = data/real_validation_corpus (si existe)
     real_corpus_path = real_corpus
     cfg = {
         "docs_dir": docs_dir,
@@ -131,7 +142,6 @@ def main():
 
     to_run = []
 
-    # Sesgos: need corpus_root and entidades
     if corpus_root is not None and has_entidades:
         for rel, script_name, build in SESGO_RESULTS:
             result_path = RESULTS / rel
@@ -141,11 +151,10 @@ def main():
                     to_run.append(("sesgos", script, build(cfg), result_path, script_name))
     else:
         if corpus_root is None:
-            print("Sesgos omitidos (falta --corpus_root con documents/ y entidades/)")
+            print("Skipping bias: need --corpus_root with documents/ and entidades/")
         else:
-            print("Sesgos omitidos (falta entidades/ en corpus_root)")
+            print("Skipping bias: entidades/ missing under corpus_root")
 
-    # Privacidad: mismo corpus que sesgos (corpus_root con documents/ y entidades/)
     if corpus_root is not None and has_entidades:
         for rel, script_name, build in PRIVACIDAD_RESULTS:
             result_path = RESULTS / rel
@@ -154,10 +163,9 @@ def main():
                 if script.exists():
                     to_run.append(("privacidad", script, build(cfg), result_path, script_name))
 
-    # Naturalidad: 01-06 use docs_dir; 07 solo si hay real_corpus_path (p. ej. data/real_validation_corpus)
     for rel, script_name, build in NATURALIDAD_RESULTS:
         if "07_statistical" in script_name and real_corpus_path is None:
-            continue  # 07 se omite si la ruta al corpus real no existe
+            continue
         result_path = RESULTS / rel
         if args.force or not result_complete(result_path):
             script = NATURALIDAD / script_name
@@ -165,10 +173,10 @@ def main():
                 to_run.append(("naturalidad", script, build(cfg), result_path, script_name))
 
     if not to_run:
-        print("No hay experimentos pendientes (todos tienen resultado completo). Use --force para re-ejecutar.")
+        print("No pending experiments (all results present). Use --force to re-run.")
         return
 
-    print(f"Ejecutando {len(to_run)} experimento(s) sin resultado completo (full_corpus={args.full_corpus})...\n")
+    print(f"Running {len(to_run)} experiment(s) (full_corpus={args.full_corpus})...\n")
     failed = []
     for kind, script, run_args, result_path, script_name in to_run:
         to = get_timeout(script_name)
@@ -176,17 +184,17 @@ def main():
         r = run(script, run_args, timeout=to)
         if r.returncode != 0:
             err = (r.stderr or r.stdout or "")[:600]
-            print(f"  FALLO: {err}", flush=True)
+            print(f"  FAIL: {err}", flush=True)
             failed.append((kind, script_name, r))
         else:
             print(f"  OK -> {result_path}", flush=True)
 
     if failed:
-        print(f"\n--- {len(failed)} experimento(s) fallaron ---")
+        print(f"\n--- {len(failed)} experiment(s) failed ---")
         for k, n, _ in failed:
             print(f"  {k} {n}")
         sys.exit(1)
-    print("\n--- Todos los experimentos pendientes terminaron correctamente ---")
+    print("\n--- All pending experiments finished successfully ---")
 
 
 if __name__ == "__main__":

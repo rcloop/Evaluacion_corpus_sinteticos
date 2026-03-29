@@ -1,10 +1,9 @@
-# Synthetic v1 corpus is tracked under corpus_repo/corpus_v1/.
-# Real validation export at repo root policy (also see corpus_repo/.gitignore).
+# Paths excluded from version control (corpus size / sensitivity)
 corpus/
 corpus_repo/real_validation_corpus/
 corpus_repo/real_validation_set.json
+
 # Avoid a global *.txt rule: it hides test fixtures under test/data/**/*.txt.
-# Local run logs under results/ (not metric JSON)
 results/**/*.txt
 
 # Python
@@ -22,10 +21,19 @@ privacy_evaluation_results/
 *.json
 !package.json
 !tsconfig.json
-# Allow listed JSON trees only (global *.json hides everything else)
 !results/**/*.json
 !test/data/**/*.json
 !corpus_repo/corpus_v1/**/*.json
+
+# Large / optional JSON under corpus_v1 (overrides line above; keep documents + entidades tracked)
+corpus_repo/corpus_v1/train_set.json
+corpus_repo/corpus_v1/ner_dataset.json
+corpus_repo/corpus_v1/validation_set.json
+corpus_repo/corpus_v1/validation_set_ids.json
+corpus_repo/corpus_v1/overexpression_analysis.json
+corpus_repo/corpus_v1/entity_text_counts.json
+corpus_repo/corpus_v1/real_validation_set.json
+corpus_repo/corpus_v1/validation_results/
 
 # IDEs
 .vscode/
@@ -48,7 +56,5 @@ corpus_repo_old_backup/
 # Bibliography / reference (local)
 bibliography/
 
-# Legacy suite snapshots (local only; do not push)
+# Legacy suite snapshots (local only)
 restos/
-
-interpretacion/
