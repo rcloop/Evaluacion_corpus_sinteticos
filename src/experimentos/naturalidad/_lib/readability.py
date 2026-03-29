@@ -15,11 +15,17 @@ try:
     import nltk
     from nltk.tokenize import word_tokenize, sent_tokenize
     NLTK_AVAILABLE = True
+    # NLTK >= 3.8.2 needs punkt_tab for word_tokenize; punkt kept for older layouts.
     try:
-        nltk.data.find('tokenizers/punkt')
+        nltk.data.find("tokenizers/punkt_tab")
+    except LookupError:
+        print("[INFO] Downloading NLTK punkt_tab tokenizer...")
+        nltk.download("punkt_tab", quiet=True)
+    try:
+        nltk.data.find("tokenizers/punkt")
     except LookupError:
         print("[INFO] Downloading NLTK punkt tokenizer...")
-        nltk.download('punkt', quiet=True)
+        nltk.download("punkt", quiet=True)
 except ImportError:
     NLTK_AVAILABLE = False
     print("[WARNING] NLTK not available. Using simple tokenization.")

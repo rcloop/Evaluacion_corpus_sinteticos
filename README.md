@@ -27,7 +27,7 @@ Global `*.json` in `.gitignore` is relaxed for **`results/`**, **`test/data/`**,
 
 ### Experiment 07 (generated vs real)
 
-Default real side: **`data/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). Experiment **07** exits with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback.
+Default real side: **`data/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). Experiment **07** exits with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback. Discovery is **recursive**; extension match is **case-insensitive** (`.txt` / `.TXT`).
 
 1. **Use your own files** – Copy or sync your real validation `.txt` files into `data/real_validation_corpus/` (local only; see `.gitignore`).
 

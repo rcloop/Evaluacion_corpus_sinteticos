@@ -11,7 +11,7 @@ import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
-from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, count_txt_documents_under_dir
 
 OUTPUT_DIR = REPO_ROOT / "results" / "naturalidad" / "07"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -38,8 +38,8 @@ if __name__ == "__main__":
     if not r.is_dir():
         print(f"Error: real corpus missing or not a directory: {r}", file=sys.stderr)
         sys.exit(1)
-    ng = len(list(g.glob("*.txt"))) if g.is_dir() else 0
-    nr = len(list(r.glob("*.txt"))) if r.is_dir() else 0
+    ng = count_txt_documents_under_dir(g) if g.is_dir() else 0
+    nr = count_txt_documents_under_dir(r) if r.is_dir() else 0
     print(
         f"Experiment 07 – Statistical comparison. Generated: {args.generated_corpus} ({ng} docs) | Real: {args.real_corpus} ({nr} docs)"
     )

@@ -20,10 +20,15 @@ try:
     NLTK_AVAILABLE = True
     try:
         import nltk
-        nltk.data.find('tokenizers/punkt')
+        nltk.data.find("tokenizers/punkt_tab")
+    except LookupError:
+        print("[INFO] Downloading NLTK punkt_tab tokenizer...")
+        nltk.download("punkt_tab", quiet=True)
+    try:
+        nltk.data.find("tokenizers/punkt")
     except LookupError:
         print("[INFO] Downloading NLTK punkt tokenizer...")
-        nltk.download('punkt', quiet=True)
+        nltk.download("punkt", quiet=True)
 except ImportError:
     NLTK_AVAILABLE = False
     print("[WARNING] NLTK not available. Using simple tokenization.")
@@ -40,7 +45,12 @@ def load_corpus(corpus_path: str) -> List[str]:
     texts = []
     
     if os.path.isdir(corpus_path):
-        files = sorted(Path(corpus_path).glob("*.txt"))
+        root = Path(corpus_path)
+        files = sorted(
+            p
+            for p in root.rglob("*")
+            if p.is_file() and p.suffix.lower() == ".txt"
+        )
         for file_path in tqdm(files, desc="Statistical comparison (documents)", unit="doc"):
             with open(file_path, 'r', encoding='utf-8') as f:
                 texts.append(f.read().strip())

@@ -32,6 +32,8 @@ def test_naturalidad_07_statistical_comparison(
         text=True,
         timeout=300,
     )
-    if result.returncode != 0:
-        pytest.skip(f"07 may need more data or deps: {result.stderr}")
+    assert result.returncode == 0, (
+        f"07_statistical_comparison failed (fix real/generated paths and deps). "
+        f"stderr={result.stderr!r} stdout={result.stdout!r}"
+    )
     assert out.exists() and out.stat().st_size > 0

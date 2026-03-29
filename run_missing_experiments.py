@@ -19,7 +19,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT, count_txt_documents_under_dir
 
 RESULTS = REPO_ROOT / "results"
 SESGOS = REPO_ROOT / "src" / "experimentos" / "sesgos"
@@ -130,7 +130,7 @@ def main():
 
     def real_validation_txt_count() -> tuple[Path, int]:
         p = real_corpus_path if real_corpus_path is not None else DEFAULT_REAL_VALIDATION_DOCS_DIR
-        n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+        n = count_txt_documents_under_dir(p) if p.is_dir() else 0
         return p, n
 
     cfg = {

@@ -13,7 +13,21 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
-from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR
+from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, count_txt_documents_under_dir
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _ensure_nltk_punkt_resources():
+    """NLTK 3.8.2+ needs punkt_tab for word_tokenize; CI has no ~/.nltk_data by default."""
+    try:
+        import nltk
+    except ImportError:
+        return
+    for pkg in ("punkt_tab", "punkt"):
+        try:
+            nltk.download(pkg, quiet=True)
+        except Exception:
+            pass
 
 
 @pytest.fixture(scope="session")
@@ -40,12 +54,13 @@ def corpus_mini_documents_path(corpus_mini_path):
 @pytest.fixture(scope="session")
 def real_validation_corpus_path(repo_root):
     """Same path as experiment 07 default; skipped when no real .txt files are present."""
-    p = DEFAULT_REAL_VALIDATION_DOCS_DIR
-    n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
+    p = DEFAULT_REAL_VALIDATION_DOCS_DIR.resolve()
+    n = count_txt_documents_under_dir(p)
     if not p.is_dir() or n < 1:
         pytest.skip(
-            f"Experiment 07 needs {p} with at least one .txt (found {n}). "
-            "Copy or export your real validation texts there; nothing is auto-generated."
+            f"Experiment 07 needs {p} with at least one .txt (.txt/.TXT, any subfolder) "
+            f"(found {n}). Copy or export your real validation texts there, or pass "
+            f"--real_corpus when running the script from another directory."
         )
     return p
 
