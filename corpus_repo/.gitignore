@@ -48,7 +48,7 @@ models/
 step*_verification_summary.json
 step*_localization_metadata.json
 
-# Directorios de datos sensibles/grandes
+# Sensitive or large data directories
 correccion_carmina/
 docs_revisar/
 corpus/anonymized_documents/
@@ -56,7 +56,7 @@ corpus/doc_griegos/
 corpus/entidades/
 corpus/validation_results/
 
-# Resultados de análisis y caché (opcional - descomentar si no quieres subir resultados)
+# Analysis outputs and cache (optional)
 cache_analysis/
 cache/
 *.pkl

@@ -1,62 +1,59 @@
-# Evaluacion_corpus_sinteticos
+# Synthetic corpus evaluation
 
-Evaluación de corpus sintéticos: sesgo (bias), privacidad y naturalidad sobre textos clínicos.
+Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **text naturalness**.
 
-## Estructura
+## Layout
 
-- **`src/`** – Código fuente de la suite
-  - **`experimentos/`** – Punto de entrada para las evaluaciones numeradas:
-    - **`sesgos/`** – scripts `01`…`13` (una métrica por archivo) y **`_lib/`** (lógica compartida de sesgo)
-    - **`privacidad/`** – scripts `01`…`03` y **`_lib/`** (attribute / membership / memorization)
-    - **`naturalidad/`** – scripts `01`…`07` y **`_lib/`** (perplexity, coherencia, legibilidad, etc.)
-  - **`utils/`** – Utilidades compartidas (opcional; ver carpeta)
-  - **`models/`** – Referencias o artefactos relacionados con modelos, si los hay
-- **`test/`** – Tests pytest y datos mínimos (`test/data/`)
-- **`corpus_repo/corpus_v1/`** – Corpus sintético versionado (textos en `documents/`, anotaciones en `entidades/`). El corpus de validación **real** bajo `corpus_repo/real_validation_corpus/` no se incluye en git (ver `.gitignore`).
-- **`data/`** – Datos de referencia adicionales (por ejemplo muestras o lexicones pequeños)
-- **`results/`** – **Salidas numéricas** de los experimentos (JSON, etc.; ver siguiente apartado)
-- **`interpretacion/`** – Textos de interpretación y apoyo al paper (Markdown); **no se versiona** (`.gitignore`).
-- **`scripts/`** – Scripts auxiliares (preparación de datos, utilidades)
-- **`restos/`** (opcional, **no se versiona**) – Si mantienes copias locales de suites antiguas (`bias_evaluation`, `privacy_evaluation`), colócalas aquí; está listada en `.gitignore` y no se sube a GitHub.
-- **Raíz** – `requirements.txt`, y opcionalmente `run.ps1` / `run_*.py` para orquestar ejecuciones
+- **`src/`** – Source code
+  - **`experimentos/`** – Numbered entry-point scripts:
+    - **`sesgos/`** – scripts `01`…`13` (one metric per file) and **`_lib/`** (shared bias logic)
+    - **`privacidad/`** – scripts `01`…`03` and **`_lib/`** (attribute / membership / memorization)
+    - **`naturalidad/`** – scripts `01`…`07` and **`_lib/`** (perplexity, coherence, readability, etc.)
+  - **`utils/`** – Shared helpers (optional; see folder)
+  - **`models/`** – Model-related references or assets, if any
+- **`test/`** – Pytest suite and minimal data under `test/data/`
+- **`corpus_repo/corpus_v1/`** – Versioned synthetic corpus (`documents/` + `entidades/`). The real validation tree under `corpus_repo/real_validation_corpus/` is not tracked (see `.gitignore`).
+- **`data/`** – Additional reference data (small samples, lexicons, etc.)
+- **`results/`** – Experiment outputs (JSON and similar; see below)
+- **`scripts/`** – Auxiliary scripts (data prep, utilities)
+- **`restos/`** (optional, **untracked**) – Local snapshots of legacy suites; listed in `.gitignore` and not pushed
+- **Repo root** – `requirements.txt`, plus optional `run.ps1` / `run_*.py` orchestration
 
-La lógica de evaluación vive bajo **`src/experimentos/`** y sus **`_lib/`**; no hace falta otra carpeta de suite bajo `src/` para ejecutar los experimentos.
+All evaluation logic lives under **`src/experimentos/`** and the per-suite **`_lib/`** folders.
 
-### Dónde van los resultados (`results/`)
+### Outputs (`results/`)
 
-Convención del proyecto: **escribir siempre bajo `results/` en la raíz del repositorio**, no bajo `src/`:
+Write outputs under **`results/`** at the repo root, not under `src/`:
 
 - `results/sesgos/01` … `13`
 - `results/privacidad/01` … `03`
 - `results/naturalidad/01` … `07`
 
-**Motivo:** `src/` debe contener **código** (módulos y scripts). Los JSON, logs y tablas generadas son **artefactos**; mantenerlos en `results/` en la raíz evita mezclarlos con paquetes Python y simplifica `.gitignore` y la reproducción de experimentos.
+`src/` should hold **code** only. JSON, logs, and generated artifacts belong in **`results/`**.
 
-Los resultados por experimento existen **una sola vez**, bajo `results/` en la raíz (no bajo `src/`).
+A global `*.json` rule exists in `.gitignore`, but **`results/`**, **`test/data/`**, and **`corpus_repo/corpus_v1/`** JSON paths are **tracked** so clones get metrics and annotation fixtures. **`test/data/`** and synthetic **`corpus_v1`** `.txt` files are tracked; `results/**/*.txt` log files are ignored.
 
-La **interpretación** (textos para paper, notas) es **manual** y puede vivir en **`interpretacion/`** (local, `.gitignore`). El repo publica **resultados planos** bajo `results/` (p. ej. JSON de métricas). En `.gitignore`, `*.json` es global por defecto, pero **sí se versionan** los JSON de **`results/`**, **`test/data/`** y **`corpus_repo/corpus_v1/entidades/`**. Los **`.txt`** de **`test/data/`** y del **corpus sintético v1** se versionan; los `.txt` tipo log bajo `results/` se ignoran.
-
-## Requisitos
+## Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Incluye **PyTorch** y **transformers** (para naturalidad: perplexity 02, AI detection opcional) y **sentence-transformers** (coherencia 06, memorization semántica). Si falla la instalación de `torch`, prueba primero: `pip install torch` y luego el resto.
+Includes **PyTorch**, **transformers** (naturalness: perplexity 02, optional AI detection), and **sentence-transformers** (coherence 06, semantic memorization). If `torch` fails to install, try `pip install torch` first, then the rest.
 
-**Usar GPU (NVIDIA CUDA):** por defecto `pip install -r requirements.txt` puede instalar PyTorch solo CPU. Para usar la GPU en perplexity, coherence, memorization y AI detection, instala PyTorch con CUDA y luego el resto:
+**NVIDIA GPU:** the default install may be CPU-only. For GPU on perplexity, coherence, memorization, and AI detection:
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install -r requirements.txt
 ```
 
-(ajusta `cu124` a tu versión de CUDA si hace falta; ver [pytorch.org](https://pytorch.org)). Comprobar: `python -c "import torch; print(torch.cuda.is_available())"`.
+Adjust `cu124` to your CUDA stack if needed; see [pytorch.org](https://pytorch.org). Check with: `python -c "import torch; print(torch.cuda.is_available())"`.
 
-**Tests:** las mismas dependencias cubren `pytest` y la ejecución de `test/`.
+**Tests:** the same stack covers `pytest` and `test/`.
 
-## Uso
+## Usage
 
-- **Experimentos numerados:** ver `src/experimentos/README.md`. Ejemplo:  
-  `python src/experimentos/sesgos/01_name_gender_distribution.py --corpus_root <ruta>`  
-  Cada script escribe **salidas planas** (p. ej. JSON) en `results/<tipo>/<NN>/`; no hay generadores automáticos de textos interpretativos en el código.
+- **Numbered experiments:** see `src/experimentos/README.md`. Example:  
+  `python src/experimentos/sesgos/01_name_gender_distribution.py --corpus_root <path>`  
+  Each script writes flat outputs (e.g. JSON) under `results/<suite>/<NN>/`.

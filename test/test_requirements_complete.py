@@ -1,8 +1,8 @@
 """
-Verificación de que todas las dependencias (requirements) están instaladas y completas.
+Ensure declared requirements are importable and `_lib/` layouts are complete.
 
-Corresponde a: requirements.txt (raíz) y a la estructura de experimentos (_lib).
-Ejecutar: pytest test/test_requirements_complete.py -v
+See root `requirements.txt` and `src/experimentos/*/_lib/`.
+Run: pytest test/test_requirements_complete.py -v
 """
 import sys
 from pathlib import Path
@@ -11,7 +11,6 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-# Paquetes requeridos: nombre para pip/requirements.txt -> nombre del módulo al importar
 REQUIRED_PACKAGES = [
     ("numpy", "numpy"),
     ("scipy", "scipy"),
@@ -28,36 +27,34 @@ REQUIRED_PACKAGES = [
 
 @pytest.mark.parametrize("package_name,import_name", REQUIRED_PACKAGES)
 def test_requirement_importable(package_name: str, import_name: str) -> None:
-    """Cada paquete listado en requirements debe ser importable."""
+    """Every pinned package should import."""
     if package_name == "nltk":
         try:
             __import__(import_name)
         except ImportError:
             pytest.skip(
-                "nltk no instalado (opcional para algunos experimentos). "
-                "Instalar con: pip install nltk"
+                "nltk not installed (optional for some experiments). "
+                "Install with: pip install nltk"
             )
         return
     try:
         __import__(import_name)
     except ImportError as e:
         pytest.fail(
-            f"Falta el paquete '{package_name}'. "
-            f"Instalar con: pip install {package_name}\n"
+            f"Missing package '{package_name}'. "
+            f"Install with: pip install {package_name}\n"
             f"Error: {e}"
         )
 
 
 def test_python_version() -> None:
-    """Python >= 3.8 requerido para compatibilidad con torch/transformers."""
+    """Python >= 3.8 for torch/transformers compatibility."""
     assert sys.version_info >= (3, 8), (
-        "Se requiere Python >= 3.8. Actual: {}.{}".format(
+        "Python >= 3.8 required. Current: {}.{}".format(
             sys.version_info.major, sys.version_info.minor
         )
     )
 
-
-# --- Estructura _lib (experimentos autocontenidos) ---
 
 SESGOS_LIB_MODULES = [
     "name_gender_distribution",
@@ -94,53 +91,51 @@ NATURALIDAD_LIB_MODULES = [
 
 
 def test_sesgos_lib_complete() -> None:
-    """Todos los módulos de sesgos/_lib deben existir."""
+    """All expected `sesgos/_lib` modules exist."""
     lib_dir = REPO_ROOT / "src" / "experimentos" / "sesgos" / "_lib"
-    assert lib_dir.is_dir(), f"No existe {lib_dir}"
+    assert lib_dir.is_dir(), f"Missing {lib_dir}"
     missing = [m + ".py" for m in SESGOS_LIB_MODULES if not (lib_dir / f"{m}.py").is_file()]
-    assert not missing, f"Faltan en sesgos/_lib: {missing}"
+    assert not missing, f"Missing in sesgos/_lib: {missing}"
 
 
 def test_privacidad_lib_complete() -> None:
-    """Todos los módulos de privacidad/_lib deben existir."""
+    """All expected `privacidad/_lib` modules exist."""
     lib_dir = REPO_ROOT / "src" / "experimentos" / "privacidad" / "_lib"
-    assert lib_dir.is_dir(), f"No existe {lib_dir}"
+    assert lib_dir.is_dir(), f"Missing {lib_dir}"
     missing = [m + ".py" for m in PRIVACIDAD_LIB_MODULES if not (lib_dir / f"{m}.py").is_file()]
-    assert not missing, f"Faltan en privacidad/_lib: {missing}"
+    assert not missing, f"Missing in privacidad/_lib: {missing}"
 
 
 def test_naturalidad_lib_complete() -> None:
-    """Todos los módulos de naturalidad/_lib deben existir."""
+    """All expected `naturalidad/_lib` modules exist."""
     lib_dir = REPO_ROOT / "src" / "experimentos" / "naturalidad" / "_lib"
-    assert lib_dir.is_dir(), f"No existe {lib_dir}"
+    assert lib_dir.is_dir(), f"Missing {lib_dir}"
     missing = [m + ".py" for m in NATURALIDAD_LIB_MODULES if not (lib_dir / f"{m}.py").is_file()]
-    assert not missing, f"Faltan en naturalidad/_lib: {missing}"
+    assert not missing, f"Missing in naturalidad/_lib: {missing}"
 
 
 def test_requirements_file_exists() -> None:
-    """Debe existir requirements.txt en la raíz."""
+    """Root requirements file must exist."""
     req = REPO_ROOT / "requirements.txt"
-    assert req.is_file(), f"No existe {req}. Crear con las dependencias del proyecto."
+    assert req.is_file(), f"Missing {req}. Add project dependencies there."
 
 
 def test_requirements_txt_matches_required_packages() -> None:
-    """Cada paquete de REQUIRED_PACKAGES debe estar declarado en requirements.txt (evita desincronización)."""
+    """Each REQUIRED_PACKAGES entry must appear in requirements.txt."""
     req_file = REPO_ROOT / "requirements.txt"
-    assert req_file.is_file(), "requirements.txt debe existir"
+    assert req_file.is_file(), "requirements.txt must exist"
     content = req_file.read_text(encoding="utf-8")
-    # Líneas que declaran paquete: empiezan con nombre (letras/guiones) hasta el primer comparador o fin
     declared = set()
     for line in content.splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        # Primera palabra (nombre del paquete pip)
         parts = line.replace(">", " ").replace("=", " ").replace("<", " ").split()
         if parts:
             declared.add(parts[0].lower())
     required_names = {pkg_name for pkg_name, _ in REQUIRED_PACKAGES}
     missing = required_names - declared
     assert not missing, (
-        f"En requirements.txt faltan: {sorted(missing)}. "
-        "Añadir estas dependencias o actualizar REQUIRED_PACKAGES en test_requirements_complete.py."
+        f"requirements.txt is missing: {sorted(missing)}. "
+        "Add them or update REQUIRED_PACKAGES in test_requirements_complete.py."
     )

@@ -1,15 +1,14 @@
 """
-Fixtures para tests de experimentos (privacidad, sesgos, naturalidad).
+Pytest fixtures for experiment tests (privacy, bias, naturalness).
 
-Un solo corpus mínimo (corpus_mini) para todos los tests: sesgos, privacidad y naturalidad.
-Estructura: test/data/corpus_mini con documents/ (.txt) y entidades/ (.json).
-El experimento 07 (comparación estadística) necesita un corpus real de referencia: se usa
-test/data/real_corpus_mini (versión mini del corpus real corporativo).
+A single minimal corpus (`corpus_mini`) backs all suites. Structure:
+`test/data/corpus_mini` with `documents/` (`.txt`) and `entidades/` (`.json`).
+Experiment 07 (statistical comparison) also needs a small real-style reference
+corpus: `test/data/real_corpus_mini`.
 """
 import pytest
 from pathlib import Path
 
-# Raíz del repo (test/ está en la raíz)
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -20,46 +19,47 @@ def repo_root():
 
 @pytest.fixture(scope="session")
 def corpus_mini_path(repo_root):
-    """Corpus mínimo único para sesgos, privacidad y naturalidad (documents/ + entidades/)."""
+    """Minimal corpus root for bias, privacy, and naturalness (documents/ + entidades/)."""
     p = repo_root / "test" / "data" / "corpus_mini"
-    assert p.exists(), f"Test data no encontrado: {p}"
+    assert p.exists(), f"Missing test data: {p}"
     return p
 
 
 @pytest.fixture(scope="session")
 def corpus_mini_documents_path(corpus_mini_path):
-    """Directorio de documentos .txt del corpus_mini (corpus_mini/documents). Usado por naturalidad 01-06."""
+    """`.txt` documents under corpus_mini; used by naturalness 01–06."""
     p = corpus_mini_path / "documents"
-    assert p.exists(), f"Corpus mini documents no encontrado: {p}"
+    assert p.exists(), f"Missing corpus_mini documents: {p}"
     return p
 
 
 @pytest.fixture(scope="session")
 def real_corpus_mini_path(repo_root):
-    """Corpus real mini para el test 07 (comparación estadística generado vs real). Requerido como el resto de datos de test."""
+    """Small real-style corpus for experiment 07 (generated vs real). Required like other fixtures."""
     p = repo_root / "test" / "data" / "real_corpus_mini"
     assert p.exists(), (
-        f"Real corpus mini no encontrado: {p}. "
-        "Crear con: python scripts/generate_real_validation_corpus.py --output_dir test/data/real_corpus_mini --num_docs 10"
+        f"Missing real_corpus_mini: {p}. "
+        "Create with: python scripts/generate_real_validation_corpus.py "
+        "--output_dir test/data/real_corpus_mini --num_docs 10"
     )
     return p
 
 
 @pytest.fixture(scope="session")
 def corpus_v1_path(repo_root):
-    """Raíz del corpus sintético v1 (corpus_repo/corpus_v1). Opcional; solo para ejecutar experimentos completos fuera de tests."""
+    """Synthetic v1 root (`corpus_repo/corpus_v1`). Optional; full experiments outside pytest."""
     p = repo_root / "corpus_repo" / "corpus_v1"
     if not p.exists():
-        pytest.skip(f"Corpus v1 no encontrado: {p}")
+        pytest.skip(f"Corpus v1 not found: {p}")
     return p
 
 
 @pytest.fixture(scope="session")
 def corpus_v1_documents_path(corpus_v1_path):
-    """Directorio de documentos .txt del corpus v1. Solo para uso opcional (no usado por los tests unificados)."""
+    """`documents/` under v1. Optional; not used by unified smoke tests."""
     p = corpus_v1_path / "documents"
     if not p.exists():
-        pytest.skip(f"Corpus v1 documents no encontrado: {p}")
+        pytest.skip(f"Corpus v1 documents not found: {p}")
     return p
 
 
@@ -80,5 +80,5 @@ def experiments_naturalidad_path(repo_root):
 
 @pytest.fixture
 def tmp_results_dir(tmp_path, repo_root):
-    """Directorio temporal para resultados (evita ensuciar results/ real)."""
+    """Temporary output dir so runs do not touch the real `results/` tree."""
     return tmp_path

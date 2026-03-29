@@ -1,22 +1,22 @@
-# Evaluacion_corpus_sinteticos — dependencias únicas para experimentos (sesgos, privacidad, naturalidad) y tests.
+# Synthetic corpus evaluation — dependencies for experiments (bias, privacy, naturalness) and tests.
 #
-# Instalación: pip install -r requirements.txt
-# (Si ya tienes transformers 5.x o huggingface-hub reciente, pip no hará downgrade.)
+# pip install -r requirements.txt
+# With transformers 5.x / recent huggingface-hub, pip may skip downgrades.
 
 numpy>=1.24.0,<3.0.0
 scipy>=1.9.0
 matplotlib>=3.7.0
 tqdm>=4.60.0
 
-# Privacidad, naturalidad y experimentos (perplexity, coherence, memorization, AI detection)
+# Privacy, naturalness, experiments (perplexity, coherence, memorization, AI detection)
 scikit-learn>=1.0.0,<2.0.0
 nltk>=3.8.0
 
-# PyTorch y transformers (perplexity 02, AI detection opcional). Sin tope superior para no forzar downgrade si tienes 5.x
+# PyTorch + transformers (perplexity 02, optional AI detection). Open upper bound to avoid forced downgrades.
 torch>=1.10.0
 transformers>=4.20.0
 
-# Sentence transformers (coherence 06, memorization semántica). Sin tope para evitar conflictos con transformers 5.x
+# sentence-transformers (coherence 06, semantic memorization)
 sentence-transformers>=2.2.0
 
 # Tests

@@ -1,10 +1,10 @@
-# Corpus: se versiona el sintético v1 (~14k docs) bajo corpus_repo/corpus_v1/.
-# No subir corpus de validación real ni derivados sensibles desde esta raíz (tienen su propio .gitignore dentro de corpus_repo).
+# Synthetic v1 corpus is tracked under corpus_repo/corpus_v1/.
+# Real validation export at repo root policy (also see corpus_repo/.gitignore).
 corpus/
 corpus_repo/real_validation_corpus/
 corpus_repo/real_validation_set.json
-# No usar *.txt global: bloquea fixtures de test (test/data/.../*.txt).
-# Logs locales de ejecución bajo results/ (no métricas JSON)
+# Avoid a global *.txt rule: it hides test fixtures under test/data/**/*.txt.
+# Local run logs under results/ (not metric JSON)
 results/**/*.txt
 
 # Python
@@ -22,7 +22,7 @@ privacy_evaluation_results/
 *.json
 !package.json
 !tsconfig.json
-# Excepciones: métricas versionadas y fixtures de tests (el patrón global *.json sigue ignorando el resto)
+# Allow listed JSON trees only (global *.json hides everything else)
 !results/**/*.json
 !test/data/**/*.json
 !corpus_repo/corpus_v1/**/*.json
@@ -41,15 +41,14 @@ Thumbs.db
 activate_temp.bat
 *.log
 
-# Archived (suite docs, old backup; not needed to run suites)
+# Archived suite docs / old backup
 _archive_suite_docs/
 corpus_repo_old_backup/
 
-# Bibliography / reference docs (local)
+# Bibliography / reference (local)
 bibliography/
 
-# Local archive (old suites; not part of the active tree — do not push)
+# Legacy suite snapshots (local only; do not push)
 restos/
 
-# Interpretación de resultados y notas para el paper (local)
 interpretacion/
