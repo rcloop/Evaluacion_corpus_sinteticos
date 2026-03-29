@@ -57,5 +57,8 @@ corpus_repo_old_backup/
 # Bibliography / reference (local)
 bibliography/
 
+# Paper drafts, metrics summaries, interpretation (local only; not published in repo)
+interpretacion/
+
 # Legacy suite snapshots (local only)
 restos/
