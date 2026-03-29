@@ -22,6 +22,7 @@ if __name__ == "__main__":
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--lexicon_path", default=None)
+    parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     root = Path(args.corpus_root)
     entidades = root / "entidades"
@@ -37,5 +38,7 @@ if __name__ == "__main__":
         lexicon_path=args.lexicon_path,
         max_files=max_files,
     )
-    OUTPUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Listo. Resultados: {OUTPUT_FILE}")
+    out = Path(args.output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Listo. Resultados: {out}")

@@ -24,7 +24,7 @@ The same minimal **`corpus_mini`** backs all suites: six documents under `docume
 | `corpus_mini_documents_path` | `test/data/corpus_mini/documents/` | `.txt` only; naturalness 01–06 and generated side of 07 |
 | `real_validation_corpus_path` | `data/real_validation_corpus/` | Real-reference `.txt` for 07; **skipped** if missing/empty |
 
-Tests do **not** assert production thresholds or generator quality—only successful runs and plausible JSON shapes.
+Tests do **not** assert production thresholds or generator quality—only successful runs and plausible JSON shapes. Experiment subprocesses write JSON under **pytest `tmp_path`**, not under `results/`, so CI and local runs do not overwrite paper-grade result files.
 
 ## Dependency / layout check
 

@@ -13,7 +13,7 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 - **`results/`** – Experiment outputs (JSON). Log `.txt` under `results/` is ignored.
 - **`scripts/`** – Optional small utilities (may be empty).
 - **`restos/`** – Optional **local-only** legacy snapshots (gitignored).
-- **Root** – `requirements.txt`, runners (`run_all_experiments.py`, `run_missing_experiments.py`, …), `run.ps1`.
+- **Root** – `requirements.txt`, runners (`run_all_experiments.py`, `run_missing_experiments.py`, …), `run.ps1`. Full-suite default = **all documents** (use `run_all_experiments.py --quick` to cap heavy steps at 5000 docs).
 
 ### Outputs (`results/`)
 

@@ -40,17 +40,18 @@ _NATURALIDAD_SUBPROCESS_TIMEOUT = {
     "06_coherence.py",
 ])
 def test_naturalidad_script_corpus(
-    repo_root, corpus_mini_documents_path, experiments_naturalidad_path, script
+    repo_root, corpus_mini_documents_path, experiments_naturalidad_path, tmp_path, script
 ):
-    """Scripts de naturalidad 01-06 corren con corpus_mini/documents (mismo corpus que sesgos y privacidad)."""
+    """Scripts de naturalidad 01-06 corren con corpus_mini; salida bajo tmp (no pisa results/)."""
     script_path = experiments_naturalidad_path / script
     if not script_path.exists():
         pytest.skip(f"Script no encontrado: {script_path}")
     path_val = str(corpus_mini_documents_path)
+    out_file = tmp_path / f"out_{script.replace('.py', '')}.json"
     if script == "01_ai_detection.py":
-        args = ["--generated_corpus", path_val]
+        args = ["--generated_corpus", path_val, "--output_path", str(out_file)]
     else:
-        args = ["--corpus_path", path_val, "--sample_size", "2"]
+        args = ["--corpus_path", path_val, "--sample_size", "2", "--output_path", str(out_file)]
     timeout = _NATURALIDAD_SUBPROCESS_TIMEOUT.get(script, 120)
     result = _run_experiment(script_path, args, repo_root, timeout=timeout)
     if result.returncode != 0 and "02_perplexity" in script:
@@ -65,35 +66,34 @@ def test_naturalidad_script_corpus(
 
 
 def test_naturalidad_03_vocabulary_richness_produces_output(
-    repo_root, corpus_mini_documents_path, experiments_naturalidad_path
+    repo_root, corpus_mini_documents_path, experiments_naturalidad_path, tmp_path
 ):
     """03 vocabulary_richness es ligero y debería escribir JSON."""
     script = experiments_naturalidad_path / "03_vocabulary_richness.py"
+    out_file = tmp_path / "vocabulary_richness_results.json"
     result = _run_experiment(
         script,
-        ["--corpus_path", str(corpus_mini_documents_path), "--sample_size", "2"],
+        ["--corpus_path", str(corpus_mini_documents_path), "--sample_size", "2", "--output_path", str(out_file)],
         repo_root,
         timeout=_NATURALIDAD_SUBPROCESS_TIMEOUT["03_vocabulary_richness.py"],
     )
     assert result.returncode == 0
-    out_file = repo_root / "results" / "naturalidad" / "03" / "vocabulary_richness_results.json"
-    if out_file.exists():
-        assert out_file.stat().st_size > 0
+    assert out_file.exists() and out_file.stat().st_size > 0
 
 
 def test_naturalidad_03_json_structure_and_sanity(
-    repo_root, corpus_mini_documents_path, experiments_naturalidad_path
+    repo_root, corpus_mini_documents_path, experiments_naturalidad_path, tmp_path
 ):
     """03 vocabulary_richness: estructura del JSON y sanity (métricas numéricas coherentes)."""
     script = experiments_naturalidad_path / "03_vocabulary_richness.py"
+    out_file = tmp_path / "vocabulary_richness_results.json"
     result = _run_experiment(
         script,
-        ["--corpus_path", str(corpus_mini_documents_path), "--sample_size", "2"],
+        ["--corpus_path", str(corpus_mini_documents_path), "--sample_size", "2", "--output_path", str(out_file)],
         repo_root,
         timeout=_NATURALIDAD_SUBPROCESS_TIMEOUT["03_vocabulary_richness.py"],
     )
     assert result.returncode == 0
-    out_file = repo_root / "results" / "naturalidad" / "03" / "vocabulary_richness_results.json"
     assert out_file.exists(), "03 debe escribir vocabulary_richness_results.json"
     data = json.loads(out_file.read_text(encoding="utf-8"))
     assert "corpus_level" in data, "JSON debe tener 'corpus_level'"

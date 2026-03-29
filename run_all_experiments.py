@@ -3,10 +3,13 @@
 Run every experiment script (bias, privacy, naturalness) on the given corpus; write under results/.
 
 Default corpus: corpus_repo/corpus_v1 (synthetic, with entidades/).
-Usage: python run_all_experiments.py [--corpus_root corpus_repo/corpus_v1]
+Usage: python run_all_experiments.py [--corpus_root corpus_repo/corpus_v1] [--quick]
 
 Requires: pip install -r requirements.txt (PyTorch, transformers, sentence-transformers for
 perplexity 02, coherence 06, semantic memorization).
+
+**Default: full corpus** for perplexity (02), memorization (03), and all naturalness scripts
+(no sampling caps). Use `--quick` to cap heavy scripts at 5000 documents for faster local runs.
 """
 import argparse
 import subprocess
@@ -53,19 +56,24 @@ def main():
     p.add_argument(
         "--perplexity_sample_size",
         type=int,
-        default=5000,
-        help="Max docs for perplexity (0 = all; can take hours)",
+        default=0,
+        help="Max docs for perplexity 02 (0 = all documents; can take hours)",
     )
     p.add_argument(
         "--memorization_max_docs",
         type=int,
-        default=5000,
-        help="Max docs for memorization (0 = all)",
+        default=0,
+        help="Max docs for memorization 03 (0 = all documents)",
+    )
+    p.add_argument(
+        "--quick",
+        action="store_true",
+        help="Cap perplexity and memorization at 5000 docs (faster; not full-corpus evaluation)",
     )
     p.add_argument(
         "--full_corpus",
         action="store_true",
-        help="Same as --perplexity_sample_size 0 --memorization_max_docs 0",
+        help="Explicit alias for full corpus (defaults are already full; kept for scripts/CI)",
     )
     p.add_argument(
         "--continue_on_error",
@@ -73,6 +81,9 @@ def main():
         help="On failure, continue with the next experiment (failed list at end)",
     )
     args = p.parse_args()
+    if getattr(args, "quick", False):
+        args.perplexity_sample_size = 5000
+        args.memorization_max_docs = 5000
     if getattr(args, "full_corpus", False):
         args.perplexity_sample_size = 0
         args.memorization_max_docs = 0

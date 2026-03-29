@@ -43,11 +43,15 @@ def test_sesgos_script_corpus_mini(
         pytest.skip(f"Script no encontrado: {script_path}")
     out_dir = tmp_path / "out"
     out_dir.mkdir()
+    out_json = tmp_path / script.replace(".py", ".json")
     if "13_diversity_summary" in script:
-        args = []  # 13 lee JSON de 03, 05, 06 por defecto (pueden no existir)
+        args = ["--output_path", str(out_json)]
     else:
-        args = ["--corpus_root", str(corpus_mini_path)] + extra_args
-    # Algunos escriben en results/sesgos/NN por defecto; redirigir no es trivial, probamos que al menos arrancan
+        args = (
+            ["--corpus_root", str(corpus_mini_path)]
+            + extra_args
+            + ["--output_path", str(out_json)]
+        )
     result = _run_experiment(script_path, args, repo_root)
     assert result.returncode == 0, (
         f"{script} falló: stdout={result.stdout!r} stderr={result.stderr!r}"
@@ -55,34 +59,33 @@ def test_sesgos_script_corpus_mini(
 
 
 def test_sesgos_01_produces_json(repo_root, corpus_mini_path, experiments_sesgos_path, tmp_path):
-    """01 name_gender_distribution escribe JSON en results/sesgos/01 (o comprobamos que corre)."""
+    """01 name_gender_distribution escribe JSON (ruta aislada; no toca results/)."""
     script = experiments_sesgos_path / "01_name_gender_distribution.py"
+    out_file = tmp_path / "1_1_name_gender_distribution.json"
     result = _run_experiment(
         script,
-        ["--corpus_root", str(corpus_mini_path), "--max_docs", "2"],
+        ["--corpus_root", str(corpus_mini_path), "--max_docs", "2", "--output_path", str(out_file)],
         repo_root,
     )
     assert result.returncode == 0
-    out_file = repo_root / "results" / "sesgos" / "01" / "1_1_name_gender_distribution.json"
-    # Si el script escribió en la ruta por defecto
-    if out_file.exists():
-        assert out_file.stat().st_size > 0
-        content = out_file.read_text(encoding="utf-8")
-        assert "overall" in content or "counts" in content or "proportions" in content
+    assert out_file.exists()
+    assert out_file.stat().st_size > 0
+    content = out_file.read_text(encoding="utf-8")
+    assert "overall" in content or "counts" in content or "proportions" in content
 
 
-def test_sesgos_01_json_structure_and_sanity(repo_root, corpus_mini_path, experiments_sesgos_path):
+def test_sesgos_01_json_structure_and_sanity(repo_root, corpus_mini_path, experiments_sesgos_path, tmp_path):
     """01 name_gender_distribution: estructura del JSON y sanity (proporciones en [0,1])."""
     import json
     script = experiments_sesgos_path / "01_name_gender_distribution.py"
+    out_file = tmp_path / "1_1_name_gender_distribution.json"
     result = _run_experiment(
         script,
-        ["--corpus_root", str(corpus_mini_path), "--max_docs", "2"],
+        ["--corpus_root", str(corpus_mini_path), "--max_docs", "2", "--output_path", str(out_file)],
         repo_root,
     )
     assert result.returncode == 0
-    out_file = repo_root / "results" / "sesgos" / "01" / "1_1_name_gender_distribution.json"
-    assert out_file.exists(), "01 debe escribir 1_1_name_gender_distribution.json"
+    assert out_file.exists(), "01 debe escribir JSON en output_path"
     data = json.loads(out_file.read_text(encoding="utf-8"))
     assert "overall" in data, "JSON debe tener clave 'overall'"
     overall = data["overall"]

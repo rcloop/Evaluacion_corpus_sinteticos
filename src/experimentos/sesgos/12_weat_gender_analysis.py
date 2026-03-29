@@ -22,6 +22,7 @@ if __name__ == "__main__":
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--n_permutations", type=int, default=1000)
+    parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     documents = Path(args.corpus_root) / "documents"
     max_docs = None if (args.max_docs is not None and args.max_docs <= 0) else args.max_docs
@@ -34,5 +35,7 @@ if __name__ == "__main__":
         max_docs=max_docs,
         n_permutations=args.n_permutations,
     )
-    OUTPUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Listo. Resultados: {OUTPUT_FILE}")
+    out = Path(args.output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Listo. Resultados: {out}")

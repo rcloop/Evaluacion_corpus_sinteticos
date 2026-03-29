@@ -29,6 +29,7 @@ if __name__ == "__main__":
     parser.add_argument("--path_1_3", default=str(PATH_1_3), help="JSON de 1.3 (geographic)")
     parser.add_argument("--path_1_5", default=str(PATH_1_5), help="JSON de 1.5 (institution)")
     parser.add_argument("--path_1_6", default=str(PATH_1_6), help="JSON de 1.6 (diagnosis)")
+    parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     print("Experimento 13 – Diversity summary. Leyendo resultados 03, 05, 06...")
     result = evaluate_diversity_summary(
@@ -36,5 +37,7 @@ if __name__ == "__main__":
         path_1_5=args.path_1_5 if Path(args.path_1_5).exists() else None,
         path_1_6=args.path_1_6 if Path(args.path_1_6).exists() else None,
     )
-    OUTPUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Listo. Resultados: {OUTPUT_FILE}")
+    out = Path(args.output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Listo. Resultados: {out}")
