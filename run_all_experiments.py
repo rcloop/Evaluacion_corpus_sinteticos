@@ -75,11 +75,6 @@ def main():
         action="store_true",
         help="Explicit alias for full corpus (defaults are already full; kept for scripts/CI)",
     )
-    p.add_argument(
-        "--continue_on_error",
-        action="store_true",
-        help="On failure, continue with the next experiment (failed list at end)",
-    )
     args = p.parse_args()
     if getattr(args, "quick", False):
         args.perplexity_sample_size = 5000
