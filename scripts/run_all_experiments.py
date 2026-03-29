@@ -3,7 +3,8 @@
 Run every experiment script (bias, privacy, naturalness) on the given corpus; write under results/.
 
 Default corpus: corpus_repo/corpus_v1 (synthetic, with entidades/).
-Usage: python run_all_experiments.py [--corpus_root corpus_repo/corpus_v1] [--quick]
+Usage: python scripts/run_all_experiments.py [--corpus_root corpus_repo/corpus_v1] [--quick]
+(run from repository root)
 
 Requires: pip install -r requirements.txt (PyTorch, transformers, sentence-transformers for
 perplexity 02, coherence 06, semantic memorization).
@@ -15,6 +16,12 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
+
+# Repo root on sys.path so `python scripts/run_all_experiments.py` works from any cwd.
+_SCRIPTS_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _SCRIPTS_DIR.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
 
 from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT
 
@@ -82,7 +89,12 @@ def main():
     if getattr(args, "full_corpus", False):
         args.perplexity_sample_size = 0
         args.memorization_max_docs = 0
-    corpus = Path(args.corpus_root).resolve()
+
+    def resolve_under_repo(path_str: str) -> Path:
+        p = Path(path_str)
+        return p.resolve() if p.is_absolute() else (REPO_ROOT / p).resolve()
+
+    corpus = resolve_under_repo(args.corpus_root)
     if not corpus.is_dir():
         print(f"Error: corpus_root is not a directory: {corpus}")
         sys.exit(1)

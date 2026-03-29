@@ -4,9 +4,9 @@ Run only experiments that do not yet have a complete result file.
 All suites use corpus_repo/corpus_v1 (documents/ + entidades/) by default.
 Experiment 07 compares generated texts to the real-reference directory (default: corpus_repo/real_validation_corpus).
 
-Usage:
-  python run_missing_experiments.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
-  python run_missing_experiments.py --force  # re-run all (overwrite)
+Usage (from repository root):
+  python scripts/run_missing_experiments.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
+  python scripts/run_missing_experiments.py --force  # re-run all (overwrite)
 
   --corpus_root: synthetic annotated corpus. Default: corpus_repo/corpus_v1
   --corpus_docs: documents directory only (if set without corpus_root, only naturalness 01–06 run)
@@ -18,6 +18,11 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
+
+_SCRIPTS_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _SCRIPTS_DIR.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
 
 from repo_paths import DEFAULT_REAL_VALIDATION_DOCS_DIR, REPO_ROOT, count_txt_documents_under_dir
 
@@ -98,9 +103,13 @@ def main():
     p.add_argument("--timeout_heavy", type=int, default=HEAVY_TIMEOUT)
     args = p.parse_args()
 
-    corpus_root = Path(args.corpus_root).resolve() if args.corpus_root else None
-    corpus_docs = Path(args.corpus_docs).resolve() if args.corpus_docs else None
-    real_corpus = Path(args.real_corpus).resolve() if args.real_corpus else None
+    def resolve_under_repo(path_str: str) -> Path:
+        p = Path(path_str)
+        return p.resolve() if p.is_absolute() else (REPO_ROOT / p).resolve()
+
+    corpus_root = resolve_under_repo(args.corpus_root) if args.corpus_root else None
+    corpus_docs = resolve_under_repo(args.corpus_docs) if args.corpus_docs else None
+    real_corpus = resolve_under_repo(args.real_corpus) if args.real_corpus else None
     if real_corpus is not None and real_corpus == corpus_root:
         real_corpus = None
 

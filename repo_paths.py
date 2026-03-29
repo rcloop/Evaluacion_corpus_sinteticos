@@ -19,7 +19,7 @@ DEFAULT_REAL_VALIDATION_DOCS_DIR = REPO_ROOT / "corpus_repo" / "real_validation_
 def list_txt_documents_under_dir(directory: Path) -> List[Path]:
     """
     All .txt files under directory (recursive), case-insensitive extension.
-    Same discovery for experiment 07, pytest fixture, and run_missing_experiments.
+    Same discovery for experiment 07, pytest fixture, and scripts/run_missing_experiments.py.
     """
     if not directory.is_dir():
         return []

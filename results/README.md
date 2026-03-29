@@ -1,10 +1,10 @@
 # Experiment results (`results/`)
 
-JSON outputs from **`run_all_experiments.py`**, **`run_missing_experiments.py`**, or individual scripts under `src/experimentos/`.
+JSON outputs from **`scripts/run_all_experiments.py`**, **`scripts/run_missing_experiments.py`**, or individual scripts under `src/experimentos/`.
 
 ## Full corpus (paper-grade)
 
-- **`run_all_experiments.py`** uses the **entire** synthetic corpus by default (no cap on perplexity, memorization, or naturalness sample sizes).
+- **`scripts/run_all_experiments.py`** uses the **entire** synthetic corpus by default (no cap on perplexity, memorization, or naturalness sample sizes).
 - For a faster local run on large corpora, pass **`--quick`** (caps perplexity and memorization at 5000 documents).
 
 **Pytest** experiment tests write under **temporary directories**, not here—running `pytest` should **not** overwrite these files.
@@ -18,4 +18,4 @@ After a full run, spot-check that JSON files reflect full scale, for example:
 
 If `corpus_size` is very small, you likely have a partial run or stale files—re-run:
 
-`python run_all_experiments.py --corpus_root corpus_repo/corpus_v1`
+`python scripts/run_all_experiments.py --corpus_root corpus_repo/corpus_v1`

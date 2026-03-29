@@ -11,8 +11,8 @@ Bulky exports (`train_set.json`, `ner_dataset.json`, `validation_results/`, …)
 
 Default runners use:
 
-- `run_all_experiments.py`, `run_missing_experiments.py` → `corpus_repo/corpus_v1`
-- `src/experimentos/run_missing_full_corpus.ps1` → `corpus_repo\corpus_v1`
+- `scripts/run_all_experiments.py`, `scripts/run_missing_experiments.py` → `corpus_repo/corpus_v1`
+- `scripts/run_missing_full_corpus.ps1` → `corpus_repo\corpus_v1`
 
 ## Real-reference texts for experiment 07
 

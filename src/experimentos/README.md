@@ -35,7 +35,7 @@ python src/experimentos/sesgos/01_name_gender_distribution.py --corpus_root corp
 # Optional: --max_docs 0 (all), --lexicon_path path/to/lexicon.csv
 ```
 
-On **Windows PowerShell 5** (no `&&`): run from the root with `.\run.ps1 python ...` or plain `python ...`.
+On **Windows PowerShell 5** (no `&&`): run from the root with `.\scripts\run.ps1 python ...` or plain `python ...`.
 
 ## Privacy (`privacidad/`)
 
@@ -83,7 +83,7 @@ python src/experimentos/naturalidad/07_statistical_comparison.py --generated_cor
 **Run only missing experiments (full corpus)** from the root:
 
 ```bash
-python run_missing_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus
+python scripts/run_missing_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus
 ```
 
 Uses `corpus_repo/corpus_v1` everywhere; 07 also uses `corpus_repo/real_validation_corpus` by default.

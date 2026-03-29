@@ -11,9 +11,9 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 - **`corpus_repo/real_validation_corpus/`** – **Your** real-reference `.txt` files for **experiment 07** (**gitignored**). Populate locally (export script or copy); never committed.
 - **`data/`** – Small reference assets (e.g. lexicons under `data/sesgos/`).
 - **`results/`** – Experiment outputs (JSON). Log `.txt` under `results/` is ignored.
-- **`scripts/`** – Optional small utilities (may be empty).
+- **`scripts/`** – **Runners**: `run_all_experiments.py`, `run_missing_experiments.py`, `run.ps1`, `run_missing_full_corpus.ps1` (from repo root: `python scripts/run_all_experiments.py`, or `.\scripts\run.ps1 python ...`).
 - **`restos/`** – Optional **local-only** legacy snapshots (gitignored).
-- **Root** – `requirements.txt`, runners (`run_all_experiments.py`, `run_missing_experiments.py`, …), `run.ps1`. Full-suite default = **all documents** (use `run_all_experiments.py --quick` to cap heavy steps at 5000 docs).
+- **Root** – `requirements.txt`, `repo_paths.py`, `pytest.ini`. Full-suite default = **all documents** (use `python scripts/run_all_experiments.py --quick` to cap heavy steps at 5000 docs).
 
 ### Outputs (`results/`)
 
