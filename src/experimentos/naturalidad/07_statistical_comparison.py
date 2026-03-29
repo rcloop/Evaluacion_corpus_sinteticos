@@ -3,7 +3,7 @@ Experiment 07 – Naturalness: statistical comparison (generated vs real referen
 Outputs: results/naturalidad/07
 
 Requires non-empty directories of .txt files for both sides (default real path:
-data/real_validation_corpus). There is no synthetic fallback—populate the real
+corpus_repo/real_validation_corpus). There is no synthetic fallback—populate the real
 folder with your own validation export (see corpus_repo/export_real_validation_corpus.py).
 """
 from pathlib import Path

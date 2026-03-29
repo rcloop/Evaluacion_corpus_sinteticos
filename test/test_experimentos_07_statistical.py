@@ -9,7 +9,7 @@ import pytest
 def test_naturalidad_07_statistical_comparison(
     repo_root, corpus_mini_documents_path, real_validation_corpus_path, experiments_naturalidad_path, tmp_path
 ):
-    """07 runs with corpus_mini as generated and data/real_validation_corpus as reference .txt dir."""
+    """07 runs with corpus_mini as generated and corpus_repo/real_validation_corpus as reference."""
     script = experiments_naturalidad_path / "07_statistical_comparison.py"
     if not script.exists():
         pytest.skip("07 script not found")

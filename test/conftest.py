@@ -4,7 +4,7 @@ Pytest fixtures for experiment tests (privacy, bias, naturalness).
 A single minimal corpus (`corpus_mini`) backs all suites. Structure:
 `test/data/corpus_mini` with `documents/` (`.txt`) and `entidades/` (`.json`).
 Experiment 07 (statistical comparison) uses the same real-reference directory
-as production runs (`data/real_validation_corpus`); the test is skipped if it
+as production runs (`corpus_repo/real_validation_corpus`); the test is skipped if it
 is missing or has no `.txt` files.
 """
 import sys

@@ -8,7 +8,7 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 - **`repo_paths.py`** – Single source of truth for default corpus paths (`DEFAULT_SYNTHETIC_CORPUS_ROOT`, `DEFAULT_REAL_VALIDATION_DOCS_DIR`).
 - **`test/`** – Pytest suite and minimal data under `test/data/`.
 - **`corpus_repo/corpus_v1/`** – Versioned synthetic corpus (`documents/` + `entidades/`). Large training/export JSON under `corpus_v1/` (e.g. `train_set.json`) are not tracked—only what’s needed to run experiments.
-- **`data/real_validation_corpus/`** – **Your** real-reference `.txt` files for **experiment 07** (**gitignored**). You populate it locally from **your own** validation export; nothing is committed or auto-generated.
+- **`corpus_repo/real_validation_corpus/`** – **Your** real-reference `.txt` files for **experiment 07** (**gitignored**). Populate locally (export script or copy); never committed.
 - **`data/`** – Small reference assets (e.g. lexicons under `data/sesgos/`).
 - **`results/`** – Experiment outputs (JSON). Log `.txt` under `results/` is ignored.
 - **`scripts/`** – Optional small utilities (may be empty).
@@ -27,14 +27,14 @@ Global `*.json` in `.gitignore` is relaxed for **`results/`**, **`test/data/`**,
 
 ### Experiment 07 (generated vs real)
 
-Default real side: **`data/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). Experiment **07** exits with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback. Discovery is **recursive**; extension match is **case-insensitive** (`.txt` / `.TXT`).
+Default real side: **`corpus_repo/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). Experiment **07** exits with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback. Discovery is **recursive**; extension match is **case-insensitive** (`.txt` / `.TXT`).
 
-1. **Use your own files** – Copy or sync your real validation `.txt` files into `data/real_validation_corpus/` (local only; see `.gitignore`).
+1. **Use your own files** – Copy or sync your real validation `.txt` files into `corpus_repo/real_validation_corpus/` (local only; see `.gitignore`).
 
 2. **Export from your JSON manifest** – If you maintain something like `corpus_repo/real_validation_set.json` with paths or text fields for **real** holdout documents:
 
    ```bash
-   python corpus_repo/export_real_validation_corpus.py --output_dir data/real_validation_corpus
+   python corpus_repo/export_real_validation_corpus.py
    ```
 
 ## Requirements

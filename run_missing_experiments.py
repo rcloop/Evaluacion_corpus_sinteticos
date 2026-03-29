@@ -2,7 +2,7 @@
 """
 Run only experiments that do not yet have a complete result file.
 All suites use corpus_repo/corpus_v1 (documents/ + entidades/) by default.
-Experiment 07 compares generated texts to the real-reference directory (default: data/real_validation_corpus).
+Experiment 07 compares generated texts to the real-reference directory (default: corpus_repo/real_validation_corpus).
 
 Usage:
   python run_missing_experiments.py [--corpus_root corpus_repo/corpus_v1] [--full_corpus]
@@ -10,7 +10,7 @@ Usage:
 
   --corpus_root: synthetic annotated corpus. Default: corpus_repo/corpus_v1
   --corpus_docs: documents directory only (if set without corpus_root, only naturalness 01–06 run)
-  --real_corpus: real-reference .txt directory for exp 07. Default: data/real_validation_corpus
+  --real_corpus: real-reference .txt directory for exp 07. Default: corpus_repo/real_validation_corpus
   --full_corpus: no sampling (sample_size=0 / max_docs=0 where applicable)
   --force: re-run even if a non-empty result exists
 """

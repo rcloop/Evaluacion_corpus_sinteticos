@@ -4,7 +4,7 @@ Numbered experiments for **bias (`sesgos`)**, **privacy (`privacidad`)**, and **
 
 Default paths are centralized in **`repo_paths.py`** at the repository root (`DEFAULT_SYNTHETIC_CORPUS_ROOT`, `DEFAULT_REAL_VALIDATION_DOCS_DIR`).
 
-**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** compares generated `.txt` files to **`data/real_validation_corpus`**, which you must populate with **your** real validation `.txt` files (e.g. `corpus_repo/export_real_validation_corpus.py --output_dir <repo>/data/real_validation_corpus`). The script fails if that folder has no `.txt` files.
+**Corpus:** runs assume **`corpus_repo/corpus_v1`** (`documents/` + `entidades/`). Experiment **07** compares generated `.txt` files to **`corpus_repo/real_validation_corpus`** (gitignored); populate with **`corpus_repo/export_real_validation_corpus.py`** or copy `.txt` files there. The script fails if that folder has no `.txt` files.
 
 **Single source of truth:** all evaluation code is under this tree. Each suite has a **`_lib/`** package (bias metrics; privacy attacks; naturalness metrics). The 23 experiment scripts use only these entry points and `_lib/`. Optional legacy copies may exist locally under `restos/` (gitignored).
 
@@ -75,8 +75,8 @@ From the repo root (documents = `corpus_repo/corpus_v1/documents` for 01–06):
 python src/experimentos/naturalidad/01_ai_detection.py --generated_corpus corpus_repo/corpus_v1/documents
 python src/experimentos/naturalidad/02_perplexity.py --corpus_path corpus_repo/corpus_v1/documents
 # 03–06: same --corpus_path corpus_repo/corpus_v1/documents
-# 07: generated = corpus_v1/documents, real = data/real_validation_corpus
-python src/experimentos/naturalidad/07_statistical_comparison.py --generated_corpus corpus_repo/corpus_v1/documents --real_corpus data/real_validation_corpus
+# 07: generated = corpus_v1/documents, real = corpus_repo/real_validation_corpus
+python src/experimentos/naturalidad/07_statistical_comparison.py --generated_corpus corpus_repo/corpus_v1/documents --real_corpus corpus_repo/real_validation_corpus
 # Optional on several scripts: --sample_size N (0 = full corpus)
 ```
 
@@ -86,6 +86,6 @@ python src/experimentos/naturalidad/07_statistical_comparison.py --generated_cor
 python run_missing_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus
 ```
 
-Uses `corpus_repo/corpus_v1` everywhere; 07 also uses `data/real_validation_corpus` by default.
+Uses `corpus_repo/corpus_v1` everywhere; 07 also uses `corpus_repo/real_validation_corpus` by default.
 
 **Naturalness deps:** 02 (perplexity) and 06 (coherence) need PyTorch and `transformers` (plus `sentence-transformers` for coherence). Install with `pip install -r requirements.txt` from the repo root.

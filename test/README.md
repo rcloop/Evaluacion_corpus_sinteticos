@@ -1,6 +1,6 @@
 # Experiment tests (privacy, bias, naturalness)
 
-Tests for the synthetic-corpus evaluation scripts. A single **`corpus_mini`** drives privacy, bias, and naturalness smoke tests; experiment **07** uses **`data/real_validation_corpus`** (same as a real run) and is **skipped** if that directory has no `.txt` files. The goal is **smoke coverage** where data exists, plus light **structure / sanity** checks on produced JSON.
+Tests for the synthetic-corpus evaluation scripts. A single **`corpus_mini`** drives privacy, bias, and naturalness smoke tests; experiment **07** uses **`corpus_repo/real_validation_corpus`** (same default as production) and is **skipped** if that directory has no `.txt` files. The goal is **smoke coverage** where data exists, plus light **structure / sanity** checks on produced JSON.
 
 ## Design: no generator model access
 
@@ -16,13 +16,13 @@ If you later add **canaries** for membership inference, document them here.
 
 ## Test data
 
-The same minimal **`corpus_mini`** backs all suites: six documents under `documents/` and JSON entities under `entidades/`. Experiment **07** uses **`data/real_validation_corpus/`** with at least one `.txt`; otherwise the 07 test is skipped.
+The same minimal **`corpus_mini`** backs all suites: six documents under `documents/` and JSON entities under `entidades/`. Experiment **07** uses **`corpus_repo/real_validation_corpus/`** with at least one `.txt`; otherwise the 07 test is skipped.
 
 | Fixture | Path | Purpose |
 |---------|------|---------|
 | `corpus_mini_path` | `test/data/corpus_mini/` | Root: `documents/` (`.txt`) + `entidades/` (`.json`) |
 | `corpus_mini_documents_path` | `test/data/corpus_mini/documents/` | `.txt` only; naturalness 01–06 and generated side of 07 |
-| `real_validation_corpus_path` | `data/real_validation_corpus/` | Real-reference `.txt` for 07; **skipped** if missing/empty |
+| `real_validation_corpus_path` | `corpus_repo/real_validation_corpus/` | Real-reference `.txt` for 07; **skipped** if missing/empty |
 
 Tests do **not** assert production thresholds or generator quality—only successful runs and plausible JSON shapes. Experiment subprocesses write JSON under **pytest `tmp_path`**, not under `results/`, so CI and local runs do not overwrite paper-grade result files.
 

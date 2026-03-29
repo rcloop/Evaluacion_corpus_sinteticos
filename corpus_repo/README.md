@@ -16,15 +16,15 @@ Default runners use:
 
 ## Real-reference texts for experiment 07
 
-The evaluation repo expects real-reference **`.txt`** files under **`data/real_validation_corpus/`** at the **repository root** (see root `repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`).
+Real holdout **`.txt`** files live under **`corpus_repo/real_validation_corpus/`** (see `repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). That directory is **gitignored**; keep it only on your machine.
 
-From this folder you can export into that location:
+Export from JSON (from `corpus_repo/`):
 
 ```bash
-python export_real_validation_corpus.py --output_dir ../../data/real_validation_corpus
+python export_real_validation_corpus.py
 ```
 
-(or any absolute path to `.../Evaluacion_corpus_sinteticos/data/real_validation_corpus`)
+Default output is `corpus_repo/real_validation_corpus/`. Override with `--output_dir` if needed.
 
 ## Other files here
 
@@ -36,4 +36,4 @@ python export_real_validation_corpus.py --output_dir ../../data/real_validation_
 | Path | Role |
 |------|------|
 | `corpus_v1/` | Synthetic annotated corpus; default input for experiments. |
-| `data/real_validation_corpus/` (repo root) | Real-reference `.txt` set for naturalness experiment 07. |
+| `real_validation_corpus/` (here, gitignored) | Real-reference `.txt` set for naturalness experiment 07. |
