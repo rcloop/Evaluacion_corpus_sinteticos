@@ -1,16 +1,23 @@
 {
   "metric": "intersectional_corpus_bias",
-  "timestamp_utc": "2026-03-29T18:52:20.681291+00:00",
+  "timestamp_utc": "2026-03-30T17:58:43.303183+00:00",
   "input_summary": {
-    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\test\\data\\corpus_mini\\entidades",
-    "max_files": 2,
-    "docs_total": 2,
-    "docs_with_gender": 2,
-    "docs_with_age": 0,
-    "docs_with_geo": 0,
-    "docs_with_gender_and_age": 0,
-    "docs_with_gender_and_geo": 0,
-    "docs_with_age_and_geo": 0,
+    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
+    "max_files": null,
+    "docs_total": 14035,
+    "subject_gender_rule": "SEXO_SUJETO_ASISTENCIA if present; else lexicon on first subject name",
+    "age_bins_intersectional": [
+      "<60",
+      "60-70",
+      "70-80",
+      ">80"
+    ],
+    "docs_with_gender": 6158,
+    "docs_with_age": 2767,
+    "docs_with_geo": 5914,
+    "docs_with_gender_and_age": 1369,
+    "docs_with_gender_and_geo": 2687,
+    "docs_with_age_and_geo": 1195,
     "top_geo_k": 15
   },
   "n_tests_independence": 3,
@@ -21,35 +28,100 @@
       "other"
     ],
     "col_labels": [
-      "0-9",
-      "10-19",
-      "20-29",
-      "30-39",
-      "40-49",
-      "50-59",
-      "60-69",
-      "70-79",
-      "80-89",
-      "90-99",
-      "100-109",
-      "110-119",
-      "120+"
+      "<60",
+      "60-70",
+      "70-80",
+      ">80"
     ],
     "contingency_table": [
       [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        10,
+        789,
+        350,
+        1
+      ],
+      [
+        12,
+        143,
+        63,
         0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "chi_square_independence": {
+      "chi2": 27.384579776684465,
+      "p_value": 0.00012265077249469083,
+      "df": 6.0,
+      "cramers_v": 0.10000836301166699,
+      "p_value_bonferroni": 0.0003679523174840725
+    },
+    "n": 1369
+  },
+  "gender_x_geography": {
+    "row_labels": [
+      "fem",
+      "masc",
+      "other"
+    ],
+    "col_labels": [
+      "PORTUGAL",
+      "FRANCIA",
+      "TERRITORIO DE LA COMUNIDAD VALENCIANA",
+      "ITALIA",
+      "REINO UNIDO",
+      "REGIÓN DE VALENCIA",
+      "COLOMBIA",
+      "MÉXICO",
+      "ESTADOS UNIDOS",
+      "COMUNIDAD VALENCIANA (CV)",
+      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
+      "ALEMANIA",
+      "CHILE",
+      "DEPARTAMENTO DE SALUD DE VALENCIA",
+      "COMUNIDAD AUTÓNOMA VALENCIANA",
+      "_OTHER_"
+    ],
+    "contingency_table": [
+      [
+        140,
+        134,
+        133,
+        122,
+        120,
+        121,
+        117,
+        119,
+        107,
+        112,
+        109,
+        110,
+        106,
+        98,
+        89,
+        543
+      ],
+      [
+        26,
+        22,
+        16,
+        27,
+        22,
+        18,
+        22,
+        16,
+        22,
+        14,
+        17,
+        16,
+        14,
+        20,
+        25,
+        108
       ],
       [
         0,
@@ -64,7 +136,100 @@
         0,
         0,
         0,
-        0
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "chi_square_independence": {
+      "chi2": 20.83707928072715,
+      "p_value": 0.8929130658313468,
+      "df": 30.0,
+      "cramers_v": 0.06226867018872664,
+      "p_value_bonferroni": 1.0
+    },
+    "n": 2687
+  },
+  "age_x_geography": {
+    "row_labels": [
+      "<60",
+      "60-70",
+      "70-80",
+      ">80"
+    ],
+    "col_labels": [
+      "PORTUGAL",
+      "FRANCIA",
+      "TERRITORIO DE LA COMUNIDAD VALENCIANA",
+      "ITALIA",
+      "REINO UNIDO",
+      "REGIÓN DE VALENCIA",
+      "COLOMBIA",
+      "MÉXICO",
+      "ESTADOS UNIDOS",
+      "COMUNIDAD VALENCIANA (CV)",
+      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
+      "ALEMANIA",
+      "CHILE",
+      "DEPARTAMENTO DE SALUD DE VALENCIA",
+      "COMUNIDAD AUTÓNOMA VALENCIANA",
+      "_OTHER_"
+    ],
+    "contingency_table": [
+      [
+        3,
+        6,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        9
+      ],
+      [
+        38,
+        45,
+        35,
+        37,
+        44,
+        48,
+        53,
+        39,
+        44,
+        29,
+        45,
+        46,
+        51,
+        35,
+        36,
+        204
+      ],
+      [
+        24,
+        21,
+        23,
+        15,
+        12,
+        11,
+        16,
+        18,
+        16,
+        17,
+        15,
+        14,
+        17,
+        16,
+        17,
+        91
       ],
       [
         0,
@@ -73,6 +238,9 @@
         0,
         0,
         0,
+        0,
+        0,
+        1,
         0,
         0,
         0,
@@ -83,55 +251,12 @@
       ]
     ],
     "chi_square_independence": {
-      "chi2": null,
-      "p_value": null,
-      "df": null,
-      "p_value_bonferroni": 1.0
+      "chi2": 68.72726375294133,
+      "p_value": 0.012913048672129978,
+      "df": 45.0,
+      "cramers_v": 0.13845860344638733,
+      "p_value_bonferroni": 0.03873914601638993
     },
-    "n": 0
-  },
-  "gender_x_geography": {
-    "row_labels": [
-      "fem",
-      "masc",
-      "other"
-    ],
-    "col_labels": [],
-    "contingency_table": [
-      [],
-      [],
-      []
-    ],
-    "chi_square_independence": {
-      "chi2": null,
-      "p_value": null,
-      "df": null,
-      "p_value_bonferroni": 1.0
-    },
-    "n": 0
-  },
-  "age_x_geography": {
-    "row_labels": [
-      "0-9",
-      "10-19",
-      "20-29",
-      "30-39",
-      "40-49"
-    ],
-    "col_labels": [],
-    "contingency_table": [
-      [],
-      [],
-      [],
-      [],
-      []
-    ],
-    "chi_square_independence": {
-      "chi2": null,
-      "p_value": null,
-      "df": null,
-      "p_value_bonferroni": 1.0
-    },
-    "n": 0
+    "n": 1195
   }
 }

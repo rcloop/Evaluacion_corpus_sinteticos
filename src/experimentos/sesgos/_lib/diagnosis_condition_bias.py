@@ -114,6 +114,13 @@ def shannon_entropy(counter: Counter) -> Dict[str, Optional[float]]:
     return {"entropy_bits": float(h), "normalized_entropy": (float(h_norm) if h_norm is not None else None), "support": int(support)}
 
 
+def hhi(counter: Counter) -> Optional[float]:
+    total = sum(counter.values())
+    if total == 0:
+        return None
+    return float(sum((v / total) ** 2 for v in counter.values()))
+
+
 def load_reference_distribution(path: Optional[str]) -> Optional[Dict[str, float]]:
     if not path:
         return None
@@ -303,6 +310,7 @@ def evaluate_diagnosis_bias(
             "n_unique": int(len(counts)),
             "n_total_mentions": int(total),
             "entropy": shannon_entropy(counts),
+            "hhi": hhi(counts),
         },
         "top_k": counts.most_common(top_k),
         "js_divergence_bits": jsd,

@@ -104,7 +104,15 @@ def calculate_self_bleu(texts: List[str], n: int = 4) -> float:
     # Calculate BLEU for each text against all others
     bleu_scores = []
     
-    for i, reference_ngrams in enumerate(all_ngrams):
+    for i, reference_ngrams in enumerate(
+        tqdm(
+            all_ngrams,
+            desc=f"Self-BLEU n={n}",
+            total=len(all_ngrams),
+            unit="doc",
+            mininterval=20,
+        )
+    ):
         if not reference_ngrams:
             continue
         
@@ -135,7 +143,13 @@ def calculate_distinct_ngrams_ratio(texts: List[str], n: int = 2) -> float:
     """Calculate ratio of unique n-grams to total n-grams."""
     all_ngrams = []
     
-    for text in texts:
+    for text in tqdm(
+        texts,
+        desc=f"Distinct n-grams n={n}",
+        total=len(texts),
+        unit="doc",
+        mininterval=20,
+    ):
         ngrams_list = extract_ngrams(text, n)
         all_ngrams.extend(ngrams_list)
     
@@ -153,7 +167,13 @@ def calculate_repetition_ratio(texts: List[str], min_length: int = 5) -> float:
     # Extract phrases of minimum length
     all_phrases = []
     
-    for text in texts:
+    for text in tqdm(
+        texts,
+        desc=f"Repetition ratio (min_len={min_length})",
+        total=len(texts),
+        unit="doc",
+        mininterval=20,
+    ):
         if NLTK_AVAILABLE:
             tokens = word_tokenize(text.lower())
         else:

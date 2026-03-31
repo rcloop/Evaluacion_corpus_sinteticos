@@ -47,6 +47,39 @@ def parse_age(text: str) -> Optional[int]:
     if not s:
         return None
 
+    sl = s.lower()
+
+    # Recover ages expressed without digits (agreed rules):
+    # - "octogenario próximo" -> 70-79 (approx. close to 80)
+    if "octogenario" in sl and ("próximo" in sl or "proximo" in sl):
+        return 79
+
+    # -X-agenario forms
+    if re.search(r"\bsexagenari[oa]?\b", sl):
+        return 65
+    if re.search(r"\bseptuagenari[oa]?\b", sl):
+        return 75
+    if re.search(r"\boctogenari[oa]?\b", sl):
+        return 85
+    if re.search(r"\bnonagenari[oa]?\b", sl):
+        return 95
+    if re.search(r"\bcentenari[oa]?\b", sl):
+        return 105
+
+    # Decade-of-life expressions:
+    # sixth decade -> 50-59; seventh -> 60-69; eighth -> 70-79; ninth -> 80-89; tenth -> 90-99
+    # (These map to representative ages in-bin.)
+    if ("sexta década" in sl) or ("sexta decada" in sl):
+        return 55
+    if ("séptima década" in sl) or ("septima década" in sl) or ("séptima decada" in sl) or ("septima decada" in sl):
+        return 65
+    if ("octava década" in sl) or ("octava decada" in sl):
+        return 75
+    if ("novena década" in sl) or ("novena decada" in sl):
+        return 85
+    if ("décima década" in sl) or ("decima década" in sl) or ("décima decada" in sl) or ("decima decada" in sl):
+        return 95
+
     # Prefer explicit 0-120 like numbers; avoid IDs by restricting magnitude.
     m = re.search(r"(?<!\d)(\d{1,3})(?!\d)", s)
     if not m:
@@ -126,20 +159,25 @@ def evaluate_age_distribution(
 
     ages_seen = 0
     ages_parsed = 0
+    ages_recovered_textual = 0
     docs_seen = 0
 
     bin_counts: Counter = Counter()
 
     def handle_obj(obj: Any):
-        nonlocal ages_seen, ages_parsed
+        nonlocal ages_seen, ages_parsed, ages_recovered_textual
         for lab, txt in iter_entities_from_annotation_obj(obj):
             lu = lab.upper().strip()
             if lu not in label_set:
                 continue
             ages_seen += 1
-            age = parse_age(txt)
+            raw = str(txt).strip()
+            age = parse_age(raw)
             if age is None:
                 continue
+            # If no digits in raw but we recovered an age, count as textual recovery.
+            if not re.search(r"\d", raw):
+                ages_recovered_textual += 1
             ages_parsed += 1
             bin_counts[decade_bin(age, max_decade=max_decade)] += 1
 
@@ -188,6 +226,7 @@ def evaluate_age_distribution(
             "docs_seen": docs_seen if p.is_dir() else None,
             "ages_entities_seen": ages_seen,
             "ages_parsed": ages_parsed,
+            "ages_recovered_textual": ages_recovered_textual,
             "max_decade": max_decade,
         },
         "histogram": {

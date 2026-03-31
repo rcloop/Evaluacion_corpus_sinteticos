@@ -52,6 +52,17 @@ DEFAULT_PROFESSION_LABELS = [
 ]
 
 # Canonical role categories (extendable)
+# Buckets reported in manuscript / tables (remaining fine-grained roles map to "other").
+REPORTING_ROLE_BUCKETS = ("doctor", "nurse", "pharmacist", "technician", "other")
+
+
+def collapse_role_for_reporting(role: str) -> str:
+    r = (role or "").strip().lower()
+    if r in ("doctor", "nurse", "pharmacist", "technician"):
+        return r
+    return "other"
+
+
 ROLE_PATTERNS: List[Tuple[str, re.Pattern]] = [
     ("doctor", re.compile(r"\b(MEDIC[OA]|DOCTOR[AE]?|DRA|DR)\b", re.IGNORECASE)),
     ("nurse", re.compile(r"\b(ENFERMER[OA]|ENF\.)\b", re.IGNORECASE)),
@@ -236,11 +247,11 @@ def evaluate_role_profession_gender_bias(
 
             if association_mode == "first":
                 for g in genders[:1]:
-                    counts[g][roles[0]] += 1
+                    counts[g][collapse_role_for_reporting(roles[0])] += 1
             else:
                 for g in genders:
                     for r in roles:
-                        counts[g][r] += 1
+                        counts[g][collapse_role_for_reporting(r)] += 1
     else:
         # Single file mode: no doc boundaries => just compute role from PROFESION entities and gender from NAME entities independently.
         entities = load_entities(str(p), max_files=None)
@@ -250,16 +261,13 @@ def evaluate_role_profession_gender_bias(
             g = infer_gender_personnel(n, lexicon)
             if profs:
                 for pr in profs:
-                    counts[g][infer_role_from_text(pr)] += 1
+                    counts[g][collapse_role_for_reporting(infer_role_from_text(pr))] += 1
             else:
-                counts[g][infer_role_from_text(n)] += 1
+                counts[g][collapse_role_for_reporting(infer_role_from_text(n))] += 1
 
     # Build table (rows = genders, cols = roles)
     row_labels = ["fem", "masc", "other"]
-    role_set = set()
-    for g in row_labels:
-        role_set.update(counts[g].keys())
-    col_labels = sorted(role_set)
+    col_labels = list(REPORTING_ROLE_BUCKETS)
     table = [[int(counts[g].get(r, 0)) for r in col_labels] for g in row_labels]
 
     chi = chi_square_independence(table)
@@ -275,6 +283,8 @@ def evaluate_role_profession_gender_bias(
             "lexicon_path": lexicon_path,
             "max_files": max_files,
             "association_mode": association_mode,
+            "role_collapse": "assistant, administrative, psychologist, etc. -> other",
+            "reporting_role_buckets": list(REPORTING_ROLE_BUCKETS),
             "docs_seen": docs_seen if p.is_dir() else None,
             "docs_used": docs_used if p.is_dir() else None,
         },

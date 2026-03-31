@@ -246,6 +246,7 @@ def run_weat_analysis(
     embedding_dim: int = 100,
     min_word_count: int = 5,
     n_permutations: int = 1000,
+    profession_gender_cooccurrence_window: Optional[int] = None,
 ) -> Dict[str, Any]:
     """
     Ejecuta el análisis WEAT completo.
@@ -297,7 +298,12 @@ def run_weat_analysis(
     male_ratio = male_count / total_gender if total_gender else 0.0
     female_ratio = female_count / total_gender if total_gender else 0.0
 
-    cooc = analyze_profession_gender_cooccurrence(documents, window=10)
+    prof_cooc_window = (
+        profession_gender_cooccurrence_window
+        if profession_gender_cooccurrence_window is not None
+        else window_size
+    )
+    cooc = analyze_profession_gender_cooccurrence(documents, window=prof_cooc_window)
 
     return {
         "metric": "weat_gender_analysis",
@@ -307,12 +313,12 @@ def run_weat_analysis(
             "max_docs": max_docs,
             "documents_loaded": len(documents),
             "vocabulary_size": len(vocab),
-            "window_size": window_size,
+            "embedding_cooccurrence_window": window_size,
+            "profession_gender_cooccurrence_window": prof_cooc_window,
             "embedding_dim": embedding_dim,
             "min_word_count": min_word_count,
             "n_permutations": n_permutations,
             "permutation_seed": WEAT_RANDOM_SEED,
-            "cooccurrence_window_profession": 10,
         },
         "reproducibility": {
             "description": "Mismos valores si se repite con mismo corpus y mismos parámetros.",
@@ -320,7 +326,8 @@ def run_weat_analysis(
                 "documents_path",
                 "max_docs",
                 "min_word_count",
-                "window_size (co-ocurrencias para embeddings)",
+                "embedding_cooccurrence_window (matriz de co-ocurrencia + SVD)",
+                "profession_gender_cooccurrence_window (conteos token profesión–atributo género)",
                 "embedding_dim",
                 "n_permutations",
                 "permutation_seed",
@@ -369,6 +376,12 @@ if __name__ == "__main__":
         help="Ruta del JSON de salida",
     )
     parser.add_argument("--window_size", type=int, default=5)
+    parser.add_argument(
+        "--profession_cooc_window",
+        type=int,
+        default=None,
+        help="Ventana para conteos profesión×términos género (por defecto = window_size).",
+    )
     parser.add_argument("--embedding_dim", type=int, default=100)
     parser.add_argument("--min_word_count", type=int, default=5)
     parser.add_argument("--n_permutations", type=int, default=1000)
@@ -381,6 +394,7 @@ if __name__ == "__main__":
         embedding_dim=args.embedding_dim,
         min_word_count=args.min_word_count,
         n_permutations=args.n_permutations,
+        profession_gender_cooccurrence_window=args.profession_cooc_window,
     )
 
     out_p = Path(args.output_path)

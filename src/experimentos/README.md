@@ -80,12 +80,4 @@ python src/experimentos/naturalidad/07_statistical_comparison.py --generated_cor
 # Optional on several scripts: --sample_size N (0 = full corpus)
 ```
 
-**Run only missing experiments (full corpus)** from the root:
-
-```bash
-python scripts/run_missing_experiments.py --corpus_root corpus_repo/corpus_v1 --full_corpus
-```
-
-Uses `corpus_repo/corpus_v1` everywhere; 07 also uses `corpus_repo/real_validation_corpus` by default.
-
 **Naturalness deps:** 02 (perplexity) and 06 (coherence) need PyTorch and `transformers` (plus `sentence-transformers` for coherence). Install with `pip install -r requirements.txt` from the repo root.

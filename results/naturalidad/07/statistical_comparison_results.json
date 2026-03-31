@@ -1,209 +1,209 @@
 {
-  "generated_corpus_size": 2,
-  "real_corpus_size": 2,
+  "generated_corpus_size": 14035,
+  "real_corpus_size": 500,
   "comparisons": {
     "word_count": {
       "feature": "word_count",
       "generated": {
-        "mean": 26.0,
-        "median": 26.0,
-        "std": 2.0,
-        "count": 2
+        "mean": 229.94613466334164,
+        "median": 227.0,
+        "std": 46.987795092174615,
+        "count": 14035
       },
       "real": {
-        "mean": 39.0,
-        "median": 39.0,
-        "std": 3.0,
-        "count": 2
+        "mean": 2111.51,
+        "median": 2516.5,
+        "std": 1337.8150761222569,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 1.0,
-          "pvalue": 0.3333333333333333,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.8253224082650517,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 0.0,
-          "pvalue": 0.3333333333333333,
-          "significant": false,
-          "rank_biserial_r": 1.0,
-          "significant_bonferroni": false
+          "statistic": 775341.5,
+          "pvalue": 3.6377213013908517e-193,
+          "significant": true,
+          "rank_biserial_r": 0.7790262914143213,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 33.33333333333333,
-        "median_diff_percent": 33.33333333333333
+        "mean_diff_percent": 89.10987233480583,
+        "median_diff_percent": 90.97953506854759
       }
     },
     "sentence_count": {
       "feature": "sentence_count",
       "generated": {
-        "mean": 4.5,
-        "median": 4.5,
-        "std": 0.5,
-        "count": 2
+        "mean": 11.03156394727467,
+        "median": 11.0,
+        "std": 2.7924655253211985,
+        "count": 14035
       },
       "real": {
-        "mean": 5.0,
-        "median": 5.0,
-        "std": 1.0,
-        "count": 2
+        "mean": 177.936,
+        "median": 214.5,
+        "std": 120.9148622130464,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.5,
-          "pvalue": 1.0,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.8580448877805487,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 1.5,
-          "pvalue": 1.0,
-          "significant": false,
-          "rank_biserial_r": 0.25,
-          "significant_bonferroni": false
+          "statistic": 537492.5,
+          "pvalue": 2.290712349631801e-230,
+          "significant": true,
+          "rank_biserial_r": 0.8468136800855005,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 10.0,
-        "median_diff_percent": 10.0
+        "mean_diff_percent": 93.80026304554747,
+        "median_diff_percent": 94.87179487179486
       }
     },
     "avg_word_length": {
       "feature": "avg_word_length",
       "generated": {
-        "mean": 5.0625,
-        "median": 5.0625,
-        "std": 0.3125,
-        "count": 2
+        "mean": 5.511116324305258,
+        "median": 5.5048076923076925,
+        "std": 0.27771389527898865,
+        "count": 14035
       },
       "real": {
-        "mean": 5.317460317460318,
-        "median": 5.317460317460318,
-        "std": 0.12698412698412698,
-        "count": 2
+        "mean": 4.4926559434704325,
+        "median": 4.466077750334465,
+        "std": 0.2810275234132956,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.5,
-          "pvalue": 1.0,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.9326661916636978,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 1.0,
-          "pvalue": 0.6666666666666666,
-          "significant": false,
-          "rank_biserial_r": 0.5,
-          "significant_bonferroni": false
+          "statistic": 6920856.5,
+          "pvalue": 8.411744635510769e-300,
+          "significant": true,
+          "rank_biserial_r": -0.9724564303526897,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 4.7947761194029965,
-        "median_diff_percent": 4.7947761194029965
+        "mean_diff_percent": 22.66944973418323,
+        "median_diff_percent": 23.25821447903447
       }
     },
     "avg_sentence_length": {
       "feature": "avg_sentence_length",
       "generated": {
-        "mean": 5.8,
-        "median": 5.8,
-        "std": 0.20000000000000018,
-        "count": 2
+        "mean": 21.341240795180262,
+        "median": 21.076923076923077,
+        "std": 3.3509105658092277,
+        "count": 14035
       },
       "real": {
-        "mean": 8.25,
-        "median": 8.25,
-        "std": 2.25,
-        "count": 2
+        "mean": 13.056191258911083,
+        "median": 12.321323714453486,
+        "std": 3.8678500314397772,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.5,
-          "pvalue": 1.0,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.8286184538653366,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 0.5,
-          "pvalue": 0.4142161782425252,
-          "significant": false,
-          "rank_biserial_r": 0.75,
-          "significant_bonferroni": false
+          "statistic": 6694674.0,
+          "pvalue": 1.1871134231930328e-261,
+          "significant": true,
+          "rank_biserial_r": -0.9079940149625936,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 29.6969696969697,
-        "median_diff_percent": 29.6969696969697
+        "mean_diff_percent": 63.45686404229477,
+        "median_diff_percent": 71.06054158936563
       }
     },
     "char_count": {
       "feature": "char_count",
       "generated": {
-        "mean": 149.5,
-        "median": 149.5,
-        "std": 2.5,
-        "count": 2
+        "mean": 1472.7122194513715,
+        "median": 1452.0,
+        "std": 300.26515377061236,
+        "count": 14035
       },
       "real": {
-        "mean": 239.0,
-        "median": 239.0,
-        "std": 16.0,
-        "count": 2
+        "mean": 12381.288,
+        "median": 14109.5,
+        "std": 8009.622700293441,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 1.0,
-          "pvalue": 0.3333333333333333,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.8103762023512646,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 0.0,
-          "pvalue": 0.3333333333333333,
-          "significant": false,
-          "rank_biserial_r": 1.0,
-          "significant_bonferroni": false
+          "statistic": 835740.0,
+          "pvalue": 8.307178628079496e-185,
+          "significant": true,
+          "rank_biserial_r": 0.7618126113288208,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 37.44769874476987,
-        "median_diff_percent": 37.44769874476987
+        "mean_diff_percent": 88.10533912585369,
+        "median_diff_percent": 89.70906127077501
       }
     },
     "type_token_ratio": {
       "feature": "type_token_ratio",
       "generated": {
-        "mean": 0.8095238095238095,
-        "median": 0.8095238095238095,
-        "std": 0.023809523809523836,
-        "count": 2
+        "mean": 0.6137642069041249,
+        "median": 0.6139534883720931,
+        "std": 0.03925541653602527,
+        "count": 14035
       },
       "real": {
-        "mean": 0.8075396825396826,
-        "median": 0.8075396825396826,
-        "std": 0.001984126984126977,
-        "count": 2
+        "mean": 0.414160550527632,
+        "median": 0.3507295831528313,
+        "std": 0.14227287817995848,
+        "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.5,
-          "pvalue": 1.0,
-          "significant": false,
-          "significant_bonferroni": false
+          "statistic": 0.749841111506947,
+          "pvalue": 2.184949662169844e-281,
+          "significant": true,
+          "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 2.0,
-          "pvalue": 1.0,
-          "significant": false,
-          "rank_biserial_r": 0.0,
-          "significant_bonferroni": false
+          "statistic": 6194203.5,
+          "pvalue": 1.6369868887910719e-186,
+          "significant": true,
+          "rank_biserial_r": -0.7653590309939438,
+          "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 0.24570024570024482,
-        "median_diff_percent": 0.24570024570024482
+        "mean_diff_percent": 48.194753489245166,
+        "median_diff_percent": 75.05038578526786
       }
     }
   },
@@ -211,9 +211,9 @@
     "total_features_compared": 6,
     "alpha": 0.05,
     "alpha_bonferroni": 0.008333333333333333,
-    "significant_differences": 0,
-    "significant_differences_bonferroni": 0,
-    "similarity_score": 1.0,
-    "similarity_score_bonferroni": 1.0
+    "significant_differences": 6,
+    "significant_differences_bonferroni": 6,
+    "similarity_score": 0.0,
+    "similarity_score_bonferroni": 0.0
   }
 }

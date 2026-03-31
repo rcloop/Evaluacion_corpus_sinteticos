@@ -74,6 +74,13 @@ def shannon_entropy(counter: Counter) -> Dict[str, Optional[float]]:
     return {"entropy_bits": float(h), "normalized_entropy": (float(h_norm) if h_norm is not None else None), "support": int(support)}
 
 
+def hhi(counter: Counter) -> Optional[float]:
+    total = sum(counter.values())
+    if total == 0:
+        return None
+    return float(sum((v / total) ** 2 for v in counter.values()))
+
+
 def load_geo_counts(annotations_path: str, labels: List[str], max_files: Optional[int] = None) -> Tuple[Dict[str, Counter], Counter, Dict[str, Any]]:
     p = Path(annotations_path)
     if not p.exists():
@@ -168,6 +175,7 @@ def evaluate_geographic_toponymic_bias(
         per_label_out[lab] = {
             "top_k": c.most_common(top_k),
             "entropy": shannon_entropy(c),
+            "hhi": hhi(c),
             "n": int(sum(c.values())),
         }
 
@@ -181,7 +189,12 @@ def evaluate_geographic_toponymic_bias(
             "max_files": max_files,
             **meta,
         },
-        "overall": {"top_k": overall.most_common(top_k), "entropy": shannon_entropy(overall), "n": int(sum(overall.values()))},
+        "overall": {
+            "top_k": overall.most_common(top_k),
+            "entropy": shannon_entropy(overall),
+            "hhi": hhi(overall),
+            "n": int(sum(overall.values())),
+        },
         "per_label": per_label_out,
     }
 

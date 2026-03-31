@@ -49,7 +49,16 @@ def test_naturalidad_script_corpus(
     path_val = str(corpus_mini_documents_path)
     out_file = tmp_path / f"out_{script.replace('.py', '')}.json"
     if script == "01_ai_detection.py":
-        args = ["--generated_corpus", path_val, "--output_path", str(out_file)]
+        # For 01, a "human" corpus is required. Use a tiny tracked test corpus.
+        human_dir = repo_root / "test" / "data" / "real_corpus_mini"
+        args = [
+            "--generated_corpus",
+            path_val,
+            "--human_corpus",
+            str(human_dir),
+            "--output_path",
+            str(out_file),
+        ]
     else:
         args = ["--corpus_path", path_val, "--sample_size", "2", "--output_path", str(out_file)]
     timeout = _NATURALIDAD_SUBPROCESS_TIMEOUT.get(script, 120)

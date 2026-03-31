@@ -59,6 +59,26 @@ def hhi(counter: Counter) -> Optional[float]:
     return float(sum((v / total) ** 2 for v in counter.values()))
 
 
+def shannon_entropy(counter: Counter) -> Dict[str, Optional[float]]:
+    total = sum(counter.values())
+    if total == 0:
+        return {"entropy_bits": None, "normalized_entropy": None, "support": 0}
+    h = 0.0
+    for _, v in counter.items():
+        p = v / total
+        if p > 0:
+            h -= p * math.log(p, 2)
+    support = len(counter)
+    h_norm = None
+    if support > 1:
+        h_norm = h / math.log(support, 2)
+    return {
+        "entropy_bits": float(h),
+        "normalized_entropy": (float(h_norm) if h_norm is not None else None),
+        "support": int(support),
+    }
+
+
 def gini(counter: Counter) -> Optional[float]:
     """
     Gini coefficient over frequency distribution.
@@ -179,6 +199,7 @@ def evaluate_institution_bias(
         per_label_out[lab] = {
             "top_k": c.most_common(top_k),
             "n": int(sum(c.values())),
+            "entropy": shannon_entropy(c),
             "hhi": hhi(c),
             "gini": gini(c),
         }
@@ -198,6 +219,7 @@ def evaluate_institution_bias(
         "overall": {
             "top_k": overall.most_common(top_k),
             "n": int(sum(overall.values())),
+            "entropy": shannon_entropy(overall),
             "hhi": hhi(overall),
             "gini": gini(overall),
             "lorenz": points,

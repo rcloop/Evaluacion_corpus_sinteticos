@@ -11,11 +11,15 @@ perplexity 02, coherence 06, semantic memorization).
 
 **Default: full corpus** for perplexity (02), memorization (03), and all naturalness scripts
 (no sampling caps). Use `--quick` to cap heavy scripts at 5000 documents for faster local runs.
+
+**Timeouts:** per-step `--timeout` defaults to 7200s; heavy scripts (perplexity, memorization, WEAT,
+diversity, coherence) use `--timeout_heavy`, default **86400s (24h)**.
 """
 import argparse
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 # Repo root on sys.path so `python scripts/run_all_experiments.py` works from any cwd.
 _SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -33,7 +37,15 @@ NATURALIDAD = REPO_ROOT / "src" / "experimentos" / "naturalidad"
 def run(script: Path, args: list, cwd: Path = None, timeout: int = 3600) -> subprocess.CompletedProcess:
     cwd = cwd or REPO_ROOT
     cmd = [sys.executable, "-u", str(script)] + args
-    return subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True, timeout=timeout)
+    try:
+        return subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired as e:
+        # Convert timeouts into a "failed run" object so the suite can continue.
+        return SimpleNamespace(
+            returncode=124,
+            stdout=getattr(e, "stdout", None) or "",
+            stderr=getattr(e, "stderr", None) or "",
+        )
 
 
 HEAVY_TIMEOUT_SCRIPTS = {
@@ -57,8 +69,8 @@ def main():
     p.add_argument(
         "--timeout_heavy",
         type=int,
-        default=14400,
-        help="Timeout for heavy scripts (perplexity, memorization, WEAT, coherence)",
+        default=86400,
+        help="Timeout for heavy scripts (seconds). Default: 86400 (24h)",
     )
     p.add_argument(
         "--perplexity_sample_size",

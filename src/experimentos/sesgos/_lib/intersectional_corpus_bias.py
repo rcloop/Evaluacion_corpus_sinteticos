@@ -3,10 +3,11 @@ Métricas interseccionales sobre el corpus (solo datos).
 
 - Género × Edad (sujeto de asistencia): tabla contingencia, χ².
 - Género × Geografía (sujeto): tabla género × país/región (top-k), χ².
-- Edad × Geografía: distribución edad por top región, entropía por región.
+- Edad × Geografía: mismos bins gruesos y top geografías.
 
-Entrada: entidades/*.json (por documento). Usa SEXO_SUJETO_ASISTENCIA, EDAD_SUJETO_ASISTENCIA,
-NOMBRE_SUJETO_ASISTENCIA, PAIS, TERRITORIO.
+Entrada: entidades/*.json (por documento). Género sujeto: SEXO_SUJETO_ASISTENCIA o lexicón sobre
+NOMBRE_SUJETO_ASISTENCIA. Edad: EDAD_SUJETO_ASISTENCIA / AGE_OF_SUBJECT en bins <60, 60–70, 70–80, ≥80.
+Geografía: PAIS, TERRITORIO.
 """
 
 from __future__ import annotations
@@ -28,13 +29,25 @@ from name_gender_distribution import (
     SUBJECT_NAME_LABELS,
     SEXO_SUJETO_ASISTENCIA_LABEL,
 )
-from age_distribution import parse_age, decade_bin
+from age_distribution import parse_age
 
 # Geografía: usar PAIS y TERRITORIO para "región" por doc
 GEO_LABELS_PRIMARY = ["PAIS", "TERRITORIO"]
 DEFAULT_AGE_LABELS = ["EDAD_SUJETO_ASISTENCIA", "AGE_OF_SUBJECT"]
-DECADE_BINS = [f"{s}-{s+9}" for s in range(0, 120, 10)] + ["120+"]
+# Bins gruesos para tablas χ² (evita celdas esperadas muy pequeñas frente a décadas).
+INTERSECTIONAL_AGE_BIN_ORDER = ["<60", "60-70", "70-80", ">80"]
 TOP_GEO_K = 15  # top regiones para tabla (resto "OTRO")
+
+
+def coarse_age_bin_intersectional(age_years: int) -> str:
+    """Map numeric age to reporting bins for gender×age and age×geography tests."""
+    if age_years < 60:
+        return "<60"
+    if age_years < 70:
+        return "60-70"
+    if age_years < 80:
+        return "70-80"
+    return ">80"
 
 
 def _get_first_value(pairs: List[Tuple[str, str]], label_set: set, normalizer=None):
@@ -51,11 +64,13 @@ def get_subject_gender_and_age_and_geo_per_doc(
     annotations_path: str,
     lexicon_path: Optional[str] = None,
     max_files: Optional[int] = None,
-    max_decade: int = 120,
 ) -> List[Tuple[str, Optional[str], Optional[str], Optional[str]]]:
     """
-    Por cada documento: (doc_id, gender, decade, geo).
-    gender in (fem, masc, other), decade e.g. '60-69', geo normalizado (PAIS o TERRITORIO).
+    Por cada documento: (doc_id, gender, age_bin, geo).
+    gender: SEXO_SUJETO_ASISTENCIA si existe; si no, lexicón sobre primer
+    NOMBRE_SUJETO_ASISTENCIA.
+    age_bin: uno de INTERSECTIONAL_AGE_BIN_ORDER a partir de la primera edad parseable.
+    geo: primer PAIS o TERRITORIO normalizado.
     """
     lexicon = load_lexicon(lexicon_path)
     sexo_label = SEXO_SUJETO_ASISTENCIA_LABEL.upper().strip()
@@ -71,12 +86,12 @@ def get_subject_gender_and_age_and_geo_per_doc(
             for lab, text in pairs
             if lab.upper().strip() == sexo_label and text
         ]
-        ages = []
+        ages: List[str] = []
         for lab, text in pairs:
             if lab.upper().strip() in age_labels and text:
                 a = parse_age(text)
                 if a is not None:
-                    ages.append(decade_bin(a, max_decade=max_decade))
+                    ages.append(coarse_age_bin_intersectional(a))
         geos = []
         for lab, text in pairs:
             if lab.upper().strip() in geo_labels and text:
@@ -85,15 +100,14 @@ def get_subject_gender_and_age_and_geo_per_doc(
                     geos.append(g)
 
         gender = None
-        if subject_names:
-            if sex_values:
-                gender = sex_values[0] if sex_values else None
-            if gender is None:
-                first = extract_first_name(subject_names[0])
-                gender = infer_gender(first, lexicon)
-        decade = ages[0] if ages else None
+        if sex_values:
+            gender = sex_values[0]
+        elif subject_names:
+            first = extract_first_name(subject_names[0])
+            gender = infer_gender(first, lexicon, full_name=subject_names[0])
+        age_bin = ages[0] if ages else None
         geo = geos[0] if geos else None
-        out.append((doc_id, gender, decade, geo))
+        out.append((doc_id, gender, age_bin, geo))
     return out
 
 
@@ -132,10 +146,9 @@ def evaluate_intersectional_corpus_bias(
     lexicon_path: Optional[str] = None,
     max_files: Optional[int] = None,
     top_geo_k: int = TOP_GEO_K,
-    max_decade: int = 120,
 ) -> Dict[str, Any]:
     rows = get_subject_gender_and_age_and_geo_per_doc(
-        annotations_path, lexicon_path=lexicon_path, max_files=max_files, max_decade=max_decade
+        annotations_path, lexicon_path=lexicon_path, max_files=max_files
     )
     docs_with_gender = sum(1 for _, g, _, _ in rows if g is not None)
     docs_with_age = sum(1 for _, _, d, _ in rows if d is not None)
@@ -150,9 +163,11 @@ def evaluate_intersectional_corpus_bias(
         if g is not None and d is not None:
             ga_counts[(g, d)] += 1
     genders_sorted = ["fem", "masc", "other"]
-    decades_sorted = [b for b in DECADE_BINS if any(ga_counts.get((g, b), 0) > 0 for g in genders_sorted)]
+    decades_sorted = [
+        b for b in INTERSECTIONAL_AGE_BIN_ORDER if any(ga_counts.get((g, b), 0) > 0 for g in genders_sorted)
+    ]
     if not decades_sorted:
-        decades_sorted = DECADE_BINS
+        decades_sorted = list(INTERSECTIONAL_AGE_BIN_ORDER)
     ga_chi2 = _chi2_independence_from_counts(
         genders_sorted,
         decades_sorted,
@@ -192,9 +207,11 @@ def evaluate_intersectional_corpus_bias(
         if d is not None and geo is not None:
             col = geo if geo in top_geos else "_OTHER_"
             ag_counts[(d, col)] += 1
-    decades_ag = [b for b in DECADE_BINS if any(ag_counts.get((b, c), 0) > 0 for c in cols_geo)]
+    decades_ag = [
+        b for b in INTERSECTIONAL_AGE_BIN_ORDER if any(ag_counts.get((b, c), 0) > 0 for c in cols_geo)
+    ]
     if not decades_ag:
-        decades_ag = DECADE_BINS[:5]
+        decades_ag = list(INTERSECTIONAL_AGE_BIN_ORDER)
     ag_chi2 = _chi2_independence_from_counts(
         decades_ag,
         cols_geo,
@@ -209,6 +226,8 @@ def evaluate_intersectional_corpus_bias(
             "annotations_path": str(annotations_path),
             "max_files": max_files,
             "docs_total": len(rows),
+            "subject_gender_rule": "SEXO_SUJETO_ASISTENCIA if present; else lexicon on first subject name",
+            "age_bins_intersectional": list(INTERSECTIONAL_AGE_BIN_ORDER),
             "docs_with_gender": docs_with_gender,
             "docs_with_age": docs_with_age,
             "docs_with_geo": docs_with_geo,

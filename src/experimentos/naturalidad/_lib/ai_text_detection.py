@@ -9,11 +9,20 @@ import json
 import os
 import numpy as np
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Any
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, classification_report
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score,
+    classification_report,
+    confusion_matrix,
+)
 import argparse
 import warnings
 warnings.filterwarnings('ignore')
@@ -61,8 +70,9 @@ def load_corpus(corpus_path: str) -> List[str]:
 def prepare_classification_data(
     generated_texts: List[str],
     human_texts: List[str],
+    seed: int = 42,
     test_size: float = 0.2
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+) -> Tuple[Any, Any, np.ndarray, np.ndarray, TfidfVectorizer]:
     """
     Prepare data for binary classification.
     
@@ -89,55 +99,64 @@ def prepare_classification_data(
         max_df=max_df_val
     )
     
-    X = vectorizer.fit_transform(all_texts).toarray()
+    # Keep sparse matrix (do NOT .toarray()) to avoid huge memory use on large corpora.
+    X = vectorizer.fit_transform(all_texts)
     y = np.array(all_labels)
     
     # Split (stratify solo si hay ≥2 clases y cada una con ≥2 muestras)
     counts = np.bincount(y)
     stratify_arg = y if (len(counts) >= 2 and counts.min() >= 2) else None
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=test_size, random_state=42, stratify=stratify_arg
+        X, y, test_size=test_size, random_state=seed, stratify=stratify_arg
     )
     
     return X_train, X_test, y_train, y_test, vectorizer
 
 
 def train_tfidf_classifier(
-    X_train: np.ndarray,
+    X_train: Any,
     y_train: np.ndarray,
-    X_test: np.ndarray,
+    X_test: Any,
     y_test: np.ndarray
 ) -> Dict:
     """Train TF-IDF + Logistic Regression classifier."""
     
     # Train
-    classifier = LogisticRegression(max_iter=1000, random_state=42)
+    classifier = LogisticRegression(max_iter=1000, random_state=42, class_weight="balanced")
     classifier.fit(X_train, y_train)
     
     # Predict
     y_pred = classifier.predict(X_test)
     y_pred_proba = classifier.predict_proba(X_test)[:, 1]
     
-    # Metrics (zero_division=0 para conjuntos mínimos donde falta una clase en y_test)
+    # Metrics (robust to class imbalance; report both standard and balanced).
     accuracy = accuracy_score(y_test, y_pred)
+    bal_acc = balanced_accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred, zero_division=0)
     recall = recall_score(y_test, y_pred, zero_division=0)
     f1 = f1_score(y_test, y_pred, zero_division=0)
+    f1_macro = f1_score(y_test, y_pred, average="macro", zero_division=0)
     try:
         auc_roc = roc_auc_score(y_test, y_pred_proba)
     except ValueError:
         auc_roc = 0.0  # Una sola clase en y_test
-    baseline_accuracy = max(np.mean(y_test), 1 - np.mean(y_test))
+    p_pos = float(np.mean(y_test))
+    baseline_accuracy = max(p_pos, 1 - p_pos)
+    cm = confusion_matrix(y_test, y_pred, labels=[0, 1])
     
     return {
         'method': 'TF-IDF + Logistic Regression',
         'accuracy': accuracy,
+        'balanced_accuracy': bal_acc,
         'precision': precision,
         'recall': recall,
         'f1_score': f1,
+        'f1_macro': f1_macro,
         'auc_roc': auc_roc,
         'baseline_accuracy': baseline_accuracy,
-        'classification_report': classification_report(y_test, y_pred, output_dict=True, zero_division=0)
+        'confusion_matrix_labels': [0, 1],
+        'confusion_matrix': cm.tolist(),
+        'classification_report': classification_report(y_test, y_pred, output_dict=True, zero_division=0),
     }
 
 
@@ -192,7 +211,9 @@ def evaluate_ai_detection(
     human_corpus_path: str = None,
     output_path: str = "ai_detection_results.json",
     use_transformer: bool = False,
-    transformer_model: str = "dccuchile/bert-base-spanish-wwm-uncased"
+    transformer_model: str = "dccuchile/bert-base-spanish-wwm-uncased",
+    sample_size: int = None,
+    seed: int = 42,
 ) -> Dict:
     """
     Complete AI text detection evaluation.
@@ -216,37 +237,45 @@ def evaluate_ai_detection(
     generated_texts = load_corpus(generated_corpus_path)
     print(f"   Loaded {len(generated_texts)} generated texts")
     
-    # Load human texts
+    # Load human texts (required for real-vs-synthetic comparison).
     if human_corpus_path:
         print(f"\n2. Loading human corpus: {human_corpus_path}")
         human_texts = load_corpus(human_corpus_path)
         print(f"   Loaded {len(human_texts)} human texts")
     else:
-        print("\n2. No human corpus provided. Splitting generated corpus for evaluation.")
-        # Split generated corpus to simulate human vs generated
-        human_texts, _ = train_test_split(
-            generated_texts, test_size=0.5, random_state=42
+        raise ValueError(
+            "human_corpus_path is required. "
+            "Pass --human_corpus (or provide the default corpus_repo/real_validation_corpus)."
         )
-        print(f"   Using {len(human_texts)} texts as 'human' baseline")
     
-    # Balance datasets
-    min_size = min(len(generated_texts), len(human_texts))
-    generated_texts = generated_texts[:min_size]
-    human_texts = human_texts[:min_size]
-    
-    print(f"\n3. Balanced datasets: {min_size} texts each")
+    # Optional cap per side (for speed; reproducible).
+    if sample_size is not None and sample_size > 0:
+        import random
+        rng = random.Random(seed)
+        if len(generated_texts) > sample_size:
+            generated_texts = rng.sample(generated_texts, sample_size)
+        if len(human_texts) > sample_size:
+            human_texts = rng.sample(human_texts, sample_size)
+
+    n_gen = len(generated_texts)
+    n_hum = len(human_texts)
+    if n_gen < 1 or n_hum < 1:
+        return {"error": "Empty corpus after loading/sampling."}
+    print(f"\n3. Dataset sizes (seed={seed}): generated={n_gen} | human={n_hum}")
     
     # Minimum samples per class for train/test split and classifier (corpus_mini has ≥3 per class)
     min_per_class_for_classifier = 3
-    if min_size < min_per_class_for_classifier:
+    if min(n_gen, n_hum) < min_per_class_for_classifier:
         results = {
-            'generated_corpus_size': len(generated_texts),
-            'human_corpus_size': len(human_texts),
+            'generated_corpus_size': n_gen,
+            'human_corpus_size': n_hum,
             'tfidf_classifier': {
                 'accuracy': 0.5,
+                'balanced_accuracy': 0.5,
                 'precision': 0.0,
                 'recall': 0.0,
                 'f1_score': 0.0,
+                'f1_macro': 0.0,
                 'auc_roc': 0.5,
                 'baseline_accuracy': 0.5,
                 'note': f'Insufficient data (need at least {min_per_class_for_classifier} texts per class for classification).'
@@ -254,8 +283,8 @@ def evaluate_ai_detection(
             'naturalness_assessment': {
                 'level': 'UNKNOWN',
                 'interpretation': 'Insufficient corpus size for evaluation.',
-                'target_accuracy': '< 0.6 (lower is better)',
-                'actual_accuracy': None
+                'target_balanced_accuracy': '< 0.6 (lower is better)',
+                'actual_balanced_accuracy': None
             }
         }
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -266,10 +295,10 @@ def evaluate_ai_detection(
     # Prepare data
     print("\n4. Preparing classification data...")
     X_train, X_test, y_train, y_test, vectorizer = prepare_classification_data(
-        generated_texts, human_texts
+        generated_texts, human_texts, seed=seed
     )
-    print(f"   Training set: {len(X_train)} samples")
-    print(f"   Test set: {len(X_test)} samples")
+    print(f"   Training set: {X_train.shape[0]} samples")
+    print(f"   Test set: {X_test.shape[0]} samples")
     
     # Train TF-IDF classifier
     print("\n5. Training TF-IDF + Logistic Regression classifier...")
@@ -277,17 +306,20 @@ def evaluate_ai_detection(
     
     print(f"\n   Results:")
     print(f"   - Accuracy: {tfidf_results['accuracy']:.4f}")
+    print(f"   - Balanced accuracy: {tfidf_results['balanced_accuracy']:.4f}")
     print(f"   - Precision: {tfidf_results['precision']:.4f}")
     print(f"   - Recall: {tfidf_results['recall']:.4f}")
     print(f"   - F1-Score: {tfidf_results['f1_score']:.4f}")
+    print(f"   - F1-macro: {tfidf_results['f1_macro']:.4f}")
     print(f"   - AUC-ROC: {tfidf_results['auc_roc']:.4f}")
     print(f"   - Baseline: {tfidf_results['baseline_accuracy']:.4f}")
     
     # Interpret results
-    if tfidf_results['accuracy'] < 0.6:
+    score = tfidf_results.get('balanced_accuracy', tfidf_results['accuracy'])
+    if score < 0.6:
         naturalness_level = "HIGH"
         interpretation = "Classifier cannot reliably distinguish between generated and human texts. High naturalness."
-    elif tfidf_results['accuracy'] < 0.7:
+    elif score < 0.7:
         naturalness_level = "MODERATE"
         interpretation = "Classifier can somewhat distinguish. Moderate naturalness."
     else:
@@ -295,14 +327,22 @@ def evaluate_ai_detection(
         interpretation = "Classifier can reliably distinguish. Low naturalness - texts are easily identifiable as AI-generated."
     
     results = {
-        'generated_corpus_size': len(generated_texts),
-        'human_corpus_size': len(human_texts),
+        'generated_corpus_size': n_gen,
+        'human_corpus_size': n_hum,
+        'inputs': {
+            'generated_corpus_path': generated_corpus_path,
+            'human_corpus_path': human_corpus_path,
+            'human_corpus_mode': 'external' if human_corpus_path else 'missing',
+            'sample_size_per_corpus': sample_size,
+            'seed': seed,
+            'balancing': 'none (class_weight=balanced)',
+        },
         'tfidf_classifier': tfidf_results,
         'naturalness_assessment': {
             'level': naturalness_level,
             'interpretation': interpretation,
-            'target_accuracy': '< 0.6 (lower is better)',
-            'actual_accuracy': tfidf_results['accuracy']
+            'target_balanced_accuracy': '< 0.6 (lower is better)',
+            'actual_balanced_accuracy': tfidf_results.get('balanced_accuracy'),
         }
     }
     

@@ -52,6 +52,7 @@ def evaluate_diversity_summary(
                     "variety": int(n) if n is not None else ent.get("support"),
                     "balance_normalized_entropy": ent.get("normalized_entropy"),
                     "entropy_bits": ent.get("entropy_bits"),
+                    "hhi": ov.get("hhi"),
                 }
     # 1.5 Institution
     if path_1_5:
@@ -64,6 +65,8 @@ def evaluate_diversity_summary(
                 n = ov.get("n")
                 dimensions["institutions"] = {
                     "variety": int(n) if n is not None else None,
+                    "balance_normalized_entropy": (ov.get("entropy") or {}).get("normalized_entropy") if isinstance(ov.get("entropy"), dict) else None,
+                    "entropy_bits": (ov.get("entropy") or {}).get("entropy_bits") if isinstance(ov.get("entropy"), dict) else None,
                     "hhi": ov.get("hhi"),
                     "gini": ov.get("gini"),
                 }
@@ -80,6 +83,7 @@ def evaluate_diversity_summary(
                     "variety": ov.get("n_unique") or ent.get("support"),
                     "balance_normalized_entropy": ent.get("normalized_entropy") if ent else None,
                     "entropy_bits": ent.get("entropy_bits") if ent else None,
+                    "hhi": ov.get("hhi"),
                 }
     return {
         "metric": "diversity_summary",
@@ -90,7 +94,7 @@ def evaluate_diversity_summary(
             "path_1_6": path_1_6,
         },
         "dimensions": dimensions,
-        "description": "Variety = number of distinct categories; balance = normalized entropy (or HHI/Gini for institutions).",
+        "description": "Variety = number of distinct categories; balance = normalized Shannon entropy; concentration = HHI (and Gini for institutions).",
     }
 
 

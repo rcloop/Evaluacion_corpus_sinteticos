@@ -1,6 +1,6 @@
 # Experiment results (`results/`)
 
-JSON outputs from **`scripts/run_all_experiments.py`**, **`scripts/run_missing_experiments.py`**, or individual scripts under `src/experimentos/`.
+JSON outputs from **`scripts/run_all_experiments.py`** or individual scripts under `src/experimentos/`.
 
 ## Full corpus (paper-grade)
 

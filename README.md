@@ -11,7 +11,7 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 - **`corpus_repo/real_validation_corpus/`** – **Your** real-reference `.txt` files for **experiment 07** (**gitignored**). Populate locally (export script or copy); never committed.
 - **`data/`** – Small reference assets (e.g. lexicons under `data/sesgos/`).
 - **`results/`** – Experiment outputs (JSON). Log `.txt` under `results/` is ignored.
-- **`scripts/`** – **Runners**: `run_all_experiments.py`, `run_missing_experiments.py`, `run.ps1`, `run_missing_full_corpus.ps1` (from repo root: `python scripts/run_all_experiments.py`, or `.\scripts\run.ps1 python ...`).
+- **`scripts/`** – **Runners**: `run_all_experiments.py`, `run.ps1` (from repo root: `python scripts/run_all_experiments.py`, or `.\scripts\run.ps1 python ...`). Heavy steps use a **24h** per-script timeout by default (`--timeout_heavy`).
 - **`restos/`** – Optional **local-only** legacy snapshots (gitignored).
 - **Root** – `requirements.txt`, `repo_paths.py`, `pytest.ini`. Full-suite default = **all documents** (use `python scripts/run_all_experiments.py --quick` to cap heavy steps at 5000 docs).
 
@@ -55,6 +55,24 @@ pip install -r requirements.txt
 See **`src/experimentos/README.md`**. Example:
 
 `python src/experimentos/sesgos/01_name_gender_distribution.py --corpus_root corpus_repo/corpus_v1`
+
+## Notes on age parsing (bias 1.4)
+
+Experiment **1.4 (age distribution)** extracts ages from `entidades/` and bins them by decade. Besides numeric ages (e.g. `70 años`), it also recovers some **text-only** age mentions:
+
+- **`sexagenario/a`** → bin **60–69**
+- **`septuagenario/a`** → **70–79**
+- **`octogenario/a`** → **80–89**
+- **`nonagenario/a`** → **90–99**
+- **`centenario/a`** → **100–109**
+- **`sexta década`** → **50–59**
+- **`séptima década`** → **60–69**
+- **`octava década`** → **70–79**
+- **`novena década`** → **80–89**
+- **`décima década`** → **90–99**
+- **`octogenario próximo`** → **70–79** (agreed conservative mapping)
+
+Vague descriptors like `adulto mayor`, `edad avanzada`, `geriátrico` are **not** converted to a numeric decade bin.
 
 ## License
 

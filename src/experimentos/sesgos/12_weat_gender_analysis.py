@@ -22,6 +22,13 @@ if __name__ == "__main__":
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--n_permutations", type=int, default=1000)
+    parser.add_argument("--window_size", type=int, default=5)
+    parser.add_argument(
+        "--profession_cooc_window",
+        type=int,
+        default=None,
+        help="Ventana para conteos auxiliares profesión×género; por defecto igual que --window_size.",
+    )
     parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     documents = Path(args.corpus_root) / "documents"
@@ -33,7 +40,9 @@ if __name__ == "__main__":
     result = run_weat_analysis(
         documents_path=str(documents),
         max_docs=max_docs,
+        window_size=args.window_size,
         n_permutations=args.n_permutations,
+        profession_gender_cooccurrence_window=args.profession_cooc_window,
     )
     out = Path(args.output_path)
     out.parent.mkdir(parents=True, exist_ok=True)

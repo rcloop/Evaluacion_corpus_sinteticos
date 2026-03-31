@@ -1,17 +1,17 @@
 {
   "metric": "weat_gender_analysis",
-  "timestamp_utc": "2026-03-29T18:52:23.899092+00:00",
+  "timestamp_utc": "2026-03-30T18:02:15.595837+00:00",
   "input_summary": {
-    "documents_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\test\\data\\corpus_mini\\documents",
-    "max_docs": 2,
-    "documents_loaded": 2,
-    "vocabulary_size": 0,
-    "window_size": 5,
+    "documents_path": "corpus_repo\\corpus_v1\\documents",
+    "max_docs": null,
+    "documents_loaded": 14035,
+    "vocabulary_size": 6824,
+    "embedding_cooccurrence_window": 5,
+    "profession_gender_cooccurrence_window": 5,
     "embedding_dim": 100,
     "min_word_count": 5,
     "n_permutations": 1000,
-    "permutation_seed": 42,
-    "cooccurrence_window_profession": 10
+    "permutation_seed": 42
   },
   "reproducibility": {
     "description": "Mismos valores si se repite con mismo corpus y mismos parámetros.",
@@ -19,7 +19,8 @@
       "documents_path",
       "max_docs",
       "min_word_count",
-      "window_size (co-ocurrencias para embeddings)",
+      "embedding_cooccurrence_window (matriz de co-ocurrencia + SVD)",
+      "profession_gender_cooccurrence_window (conteos token profesión–atributo género)",
       "embedding_dim",
       "n_permutations",
       "permutation_seed",
@@ -30,23 +31,23 @@
     ]
   },
   "weat_analysis": {
-    "effect_size": 0.0,
-    "p_value": 1.0,
-    "interpretation": "Sesgo negligible",
+    "effect_size": -0.3092515712591176,
+    "p_value": 0.775,
+    "interpretation": "Sesgo pequeño",
     "bias_direction": "femenino",
     "significant": false
   },
   "mention_ratio": {
-    "male_mentions": 0,
-    "female_mentions": 0,
-    "male_ratio": 0.0,
-    "female_ratio": 0.0,
-    "male_female_ratio": null
+    "male_mentions": 1067,
+    "female_mentions": 4144,
+    "male_ratio": 0.20475916330838612,
+    "female_ratio": 0.7952408366916139,
+    "male_female_ratio": 0.257480694980695
   },
   "profession_cooccurrence": {
-    "male_cooccurrences": 0,
-    "female_cooccurrences": 0,
-    "male_cooc_ratio": 0.0,
-    "female_cooc_ratio": 0.0
+    "male_cooccurrences": 13,
+    "female_cooccurrences": 30,
+    "male_cooc_ratio": 0.3023255813953488,
+    "female_cooc_ratio": 0.6976744186046512
   }
 }

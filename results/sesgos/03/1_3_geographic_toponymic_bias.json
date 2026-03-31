@@ -1,8 +1,8 @@
 {
   "metric": "1.3_geographic_toponymic_bias",
-  "timestamp_utc": "2026-03-29T18:52:19.774643+00:00",
+  "timestamp_utc": "2026-03-30T17:09:43.527104+00:00",
   "input_summary": {
-    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\test\\data\\corpus_mini\\entidades",
+    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
     "geo_labels": [
       "CALLE",
       "CENTRO_SALUD",
@@ -22,48 +22,284 @@
       "TERRITORY"
     ],
     "top_k": 20,
-    "max_files": 2,
-    "docs_seen": 2,
-    "entities_seen_total": 8,
-    "entities_matched_total": 1
+    "max_files": null,
+    "docs_seen": 14035,
+    "entities_seen_total": 116253,
+    "entities_matched_total": 21654
   },
   "overall": {
     "top_k": [
       [
-        "PLANTA",
-        1
+        "FRANCIA",
+        400
+      ],
+      [
+        "ITALIA",
+        387
+      ],
+      [
+        "CONSULTORIO LOCAL SANTA CLARA",
+        385
+      ],
+      [
+        "PORTUGAL",
+        380
+      ],
+      [
+        "COLOMBIA",
+        359
+      ],
+      [
+        "CONSULTORIO GENERAL LA RIVERA",
+        358
+      ],
+      [
+        "UNIDAD DE SALUD COMUNITARIA EL MIRADOR",
+        354
+      ],
+      [
+        "PUESTO DE SALUD LA ESPERANZA",
+        347
+      ],
+      [
+        "ESTADOS UNIDOS",
+        344
+      ],
+      [
+        "CENTRO MEDICO FAMILIAR LOS PINOS",
+        341
+      ],
+      [
+        "CENTRO DE SALUD LAS ROSAS",
+        340
+      ],
+      [
+        "LEVANTE",
+        339
+      ],
+      [
+        "CHILE",
+        337
+      ],
+      [
+        "CENTRO DE SALUD Y BIENESTAR LA COLINA",
+        337
+      ],
+      [
+        "COMUNIDAD AUTONOMA VALENCIANA",
+        336
+      ],
+      [
+        "AMBULATORIO URBANO SAN BENITO",
+        336
+      ],
+      [
+        "CLINICA PERIFERICA NORTE",
+        335
+      ],
+      [
+        "TERRITORIO DE LA COMUNIDAD VALENCIANA",
+        335
+      ],
+      [
+        "ALEMANIA",
+        332
+      ],
+      [
+        "MEXICO",
+        325
       ]
     ],
     "entropy": {
-      "entropy_bits": 0.0,
-      "normalized_entropy": null,
-      "support": 1
+      "entropy_bits": 6.730242813239926,
+      "normalized_entropy": 0.7914370567553708,
+      "support": 363
     },
-    "n": 1
+    "hhi": 0.011738661310354134,
+    "n": 21654
   },
   "per_label": {
     "CALLE": {
-      "top_k": [],
+      "top_k": [
+        [
+          "TRAVESIA DEL CONSULTORIO 5",
+          308
+        ],
+        [
+          "PLAZA DE LA MEDICINA 1",
+          298
+        ],
+        [
+          "RONDA DE LA AMBULANCIA 15",
+          292
+        ],
+        [
+          "CALLE DEL CENTRO DE SALUD 3",
+          291
+        ],
+        [
+          "CAMINO DE LOS PINARES 120",
+          291
+        ],
+        [
+          "CALLE DEL DIAGNOSTICO 7",
+          290
+        ],
+        [
+          "PASEO DE LA SALUD 8",
+          284
+        ],
+        [
+          "CALLE DEL HOSPITAL 45",
+          271
+        ],
+        [
+          "AVENIDA DEL PACIENTE 10",
+          267
+        ],
+        [
+          "AVENIDA DEL DOCTOR FLEMING 22",
+          250
+        ],
+        [
+          "AVENIDA DE LA ALBUFERA 127",
+          126
+        ],
+        [
+          "AVENIDA DE LA ALBUFERA 112",
+          93
+        ],
+        [
+          "PASEO DE LA CASTELLANA 178",
+          89
+        ],
+        [
+          "AVENIDA DE LA ALBUFERA 128",
+          73
+        ],
+        [
+          "CALLE DE LA PRINCESA 25",
+          63
+        ],
+        [
+          "PASEO DE LA HABANA 30",
+          48
+        ],
+        [
+          "AVENIDA DE LA CONSTITUCION 7",
+          43
+        ],
+        [
+          "CALLE DE ALCALA 120",
+          42
+        ],
+        [
+          "PLAZA ESPANA 67",
+          40
+        ],
+        [
+          "AVENIDA DE LA PAZ 45",
+          35
+        ]
+      ],
       "entropy": {
-        "entropy_bits": null,
-        "normalized_entropy": null,
-        "support": 0
+        "entropy_bits": 4.795594696282417,
+        "normalized_entropy": 0.7202526847796112,
+        "support": 101
       },
-      "n": 0
+      "hhi": 0.051402873670812005,
+      "n": 4124
     },
     "CENTRO_SALUD": {
       "top_k": [
         [
-          "PLANTA",
-          1
+          "CONSULTORIO LOCAL SANTA CLARA",
+          385
+        ],
+        [
+          "CONSULTORIO GENERAL LA RIVERA",
+          358
+        ],
+        [
+          "UNIDAD DE SALUD COMUNITARIA EL MIRADOR",
+          354
+        ],
+        [
+          "PUESTO DE SALUD LA ESPERANZA",
+          347
+        ],
+        [
+          "CENTRO MEDICO FAMILIAR LOS PINOS",
+          341
+        ],
+        [
+          "CENTRO DE SALUD LAS ROSAS",
+          340
+        ],
+        [
+          "CENTRO DE SALUD Y BIENESTAR LA COLINA",
+          337
+        ],
+        [
+          "AMBULATORIO URBANO SAN BENITO",
+          336
+        ],
+        [
+          "CLINICA PERIFERICA NORTE",
+          335
+        ],
+        [
+          "CENTRO DE ATENCION PRIMARIA VISTA HERMOSA",
+          324
+        ],
+        [
+          "CENTRO DE SALUD EL CARMEN",
+          40
+        ],
+        [
+          "CENTRO DE SALUD LA FORTUNA",
+          35
+        ],
+        [
+          "CLINICA PERIFERICA SAN LUCAS",
+          22
+        ],
+        [
+          "CENTRO DE SALUD Y BIENESTAR",
+          22
+        ],
+        [
+          "CONSULTORIO GENERAL DEL ESTE",
+          22
+        ],
+        [
+          "UNIDAD DE SALUD COMUNITARIA",
+          22
+        ],
+        [
+          "CENTRO MEDICO FAMILIAR LA PAZ",
+          18
+        ],
+        [
+          "CENTRO DE SALUD NORTE",
+          18
+        ],
+        [
+          "PUESTO DE SALUD CENTRAL",
+          18
+        ],
+        [
+          "CENTRO DE ATENCION PRIMARIA VITAL",
+          14
         ]
       ],
       "entropy": {
-        "entropy_bits": 0.0,
-        "normalized_entropy": null,
-        "support": 1
+        "entropy_bits": 3.7635213644129806,
+        "normalized_entropy": 0.6539695802912112,
+        "support": 54
       },
-      "n": 1
+      "hhi": 0.08624632604120336,
+      "n": 3736
     },
     "CITY": {
       "top_k": [],
@@ -72,6 +308,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "CIUDAD": {
@@ -81,6 +318,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "COMUNIDAD_AUTONOMA": {
@@ -90,6 +328,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "COUNTRY": {
@@ -99,34 +338,281 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "HOSPITAL": {
-      "top_k": [],
+      "top_k": [
+        [
+          "HOSPITAL VIRGEN DEL ROCIO",
+          270
+        ],
+        [
+          "CENTRO HOSPITALARIO CENTRAL",
+          194
+        ],
+        [
+          "HOSPITAL REGIONAL DEL NORTE",
+          183
+        ],
+        [
+          "CENTRO MEDICO UNIVERSITARIO",
+          182
+        ],
+        [
+          "INSTITUTO CLINICO DEL ESTE",
+          174
+        ],
+        [
+          "CLINICA SANTA MARIA",
+          173
+        ],
+        [
+          "HOSPITAL SAN JUAN DE DIOS",
+          170
+        ],
+        [
+          "COMPLEJO ASISTENCIAL VIRGEN DE LA LUZ",
+          167
+        ],
+        [
+          "HOSPITAL DE LA CRUZ ROJA",
+          160
+        ],
+        [
+          "HOSPITAL GENERAL METROPOLITANO",
+          159
+        ],
+        [
+          "HOSPITAL GENERAL DE VALENCIA",
+          80
+        ],
+        [
+          "CENTRO MEDICO LA PAZ",
+          43
+        ],
+        [
+          "HOSPITAL UNIVERSITARIO CENTRAL DE ASTURIAS",
+          38
+        ],
+        [
+          "CLINICA UNIVERSIDAD DE NAVARRA",
+          35
+        ],
+        [
+          "HOSPITAL GERMANS TRIAS I PUJOL",
+          33
+        ],
+        [
+          "FUNDACION JIMENEZ DIAZ",
+          33
+        ],
+        [
+          "INSTITUTO DE NEUROCIENCIAS",
+          30
+        ],
+        [
+          "CLINICA UNIVERSITARIA SAN CARLOS",
+          27
+        ],
+        [
+          "COMPLEJO HOSPITALARIO DE VALENCIA",
+          26
+        ],
+        [
+          "HOSPITAL CLINICO DE BARCELONA",
+          26
+        ]
+      ],
       "entropy": {
-        "entropy_bits": null,
-        "normalized_entropy": null,
-        "support": 0
+        "entropy_bits": 4.130878875256773,
+        "normalized_entropy": 0.7436876041705831,
+        "support": 47
       },
-      "n": 0
+      "hhi": 0.06999897120057798,
+      "n": 2274
     },
     "INSTITUCION": {
-      "top_k": [],
+      "top_k": [
+        [
+          "AREA DE GESTION SANITARIA SUR",
+          258
+        ],
+        [
+          "CONSORCIO SANITARIO METROPOLITANO",
+          246
+        ],
+        [
+          "INSTITUTO NACIONAL DE SALUD",
+          243
+        ],
+        [
+          "CLINICA UNIVERSITARIA SAN CARLOS",
+          236
+        ],
+        [
+          "CENTRO MEDICO ESPECIALIZADO INSULAR",
+          231
+        ],
+        [
+          "SERVICIO DE SALUD DE LA COMUNIDAD",
+          231
+        ],
+        [
+          "HOSPITAL CLINICO DE LA CAPITAL",
+          230
+        ],
+        [
+          "AGENCIA DE SALUD PUBLICA REGIONAL",
+          229
+        ],
+        [
+          "FUNDACION DE INVESTIGACION BIOMEDICA",
+          226
+        ],
+        [
+          "HOSPITAL GENERAL UNIVERSITARIO CENTRAL",
+          217
+        ],
+        [
+          "HOSPITAL INFANTA SOFIA",
+          191
+        ],
+        [
+          "HOSPITAL CLINICO SAN CARLOS",
+          182
+        ],
+        [
+          "CENTRO DE SALUD HORTALEZA",
+          168
+        ],
+        [
+          "HOSPITAL GREGORIO MARANON",
+          167
+        ],
+        [
+          "HOSPITAL FUNDACION JIMENEZ DIAZ",
+          163
+        ],
+        [
+          "HOSPITAL 12 DE OCTUBRE",
+          157
+        ],
+        [
+          "HOSPITAL UNIVERSITARIO RAMON Y CAJAL",
+          155
+        ],
+        [
+          "CENTRO DE SALUD CHAMBERI",
+          153
+        ],
+        [
+          "HOSPITAL PUERTA DE HIERRO",
+          144
+        ],
+        [
+          "HOSPITAL LA PAZ",
+          143
+        ]
+      ],
       "entropy": {
-        "entropy_bits": null,
-        "normalized_entropy": null,
-        "support": 0
+        "entropy_bits": 4.863014373079771,
+        "normalized_entropy": 0.7528548423747673,
+        "support": 88
       },
-      "n": 0
+      "hhi": 0.04103199635496243,
+      "n": 4514
     },
     "PAIS": {
-      "top_k": [],
+      "top_k": [
+        [
+          "FRANCIA",
+          400
+        ],
+        [
+          "ITALIA",
+          387
+        ],
+        [
+          "PORTUGAL",
+          380
+        ],
+        [
+          "COLOMBIA",
+          359
+        ],
+        [
+          "ESTADOS UNIDOS",
+          344
+        ],
+        [
+          "CHILE",
+          337
+        ],
+        [
+          "ALEMANIA",
+          332
+        ],
+        [
+          "MEXICO",
+          325
+        ],
+        [
+          "REINO UNIDO",
+          312
+        ],
+        [
+          "ARGENTINA",
+          303
+        ],
+        [
+          "PERU",
+          1
+        ],
+        [
+          "ANDORRA",
+          1
+        ],
+        [
+          "URUGUAY",
+          1
+        ],
+        [
+          "BRASIL",
+          1
+        ],
+        [
+          "PANAMA",
+          1
+        ],
+        [
+          "VENEZUELA",
+          1
+        ],
+        [
+          "ECUADOR",
+          1
+        ],
+        [
+          "COSTA RICA",
+          1
+        ],
+        [
+          "BOLIVIA",
+          1
+        ],
+        [
+          "PARAGUAY",
+          1
+        ]
+      ],
       "entropy": {
-        "entropy_bits": null,
-        "normalized_entropy": null,
-        "support": 0
+        "entropy_bits": 3.353063796585063,
+        "normalized_entropy": 0.7412441410458273,
+        "support": 23
       },
-      "n": 0
+      "hhi": 0.10004621920960886,
+      "n": 3492
     },
     "POBLACION": {
       "top_k": [],
@@ -135,6 +621,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "PROVINCE": {
@@ -144,6 +631,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "PROVINCIA": {
@@ -153,6 +641,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "REGION": {
@@ -162,6 +651,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "STREET": {
@@ -171,16 +661,99 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     },
     "TERRITORIO": {
-      "top_k": [],
+      "top_k": [
+        [
+          "LEVANTE",
+          339
+        ],
+        [
+          "COMUNIDAD AUTONOMA VALENCIANA",
+          336
+        ],
+        [
+          "TERRITORIO DE LA COMUNIDAD VALENCIANA",
+          335
+        ],
+        [
+          "REGION DE VALENCIA",
+          324
+        ],
+        [
+          "AREA DE SALUD DE LA COMUNIDAD VALENCIANA",
+          321
+        ],
+        [
+          "ALICANTE",
+          310
+        ],
+        [
+          "COMUNIDAD VALENCIANA (CV)",
+          298
+        ],
+        [
+          "DEPARTAMENTO DE SALUD DE VALENCIA",
+          297
+        ],
+        [
+          "CASTELLON",
+          289
+        ],
+        [
+          "PROVINCIA DE VALENCIA",
+          269
+        ],
+        [
+          "CASTILLA Y LEON",
+          72
+        ],
+        [
+          "MADRID",
+          46
+        ],
+        [
+          "VALENCIA",
+          30
+        ],
+        [
+          "ISLAS BALEARES",
+          28
+        ],
+        [
+          "CATALUNA",
+          25
+        ],
+        [
+          "PAIS VASCO",
+          23
+        ],
+        [
+          "BILBAO",
+          23
+        ],
+        [
+          "SEVILLA",
+          22
+        ],
+        [
+          "REGION DE MURCIA",
+          20
+        ],
+        [
+          "ARAGON",
+          20
+        ]
+      ],
       "entropy": {
-        "entropy_bits": null,
-        "normalized_entropy": null,
-        "support": 0
+        "entropy_bits": 3.9137501374232317,
+        "normalized_entropy": 0.6709795878062125,
+        "support": 57
       },
-      "n": 0
+      "hhi": 0.08017333058205425,
+      "n": 3514
     },
     "TERRITORY": {
       "top_k": [],
@@ -189,6 +762,7 @@
         "normalized_entropy": null,
         "support": 0
       },
+      "hhi": null,
       "n": 0
     }
   }
