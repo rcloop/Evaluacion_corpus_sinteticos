@@ -22,7 +22,6 @@ def _run_experiment(script_path: Path, args: list, cwd: Path, timeout: int = 180
 
 @pytest.mark.parametrize("script", [
     "01_attribute_inference.py",
-    "02_membership_inference.py",
     "03_memorization_detection.py",
 ])
 def test_privacidad_script_corpus_mini(
@@ -34,7 +33,6 @@ def test_privacidad_script_corpus_mini(
         pytest.skip(f"Script no encontrado: {script_path}")
     out_map = {
         "01_attribute_inference.py": "attribute_inference.json",
-        "02_membership_inference.py": "membership_inference.json",
         "03_memorization_detection.py": "memorization_detection.json",
     }
     args = ["--corpus_path", str(corpus_mini_path), "--output_path", str(tmp_path / out_map[script])]
@@ -98,3 +96,41 @@ def test_privacidad_01_json_structure_and_sanity(
             assert 0 <= res["auc_roc"] <= 1.0, f"attribute_results[{attr_name}].auc_roc en [0,1]"
         if isinstance(res, dict) and "risk_level" in res:
             assert res["risk_level"] in allowed_risk, f"risk_level debe ser uno de {allowed_risk}"
+
+
+def test_privacidad_03_semantic_histogram_when_present(
+    repo_root, corpus_mini_path, experiments_privacidad_path, tmp_path
+):
+    """03 memorization: si hay histograma semántico, estructura mínima y sum(counts)==n_pairs."""
+    script = experiments_privacidad_path / "03_memorization_detection.py"
+    out_file = tmp_path / "memorization_detection.json"
+    result = _run_experiment(
+        script,
+        [
+            "--corpus_path", str(corpus_mini_path),
+            "--annotations_path", str(corpus_mini_path / "entidades"),
+            "--output_path", str(out_file),
+        ],
+        repo_root,
+        timeout=300,
+    )
+    assert result.returncode == 0, result.stderr
+    data = json.loads(out_file.read_text(encoding="utf-8"))
+    hist = data.get("semantic_similarity_histogram")
+    if hist is None:
+        pytest.skip("semantic_similarity_histogram ausente (p. ej. semantic skip o ST no instalado)")
+    assert hist.get("method") == "all_unique_pairs_upper_triangle"
+    assert "bin_edges" in hist and "counts" in hist and "n_pairs" in hist
+    assert len(hist["bin_edges"]) == len(hist["counts"]) + 1
+    assert sum(hist["counts"]) == hist["n_pairs"]
+    for key in ("fraction_pairs_ge_0.85", "fraction_pairs_ge_0.90", "fraction_pairs_ge_0.95"):
+        assert key in hist
+        assert hist[key] is None or 0.0 <= float(hist[key]) <= 1.0
+    for key in ("n_pairs_ge_0.85", "n_pairs_ge_0.90", "n_pairs_ge_0.95"):
+        assert key in hist
+        assert hist[key] is None or int(hist[key]) >= 0
+    aux = data.get("semantic_similarity_auxiliary")
+    if aux is not None:
+        assert "neighbor_graph_coverage" in aux and "template_vs_lexical_proxy" in aux
+        cov = aux["neighbor_graph_coverage"]
+        assert "recall_neighbor_graph_vs_global_ge_0.95" in cov

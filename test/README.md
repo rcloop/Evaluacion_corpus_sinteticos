@@ -6,13 +6,11 @@ Tests for the synthetic-corpus evaluation scripts. A single **`corpus_mini`** dr
 
 Metrics use the synthetic corpus (and optional external text) only, **without** access to the generative model. Scores come from text + annotations or from **public** proxy models.
 
-- **Privacy (attribute / membership):** attacks on the published data only.
+- **Privacy (attribute inference):** labels from annotations; attack on published text only.
 - **Memorization detection:** heuristic repetition / near-duplicate risk in the corpus (exact + semantic), not internal model memorization.
 - **Perplexity:** computed with a **public** language model proxy (e.g. Spanish BERT / causal LM), not the generator.
 - **Bias:** WEAT and distributional checks are **corpus-only** (counts and embeddings).
 - **Other naturalness metrics:** operate on text and public models only.
-
-If you later add **canaries** for membership inference, document them here.
 
 ## Test data
 

@@ -1,6 +1,6 @@
 {
   "metric": "intersectional_corpus_bias",
-  "timestamp_utc": "2026-03-30T17:58:43.303183+00:00",
+  "timestamp_utc": "2026-03-31T19:23:18.138743+00:00",
   "input_summary": {
     "annotations_path": "corpus_repo\\corpus_v1\\entidades",
     "max_files": null,
@@ -30,35 +30,31 @@
     "col_labels": [
       "<60",
       "60-70",
-      "70-80",
-      ">80"
+      "70-80"
     ],
     "contingency_table": [
       [
         10,
-        789,
-        350,
+        853,
+        287
+      ],
+      [
+        14,
+        154,
+        50
+      ],
+      [
+        0,
+        0,
         1
-      ],
-      [
-        12,
-        143,
-        63,
-        0
-      ],
-      [
-        0,
-        0,
-        1,
-        0
       ]
     ],
     "chi_square_independence": {
-      "chi2": 27.384579776684465,
-      "p_value": 0.00012265077249469083,
-      "df": 6.0,
-      "cramers_v": 0.10000836301166699,
-      "p_value_bonferroni": 0.0003679523174840725
+      "chi2": 35.894139448508106,
+      "p_value": 3.0424868212296036e-07,
+      "df": 4.0,
+      "cramers_v": 0.11449724869742418,
+      "p_value_bonferroni": 9.127460463688811e-07
     },
     "n": 1369
   },
@@ -74,13 +70,13 @@
       "TERRITORIO DE LA COMUNIDAD VALENCIANA",
       "ITALIA",
       "REINO UNIDO",
-      "REGIÓN DE VALENCIA",
       "COLOMBIA",
+      "REGIÓN DE VALENCIA",
       "MÉXICO",
       "ESTADOS UNIDOS",
-      "COMUNIDAD VALENCIANA (CV)",
-      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
       "ALEMANIA",
+      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
+      "COMUNIDAD VALENCIANA (CV)",
       "CHILE",
       "DEPARTAMENTO DE SALUD DE VALENCIA",
       "COMUNIDAD AUTÓNOMA VALENCIANA",
@@ -93,13 +89,13 @@
         133,
         122,
         120,
-        121,
         117,
+        121,
         119,
         107,
-        112,
-        109,
         110,
+        109,
+        112,
         106,
         98,
         89,
@@ -111,13 +107,13 @@
         16,
         27,
         22,
+        22,
         18,
-        22,
         16,
         22,
-        14,
+        16,
         17,
-        16,
+        14,
         14,
         20,
         25,
@@ -164,13 +160,13 @@
       "TERRITORIO DE LA COMUNIDAD VALENCIANA",
       "ITALIA",
       "REINO UNIDO",
-      "REGIÓN DE VALENCIA",
       "COLOMBIA",
+      "REGIÓN DE VALENCIA",
       "MÉXICO",
       "ESTADOS UNIDOS",
-      "COMUNIDAD VALENCIANA (CV)",
-      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
       "ALEMANIA",
+      "ÁREA DE SALUD DE LA COMUNIDAD VALENCIANA",
+      "COMUNIDAD VALENCIANA (CV)",
       "CHILE",
       "DEPARTAMENTO DE SALUD DE VALENCIA",
       "COMUNIDAD AUTÓNOMA VALENCIANA",
@@ -193,43 +189,43 @@
         1,
         0,
         0,
-        9
+        10
       ],
       [
+        40,
+        47,
+        40,
         38,
-        45,
-        35,
-        37,
-        44,
-        48,
+        47,
         53,
-        39,
-        44,
-        29,
-        45,
+        53,
+        40,
+        47,
+        49,
         46,
-        51,
-        35,
-        36,
-        204
+        34,
+        54,
+        39,
+        39,
+        225
       ],
       [
-        24,
-        21,
-        23,
-        15,
-        12,
-        11,
-        16,
+        22,
+        19,
         18,
-        16,
-        17,
-        15,
         14,
-        17,
+        9,
         16,
+        6,
         17,
-        91
+        13,
+        11,
+        14,
+        12,
+        14,
+        12,
+        14,
+        69
       ],
       [
         0,
@@ -251,11 +247,11 @@
       ]
     ],
     "chi_square_independence": {
-      "chi2": 68.72726375294133,
-      "p_value": 0.012913048672129978,
+      "chi2": 70.40850741159277,
+      "p_value": 0.009090808541198831,
       "df": 45.0,
-      "cramers_v": 0.13845860344638733,
-      "p_value_bonferroni": 0.03873914601638993
+      "cramers_v": 0.14014189602458213,
+      "p_value_bonferroni": 0.027272425623596493
     },
     "n": 1195
   }

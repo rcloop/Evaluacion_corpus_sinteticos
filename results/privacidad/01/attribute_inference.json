@@ -6,8 +6,7 @@
     "has_location",
     "has_id",
     "has_age",
-    "has_contact",
-    "has_medical_condition"
+    "has_contact"
   ],
   "attribute_results": {
     "has_person": {
@@ -81,31 +80,18 @@
       "positive_rate": 0.5655860349127182,
       "baseline_accuracy": 0.5655860349127182,
       "risk_level": "critical"
-    },
-    "has_medical_condition": {
-      "attribute": "has_medical_condition",
-      "accuracy": 0.9668685429283933,
-      "auc_roc": 0.9769533762435271,
-      "auc_roc_ci_95": [
-        0.9677669461156577,
-        0.9846257812851981
-      ],
-      "positive_rate": 0.05742785892411827,
-      "baseline_accuracy": 0.9425721410758817,
-      "risk_level": "critical"
     }
   },
   "overall_risk": {
     "max_auc_roc": 0.9987643351389393,
-    "mean_auc_roc": 0.9851564436135984,
+    "mean_auc_roc": 0.9865236215086104,
     "high_risk_attributes": [
       "has_person",
       "has_date",
       "has_location",
       "has_id",
       "has_age",
-      "has_contact",
-      "has_medical_condition"
+      "has_contact"
     ]
   }
 }

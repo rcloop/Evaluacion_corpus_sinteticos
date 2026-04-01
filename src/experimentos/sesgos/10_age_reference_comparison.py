@@ -34,6 +34,7 @@ if __name__ == "__main__":
     result_1_4 = evaluate_age_distribution(
         annotations_path=str(entidades),
         max_files=max_files,
+        aggregation="doc_mode",
     )
     result = evaluate_age_reference_comparison(
         annotations_path=str(entidades),

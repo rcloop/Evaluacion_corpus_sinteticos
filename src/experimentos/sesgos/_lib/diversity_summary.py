@@ -1,5 +1,5 @@
 """
-Resumen de diversidad (variety + balance) a partir de 1.3, 1.5 y 1.6.
+Resumen de diversidad (variety + balance) a partir de 1.3 y 1.5.
 
 No requiere recomputar: lee los JSON de salida de esas métricas (o paths opcionales).
 Variety = support / número de categorías únicas.
@@ -26,17 +26,15 @@ def _read_json(path: Path) -> Optional[Dict]:
 def evaluate_diversity_summary(
     path_1_3: Optional[str] = None,
     path_1_5: Optional[str] = None,
-    path_1_6: Optional[str] = None,
     output_dir: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
-    Si output_dir se da y los path_* no, usa output_dir/1_3_..., 1_5_..., 1_6_....
+    Si output_dir se da y los path_* no, usa output_dir/1_3_..., 1_5_....
     """
-    if output_dir and (not path_1_3 and not path_1_5 and not path_1_6):
+    if output_dir and (not path_1_3 and not path_1_5):
         base = Path(output_dir)
         path_1_3 = str(base / "1_3_geographic_toponymic_bias.json")
         path_1_5 = str(base / "1_5_institution_bias.json")
-        path_1_6 = str(base / "1_6_diagnosis_condition_bias.json")
     dimensions = {}
     # 1.3 Geography
     if path_1_3:
@@ -70,28 +68,12 @@ def evaluate_diversity_summary(
                     "hhi": ov.get("hhi"),
                     "gini": ov.get("gini"),
                 }
-    # 1.6 Diagnosis
-    if path_1_6:
-        j = _read_json(Path(path_1_6))
-        if j and "result" in j:
-            j = j["result"]
-        if j:
-            ov = j.get("overall") or j.get("result", {}).get("overall")
-            if ov:
-                ent = ov.get("entropy", {})
-                dimensions["diagnosis"] = {
-                    "variety": ov.get("n_unique") or ent.get("support"),
-                    "balance_normalized_entropy": ent.get("normalized_entropy") if ent else None,
-                    "entropy_bits": ent.get("entropy_bits") if ent else None,
-                    "hhi": ov.get("hhi"),
-                }
     return {
         "metric": "diversity_summary",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "input_summary": {
             "path_1_3": path_1_3,
             "path_1_5": path_1_5,
-            "path_1_6": path_1_6,
         },
         "dimensions": dimensions,
         "description": "Variety = number of distinct categories; balance = normalized Shannon entropy; concentration = HHI (and Gini for institutions).",
@@ -100,17 +82,15 @@ def evaluate_diversity_summary(
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Resumen diversidad (variety/balance) desde 1.3, 1.5, 1.6")
-    parser.add_argument("--output_dir", default=None, help="Directorio con 1_3, 1_5, 1_6 JSON")
+    parser = argparse.ArgumentParser(description="Resumen diversidad (variety/balance) desde 1.3, 1.5")
+    parser.add_argument("--output_dir", default=None, help="Directorio con 1_3, 1_5 JSON")
     parser.add_argument("--path_1_3", default=None)
     parser.add_argument("--path_1_5", default=None)
-    parser.add_argument("--path_1_6", default=None)
     parser.add_argument("--output_path", default="bias_evaluation_results/diversity_summary.json")
     args = parser.parse_args()
     result = evaluate_diversity_summary(
         path_1_3=args.path_1_3,
         path_1_5=args.path_1_5,
-        path_1_6=args.path_1_6,
         output_dir=args.output_dir,
     )
     out = Path(args.output_path)

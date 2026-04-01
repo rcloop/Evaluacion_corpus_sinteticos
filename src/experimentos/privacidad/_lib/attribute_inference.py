@@ -1,7 +1,7 @@
 """
 Attribute Inference Attack Evaluation
-Tests whether an attacker can infer sensitive attributes (e.g., PHI types, medical conditions)
-from the generated texts.
+Tests whether an attacker can infer sensitive attribute categories (PHI types)
+from the generated texts, using annotation-derived labels only.
 """
 
 import json
@@ -126,7 +126,6 @@ def extract_attributes_from_text(text: str, annotations: Dict) -> Dict[str, bool
     - Contains ID
     - Contains AGE
     - Contains PHONE/EMAIL
-    - Contains specific medical conditions (if detectable)
     """
     attributes = {
         'has_person': False,
@@ -135,7 +134,6 @@ def extract_attributes_from_text(text: str, annotations: Dict) -> Dict[str, bool
         'has_id': False,
         'has_age': False,
         'has_contact': False,
-        'has_medical_condition': False
     }
     
     # Check annotations
@@ -235,15 +233,6 @@ def extract_attributes_from_text(text: str, annotations: Dict) -> Dict[str, bool
                     attributes['has_age'] = True
                 elif 'PHONE' in label_type or 'EMAIL' in label_type:
                     attributes['has_contact'] = True
-    
-    # Check text patterns for medical conditions
-    medical_keywords = [
-        'diabetes', 'hipertensión', 'cáncer', 'asma', 'epilepsia',
-        'diabetes', 'hypertension', 'cancer', 'asthma', 'epilepsy'
-    ]
-    text_lower = text.lower()
-    if any(keyword in text_lower for keyword in medical_keywords):
-        attributes['has_medical_condition'] = True
     
     return attributes
 

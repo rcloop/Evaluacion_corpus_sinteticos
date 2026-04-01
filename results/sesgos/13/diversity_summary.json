@@ -1,10 +1,9 @@
 {
   "metric": "diversity_summary",
-  "timestamp_utc": "2026-03-30T17:10:52.749073+00:00",
+  "timestamp_utc": "2026-04-01T16:58:41.844260+00:00",
   "input_summary": {
     "path_1_3": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\03\\1_3_geographic_toponymic_bias.json",
-    "path_1_5": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\05\\1_5_institution_bias.json",
-    "path_1_6": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\06\\1_6_diagnosis_condition_bias.json"
+    "path_1_5": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\05\\1_5_institution_bias.json"
   },
   "dimensions": {
     "geography": {
@@ -19,12 +18,6 @@
       "entropy_bits": 5.82141891441057,
       "hhi": 0.02185023939778344,
       "gini": 0.7618598619168744
-    },
-    "diagnosis": {
-      "variety": 435,
-      "balance_normalized_entropy": 0.9335869873247624,
-      "entropy_bits": 8.182770062683705,
-      "hhi": 0.010323887161227324
     }
   },
   "description": "Variety = number of distinct categories; balance = normalized Shannon entropy; concentration = HHI (and Gini for institutions)."

@@ -86,12 +86,12 @@ def get_subject_gender_and_age_and_geo_per_doc(
             for lab, text in pairs
             if lab.upper().strip() == sexo_label and text
         ]
-        ages: List[str] = []
+        parsed_ages: List[int] = []
         for lab, text in pairs:
             if lab.upper().strip() in age_labels and text:
                 a = parse_age(text)
                 if a is not None:
-                    ages.append(coarse_age_bin_intersectional(a))
+                    parsed_ages.append(a)
         geos = []
         for lab, text in pairs:
             if lab.upper().strip() in geo_labels and text:
@@ -105,7 +105,14 @@ def get_subject_gender_and_age_and_geo_per_doc(
         elif subject_names:
             first = extract_first_name(subject_names[0])
             gender = infer_gender(first, lexicon, full_name=subject_names[0])
-        age_bin = ages[0] if ages else None
+        age_bin = None
+        if parsed_ages:
+            # Per-document age: choose most frequent parsed age (mode).
+            # Deterministic tie-break: choose the smallest age among tied modes.
+            c = Counter(parsed_ages)
+            max_count = max(c.values())
+            modes = sorted([a for a, v in c.items() if v == max_count])
+            age_bin = coarse_age_bin_intersectional(modes[0])
         geo = geos[0] if geos else None
         out.append((doc_id, gender, age_bin, geo))
     return out

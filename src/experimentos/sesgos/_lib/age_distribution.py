@@ -25,7 +25,7 @@ import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Literal
 
 from name_gender_distribution import iter_entities_from_annotation_obj
 
@@ -150,6 +150,7 @@ def evaluate_age_distribution(
     max_decade: int = 120,
     underrep_min_percent: float = 5.0,
     underrep_bins: Optional[List[str]] = None,
+    aggregation: Literal["mention", "doc_mode"] = "mention",
 ) -> Dict[str, Any]:
     p = Path(annotations_path)
     if not p.exists():
@@ -157,15 +158,20 @@ def evaluate_age_distribution(
 
     label_set = {l.upper().strip() for l in (age_labels or DEFAULT_AGE_LABELS)}
 
-    ages_seen = 0
-    ages_parsed = 0
-    ages_recovered_textual = 0
-    docs_seen = 0
+    ages_seen = 0  # age-labeled entities encountered (mention-level)
+    ages_parsed = 0  # parsed age entities (mention-level)
+    ages_recovered_textual = 0  # parsed ages recovered from non-digit expressions (mention-level)
+    docs_seen: Optional[int] = 0
+    docs_with_age_entity = 0
+    docs_with_parsed_age = 0
+    docs_with_multiple_parsed_ages = 0
+    docs_mode_ties = 0
 
     bin_counts: Counter = Counter()
 
-    def handle_obj(obj: Any):
+    def extract_parsed_ages_from_obj(obj: Any) -> List[int]:
         nonlocal ages_seen, ages_parsed, ages_recovered_textual
+        parsed: List[int] = []
         for lab, txt in iter_entities_from_annotation_obj(obj):
             lu = lab.upper().strip()
             if lu not in label_set:
@@ -179,7 +185,23 @@ def evaluate_age_distribution(
             if not re.search(r"\d", raw):
                 ages_recovered_textual += 1
             ages_parsed += 1
-            bin_counts[decade_bin(age, max_decade=max_decade)] += 1
+            parsed.append(age)
+        return parsed
+
+    def choose_doc_age_mode(ages: List[int]) -> Optional[int]:
+        """
+        Selects a single representative age for a document using the most frequent parsed age.
+        Tie-break is deterministic: choose the smallest age among tied modes.
+        """
+        nonlocal docs_mode_ties
+        if not ages:
+            return None
+        c = Counter(ages)
+        max_count = max(c.values())
+        modes = sorted([a for a, v in c.items() if v == max_count])
+        if len(modes) > 1:
+            docs_mode_ties += 1
+        return modes[0]
 
     if p.is_dir():
         files = sorted(p.glob("*.json"))
@@ -191,10 +213,49 @@ def evaluate_age_distribution(
                 obj = json.loads(fp.read_text(encoding="utf-8"))
             except Exception:
                 continue
-            handle_obj(obj)
+            parsed_ages = extract_parsed_ages_from_obj(obj)
+            # Determine doc-level signals precisely (scan only labels/texts, no parsing).
+            has_age_entity = False
+            for lab, txt in iter_entities_from_annotation_obj(obj):
+                if lab.upper().strip() in label_set and str(txt).strip():
+                    has_age_entity = True
+                    break
+            if has_age_entity:
+                docs_with_age_entity += 1
+            if parsed_ages:
+                docs_with_parsed_age += 1
+                if len(parsed_ages) > 1:
+                    docs_with_multiple_parsed_ages += 1
+
+            if aggregation == "mention":
+                for age in parsed_ages:
+                    bin_counts[decade_bin(age, max_decade=max_decade)] += 1
+            elif aggregation == "doc_mode":
+                doc_age = choose_doc_age_mode(parsed_ages)
+                if doc_age is not None:
+                    bin_counts[decade_bin(doc_age, max_decade=max_decade)] += 1
+            else:
+                raise ValueError(f"Unknown aggregation mode: {aggregation}")
     else:
         obj = json.loads(p.read_text(encoding="utf-8"))
-        handle_obj(obj)
+        parsed_ages = extract_parsed_ages_from_obj(obj)
+        # For single-document mode we still report doc-level counters.
+        docs_seen = None
+        docs_with_age_entity = 1 if any(
+            (lab.upper().strip() in label_set and str(txt).strip())
+            for lab, txt in iter_entities_from_annotation_obj(obj)
+        ) else 0
+        docs_with_parsed_age = 1 if parsed_ages else 0
+        docs_with_multiple_parsed_ages = 1 if (len(parsed_ages) > 1) else 0
+        if aggregation == "mention":
+            for age in parsed_ages:
+                bin_counts[decade_bin(age, max_decade=max_decade)] += 1
+        elif aggregation == "doc_mode":
+            doc_age = choose_doc_age_mode(parsed_ages)
+            if doc_age is not None:
+                bin_counts[decade_bin(doc_age, max_decade=max_decade)] += 1
+        else:
+            raise ValueError(f"Unknown aggregation mode: {aggregation}")
 
     # build ordered bins (0-9.., plus max_decade+)
     decade_starts = list(range(0, max_decade, 10))
@@ -224,6 +285,11 @@ def evaluate_age_distribution(
             "age_labels": sorted(label_set),
             "max_files": max_files,
             "docs_seen": docs_seen if p.is_dir() else None,
+            "aggregation": aggregation,
+            "docs_with_age_entity": int(docs_with_age_entity),
+            "docs_with_parsed_age": int(docs_with_parsed_age),
+            "docs_with_multiple_parsed_ages": int(docs_with_multiple_parsed_ages),
+            "docs_mode_ties": int(docs_mode_ties),
             "ages_entities_seen": ages_seen,
             "ages_parsed": ages_parsed,
             "ages_recovered_textual": ages_recovered_textual,

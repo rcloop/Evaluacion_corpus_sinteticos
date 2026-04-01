@@ -62,9 +62,7 @@ SESGOS_LIB_MODULES = [
     "geographic_toponymic_bias",
     "age_distribution",
     "institution_bias",
-    "diagnosis_condition_bias",
     "intersectional_corpus_bias",
-    "diagnosis_demography_bias",
     "gender_target_proportion",
     "age_reference_comparison",
     "coverage_completeness",
@@ -74,7 +72,6 @@ SESGOS_LIB_MODULES = [
 
 PRIVACIDAD_LIB_MODULES = [
     "attribute_inference",
-    "membership_inference",
     "nearest_neighbor_memorization",
     "meddocan_label_mapping",
 ]

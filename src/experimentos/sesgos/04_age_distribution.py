@@ -22,6 +22,12 @@ if __name__ == "__main__":
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--underrep_min_percent", type=float, default=5.0)
+    parser.add_argument(
+        "--aggregation",
+        choices=["mention", "doc_mode"],
+        default="doc_mode",
+        help="Cómo agregar edades: 'mention' cuenta todas las menciones; 'doc_mode' usa la edad más frecuente por documento.",
+    )
     parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     entidades = Path(args.corpus_root) / "entidades"
@@ -34,6 +40,7 @@ if __name__ == "__main__":
         annotations_path=str(entidades),
         max_files=max_files,
         underrep_min_percent=args.underrep_min_percent,
+        aggregation=args.aggregation,
     )
     out = Path(args.output_path)
     out.parent.mkdir(parents=True, exist_ok=True)

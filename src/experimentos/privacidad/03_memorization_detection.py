@@ -23,6 +23,12 @@ if __name__ == "__main__":
     parser.add_argument("--output_path", default=str(OUTPUT_PATH))
     parser.add_argument("--semantic_model", default="paraphrase-multilingual-MiniLM-L12-v2")
     parser.add_argument("--skip_semantic", action="store_true", help="Solo duplicados exactos")
+    parser.add_argument(
+        "--semantic_top_k",
+        type=int,
+        default=5,
+        help="Vecinos más similares por nota para el grafo de candidatos (sensibilidad; default 5)",
+    )
     parser.add_argument("--max_docs", type=int, default=None, help="Máx. documentos a evaluar (para corpus grandes)")
     args = parser.parse_args()
     docs_dir = Path(args.corpus_path) / "documents" if (Path(args.corpus_path) / "documents").exists() else Path(args.corpus_path)
@@ -35,6 +41,7 @@ if __name__ == "__main__":
         annotations_path=args.annotations_path,
         output_path=args.output_path,
         semantic_model=args.semantic_model,
+        semantic_top_k=args.semantic_top_k,
         skip_semantic=args.skip_semantic,
         max_docs=args.max_docs,
     )

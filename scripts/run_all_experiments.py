@@ -148,7 +148,7 @@ def main():
         else:
             print("  OK", flush=True)
 
-    for name in ["01_attribute_inference.py", "02_membership_inference.py", "03_memorization_detection.py"]:
+    for name in ["01_attribute_inference.py", "03_memorization_detection.py"]:
         script = PRIVACIDAD / name
         if not script.exists():
             continue

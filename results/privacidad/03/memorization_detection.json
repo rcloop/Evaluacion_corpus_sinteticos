@@ -3,249 +3,228 @@
   "_occurrences_meaning": "occurrences = number of documents that contain the entity at least once (not total mentions)",
   "exact_duplicates": {
     "person": {
-      "total_repeated": 215,
+      "total_repeated": 649,
       "top_repeated": [
         {
-          "entity": "Sra. Elena Castillo Domínguez",
-          "occurrences": 328,
+          "entity": "Comunidad Valenciana",
+          "occurrences": 968,
           "documents": [
             {
-              "filename": "0285456a-1f5d-4948-a00c-c13e677a1b71.txt",
-              "doc_id": "0285456a-1f5d-4948-a00c-c13e677a1b71",
-              "text_preview": "NOTA DE EVOLUCIÓN - CONSULTA EXTERNA Paciente M.ª José Fernández, familiar que acude a consulta para seguimiento en el Clínica Periférica Norte. Refiere mejoría parcial de su sintomatología respirator"
+              "filename": "00930499-2021-4d95-a3f2-3b0053ead40c.txt",
+              "doc_id": "00930499-2021-4d95-a3f2-3b0053ead40c",
+              "text_preview": "En la valoración clínica realizada, se documenta el estado de la paciente Elena Méndez Iglesias, cuyo seguimiento se coordina con el sistema de salud correspondiente. Durante la exploración física, se"
             },
             {
-              "filename": "05331116-9c6d-4300-a942-5ae5248f1f10.txt",
-              "doc_id": "05331116-9c6d-4300-a942-5ae5248f1f10",
-              "text_preview": "A continuación se presenta el informe de consulta externa de seguimiento. La paciente La tutora legal, con  Paciente de sexo femenino, acude para control evolutivo. Se identifica con el  HC-22-887430 "
+              "filename": "01c82473-431c-4265-99ea-c77a43e0f491.txt",
+              "doc_id": "01c82473-431c-4265-99ea-c77a43e0f491",
+              "text_preview": "En la valoración geriátrica integral se recoge que el sujeto de asistencia, con de sexagenario, presenta un cuadro de control evolutivo de su patología crónica. La exploración física actual muestra te"
             },
             {
-              "filename": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c.txt",
-              "doc_id": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c",
-              "text_preview": "Informe de Consulta de Seguimiento En la consulta de seguimiento se reevalúa a la paciente de sexo Sexo femenino, quien acude para control postoperatorio. La evolución clínica resulta satisfactoria, c"
+              "filename": "032bdb94-1d39-4e76-beb0-18440dcde0d8.txt",
+              "doc_id": "032bdb94-1d39-4e76-beb0-18440dcde0d8",
+              "text_preview": "Informe de Interconsulta Se remite a paciente de 67 años, sexo masculino para valoración quirúrgica especializada. El portador del identificador 46 08 29 876 54 se presenta con cuadro de dolor abdomin"
             }
           ]
         },
         {
-          "entity": "Marcos Vidal Peña",
-          "occurrences": 320,
+          "entity": "Consulta Externa Paciente",
+          "occurrences": 865,
           "documents": [
             {
-              "filename": "04d2c9e7-ec8a-47e3-837f-b850f96dedbf.txt",
-              "doc_id": "04d2c9e7-ec8a-47e3-837f-b850f96dedbf",
-              "text_preview": "Informe de Interconsulta - Cirugía General En la valoración preoperatoria realizada en consultas externas, se presenta a la paciente Marcos Vidal Peña, identificada con el número de historia EMP-MED-3"
+              "filename": "0036ca5d-a758-4984-a373-fac31b00ad24.txt",
+              "doc_id": "0036ca5d-a758-4984-a373-fac31b00ad24",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Se trata de <>Isabel Fernández Gutiérrez</>, con identificación sn-73918254, quien refiere mejoría parcial d"
             },
-            {
-              "filename": "052be51f-4c9d-4101-8ea0-036ee79e8713.txt",
-              "doc_id": "052be51f-4c9d-4101-8ea0-036ee79e8713",
-              "text_preview": "Informe de Consulta Externa A la atención de los servicios médicos del Hospital General Metropolitano, se presenta la paciente Marcos Vidal Peña para valoración y seguimiento. La paciente, de Paciente"
-            },
-            {
-              "filename": "06d7375c-41bd-48b1-b1bc-8a931f12045e.txt",
-              "doc_id": "06d7375c-41bd-48b1-b1bc-8a931f12045e",
-              "text_preview": "En la valoración inicial se procede a la identificación biométrica del paciente mediante sistema de reconocimiento dactilar, verificándose la correspondencia de la Biometría dactilar del pulgar derech"
-            }
-          ]
-        },
-        {
-          "entity": "D.ª Clara Robles Soto",
-          "occurrences": 310,
-          "documents": [
-            {
-              "filename": "02931efc-7a8c-4e12-b054-4fec7cd3985e.txt",
-              "doc_id": "02931efc-7a8c-4e12-b054-4fec7cd3985e",
-              "text_preview": "Nota de Evolución Hospitalaria A continuación se presenta la valoración clínica de la paciente D.ª Clara Robles Soto, quien fue evaluada en consulta externa el julio de 2023. La paciente refiere mejor"
-            },
-            {
-              "filename": "043ec583-b15a-49c6-a970-7d7e65bba85f.txt",
-              "doc_id": "043ec583-b15a-49c6-a970-7d7e65bba85f",
-              "text_preview": "En la valoración clínica realizada en el Centro Médico Familiar Los Pinos, se documenta el seguimiento del estado de salud de D.ª Clara Robles Soto, quien presenta un cuadro compatible con infección r"
-            },
-            {
-              "filename": "0447ec51-d631-40ef-88ab-d2c37ad632dc.txt",
-              "doc_id": "0447ec51-d631-40ef-88ab-d2c37ad632dc",
-              "text_preview": "A la atención de consulta externa se presenta la paciente D.ª Clara Robles Soto para seguimiento de su proceso crónico. La paciente es identificada en nuestro sistema con el HC-2024-334455 y su A-1234"
-            }
-          ]
-        },
-        {
-          "entity": "Víctor Manuel Herrera Gil",
-          "occurrences": 307,
-          "documents": [
-            {
-              "filename": "0246a862-3b80-4a24-b77c-9117086beed4.txt",
-              "doc_id": "0246a862-3b80-4a24-b77c-9117086beed4",
-              "text_preview": "INFORME DE CONSULTA DE CARDIOLOGÍA Paciente que acude para valoración y seguimiento en consultas externas de cardiología. Refiere mejoría de la sintomatología inicial con el tratamiento instaurado, ma"
-            },
-            {
-              "filename": "03750b1e-9546-43a6-97b1-e4ffa27b81f8.txt",
-              "doc_id": "03750b1e-9546-43a6-97b1-e4ffa27b81f8",
-              "text_preview": "Informe de Consulta Externa A la atención del servicio correspondiente, se remite el presente informe clínico de la paciente identificada bajo el código ID-SALUD-456, quien acude para valoración y seg"
-            },
-            {
-              "filename": "0388f5a1-354b-4ccf-9ab5-b6b9c876012c.txt",
-              "doc_id": "0388f5a1-354b-4ccf-9ab5-b6b9c876012c",
-              "text_preview": "En la valoración clínica realizada en el Puesto de Salud La Esperanza, se presenta la paciente Víctor Manuel Herrera Gil, de 67 años de edad de edad, quien acude para seguimiento de su situación clíni"
-            }
-          ]
-        },
-        {
-          "entity": "Ana Belén Jiménez Ríos",
-          "occurrences": 304,
-          "documents": [
-            {
-              "filename": "02364f44-800a-411f-afb3-d0934d1a743a.txt",
-              "doc_id": "02364f44-800a-411f-afb3-d0934d1a743a",
-              "text_preview": "Informe de Consulta de Cardiología Paciente: María Rodríguez Martínez que acude a revisión programada tras intervención quirúrgica. La paciente refiere evolución favorable con buena tolerancia a la ac"
-            },
-            {
-              "filename": "023fc93d-49dc-4515-bb86-d5e3913aaaf8.txt",
-              "doc_id": "023fc93d-49dc-4515-bb86-d5e3913aaaf8",
-              "text_preview": "INFORME DE CONSULTA EXTERNA DE CIRUGÍA GENERAL Se evalúa en consulta a la paciente Javier Torres Moreno para seguimiento postoperatorio. La paciente refiere evolución favorable de su proceso, con adec"
-            },
-            {
-              "filename": "0474a9b1-2f43-48d4-816b-71ab99d73980.txt",
-              "doc_id": "0474a9b1-2f43-48d4-816b-71ab99d73980",
-              "text_preview": "INFORME DE CONSULTA EXTERNA - ENDOCRINOLOGÍA Fecha de la consulta: 15-07-2023 Paciente: Ana Belén Jiménez Ríos Identificación: ALB9870123K Sexo: Género femenino Motivo de consulta: Seguimiento de diab"
-            }
-          ]
-        }
-      ]
-    },
-    "id": {
-      "total_repeated": 802,
-      "top_repeated": [
-        {
-          "entity": "HC-2024-654321",
-          "occurrences": 414,
-          "documents": [
             {
               "filename": "0048cc97-c3e5-462f-b8c9-2acb398fad05.txt",
               "doc_id": "0048cc97-c3e5-462f-b8c9-2acb398fad05",
               "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control evolutivo. Refiere mejoría parcial de la sintomatología previamente descrita, aunque persiste cierto grado de malestar general"
             },
             {
-              "filename": "02707ffd-1271-4305-a4ac-affcc1106d24.txt",
-              "doc_id": "02707ffd-1271-4305-a4ac-affcc1106d24",
-              "text_preview": "Informe de Seguimiento Psiquiátrico El paciente acude a consulta de seguimiento mostrando una mejoría moderada en la sintomatología ansiosa generalizada. Se mantiene con el esquema farmacológico estab"
-            },
-            {
-              "filename": "0372ce57-fb8a-47c3-b138-2f70e39e52c4.txt",
-              "doc_id": "0372ce57-fb8a-47c3-b138-2f70e39e52c4",
-              "text_preview": "Informe de Consulta de Cirugía General Paciente valorado en consulta externa para seguimiento postoperatorio. Se revisa la evolución clínica y se constata una adecuada recuperación del procedimiento q"
+              "filename": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0.txt",
+              "doc_id": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0",
+              "text_preview": "Informe de Consulta Externa Paciente que acude a revisión presentando un cuadro de sintomatología inespecífica consistente en astenia y cefalea de varias semanas de evolución. Refiere haber realizado "
             }
           ]
         },
         {
-          "entity": "Placas XYZ-123",
-          "occurrences": 360,
+          "entity": "Consulta Externa",
+          "occurrences": 820,
           "documents": [
             {
-              "filename": "038a813e-bba9-4a01-b551-c5bb69339cfc.txt",
-              "doc_id": "038a813e-bba9-4a01-b551-c5bb69339cfc",
-              "text_preview": "Informe de Consulta Externa de Cardiología Paciente que acude para valoración y seguimiento en consultas externas. Se identifica con el documento de identidad 234-88-9012. La exploración física actual"
+              "filename": "001f45d6-19f4-4b97-87f7-a85644d37947.txt",
+              "doc_id": "001f45d6-19f4-4b97-87f7-a85644d37947",
+              "text_preview": "Informe de Consulta Externa A continuación se presenta el resumen de la primera consulta de la paciente María del Pilar Fernández López, atendida en el Centro de Salud Los Pinos, ubicado en Reino Unid"
             },
             {
-              "filename": "0425030a-9488-40b0-8a30-43876e24dba6.txt",
-              "doc_id": "0425030a-9488-40b0-8a30-43876e24dba6",
-              "text_preview": "En la valoración inicial del sujeto asistencial, se procede al registro de sus datos identificativos principales, entre los que se incluye el código ID-ASIST-99234. La exploración física se complement"
+              "filename": "00ec5c6f-c09e-49e6-b8ea-3b6d0ebb1af1.txt",
+              "doc_id": "00ec5c6f-c09e-49e6-b8ea-3b6d0ebb1af1",
+              "text_preview": "Informe de Consulta Externa de Oncología Paciente que acude a revisión en consultas externas de oncología del Hospital Universitario Puerta de Hierro. Se verifica la identidad del sujeto de asistencia"
             },
             {
-              "filename": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c.txt",
-              "doc_id": "0545a7a0-a866-40fa-aa0a-93a7a13fc78c",
-              "text_preview": "Informe de Consulta de Seguimiento En la consulta de seguimiento se reevalúa a la paciente de sexo Sexo femenino, quien acude para control postoperatorio. La evolución clínica resulta satisfactoria, c"
+              "filename": "011c3e37-dfd3-4bb6-82d2-677af086576c.txt",
+              "doc_id": "011c3e37-dfd3-4bb6-82d2-677af086576c",
+              "text_preview": "Informe de Consulta Externa A la atención de la Hospital Clínico San Carlos. Se expone el siguiente informe correspondiente a la visita realizada en el Centro de Salud El Olivo, con domicilio en Calle"
             }
           ]
         },
         {
-          "entity": "VIN 1HGCM82633A123456",
-          "occurrences": 358,
+          "entity": "Medicina Interna",
+          "occurrences": 420,
           "documents": [
             {
-              "filename": "0616ba52-3efa-4aa7-bcab-c6831d00481a.txt",
-              "doc_id": "0616ba52-3efa-4aa7-bcab-c6831d00481a",
-              "text_preview": "Informe de Valoración Preoperatoria Se procede a la valoración preoperatoria de la paciente, cuyo identificador de sujeto de asistencia es S890123456, previa a la intervención quirúrgica programada. L"
+              "filename": "007ce0b2-c0fb-41be-855d-be03d7ec6280.txt",
+              "doc_id": "007ce0b2-c0fb-41be-855d-be03d7ec6280",
+              "text_preview": "En el contexto de la valoración clínica actual, se procede a la revisión de la documentación asistencial disponible. Se confirma que el número de identificación de aseguramiento asociado al presente e"
             },
             {
-              "filename": "06611071-fcc0-40a5-904d-00417fb680d3.txt",
-              "doc_id": "06611071-fcc0-40a5-904d-00417fb680d3",
-              "text_preview": "En la valoración de seguimiento correspondiente al 10 de julio de 2023, se revisan los estudios complementarios previamente solicitados. Los hallazgos de la resonancia magnética, asociados al número d"
+              "filename": "0140c45e-d96e-4e49-923f-dd18984e8405.txt",
+              "doc_id": "0140c45e-d96e-4e49-923f-dd18984e8405",
+              "text_preview": "A la atención del Servicio de Documentación Clínica, Se remite el presente informe de evolución correspondiente al paciente identificado con el número de historia b-74932815. En relación con el proces"
             },
             {
-              "filename": "06960763-c7ea-475e-9f48-e3aaca098fa5.txt",
-              "doc_id": "06960763-c7ea-475e-9f48-e3aaca098fa5",
-              "text_preview": "Informe de Seguimiento de Consulta Externa La paciente Isabel Gutiérrez Mendoza acude a revisión programada en el Ambulatorio Urbano San Benito para el control de su patología crónica. Durante la cons"
+              "filename": "0141bc4a-c95e-4b32-aa8e-97937059cd5b.txt",
+              "doc_id": "0141bc4a-c95e-4b32-aa8e-97937059cd5b",
+              "text_preview": "A la atención del servicio de Medicina Interna del Hospital Universitario San Carlos. Se remite a la paciente para valoración y seguimiento desde nuestro Centro de Salud Las Lilas, ubicado en la Comun"
             }
           ]
         },
         {
-          "entity": "Número de chasis WBA1234567890ABCD",
-          "occurrences": 349,
+          "entity": "Consultorio Local Santa Clara",
+          "occurrences": 383,
           "documents": [
             {
-              "filename": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0.txt",
-              "doc_id": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0",
-              "text_preview": "En la valoración clínica realizada, se procede a la revisión exhaustiva del caso. Los hallazgos exploratorios muestran una tensión arterial de 125/80 mmHg y frecuencia cardíaca de 72 lpm, con ausculta"
+              "filename": "020c07da-6e4b-4781-977a-47bc35ec79ab.txt",
+              "doc_id": "020c07da-6e4b-4781-977a-47bc35ec79ab",
+              "text_preview": "Nota de Evolución - Consulta Externa Paciente que acude a consulta para seguimiento. Refiere mejoría de la sintomatología respiratoria que motivó la consulta previa, aunque persiste tos irritativa oca"
             },
             {
-              "filename": "03d4339e-2cbd-48e6-82b6-c52de00ccd39.txt",
-              "doc_id": "03d4339e-2cbd-48e6-82b6-c52de00ccd39",
-              "text_preview": "En la evolución del paciente atendido en consulta externa, se procede a la actualización de su historia clínica principal con referencia HC-2024-789013. El seguimiento habitual se realiza desde el Pue"
+              "filename": "03b23b6d-56d8-4d45-91b8-ba668972f390.txt",
+              "doc_id": "03b23b6d-56d8-4d45-91b8-ba668972f390",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Fecha de la consulta: Principios de agosto de 2023. Atención realizada en el Consultorio Local Santa Clara, bajo la dependencia orgánica de la Hospital Infanta Sofía y en e"
             },
             {
-              "filename": "0447ec51-d631-40ef-88ab-d2c37ad632dc.txt",
-              "doc_id": "0447ec51-d631-40ef-88ab-d2c37ad632dc",
-              "text_preview": "A la atención de consulta externa se presenta la paciente D.ª Clara Robles Soto para seguimiento de su proceso crónico. La paciente es identificada en nuestro sistema con el HC-2024-334455 y su A-1234"
+              "filename": "046417cf-4592-4758-9475-c3c69a645dd9.txt",
+              "doc_id": "046417cf-4592-4758-9475-c3c69a645dd9",
+              "text_preview": "INFORME DE CONSULTA DE ONCOLOGÍA A la atención de la Dr. Miguel Ángel Ruiz: Se remite a su servicio a la paciente Isabel Gutiérrez Mendoza para valoración y seguimiento especializado. La paciente, con"
+            }
+          ]
+        }
+      ]
+    },
+    "id": {
+      "total_repeated": 294,
+      "top_repeated": [
+        {
+          "entity": "789123",
+          "occurrences": 703,
+          "documents": [
+            {
+              "filename": "0036ca5d-a758-4984-a373-fac31b00ad24.txt",
+              "doc_id": "0036ca5d-a758-4984-a373-fac31b00ad24",
+              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y valoración de su proceso. Se trata de <>Isabel Fernández Gutiérrez</>, con identificación sn-73918254, quien refiere mejoría parcial d"
+            },
+            {
+              "filename": "00db709f-42a2-484e-80bc-d06eab80c07d.txt",
+              "doc_id": "00db709f-42a2-484e-80bc-d06eab80c07d",
+              "text_preview": "A continuación se presenta el resumen de la interconsulta realizada. La valoración inicial fue solicitada tras el contacto establecido con la hermana del paciente, quien proporcionó antecedentes relev"
+            },
+            {
+              "filename": "00f6ae23-92f8-440d-9bff-016cdbd5a017.txt",
+              "doc_id": "00f6ae23-92f8-440d-9bff-016cdbd5a017",
+              "text_preview": "En el contexto del seguimiento del paciente, se procede a la actualización de la historia clínica digital. La documentación clínica queda registrada en el sistema electrónico centralizado accesible me"
             }
           ]
         },
         {
-          "entity": "Placas ABC-789",
-          "occurrences": 343,
+          "entity": "654321",
+          "occurrences": 541,
           "documents": [
             {
-              "filename": "03de2190-ad3c-4a3f-be75-30d9fd338050.txt",
-              "doc_id": "03de2190-ad3c-4a3f-be75-30d9fd338050",
-              "text_preview": "En la valoración integral del paciente, se procede a la revisión de la documentación clínica disponible a través de la plataforma institucional accesible en https://hc.clinicavalle.es/paciente/OP12398"
+              "filename": "00218b06-d0d8-4bc9-a2c1-32d20d754334.txt",
+              "doc_id": "00218b06-d0d8-4bc9-a2c1-32d20d754334",
+              "text_preview": "Nota de Evolución - Consulta Externa Se reevalúa en consulta a la paciente Sofía Méndez Iglesias, identificada con el número de historia clínica HC-2025-654321. Refiere mejoría parcial de la sintomato"
             },
             {
-              "filename": "046ec5b9-899f-47f9-b6f0-969eee604011.txt",
-              "doc_id": "046ec5b9-899f-47f9-b6f0-969eee604011",
-              "text_preview": "En el contexto de la valoración integral del paciente, se procede a la revisión de su historia clínica digital accesible a través de https://historiaclinica.hgugm.es/paciente/12345678. Durante la anam"
+              "filename": "002bc8a8-ae0f-4973-b3df-909cb5a476fc.txt",
+              "doc_id": "002bc8a8-ae0f-4973-b3df-909cb5a476fc",
+              "text_preview": "Informe de Interconsulta de Cirugía Se remite a la consulta de cirugía para valoración y seguimiento especializado. El paciente, identificado con el número ref-2024-654321, acude para control postoper"
             },
             {
-              "filename": "056fcdbb-94f7-4592-b501-32575fcca730.txt",
-              "doc_id": "056fcdbb-94f7-4592-b501-32575fcca730",
-              "text_preview": "Informe de Consulta Externa Se evalúa al paciente en consulta de seguimiento tras su último ingreso. El estado general es satisfactorio, manteniéndose estable desde su alta. A la exploración física ac"
+              "filename": "003c64ee-b779-4804-8413-6f9312d93f09.txt",
+              "doc_id": "003c64ee-b779-4804-8413-6f9312d93f09",
+              "text_preview": "En la valoración clínica realizada se constata la necesidad de completar el estudio analítico con un perfil tiroideo, dada la presencia de síntomas inespecíficos compatibles con disfunción tiroidea su"
+            }
+          ]
+        },
+        {
+          "entity": "789012",
+          "occurrences": 432,
+          "documents": [
+            {
+              "filename": "009a50d4-8a4d-4cc5-9964-a66511b8e1df.txt",
+              "doc_id": "009a50d4-8a4d-4cc5-9964-a66511b8e1df",
+              "text_preview": "Informe de Consulta Externa Paciente que acude a revisión en el Centro de Salud Los Olivos para seguimiento. Se trata de Isabel Méndez Iglesias, con identificación sanitaria HC-2024-789012-A, de 73 añ"
+            },
+            {
+              "filename": "00d05a74-bec1-4834-a0eb-29d75a93a784.txt",
+              "doc_id": "00d05a74-bec1-4834-a0eb-29d75a93a784",
+              "text_preview": "INFORME DE VALORACIÓN PREOPERATORIA Se procede a la valoración preoperatoria de la paciente Elena Pérez Suárez, identificada con el número de historia clínica hc-2024-856214 y con número de identifica"
+            },
+            {
+              "filename": "0223fb34-a989-4b3f-b68d-4c6435a7e51b.txt",
+              "doc_id": "0223fb34-a989-4b3f-b68d-4c6435a7e51b",
+              "text_preview": "Informe de Consulta Externa de Cirugía Vascular Paciente de sexo Género femenino que acude a revisión en consultas externas. Se procede a la evaluación del estado general y de la evolución postoperato"
+            }
+          ]
+        },
+        {
+          "entity": "445566",
+          "occurrences": 426,
+          "documents": [
+            {
+              "filename": "01c0b9aa-ad3b-4010-b3ec-4a57599c6413.txt",
+              "doc_id": "01c0b9aa-ad3b-4010-b3ec-4a57599c6413",
+              "text_preview": "A continuación se presenta el informe de consulta externa correspondiente a la paciente. La señorita María González Sánchez acudió a revisión en la fecha de hoy, presentando mejoría sintomática del cu"
+            },
+            {
+              "filename": "01d11610-ca10-48ef-81b8-c3e2fa4e9a7e.txt",
+              "doc_id": "01d11610-ca10-48ef-81b8-c3e2fa4e9a7e",
+              "text_preview": "En la valoración clínica realizada en el Centro de Salud Las Magnolias, se atiende al paciente que presenta en la actualidad un cuadro de control evolutivo de su patología crónica. El sujeto de asiste"
+            },
+            {
+              "filename": "03049303-7ab1-43d9-a111-d9b5010cb278.txt",
+              "doc_id": "03049303-7ab1-43d9-a111-d9b5010cb278",
+              "text_preview": "En la valoración inicial de la nueva consulta, se documenta que el sujeto de asistencia corresponde al sexo Sexo femenino. Durante la anamnesis, la paciente reconoce ser Fuma esporádicamente en contex"
+            }
+          ]
+        },
+        {
+          "entity": "345678",
+          "occurrences": 388,
+          "documents": [
+            {
+              "filename": "00ce2e9e-9757-403c-8dbf-33234b632b9b.txt",
+              "doc_id": "00ce2e9e-9757-403c-8dbf-33234b632b9b",
+              "text_preview": "INFORME DE CONSULTA EXTERNA DE TRAUMATOLOGÍA En la consulta externa de Traumatología del día 15 de septiembre de 2023 se atiende al paciente para seguimiento de su proceso. Se revisa la documentación "
+            },
+            {
+              "filename": "019b3e5b-e5d4-4ecf-ba18-dba6f8f17168.txt",
+              "doc_id": "019b3e5b-e5d4-4ecf-ba18-dba6f8f17168",
+              "text_preview": "Informe de Interconsulta Fecha de elaboración del informe: 05 de julio de 2023. Estimados colegas: Mediante el presente, se remite informe de valoración para continuidad asistencial. El manejo del pac"
+            },
+            {
+              "filename": "04d29d86-b5ab-40fb-920b-d39d7745c314.txt",
+              "doc_id": "04d29d86-b5ab-40fb-920b-d39d7745c314",
+              "text_preview": "Informe de Consulta Externa En la valoración realizada en consultas externas, se documenta la evolución del cuadro clínico con los hallazgos de la exploración física actual. A la inspección, el pacien"
             }
           ]
         }
       ]
     },
     "date": {
-      "total_repeated": 17,
+      "total_repeated": 33,
       "top_repeated": [
-        {
-          "entity": "Junio 2023",
-          "occurrences": 364,
-          "documents": [
-            {
-              "filename": "0171892e-dd8c-46a1-b5d2-b2132cdb021c.txt",
-              "doc_id": "0171892e-dd8c-46a1-b5d2-b2132cdb021c",
-              "text_preview": "Informe de Consulta Externa En la visita de seguimiento realizada el Junio 2023, se reevalúa a la paciente María del Pilar Fernández Castro quien acude para control evolutivo. La exploración física ac"
-            },
-            {
-              "filename": "019ec4b7-1b15-4cf1-bb2c-61b21780f632.txt",
-              "doc_id": "019ec4b7-1b15-4cf1-bb2c-61b21780f632",
-              "text_preview": "A la atención de la Unidad de Hematología. Se remite informe de valoración clínica correspondiente a la consulta realizada el Junio 2023. La paciente, de sexo Paciente de sexo femenino, acude para seg"
-            },
-            {
-              "filename": "02b33a17-3bf3-411f-a6bc-d25f476ac760.txt",
-              "doc_id": "02b33a17-3bf3-411f-a6bc-d25f476ac760",
-              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento y control de su patología crónica de base. Refiere estabilidad clínica general, sin aparición de nuevos síntomas o signos de alarma desd"
-            }
-          ]
-        },
         {
           "entity": "13 de julio de 2023",
           "occurrences": 364,
@@ -289,170 +268,13 @@
           ]
         },
         {
-          "entity": "07/2023",
-          "occurrences": 336,
+          "entity": "10 de julio de 2023",
+          "occurrences": 323,
           "documents": [
             {
-              "filename": "0195aa77-1519-4e6f-b3f2-d2e4c324043d.txt",
-              "doc_id": "0195aa77-1519-4e6f-b3f2-d2e4c324043d",
-              "text_preview": "Informe de Consulta Externa A fecha de 07/2023, se procede a la evaluación y seguimiento de la paciente María del Carmen Fernández López. La paciente, que se identifica como Carmen López Díaz para tem"
-            },
-            {
-              "filename": "0210e5ca-b89f-42c9-acc5-f81c2fd3bcea.txt",
-              "doc_id": "0210e5ca-b89f-42c9-acc5-f81c2fd3bcea",
-              "text_preview": "INFORME DE CONSULTA EXTERNA Se presenta a consulta la paciente de sexo Mujer para seguimiento y control evolutivo. La exploración física actual muestra un estado general conservado, con constantes vit"
-            },
-            {
-              "filename": "0305ecb3-9db7-413e-be2c-e7719e5cff1d.txt",
-              "doc_id": "0305ecb3-9db7-413e-be2c-e7719e5cff1d",
-              "text_preview": "Informe de Consulta Externa Paciente: María Teresa Méndez Iglesias. Número de beneficiaria del plan de salud: B-458713269. Evaluada en consulta externa el 07/2023 por presentar cuadro de cefalea tensi"
-            }
-          ]
-        },
-        {
-          "entity": "Agosto 2023",
-          "occurrences": 333,
-          "documents": [
-            {
-              "filename": "02e92a74-4bfb-4228-a388-d4711bc84539.txt",
-              "doc_id": "02e92a74-4bfb-4228-a388-d4711bc84539",
-              "text_preview": "En el contexto de la valoración quirúrgica realizada, se procede a la elaboración del presente informe. La paciente, María Gutiérrez López, acudió a consulta acompañada de sus para la discusión de los"
-            },
-            {
-              "filename": "03763a4f-5f5f-4a6b-93e7-1ac473982ed1.txt",
-              "doc_id": "03763a4f-5f5f-4a6b-93e7-1ac473982ed1",
-              "text_preview": "A continuación se presenta el informe de consulta externa correspondiente a la revisión programada. La paciente, de sexo Mujer adulta, acudió a la consulta para seguimiento de su condición crónica, mo"
-            },
-            {
-              "filename": "03cb7dce-0514-48a2-a724-1d7cb45dbc25.txt",
-              "doc_id": "03cb7dce-0514-48a2-a724-1d7cb45dbc25",
-              "text_preview": "Informe de Consulta Externa A fecha de Agosto 2023, se procede a la redacción del presente informe de seguimiento para la paciente Cristina Pons Mir. La exploración física actual muestra un estado gen"
-            }
-          ]
-        }
-      ]
-    },
-    "location": {
-      "total_repeated": 169,
-      "top_repeated": [
-        {
-          "entity": "Francia",
-          "occurrences": 399,
-          "documents": [
-            {
-              "filename": "01f3f019-2ab4-4009-ba1d-416c47855928.txt",
-              "doc_id": "01f3f019-2ab4-4009-ba1d-416c47855928",
-              "text_preview": "Informe de Consulta de Segunda Opinión En la consulta de segunda opinión realizada el día julio de 2023, se revisa la documentación clínica del paciente de paciente de 70 años disponible en los portal"
-            },
-            {
-              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
-              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
-              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
-            },
-            {
-              "filename": "028f6255-dc63-478c-b61e-2565ba827834.txt",
-              "doc_id": "028f6255-dc63-478c-b61e-2565ba827834",
-              "text_preview": "Informe de Valoración Geriátrica Integral Se procede a la valoración integral de M.ª Luisa Fernández Castro, con paciente sexagenario, atendida en nuestro Centro de Salud y Bienestar La Colina, ubicad"
-            }
-          ]
-        },
-        {
-          "entity": "Italia",
-          "occurrences": 387,
-          "documents": [
-            {
-              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
-              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
-              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
-            },
-            {
-              "filename": "02975218-436c-4d8f-8c50-8314b9ff9249.txt",
-              "doc_id": "02975218-436c-4d8f-8c50-8314b9ff9249",
-              "text_preview": "En el contexto del seguimiento del paciente, se procede a la actualización de la historia clínica digital. La documentación asociada al episodio actual queda registrada bajo el código de identificació"
-            },
-            {
-              "filename": "031d5dd7-ccae-4634-aae4-b1427c4e83e8.txt",
-              "doc_id": "031d5dd7-ccae-4634-aae4-b1427c4e83e8",
-              "text_preview": "A continuación se presenta el informe de evolución correspondiente a la consulta de seguimiento realizada en el Centro de Salud Las Rosas. La valoración clínica del paciente con identificador HC-2024-"
-            }
-          ]
-        },
-        {
-          "entity": "Consultorio Local Santa Clara",
-          "occurrences": 385,
-          "documents": [
-            {
-              "filename": "020c07da-6e4b-4781-977a-47bc35ec79ab.txt",
-              "doc_id": "020c07da-6e4b-4781-977a-47bc35ec79ab",
-              "text_preview": "Nota de Evolución - Consulta Externa Paciente que acude a consulta para seguimiento. Refiere mejoría de la sintomatología respiratoria que motivó la consulta previa, aunque persiste tos irritativa oca"
-            },
-            {
-              "filename": "03b23b6d-56d8-4d45-91b8-ba668972f390.txt",
-              "doc_id": "03b23b6d-56d8-4d45-91b8-ba668972f390",
-              "text_preview": "INFORME DE CONSULTA EXTERNA Fecha de la consulta: Principios de agosto de 2023. Atención realizada en el Consultorio Local Santa Clara, bajo la dependencia orgánica de la Hospital Infanta Sofía y en e"
-            },
-            {
-              "filename": "046417cf-4592-4758-9475-c3c69a645dd9.txt",
-              "doc_id": "046417cf-4592-4758-9475-c3c69a645dd9",
-              "text_preview": "INFORME DE CONSULTA DE ONCOLOGÍA A la atención de la Dr. Miguel Ángel Ruiz: Se remite a su servicio a la paciente Isabel Gutiérrez Mendoza para valoración y seguimiento especializado. La paciente, con"
-            }
-          ]
-        },
-        {
-          "entity": "Portugal",
-          "occurrences": 380,
-          "documents": [
-            {
-              "filename": "017e202c-61c2-45b4-9539-99a9a39de0f7.txt",
-              "doc_id": "017e202c-61c2-45b4-9539-99a9a39de0f7",
-              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología respiratoria crónica. Refiere mejoría sintomática tras la última modificación terapéutica, con disminución significativa"
-            },
-            {
-              "filename": "01e581f9-e88b-49b2-bdcc-92aef45d84b3.txt",
-              "doc_id": "01e581f9-e88b-49b2-bdcc-92aef45d84b3",
-              "text_preview": "INFORME DE CONSULTA DE CARDIOLOGÍA Paciente que acude para valoración y seguimiento en consultas externas de cardiología. Se trata de una persona de sexo Individuo de sexo femenino, cuyo identificador"
-            },
-            {
-              "filename": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9.txt",
-              "doc_id": "0268ed76-f8ae-4fa3-8aaa-f6d8d440aaf9",
-              "text_preview": "Informe de Consulta de Neurología En la consulta de neurología se atiende al paciente de sexo masculino María López Martínez, identificado con el documento 12345678A. El motivo de consulta fue la eval"
-            }
-          ]
-        },
-        {
-          "entity": "Colombia",
-          "occurrences": 359,
-          "documents": [
-            {
-              "filename": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0.txt",
-              "doc_id": "0092f519-85eb-41bc-9eda-0cc7ed7dcbb0",
-              "text_preview": "Informe de Consulta Externa Paciente que acude a revisión presentando un cuadro de sintomatología inespecífica consistente en astenia y cefalea de varias semanas de evolución. Refiere haber realizado "
-            },
-            {
-              "filename": "01866583-58c4-4093-b43e-05c044237e84.txt",
-              "doc_id": "01866583-58c4-4093-b43e-05c044237e84",
-              "text_preview": "A la exploración física, el paciente se presenta consciente y orientado en las tres esferas. La auscultación cardiorrespiratoria resulta dentro de la normalidad, sin soplos ni crepitantes. El abdomen "
-            },
-            {
-              "filename": "02580def-c31d-482a-8a4f-03730f7150c7.txt",
-              "doc_id": "02580def-c31d-482a-8a4f-03730f7150c7",
-              "text_preview": "Informe de Consulta Externa Paciente que acude a consulta para seguimiento y valoración de su proceso. Se trata de una persona de sexo Hembra que se encuentra estable clínicamente. En la anamnesis por"
-            }
-          ]
-        }
-      ]
-    },
-    "phone": {
-      "total_repeated": 86,
-      "top_repeated": [
-        {
-          "entity": "+34 91 345 09 87",
-          "occurrences": 365,
-          "documents": [
-            {
-              "filename": "017e202c-61c2-45b4-9539-99a9a39de0f7.txt",
-              "doc_id": "017e202c-61c2-45b4-9539-99a9a39de0f7",
-              "text_preview": "Informe de Consulta Externa Paciente que acude para seguimiento de su patología respiratoria crónica. Refiere mejoría sintomática tras la última modificación terapéutica, con disminución significativa"
+              "filename": "03e8e44b-e5c6-4447-bfd2-1ad4615061d4.txt",
+              "doc_id": "03e8e44b-e5c6-4447-bfd2-1ad4615061d4",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Fecha de la consulta: 10 de julio de 2023. Se realiza valoración en consulta externa para seguimiento. El paciente refiere mejoría parcial de la sintomatología previamente "
             },
             {
               "filename": "04d6a5cb-73d2-475c-8e5d-04bfa4fd2645.txt",
@@ -460,33 +282,63 @@
               "text_preview": "En el informe de evolución correspondiente a la fecha de 10 de julio de 2023, se procede a la actualización de la documentación clínica. La paciente, de sexo Femenina, acude para seguimiento del posto"
             },
             {
-              "filename": "04eb2fd5-afb4-4b1d-95aa-3b17a3111613.txt",
-              "doc_id": "04eb2fd5-afb4-4b1d-95aa-3b17a3111613",
-              "text_preview": "En la valoración clínica realizada, se documenta que el sujeto asistencial con identificación BRC5538901P presenta un cuadro de infección respiratoria alta de características leves. La exploración fís"
+              "filename": "05856209-cd3b-4b4b-a9f3-521d5a6e3698.txt",
+              "doc_id": "05856209-cd3b-4b4b-a9f3-521d5a6e3698",
+              "text_preview": "Nota de Evolución Hospitalaria A continuación se presenta la evolución de la paciente Dr. Javier Roldán Nieto, con 72 años de edad de edad, identificada en nuestro sistema con el número de historia cl"
             }
           ]
         },
         {
-          "entity": "+34 952 88 76 54",
-          "occurrences": 357,
+          "entity": "12 de noviembre de 2023",
+          "occurrences": 131,
           "documents": [
             {
-              "filename": "01f3f019-2ab4-4009-ba1d-416c47855928.txt",
-              "doc_id": "01f3f019-2ab4-4009-ba1d-416c47855928",
-              "text_preview": "Informe de Consulta de Segunda Opinión En la consulta de segunda opinión realizada el día julio de 2023, se revisa la documentación clínica del paciente de paciente de 70 años disponible en los portal"
+              "filename": "036e2167-db17-468b-9b22-c5c8f76c8c15.txt",
+              "doc_id": "036e2167-db17-468b-9b22-c5c8f76c8c15",
+              "text_preview": "En el informe de evolución correspondiente a la consulta de seguimiento postoperatorio, se recoge la valoración del estado actual del paciente. La intervención quirúrgica, programada y ejecutada con é"
             },
             {
-              "filename": "03371fe8-f209-40b1-9acf-db2cb092ca4d.txt",
-              "doc_id": "03371fe8-f209-40b1-9acf-db2cb092ca4d",
-              "text_preview": "En la valoración inicial se recoge que el sujeto de asistencia es de sexo F y su residencia habitual se encuentra en la Levante.. Durante la anamnesis, la paciente refirió que su domicilio actual es e"
+              "filename": "05166b89-95be-41a4-b372-84bd851abe3c.txt",
+              "doc_id": "05166b89-95be-41a4-b372-84bd851abe3c",
+              "text_preview": "A la atención del servicio de documentación clínica, Se presenta informe de seguimiento correspondiente a la evolución del paciente de 67 años de edad, cuyo proceso asistencial se inició el 15-07-2023"
             },
             {
-              "filename": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0.txt",
-              "doc_id": "0383b07b-25bc-4a47-9c6c-cd8e80710ef0",
-              "text_preview": "En la valoración clínica realizada, se procede a la revisión exhaustiva del caso. Los hallazgos exploratorios muestran una tensión arterial de 125/80 mmHg y frecuencia cardíaca de 72 lpm, con ausculta"
+              "filename": "05331116-9c6d-4300-a942-5ae5248f1f10.txt",
+              "doc_id": "05331116-9c6d-4300-a942-5ae5248f1f10",
+              "text_preview": "A continuación se presenta el informe de consulta externa de seguimiento. La paciente La tutora legal, con  Paciente de sexo femenino, acude para control evolutivo. Se identifica con el  HC-22-887430 "
             }
           ]
         },
+        {
+          "entity": "12-34-56",
+          "occurrences": 41,
+          "documents": [
+            {
+              "filename": "0aa25a27-1340-432a-80e9-5ef37de32e09.txt",
+              "doc_id": "0aa25a27-1340-432a-80e9-5ef37de32e09",
+              "text_preview": "Informe de Valoración Preoperatoria Paciente de sexo Individuo de sexo femenino que acude a consulta prequirúrgica para valoración de riesgo cardiovascular. Con una edad de 67 años, sexo Individuo de "
+            },
+            {
+              "filename": "0cf03d9f-06ee-4efc-a8bb-f3f1a2d4bd30.txt",
+              "doc_id": "0cf03d9f-06ee-4efc-a8bb-f3f1a2d4bd30",
+              "text_preview": "Informe de Valoración y Seguimiento Paciente que acude a consulta externa para valoración y seguimiento tras haber sido derivada desde atención primaria en la Departamento de Salud de Valencia. La pac"
+            },
+            {
+              "filename": "155eeac7-61fb-4abe-8f30-e801462d12d4.txt",
+              "doc_id": "155eeac7-61fb-4abe-8f30-e801462d12d4",
+              "text_preview": "En la valoración clínica realizada, se constata que el sujeto de asistencia es de sexo Género femenino. La exploración física incluyó la verificación de identidad mediante el registro de la Huella dac"
+            }
+          ]
+        }
+      ]
+    },
+    "location": {
+      "total_repeated": 0,
+      "top_repeated": []
+    },
+    "phone": {
+      "total_repeated": 27,
+      "top_repeated": [
         {
           "entity": "555-345-6789",
           "occurrences": 357,
@@ -549,11 +401,53 @@
               "text_preview": "En el informe de evolución correspondiente a la consulta de seguimiento postoperatorio, se recoge la valoración del estado actual del paciente. La intervención quirúrgica, programada y ejecutada con é"
             }
           ]
+        },
+        {
+          "entity": "555-567-8901",
+          "occurrences": 312,
+          "documents": [
+            {
+              "filename": "021ffd61-7ae5-4aea-b4cf-02fbb5e53821.txt",
+              "doc_id": "021ffd61-7ae5-4aea-b4cf-02fbb5e53821",
+              "text_preview": "En la consulta de seguimiento se reevalúa a la paciente María Teresa Fernández López, madre. Se confirma el registro de su identidad mediante verificación biométrica, correspondiente a la Patrón dacti"
+            },
+            {
+              "filename": "03b1f7bf-a436-4476-b296-6c4661fcd823.txt",
+              "doc_id": "03b1f7bf-a436-4476-b296-6c4661fcd823",
+              "text_preview": "Nota de Interconsulta - Endocrinología Se remite a la paciente Víctor Manuel Herrera Gil para valoración y seguimiento especializado de su diabetes mellitus tipo 2. La paciente ha sido manejada de for"
+            },
+            {
+              "filename": "03e8e44b-e5c6-4447-bfd2-1ad4615061d4.txt",
+              "doc_id": "03e8e44b-e5c6-4447-bfd2-1ad4615061d4",
+              "text_preview": "INFORME DE CONSULTA EXTERNA Fecha de la consulta: 10 de julio de 2023. Se realiza valoración en consulta externa para seguimiento. El paciente refiere mejoría parcial de la sintomatología previamente "
+            }
+          ]
+        },
+        {
+          "entity": "555-678-9012",
+          "occurrences": 205,
+          "documents": [
+            {
+              "filename": "031cc8da-8842-4cbf-a54f-f8d348822f5c.txt",
+              "doc_id": "031cc8da-8842-4cbf-a54f-f8d348822f5c",
+              "text_preview": "Nota de Evolución - Consulta Externa Se reevalúa a la paciente en consultas externas para seguimiento de su proceso. La paciente, cuyo número de beneficio del plan de salud es b-67349582-a, se present"
+            },
+            {
+              "filename": "03340a03-d501-4fea-88a7-64e7e42956c4.txt",
+              "doc_id": "03340a03-d501-4fea-88a7-64e7e42956c4",
+              "text_preview": "Informe de Valoración y Seguimiento Paciente que acude para control evolutivo tras su última revisión. Se mantiene asintomático y en situación funcional estable. Durante la exploración física, se cons"
+            },
+            {
+              "filename": "04ebd026-ec13-4e72-b30d-0200ac93c077.txt",
+              "doc_id": "04ebd026-ec13-4e72-b30d-0200ac93c077",
+              "text_preview": "INFORME DE CONSULTA EXTERNA En la consulta del día 07/2023 se atiende a la paciente María José Fernández López, con identificación A7724C819. La paciente es de sexo Mujer y de nacionalidad México. Ref"
+            }
+          ]
         }
       ]
     },
     "email": {
-      "total_repeated": 66,
+      "total_repeated": 67,
       "top_repeated": [
         {
           "entity": "cmartinez@hospitallapaz.es",
@@ -1966,10 +1860,87 @@
     }
   ],
   "memorization_risk": {
-    "total_repeated_phi_entities": 1355,
+    "total_repeated_phi_entities": 1070,
     "high_similarity_pairs": 100,
     "semantic_skipped": false,
     "risk_level": "critical",
     "interpretation": "Critical memorization risk. Extensive repetition detected. Immediate review required."
+  },
+  "semantic_similarity_histogram": {
+    "method": "all_unique_pairs_upper_triangle",
+    "n_documents": 14035,
+    "n_pairs": 98483595,
+    "bin_edges": [
+      0.0,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.30000000000000004,
+      0.35000000000000003,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6000000000000001,
+      0.65,
+      0.7000000000000001,
+      0.75,
+      0.8,
+      0.8500000000000001,
+      0.9,
+      0.9500000000000001,
+      1.0
+    ],
+    "counts": [
+      18,
+      119,
+      646,
+      4124,
+      20197,
+      76411,
+      235674,
+      608447,
+      1376395,
+      2773524,
+      4987497,
+      8031734,
+      11620418,
+      15071210,
+      17153526,
+      16386698,
+      12242322,
+      6238178,
+      1585382,
+      71075
+    ],
+    "n_pairs_ge_0.85": 7894635,
+    "n_pairs_ge_0.90": 1656457,
+    "n_pairs_ge_0.95": 71075,
+    "fraction_pairs_ge_0.85": 0.080162,
+    "fraction_pairs_ge_0.90": 0.01682,
+    "fraction_pairs_ge_0.95": 0.000722
+  },
+  "semantic_similarity_auxiliary": {
+    "neighbor_graph_coverage": {
+      "top_k_per_document": 5,
+      "listing_similarity_floor": 0.85,
+      "n_unique_pairs_in_neighbor_graph": 56734,
+      "n_global_pairs_cosine_ge_0.90": 1656457,
+      "n_global_pairs_cosine_ge_0.95": 71075,
+      "n_neighbor_graph_pairs_cosine_ge_0.90": 43137,
+      "n_neighbor_graph_pairs_cosine_ge_0.95": 12114,
+      "recall_neighbor_graph_vs_global_ge_0.90": 0.02604173,
+      "recall_neighbor_graph_vs_global_ge_0.95": 0.17043968,
+      "graph_construction": "undirected kNN union: for each document i, consider only the top_k most similar other documents j; keep edge (i,j) if cosine(i,j) >= listing floor. Pair (i,j) enters the graph if i lists j OR j lists i (because we iterate all i)."
+    },
+    "template_vs_lexical_proxy": {
+      "scope": "top_100_pairs_by_cosine_after_listing_filter",
+      "mean_token_jaccard": 0.307708,
+      "median_token_jaccard": 0.309915,
+      "n_pairs_cosine_ge_0.90_with_token_jaccard_lt_0.35": 80,
+      "interpretation_hint": "High semantic cosine with low token Jaccard suggests shared structure/boilerplate or paraphrase (template-like generation); high on both suggests lexical near-duplication."
+    }
   }
 }

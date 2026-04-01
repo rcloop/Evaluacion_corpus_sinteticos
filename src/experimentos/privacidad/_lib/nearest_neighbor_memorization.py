@@ -217,17 +217,157 @@ def exact_similarity_search(
     return repeated_entities
 
 
+def _histogram_upper_triangle_similarities(
+    similarity_matrix: np.ndarray,
+    n_bins: int = 20,
+) -> Dict:
+    """
+    Histogram over all unique unordered document pairs (upper triangle, excluding diagonal).
+    Accumulates row-wise to avoid allocating the full O(n^2) flattened pair vector.
+    """
+    n = int(similarity_matrix.shape[0])
+    if n < 2:
+        return {
+            "method": "all_unique_pairs_upper_triangle",
+            "n_documents": n,
+            "n_pairs": 0,
+            "bin_edges": np.linspace(0.0, 1.0, n_bins + 1).tolist(),
+            "counts": [0] * n_bins,
+            "n_pairs_ge_0.85": 0,
+            "n_pairs_ge_0.90": 0,
+            "n_pairs_ge_0.95": 0,
+            "fraction_pairs_ge_0.85": None,
+            "fraction_pairs_ge_0.90": None,
+            "fraction_pairs_ge_0.95": None,
+        }
+
+    edges = np.linspace(0.0, 1.0, n_bins + 1)
+    counts = np.zeros(n_bins, dtype=np.int64)
+    for i in range(n):
+        row = np.clip(similarity_matrix[i, i + 1 :], 0.0, 1.0)
+        h, _ = np.histogram(row, bins=edges)
+        counts += h.astype(np.int64)
+
+    n_pairs = n * (n - 1) // 2
+    counts_list = counts.tolist()
+    edges_list = edges.tolist()
+
+    def n_ge_threshold(t: float) -> int:
+        s = 0
+        for b, lo in enumerate(edges[:-1]):
+            if lo >= t - 1e-12:
+                s += int(counts[b])
+        return s
+
+    def frac_ge(t: float) -> float:
+        s = n_ge_threshold(t)
+        return float(s) / float(n_pairs) if n_pairs else 0.0
+
+    n_ge_85 = n_ge_threshold(0.85)
+    n_ge_90 = n_ge_threshold(0.90)
+    n_ge_95 = n_ge_threshold(0.95)
+
+    return {
+        "method": "all_unique_pairs_upper_triangle",
+        "n_documents": n,
+        "n_pairs": n_pairs,
+        "bin_edges": edges_list,
+        "counts": counts_list,
+        "n_pairs_ge_0.85": n_ge_85,
+        "n_pairs_ge_0.90": n_ge_90,
+        "n_pairs_ge_0.95": n_ge_95,
+        "fraction_pairs_ge_0.85": round(frac_ge(0.85), 6),
+        "fraction_pairs_ge_0.90": round(frac_ge(0.90), 6),
+        "fraction_pairs_ge_0.95": round(frac_ge(0.95), 6),
+    }
+
+
+def _token_jaccard(a: str, b: str) -> float:
+    """Whitespace token Jaccard on lowercased text (lexical overlap proxy)."""
+    sa = set(a.lower().split())
+    sb = set(b.lower().split())
+    if not sa and not sb:
+        return 1.0
+    u = sa | sb
+    return len(sa & sb) / len(u) if u else 0.0
+
+
+def _semantic_auxiliary_diagnostics(
+    similar_pairs: List[Dict],
+    similarity_histogram: Dict,
+    top_k: int,
+    similarity_threshold: float,
+    texts: List[Tuple[str, str, str]],
+    export_top_n: int = 100,
+) -> Dict:
+    """
+    Coverage of the sparse neighbor graph vs the full cosine matrix, and a lexical proxy
+    on the highest-similarity exported pairs (template vs near-copy heuristic).
+    """
+    n_g90 = int(similarity_histogram.get("n_pairs_ge_0.90") or 0)
+    n_g95 = int(similarity_histogram.get("n_pairs_ge_0.95") or 0)
+    n_graph_90 = sum(1 for p in similar_pairs if float(p.get("similarity", 0)) >= 0.90)
+    n_graph_95 = sum(1 for p in similar_pairs if float(p.get("similarity", 0)) >= 0.95)
+
+    def recall(n_g: int, n_c: int):
+        return round(float(n_c) / float(n_g), 8) if n_g else None
+
+    neighbor = {
+        "top_k_per_document": top_k,
+        "listing_similarity_floor": similarity_threshold,
+        "n_unique_pairs_in_neighbor_graph": len(similar_pairs),
+        "n_global_pairs_cosine_ge_0.90": n_g90,
+        "n_global_pairs_cosine_ge_0.95": n_g95,
+        "n_neighbor_graph_pairs_cosine_ge_0.90": n_graph_90,
+        "n_neighbor_graph_pairs_cosine_ge_0.95": n_graph_95,
+        "recall_neighbor_graph_vs_global_ge_0.90": recall(n_g90, n_graph_90),
+        "recall_neighbor_graph_vs_global_ge_0.95": recall(n_g95, n_graph_95),
+        "graph_construction": (
+            "undirected kNN union: for each document i, consider only the top_k "
+            "most similar other documents j; keep edge (i,j) if cosine(i,j) >= listing floor. "
+            "Pair (i,j) enters the graph if i lists j OR j lists i (because we iterate all i)."
+        ),
+    }
+
+    sorted_p = sorted(similar_pairs, key=lambda x: float(x["similarity"]), reverse=True)
+    top = sorted_p[: min(export_top_n, len(sorted_p))]
+    jacs: List[float] = []
+    n_high_cos_low_lex = 0
+    for p in top:
+        i, j = p.get("_i"), p.get("_j")
+        if i is None or j is None:
+            continue
+        t1, t2 = texts[int(i)][0], texts[int(j)][0]
+        jac = _token_jaccard(t1, t2)
+        jacs.append(jac)
+        if float(p["similarity"]) >= 0.90 and jac < 0.35:
+            n_high_cos_low_lex += 1
+
+    template_proxy = {
+        "scope": f"top_{len(jacs)}_pairs_by_cosine_after_listing_filter",
+        "mean_token_jaccard": round(float(np.mean(jacs)), 6) if jacs else None,
+        "median_token_jaccard": round(float(np.median(jacs)), 6) if jacs else None,
+        "n_pairs_cosine_ge_0.90_with_token_jaccard_lt_0.35": n_high_cos_low_lex,
+        "interpretation_hint": (
+            "High semantic cosine with low token Jaccard suggests shared structure/boilerplate or "
+            "paraphrase (template-like generation); high on both suggests lexical near-duplication."
+        ),
+    }
+    return {"neighbor_graph_coverage": neighbor, "template_vs_lexical_proxy": template_proxy}
+
+
 def semantic_similarity_search(
     texts: List[Tuple[str, str, str]],
     model_name: str = 'paraphrase-multilingual-MiniLM-L12-v2',
     top_k: int = 5,
     similarity_threshold: float = 0.85
-) -> List[Dict]:
+) -> Tuple[List[Dict], Dict, Dict]:
     """
     Find semantically similar texts using sentence transformers.
     
     Returns:
-        List of similar text pairs with similarity scores
+        (similar_pairs, similarity_histogram, auxiliary_diagnostics): pair list, global histogram,
+        and diagnostics (neighbor-graph recall vs global counts; lexical Jaccard on top pairs).
     """
     if not SENTENCE_TRANSFORMERS_AVAILABLE:
         raise ImportError("sentence-transformers is not installed. Install it with: pip install sentence-transformers")
@@ -245,7 +385,10 @@ def semantic_similarity_search(
     
     print("Computing similarity matrix...")
     similarity_matrix = cosine_similarity(embeddings)
-    
+    similarity_histogram = _histogram_upper_triangle_similarities(
+        similarity_matrix, n_bins=20
+    )
+
     # Find similar pairs
     similar_pairs = []
     seen_pairs = set()
@@ -262,6 +405,8 @@ def semantic_similarity_search(
                 if pair_key not in seen_pairs:
                     seen_pairs.add(pair_key)
                     similar_pairs.append({
+                        '_i': i,
+                        '_j': j,
                         'doc1': {
                             'filename': texts[i][1],
                             'doc_id': texts[i][2],
@@ -277,8 +422,21 @@ def semantic_similarity_search(
     
     # Sort by similarity
     similar_pairs.sort(key=lambda x: x['similarity'], reverse=True)
-    
-    return similar_pairs
+
+    auxiliary = _semantic_auxiliary_diagnostics(
+        similar_pairs,
+        similarity_histogram,
+        top_k=top_k,
+        similarity_threshold=similarity_threshold,
+        texts=texts,
+        export_top_n=100,
+    )
+
+    for p in similar_pairs:
+        p.pop("_i", None)
+        p.pop("_j", None)
+
+    return similar_pairs, similarity_histogram, auxiliary
 
 
 def evaluate_memorization(
@@ -287,6 +445,7 @@ def evaluate_memorization(
     output_path: str = "memorization_detection_results.json",
     semantic_model: str = 'paraphrase-multilingual-MiniLM-L12-v2',
     similarity_threshold: float = 0.85,
+    semantic_top_k: int = 5,
     skip_semantic: bool = False,
     max_docs: int = None
 ) -> Dict:
@@ -382,20 +541,39 @@ def evaluate_memorization(
         print("\n=== Semantic Similarity Search ===")
         print("[WARNING] Similitud semantica deshabilitada (skip_semantic=True)")
         results['semantic_similarities'] = []
+        results['semantic_similarity_histogram'] = None
+        results['semantic_similarity_auxiliary'] = None
         results['semantic_skipped'] = True
     else:
         print("\n=== Semantic Similarity Search ===")
         try:
-            similar_pairs = semantic_similarity_search(
+            similar_pairs, similarity_histogram, semantic_aux = semantic_similarity_search(
                 texts,
                 model_name=semantic_model,
+                top_k=semantic_top_k,
                 similarity_threshold=similarity_threshold
             )
             results['semantic_similarities'] = similar_pairs[:100]  # Top 100
+            results['semantic_similarity_histogram'] = similarity_histogram
+            results['semantic_similarity_auxiliary'] = semantic_aux
             print(f"Found {len(similar_pairs)} highly similar text pairs (similarity >= {similarity_threshold})")
+            if similarity_histogram.get("n_pairs"):
+                print(
+                    f"  Pairwise cosine: frac>=0.85={similarity_histogram['fraction_pairs_ge_0.85']}, "
+                    f"frac>=0.90={similarity_histogram['fraction_pairs_ge_0.90']}, "
+                    f"frac>=0.95={similarity_histogram['fraction_pairs_ge_0.95']}"
+                )
+            cov = semantic_aux.get("neighbor_graph_coverage", {})
+            if cov.get("n_global_pairs_cosine_ge_0.95"):
+                print(
+                    f"  Neighbor-graph recall vs global: ge0.90={cov.get('recall_neighbor_graph_vs_global_ge_0.90')}, "
+                    f"ge0.95={cov.get('recall_neighbor_graph_vs_global_ge_0.95')}"
+                )
         except Exception as e:
             print(f"Error in semantic search: {e}")
             results['semantic_similarities'] = []
+            results['semantic_similarity_histogram'] = None
+            results['semantic_similarity_auxiliary'] = None
             results['semantic_error'] = str(e)
     
     # 3. Risk assessment
@@ -502,6 +680,12 @@ if __name__ == "__main__":
         help="Minimum similarity threshold for semantic search"
     )
     parser.add_argument(
+        "--semantic_top_k",
+        type=int,
+        default=5,
+        help="Top-k neighbors per document for candidate graph"
+    )
+    parser.add_argument(
         "--skip_semantic",
         action="store_true",
         help="Skip semantic similarity search (only exact similarity)"
@@ -510,11 +694,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     evaluate_memorization(
-        args.corpus_path,
-        args.annotations_path,
-        args.output_path,
-        args.semantic_model,
-        args.similarity_threshold,
-        args.skip_semantic
+        corpus_path=args.corpus_path,
+        annotations_path=args.annotations_path,
+        output_path=args.output_path,
+        semantic_model=args.semantic_model,
+        similarity_threshold=args.similarity_threshold,
+        semantic_top_k=args.semantic_top_k,
+        skip_semantic=args.skip_semantic,
     )
 

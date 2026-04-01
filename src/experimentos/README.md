@@ -19,14 +19,14 @@ One script per bias metric. Expects `entidades/` and `documents/`.
 | 03 | `03_geographic_toponymic_bias.py` | `results/sesgos/03` |
 | 04 | `04_age_distribution.py` | `results/sesgos/04` |
 | 05 | `05_institution_bias.py` | `results/sesgos/05` |
-| 06 | `06_diagnosis_condition_bias.py` | `results/sesgos/06` |
 | 07 | `07_intersectional_corpus_bias.py` | `results/sesgos/07` |
-| 08 | `08_diagnosis_demography_bias.py` | `results/sesgos/08` |
 | 09 | `09_gender_target_proportion.py` | `results/sesgos/09` |
 | 10 | `10_age_reference_comparison.py` | `results/sesgos/10` |
 | 11 | `11_coverage_completeness.py` | `results/sesgos/11` |
 | 12 | `12_weat_gender_analysis.py` | `results/sesgos/12` |
-| 13 | `13_diversity_summary.py` | `results/sesgos/13` (needs 03, 05, 06) |
+| 13 | `13_diversity_summary.py` | `results/sesgos/13` (needs 03, 05) |
+
+Numbers **06** and **08** are unused (former diagnosis metrics removed: diagnosis is not an annotation entity in this schema).
 
 From the repo root (`corpus_root = corpus_repo/corpus_v1`):
 
@@ -39,19 +39,17 @@ On **Windows PowerShell 5** (no `&&`): run from the root with `.\scripts\run.ps1
 
 ## Privacy (`privacidad/`)
 
-Three evaluations: Attribute Inference, Membership Inference, Memorization Detection.
+Two evaluations: **attribute inference** (PHI-category predictability from text) and **memorization-style screening** (repeated PHI strings and near-duplicate documents). Pretraining exposure of the commercial generator is **not** audited (out of scope); synthetic-vs-real differences are covered under naturalness experiments.
 
 | # | Script | Outputs |
 |---|--------|---------|
 | 01 | `01_attribute_inference.py` | `results/privacidad/01` |
-| 02 | `02_membership_inference.py` | `results/privacidad/02` |
 | 03 | `03_memorization_detection.py` | `results/privacidad/03` |
 
 From the repo root:
 
 ```bash
 python src/experimentos/privacidad/01_attribute_inference.py --corpus_path corpus_repo/corpus_v1 --annotations_path corpus_repo/corpus_v1/entidades
-python src/experimentos/privacidad/02_membership_inference.py --corpus_path corpus_repo/corpus_v1
 python src/experimentos/privacidad/03_memorization_detection.py --corpus_path corpus_repo/corpus_v1 --annotations_path corpus_repo/corpus_v1/entidades
 ```
 
