@@ -78,9 +78,10 @@ PRIVACIDAD_LIB_MODULES = [
 
 NATURALIDAD_LIB_MODULES = [
     "ai_text_detection",
+    "length_norm",
+    "real_corpus_sanitize",
     "coherence",
     "diversity_metrics",
-    "perplexity",
     "readability",
     "statistical_comparison",
     "vocabulary_richness",

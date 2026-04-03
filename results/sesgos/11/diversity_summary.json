@@ -1,6 +1,6 @@
 {
   "metric": "diversity_summary",
-  "timestamp_utc": "2026-04-01T16:58:41.844260+00:00",
+  "timestamp_utc": "2026-04-03T19:39:19.843701+00:00",
   "input_summary": {
     "path_1_3": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\03\\1_3_geographic_toponymic_bias.json",
     "path_1_5": "C:\\Users\\Usuario\\Documents\\anonimizacion\\results\\sesgos\\05\\1_5_institution_bias.json"

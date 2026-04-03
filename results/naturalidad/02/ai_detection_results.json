@@ -1,15 +1,23 @@
 {
   "generated_corpus_size": 14035,
-  "human_corpus_size": 500,
+  "human_corpus_size": 4335,
   "inputs": {
-    "generated_corpus_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\documents",
+    "generated_corpus_path": "corpus_repo/corpus_v1/documents",
     "human_corpus_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\real_validation_corpus",
     "human_corpus_mode": "external",
     "sample_size_per_corpus": null,
     "seed": 42,
     "balancing": "none (class_weight=balanced)",
-    "sanitize_real_chunks": true,
-    "real_sliding_windows": false
+    "real_windowing": {
+      "mode": "real_mean_synthetic_windows",
+      "mean_synthetic_word_count_pre_window": 229.94613466334164,
+      "window_tokens": 230,
+      "stride_tokens": 230,
+      "num_real_source_documents": 500,
+      "num_real_windows": 4335
+    },
+    "sanitize_real_chunks": false,
+    "real_sliding_windows": true
   },
   "tfidf_classifier": {
     "method": "TF-IDF + Logistic Regression",
@@ -20,7 +28,7 @@
     "f1_score": 1.0,
     "f1_macro": 1.0,
     "auc_roc": 1.0,
-    "baseline_accuracy": 0.9656002751977985,
+    "baseline_accuracy": 0.7640174197060424,
     "confusion_matrix_labels": [
       0,
       1
@@ -32,7 +40,7 @@
       ],
       [
         0,
-        100
+        867
       ]
     ],
     "classification_report": {
@@ -46,20 +54,20 @@
         "precision": 1.0,
         "recall": 1.0,
         "f1-score": 1.0,
-        "support": 100.0
+        "support": 867.0
       },
       "accuracy": 1.0,
       "macro avg": {
         "precision": 1.0,
         "recall": 1.0,
         "f1-score": 1.0,
-        "support": 2907.0
+        "support": 3674.0
       },
       "weighted avg": {
         "precision": 1.0,
         "recall": 1.0,
         "f1-score": 1.0,
-        "support": 2907.0
+        "support": 3674.0
       }
     }
   },

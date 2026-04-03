@@ -8,7 +8,7 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 - **`repo_paths.py`** – Single source of truth for default corpus paths (`DEFAULT_SYNTHETIC_CORPUS_ROOT`, `DEFAULT_REAL_VALIDATION_DOCS_DIR`).
 - **`test/`** – Pytest suite and minimal data under `test/data/`.
 - **`corpus_repo/corpus_v1/`** – Versioned synthetic corpus (`documents/` + `entidades/`). Large training/export JSON under `corpus_v1/` (e.g. `train_set.json`) are not tracked—only what’s needed to run experiments.
-- **`corpus_repo/real_validation_corpus/`** – **Your** real-reference `.txt` files for **experiment 07** (**gitignored**). Populate locally (export script or copy); never committed.
+- **`corpus_repo/real_validation_corpus/`** – **Your** real-reference `.txt` files for **naturalness 07 and 08** (**gitignored**). Populate locally (export script or copy); never committed.
 - **`data/`** – Small reference assets (e.g. lexicons under `data/sesgos/`).
 - **`results/`** – Experiment outputs (JSON). Log `.txt` under `results/` is ignored.
 - **`scripts/`** – **Runners**: `run_all_experiments.py`, `run.ps1` (from repo root: `python scripts/run_all_experiments.py`, or `.\scripts\run.ps1 python ...`). Heavy steps use a **24h** per-script timeout by default (`--timeout_heavy`).
@@ -19,15 +19,15 @@ Evaluation of synthetic clinical corpora across **bias**, **privacy**, and **tex
 
 Write under **`results/`** at the repo root:
 
-- `results/sesgos/01` … `13`
-- `results/privacidad/01` … `03`
-- `results/naturalidad/01` … `07`
+- `results/sesgos/01` … `11` (contiguous).
+- `results/privacidad/01` … `02` (contiguous).
+- `results/naturalidad/01` … `08` (contiguous; **02** / **08** = real-corpus sliding windows at mean synthetic length — length-aligned protocol vs full-document **01** / **07**)
 
 Global `*.json` in `.gitignore` is relaxed for **`results/`**, **`test/data/`**, **`corpus_repo/corpus_v1/`** (metrics + annotations only; bulky exports listed in `.gitignore`).
 
-### Experiment 07 (generated vs real)
+### Naturalness 07 and 08 (generated vs real)
 
-Default real side: **`corpus_repo/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). Experiment **07** exits with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback. Discovery is **recursive**; extension match is **case-insensitive** (`.txt` / `.TXT`).
+Default real side: **`corpus_repo/real_validation_corpus/`** (`repo_paths.DEFAULT_REAL_VALIDATION_DOCS_DIR`). **07** and **08** exit with an error if that directory is missing, is not a directory, or contains **no** `.txt` files—there is no synthetic fallback. Discovery is **recursive**; extension match is **case-insensitive** (`.txt` / `.TXT`).
 
 1. **Use your own files** – Copy or sync your real validation `.txt` files into `corpus_repo/real_validation_corpus/` (local only; see `.gitignore`).
 
@@ -43,7 +43,7 @@ Default real side: **`corpus_repo/real_validation_corpus/`** (`repo_paths.DEFAUL
 pip install -r requirements.txt
 ```
 
-**GPU (NVIDIA):** optional; for faster perplexity / coherence / memorization / AI detection:
+**GPU (NVIDIA):** optional; for faster coherence / memorization / AI detection:
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124

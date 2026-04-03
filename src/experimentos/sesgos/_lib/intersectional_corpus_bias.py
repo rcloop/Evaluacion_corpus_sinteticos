@@ -187,12 +187,10 @@ def evaluate_intersectional_corpus_bias(
     for _, g, _, geo in rows:
         if g is not None and geo is not None:
             gg_counts[(g, geo)] += 1
-    all_geos = list(set(g for (_, g) in gg_counts.keys()))
-    top_geos = sorted(
-        all_geos,
-        key=lambda x: sum(gg_counts.get((gen, x), 0) for gen in genders_sorted),
-        reverse=True,
-    )[:top_geo_k]
+    # Deterministic ordering: break ties by geo label.
+    all_geos = sorted({geo for (_, geo) in gg_counts.keys()})
+    geo_totals = {geo: sum(gg_counts.get((gen, geo), 0) for gen in genders_sorted) for geo in all_geos}
+    top_geos = sorted(all_geos, key=lambda geo: (-geo_totals.get(geo, 0), geo))[:top_geo_k]
     gg_table_counts: Counter = Counter()
     for (g, geo), v in gg_counts.items():
         col = geo if geo in top_geos else "_OTHER_"

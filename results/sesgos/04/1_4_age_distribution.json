@@ -1,14 +1,19 @@
 {
   "metric": "1.4_age_distribution",
-  "timestamp_utc": "2026-03-30T13:02:32.814243+00:00",
+  "timestamp_utc": "2026-04-03T19:36:11.265585+00:00",
   "input_summary": {
-    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
     "age_labels": [
       "AGE_OF_SUBJECT",
       "EDAD_SUJETO_ASISTENCIA"
     ],
     "max_files": null,
     "docs_seen": 14035,
+    "aggregation": "doc_mode",
+    "docs_with_age_entity": 2821,
+    "docs_with_parsed_age": 2767,
+    "docs_with_multiple_parsed_ages": 368,
+    "docs_mode_ties": 365,
     "ages_entities_seen": 3240,
     "ages_parsed": 3143,
     "ages_recovered_textual": 339,
@@ -35,11 +40,11 @@
       0,
       15,
       11,
-      13,
-      21,
-      2051,
-      1029,
-      3,
+      10,
+      17,
+      2027,
+      685,
+      2,
       0,
       0,
       0,
@@ -48,29 +53,29 @@
     "percentages": [
       0.0,
       0.0,
-      0.4772510340439071,
-      0.3499840916321985,
-      0.41361756283805284,
-      0.6681514476614699,
-      65.25612472160357,
-      32.73942093541203,
-      0.09545020680878141,
+      0.5421033610408384,
+      0.39754246476328153,
+      0.3614022406938923,
+      0.6143838091796169,
+      73.25623418865197,
+      24.756053487531624,
+      0.07228044813877846,
       0.0,
       0.0,
       0.0,
       0.0
     ],
-    "n": 3143
+    "n": 2767
   },
   "entropy": {
-    "entropy_bits": 1.0852130067988912,
-    "normalized_entropy": 0.386560672564872,
+    "entropy_bits": 0.982030584254163,
+    "normalized_entropy": 0.34980635207122296,
     "support": 7
   },
   "underrepresentation_checks": [
     {
       "bin": "80-89",
-      "percent": 0.09545020680878141,
+      "percent": 0.07228044813877846,
       "flag_underrepresented": true,
       "threshold_percent": 5.0
     },

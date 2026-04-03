@@ -33,6 +33,16 @@ if __name__ == "__main__":
     )
     parser.add_argument("--output_path", default=str(OUTPUT_FILE))
     parser.add_argument("--sample_size", type=int, default=None)
+    parser.add_argument(
+        "--exclude_length_features",
+        action="store_true",
+        help="Compare only avg_word_length, avg_sentence_length, TTR (length-agnostic subset; same three features as experiment 08, without windowing).",
+    )
+    parser.add_argument(
+        "--no_sanitize_real_chunks",
+        action="store_true",
+        help="Do not drop real-note paragraphs containing banned valoración scale headers.",
+    )
     args = parser.parse_args()
     g, r = Path(args.generated_corpus), Path(args.real_corpus)
     if not r.is_dir():
@@ -63,6 +73,8 @@ if __name__ == "__main__":
             real_corpus_path=args.real_corpus,
             output_path=args.output_path,
             sample_size=args.sample_size,
+            exclude_length_features=args.exclude_length_features,
+            sanitize_real_chunks=not args.no_sanitize_real_chunks,
         )
     except ValueError as exc:
         print(f"Error: {exc}", file=sys.stderr)

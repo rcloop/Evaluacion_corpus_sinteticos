@@ -22,7 +22,7 @@ def _run_experiment(script_path: Path, args: list, cwd: Path, timeout: int = 180
 
 @pytest.mark.parametrize("script", [
     "01_attribute_inference.py",
-    "03_memorization_detection.py",
+    "02_memorization_detection.py",
 ])
 def test_privacidad_script_corpus_mini(
     repo_root, corpus_mini_path, experiments_privacidad_path, tmp_path, script
@@ -33,12 +33,12 @@ def test_privacidad_script_corpus_mini(
         pytest.skip(f"Script no encontrado: {script_path}")
     out_map = {
         "01_attribute_inference.py": "attribute_inference.json",
-        "03_memorization_detection.py": "memorization_detection.json",
+        "02_memorization_detection.py": "memorization_detection.json",
     }
     args = ["--corpus_path", str(corpus_mini_path), "--output_path", str(tmp_path / out_map[script])]
     if script == "01_attribute_inference.py":
         args.extend(["--annotations_path", str(corpus_mini_path / "entidades")])
-    if script == "03_memorization_detection.py":
+    if script == "02_memorization_detection.py":
         args.extend(["--annotations_path", str(corpus_mini_path / "entidades")])
     result = _run_experiment(script_path, args, repo_root)
     assert result.returncode == 0, (
@@ -98,11 +98,11 @@ def test_privacidad_01_json_structure_and_sanity(
             assert res["risk_level"] in allowed_risk, f"risk_level debe ser uno de {allowed_risk}"
 
 
-def test_privacidad_03_semantic_histogram_when_present(
+def test_privacidad_02_semantic_histogram_when_present(
     repo_root, corpus_mini_path, experiments_privacidad_path, tmp_path
 ):
-    """03 memorization: si hay histograma semántico, estructura mínima y sum(counts)==n_pairs."""
-    script = experiments_privacidad_path / "03_memorization_detection.py"
+    """02 memorization: si hay histograma semántico, estructura mínima y sum(counts)==n_pairs."""
+    script = experiments_privacidad_path / "02_memorization_detection.py"
     out_file = tmp_path / "memorization_detection.json"
     result = _run_experiment(
         script,

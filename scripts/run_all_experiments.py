@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """
 Run every experiment script (bias, privacy, naturalness) on the given corpus; write under results/.
+Naturalness runs **01–08** (contiguous): **02** / **08** use real sliding-window alignment vs **01** / **07** full-document baselines.
 
 Default corpus: corpus_repo/corpus_v1 (synthetic, with entidades/).
 Usage: python scripts/run_all_experiments.py [--corpus_root corpus_repo/corpus_v1] [--quick]
 (run from repository root)
 
 Requires: pip install -r requirements.txt (PyTorch, transformers, sentence-transformers for
-perplexity 02, coherence 06, semantic memorization).
+coherence 06, semantic memorization).
 
-**Default: full corpus** for perplexity (02), memorization (03), and all naturalness scripts
+**Default: full corpus** for memorization (02) and all naturalness scripts
 (no sampling caps). Use `--quick` to cap heavy scripts at 5000 documents for faster local runs.
 
-**Timeouts:** per-step `--timeout` defaults to 7200s; heavy scripts (perplexity, memorization, WEAT,
+**Timeouts:** per-step `--timeout` defaults to 7200s; heavy scripts (memorization, WEAT,
 diversity, coherence) use `--timeout_heavy`, default **86400s (24h)**.
 """
 import argparse
@@ -49,11 +50,11 @@ def run(script: Path, args: list, cwd: Path = None, timeout: int = 3600) -> subp
 
 
 HEAVY_TIMEOUT_SCRIPTS = {
-    "02_perplexity.py",
-    "03_memorization_detection.py",
+    "02_memorization_detection.py",
     "05_diversity.py",
     "06_coherence.py",
-    "12_weat_gender_analysis.py",
+    "10_weat_gender_analysis.py",
+    "11_diversity_summary.py",
 }
 
 
@@ -73,21 +74,15 @@ def main():
         help="Timeout for heavy scripts (seconds). Default: 86400 (24h)",
     )
     p.add_argument(
-        "--perplexity_sample_size",
-        type=int,
-        default=0,
-        help="Max docs for perplexity 02 (0 = all documents; can take hours)",
-    )
-    p.add_argument(
         "--memorization_max_docs",
         type=int,
         default=0,
-        help="Max docs for memorization 03 (0 = all documents)",
+        help="Max docs for memorization 02 (0 = all documents)",
     )
     p.add_argument(
         "--quick",
         action="store_true",
-        help="Cap perplexity and memorization at 5000 docs (faster; not full-corpus evaluation)",
+        help="Cap memorization at 5000 docs (faster; not full-corpus evaluation)",
     )
     p.add_argument(
         "--full_corpus",
@@ -96,10 +91,8 @@ def main():
     )
     args = p.parse_args()
     if getattr(args, "quick", False):
-        args.perplexity_sample_size = 5000
         args.memorization_max_docs = 5000
     if getattr(args, "full_corpus", False):
-        args.perplexity_sample_size = 0
         args.memorization_max_docs = 0
 
     def resolve_under_repo(path_str: str) -> Path:
@@ -120,7 +113,7 @@ def main():
         return args.timeout_heavy if script_name in HEAVY_TIMEOUT_SCRIPTS else args.timeout
 
     failed = []
-    for i in range(1, 13):
+    for i in range(1, 12):
         scripts = list(SESGOS.glob(f"{i:02d}_*.py"))
         if not scripts:
             continue
@@ -136,26 +129,14 @@ def main():
         else:
             print("  OK", flush=True)
 
-    script13 = SESGOS / "13_diversity_summary.py"
-    if script13.exists():
-        to = get_timeout(script13.name)
-        print(f"\n[Bias] {script13.name} (timeout {to}s) ...", flush=True)
-        r = run(script13, [], timeout=to)
-        if r.returncode != 0:
-            err = (r.stderr or r.stdout or "")[:800]
-            print(f"  FAIL: {err}", flush=True)
-            failed.append(("sesgos", script13.name, r))
-        else:
-            print("  OK", flush=True)
-
-    for name in ["01_attribute_inference.py", "03_memorization_detection.py"]:
+    for name in ["01_attribute_inference.py", "02_memorization_detection.py"]:
         script = PRIVACIDAD / name
         if not script.exists():
             continue
         run_args = ["--corpus_path", str(corpus)]
-        if "01_" in name or "03_" in name:
+        if name.startswith("01_") or name.startswith("02_"):
             run_args.extend(["--annotations_path", str(ents_dir)])
-        if name == "03_memorization_detection.py" and args.memorization_max_docs and args.memorization_max_docs > 0:
+        if name == "02_memorization_detection.py" and args.memorization_max_docs and args.memorization_max_docs > 0:
             run_args.extend(["--max_docs", str(args.memorization_max_docs)])
         to = get_timeout(script.name)
         print(f"\n[Privacy] {script.name} (timeout {to}s) ...", flush=True)
@@ -180,26 +161,26 @@ def main():
             print("  OK", flush=True)
 
     real_dir = DEFAULT_REAL_VALIDATION_DOCS_DIR
-    for i in range(2, 8):
-        scripts = list(NATURALIDAD.glob(f"{i:02d}_*.py"))
-        if not scripts:
-            continue
-        script = scripts[0]
-        if "07_" in script.name:
-            run_args = ["--generated_corpus", str(docs_dir), "--real_corpus", str(real_dir)]
-        else:
-            run_args = ["--corpus_path", str(docs_dir)]
-        if script.name == "02_perplexity.py" and args.perplexity_sample_size and args.perplexity_sample_size > 0:
-            run_args.extend(["--sample_size", str(args.perplexity_sample_size)])
-        to = get_timeout(script.name)
-        print(f"\n[Naturalness] {script.name} (timeout {to}s) ...", flush=True)
-        r = run(script, run_args, timeout=to)
-        if r.returncode != 0:
-            err = (r.stderr or r.stdout or "")[:800]
-            print(f"  FAIL: {err}", flush=True)
-            failed.append(("naturalidad", script.name, r))
-        else:
-            print("  OK", flush=True)
+    for i in range(2, 9):
+        scripts = sorted(NATURALIDAD.glob(f"{i:02d}_*.py"))
+        for script in scripts:
+            if script.name.startswith("07_statistical_comparison") or script.name.startswith(
+                "08_statistical_comparison"
+            ):
+                run_args = ["--generated_corpus", str(docs_dir), "--real_corpus", str(real_dir)]
+            elif script.name.startswith("02_ai_detection"):
+                run_args = ["--generated_corpus", str(docs_dir)]
+            else:
+                run_args = ["--corpus_path", str(docs_dir)]
+            to = get_timeout(script.name)
+            print(f"\n[Naturalness] {script.name} (timeout {to}s) ...", flush=True)
+            r = run(script, run_args, timeout=to)
+            if r.returncode != 0:
+                err = (r.stderr or r.stdout or "")[:800]
+                print(f"  FAIL: {err}", flush=True)
+                failed.append(("naturalidad", script.name, r))
+            else:
+                print("  OK", flush=True)
 
     if failed:
         print(f"\n--- {len(failed)} experiment(s) failed ---")

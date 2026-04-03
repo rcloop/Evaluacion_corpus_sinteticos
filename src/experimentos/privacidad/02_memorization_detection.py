@@ -1,12 +1,12 @@
 """
-Experimento 03 – Privacidad: Memorization Detection.
-Resultados en: results/privacidad/03
+Experimento 02 – Privacidad: Memorization Detection.
+Resultados en: results/privacidad/02
 """
 from pathlib import Path
 import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-OUTPUT_DIR = REPO_ROOT / "results" / "privacidad" / "03"
+OUTPUT_DIR = REPO_ROOT / "results" / "privacidad" / "02"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_PATH = OUTPUT_DIR / "memorization_detection.json"
 
@@ -17,7 +17,7 @@ from nearest_neighbor_memorization import evaluate_memorization
 import argparse
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Experimento 03 - Memorization Detection")
+    parser = argparse.ArgumentParser(description="Experimento 02 - Memorization Detection")
     parser.add_argument("--corpus_path", required=True, help="Ruta al corpus")
     parser.add_argument("--annotations_path", default=None, help="Ruta a entidades/ (opcional)")
     parser.add_argument("--output_path", default=str(OUTPUT_PATH))
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     n = len(list(docs_dir.glob("*.txt"))) if docs_dir.is_dir() else 0
     if args.max_docs is not None and args.max_docs > 0:
         n = min(n, args.max_docs)
-    print(f"Experimento 03 – Privacidad: Memorization Detection. Corpus: {args.corpus_path} | Documentos: {n}")
+    print(f"Experimento 02 – Privacidad: Memorization Detection. Corpus: {args.corpus_path} | Documentos: {n}")
     evaluate_memorization(
         corpus_path=args.corpus_path,
         annotations_path=args.annotations_path,

@@ -7,7 +7,7 @@ Compares statistical distributions between generated and real medical texts.
 import json
 import os
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 from collections import Counter
 import numpy as np
 from scipy import stats
@@ -122,9 +122,9 @@ def compare_distributions(
     if not gen_values or not real_values:
         return {'error': 'Insufficient data'}
     
-    # Kolmogorov-Smirnov test
+    # Kolmogorov-Smirnov test (diagnostic; sensitive to any distributional difference)
     ks_statistic, ks_pvalue = stats.ks_2samp(gen_values, real_values)
-    
+
     # Mann-Whitney U test
     u_statistic, u_pvalue = stats.mannwhitneyu(gen_values, real_values, alternative='two-sided')
     n1, n2 = len(gen_values), len(real_values)
@@ -179,7 +179,11 @@ def evaluate_statistical_comparison(
     generated_corpus_path: str,
     real_corpus_path: str,
     output_path: str = "statistical_comparison_results.json",
-    sample_size: int = None
+    sample_size: int = None,
+    exclude_length_features: bool = False,
+    sanitize_real_chunks: bool = True,
+    real_sliding_windows: bool = False,
+    real_window_stride: Optional[int] = None,
 ) -> Dict:
     """
     Compare statistical distributions between generated and real texts.
@@ -189,6 +193,14 @@ def evaluate_statistical_comparison(
         real_corpus_path: Path to real medical corpus (e.g., MEDDOCAN)
         output_path: Output file path
         sample_size: Number of documents to evaluate (None = all)
+        exclude_length_features: If True, compare only avg_word_length, avg_sentence_length,
+            type_token_ratio (Bonferroni uses this reduced count).
+        sanitize_real_chunks: If True, drop paragraph chunks in **real** texts that match
+            standardized valoración block headers (see ``real_corpus_sanitize``). Skipped when
+            ``real_sliding_windows`` is True if you also disable sanitization from the caller.
+        real_sliding_windows: If True, **W** = round(mean synthetic token count); synthetic docs are
+            kept **in full**; each real doc is split into **non-overlapping** windows of **W** tokens
+            (``real_window_stride`` overrides step). Forces ``exclude_length_features``.
     
     Returns:
         Dictionary with comparison statistics
@@ -205,6 +217,11 @@ def evaluate_statistical_comparison(
     print(f"\n2. Loading real corpus: {real_corpus_path}")
     real_texts = load_corpus(real_corpus_path)
     print(f"   Loaded {len(real_texts)} real documents")
+    if sanitize_real_chunks and not real_sliding_windows:
+        from real_corpus_sanitize import sanitize_real_note_text
+
+        real_texts = [sanitize_real_note_text(t, enabled=True) for t in real_texts]
+        print("   Applied real-corpus chunk filter (banned valoración scale headers).")
 
     if not generated_texts:
         raise ValueError(
@@ -224,7 +241,43 @@ def evaluate_statistical_comparison(
         if sample_size < len(real_texts):
             real_texts = random.sample(real_texts, sample_size)
         print(f"   Sampling {sample_size} documents from each corpus")
-    
+
+    if real_sliding_windows:
+        exclude_length_features = True
+        from length_norm import mean_word_count, expand_real_corpus_windows
+
+        w_mean = mean_word_count(generated_texts)
+        W = max(1, int(round(w_mean)))
+        stride = (
+            int(real_window_stride)
+            if (real_window_stride is not None and int(real_window_stride) > 0)
+            else W
+        )
+        n_real_sources = len(real_texts)
+        real_texts = expand_real_corpus_windows(real_texts, W, stride)
+        if not real_texts:
+            raise ValueError(
+                f"Real windowing produced zero windows (real notes shorter than W={W}). "
+                f"Mean synthetic tokens={w_mean:.2f}"
+            )
+        print(
+            f"\n2b. Real windowing: W={W} (mean synthetic tokens={w_mean:.2f}), stride={stride} - "
+            f"{n_real_sources} real files -> {len(real_texts)} windows. "
+            "Synthetic left as full documents. Tests use length-agnostic features only."
+        )
+
+    protocol_meta = {
+        "exclude_length_features": bool(exclude_length_features),
+        "sanitize_real_chunks": bool(sanitize_real_chunks),
+        "real_sliding_windows": bool(real_sliding_windows),
+    }
+    if real_sliding_windows:
+        protocol_meta["window_tokens"] = int(W)
+        protocol_meta["stride_tokens"] = int(stride)
+        protocol_meta["num_real_source_documents"] = int(n_real_sources)
+        protocol_meta["num_real_windows"] = int(len(real_texts))
+        protocol_meta["mean_synthetic_word_count_pre_window"] = float(w_mean)
+
     # Extract features
     print(f"\n3. Extracting features...")
     generated_features = []
@@ -241,14 +294,20 @@ def evaluate_statistical_comparison(
     print(f"\n4. Comparing distributions...")
     comparisons = {}
     
-    features_to_compare = [
-        'word_count',
-        'sentence_count',
-        'avg_word_length',
-        'avg_sentence_length',
-        'char_count',
-        'type_token_ratio',
-    ]
+    features_to_compare = (
+        ['avg_word_length', 'avg_sentence_length', 'type_token_ratio']
+        if exclude_length_features
+        else [
+            'word_count',
+            'sentence_count',
+            'avg_word_length',
+            'avg_sentence_length',
+            'char_count',
+            'type_token_ratio',
+        ]
+    )
+    if exclude_length_features:
+        print("   Protocol: length-agnostic feature set (no raw length scalars).")
     
     for feature in features_to_compare:
         print(f"   Comparing {feature}...")
@@ -268,18 +327,19 @@ def evaluate_statistical_comparison(
         ts['kolmogorov_smirnov']['significant_bonferroni'] = bool(ks_p < alpha_bonferroni)
         ts['mann_whitney_u']['significant_bonferroni'] = bool(mw_p < alpha_bonferroni)
     
+    # Summary (publication-facing): Mann–Whitney only
     significant_differences = int(sum(
         1 for comp in comparisons.values()
-        if comp['statistical_tests']['kolmogorov_smirnov']['significant']
+        if comp['statistical_tests']['mann_whitney_u']['significant']
     ))
     significant_differences_bonferroni = int(sum(
         1 for comp in comparisons.values()
-        if (comp['statistical_tests']['kolmogorov_smirnov']['significant_bonferroni']
-            or comp['statistical_tests']['mann_whitney_u']['significant_bonferroni'])
+        if comp['statistical_tests']['mann_whitney_u']['significant_bonferroni']
     ))
     results = {
         'generated_corpus_size': int(len(generated_texts)),
         'real_corpus_size': int(len(real_texts)),
+        'protocol': protocol_meta,
         'comparisons': comparisons,
         'summary': {
             'total_features_compared': int(n_comp),
@@ -335,6 +395,11 @@ if __name__ == "__main__":
         default=None,
         help="Number of documents to evaluate from each corpus (None = all)"
     )
+    parser.add_argument(
+        "--no_sanitize_real_chunks",
+        action="store_true",
+        help="Do not strip banned valoración header chunks from real corpus texts.",
+    )
     
     args = parser.parse_args()
     
@@ -342,6 +407,8 @@ if __name__ == "__main__":
         args.generated_corpus,
         args.real_corpus,
         args.output,
-        args.sample_size
+        args.sample_size,
+        exclude_length_features=False,
+        sanitize_real_chunks=not args.no_sanitize_real_chunks,
     )
 

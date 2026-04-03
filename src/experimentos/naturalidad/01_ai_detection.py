@@ -37,6 +37,11 @@ if __name__ == "__main__":
         default=42,
         help="Semilla para muestreo aleatorio reproducible (balance y sampling).",
     )
+    parser.add_argument(
+        "--no_sanitize_real_chunks",
+        action="store_true",
+        help="Do not drop real-note paragraphs containing banned valoración scale headers.",
+    )
     args = parser.parse_args()
     p = Path(args.generated_corpus)
     n = len(list(p.glob("*.txt"))) if p.is_dir() else 0
@@ -72,5 +77,6 @@ if __name__ == "__main__":
         output_path=args.output_path,
         sample_size=args.sample_size,
         seed=args.seed,
+        sanitize_real_chunks=not args.no_sanitize_real_chunks,
     )
     print(f"Listo. Resultados: {args.output_path}")

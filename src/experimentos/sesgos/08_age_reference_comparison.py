@@ -1,6 +1,6 @@
 """
-Experimento 10 – Sesgos: Age vs reference (usa 1.4).
-Resultados en: results/sesgos/10
+Experimento 08 – Sesgos: Age vs reference (usa 1.4).
+Resultados en: results/sesgos/08
 """
 from pathlib import Path
 import json
@@ -19,7 +19,7 @@ from age_reference_comparison import evaluate_age_reference_comparison
 import argparse
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Experimento 10 - Age reference comparison")
+    parser = argparse.ArgumentParser(description="Experimento 08 - Age reference comparison")
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--age_reference_path", default=None)
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     n_files = len(list(entidades.glob("*.json"))) if entidades.is_dir() else 1
     if max_files is not None:
         n_files = min(n_files, max_files)
-    print(f"Experimento 10 – Age reference comparison. Corpus: {args.corpus_root} | Documentos: {n_files}")
+    print(f"Experimento 08 – Age reference comparison. Corpus: {args.corpus_root} | Documentos: {n_files}")
     result_1_4 = evaluate_age_distribution(
         annotations_path=str(entidades),
         max_files=max_files,

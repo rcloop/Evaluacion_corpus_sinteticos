@@ -25,24 +25,24 @@ def _run_experiment(script_path: Path, args: list, cwd: Path) -> subprocess.Comp
     ("03_geographic_toponymic_bias.py", ["--max_docs", "2"]),
     ("04_age_distribution.py", ["--max_docs", "2"]),
     ("05_institution_bias.py", ["--max_docs", "2"]),
-    ("07_intersectional_corpus_bias.py", ["--max_docs", "2"]),
-    ("09_gender_target_proportion.py", ["--max_docs", "2"]),
-    ("10_age_reference_comparison.py", ["--max_docs", "2"]),
-    ("11_coverage_completeness.py", ["--max_docs", "2"]),
-    ("12_weat_gender_analysis.py", ["--max_docs", "2"]),
-    ("13_diversity_summary.py", []),  # Lee JSON de 03, 05 (pueden no existir; script acepta None)
+    ("06_intersectional_corpus_bias.py", ["--max_docs", "2"]),
+    ("07_gender_target_proportion.py", ["--max_docs", "2"]),
+    ("08_age_reference_comparison.py", ["--max_docs", "2"]),
+    ("09_coverage_completeness.py", ["--max_docs", "2"]),
+    ("10_weat_gender_analysis.py", ["--max_docs", "2"]),
+    ("11_diversity_summary.py", []),  # Lee JSON de 03, 05 (pueden no existir; script acepta None)
 ])
 def test_sesgos_script_corpus_mini(
     repo_root, corpus_mini_path, experiments_sesgos_path, tmp_path, script, extra_args
 ):
-    """Cada script de sesgos (01-13) corre con corpus_mini o rutas por defecto."""
+    """Cada script de sesgos (01-11) corre con corpus_mini o rutas por defecto."""
     script_path = experiments_sesgos_path / script
     if not script_path.exists():
         pytest.skip(f"Script no encontrado: {script_path}")
     out_dir = tmp_path / "out"
     out_dir.mkdir()
     out_json = tmp_path / script.replace(".py", ".json")
-    if "13_diversity_summary" in script:
+    if "11_diversity_summary" in script:
         args = ["--output_path", str(out_json)]
     else:
         args = (

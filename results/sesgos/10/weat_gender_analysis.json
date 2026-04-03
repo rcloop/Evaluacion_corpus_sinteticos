@@ -1,8 +1,8 @@
 {
   "metric": "weat_gender_analysis",
-  "timestamp_utc": "2026-03-30T18:02:15.595837+00:00",
+  "timestamp_utc": "2026-04-03T19:39:19.651839+00:00",
   "input_summary": {
-    "documents_path": "corpus_repo\\corpus_v1\\documents",
+    "documents_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\documents",
     "max_docs": null,
     "documents_loaded": 14035,
     "vocabulary_size": 6824,

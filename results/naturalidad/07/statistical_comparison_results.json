@@ -1,6 +1,11 @@
 {
   "generated_corpus_size": 14035,
   "real_corpus_size": 500,
+  "protocol": {
+    "exclude_length_features": false,
+    "sanitize_real_chunks": true,
+    "real_sliding_windows": false
+  },
   "comparisons": {
     "word_count": {
       "feature": "word_count",
@@ -11,28 +16,28 @@
         "count": 14035
       },
       "real": {
-        "mean": 2111.51,
+        "mean": 2108.986,
         "median": 2516.5,
-        "std": 1337.8150761222569,
+        "std": 1336.9647122508507,
         "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.8253224082650517,
+          "statistic": 0.8233224082650517,
           "pvalue": 0.0,
           "significant": true,
           "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 775341.5,
-          "pvalue": 3.6377213013908517e-193,
+          "statistic": 776702.5,
+          "pvalue": 5.637278732703742e-193,
           "significant": true,
-          "rank_biserial_r": 0.7790262914143213,
+          "rank_biserial_r": 0.7786384039900249,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 89.10987233480583,
+        "mean_diff_percent": 89.09683920787802,
         "median_diff_percent": 90.97953506854759
       }
     },
@@ -45,9 +50,9 @@
         "count": 14035
       },
       "real": {
-        "mean": 177.936,
+        "mean": 177.88,
         "median": 214.5,
-        "std": 120.9148622130464,
+        "std": 120.87634011666634,
         "count": 500
       },
       "statistical_tests": {
@@ -59,14 +64,14 @@
         },
         "mann_whitney_u": {
           "statistic": 537492.5,
-          "pvalue": 2.290712349631801e-230,
+          "pvalue": 2.2907123591455237e-230,
           "significant": true,
           "rank_biserial_r": 0.8468136800855005,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 93.80026304554747,
+        "mean_diff_percent": 93.79831125068885,
         "median_diff_percent": 94.87179487179486
       }
     },
@@ -79,9 +84,9 @@
         "count": 14035
       },
       "real": {
-        "mean": 4.4926559434704325,
-        "median": 4.466077750334465,
-        "std": 0.2810275234132956,
+        "mean": 4.48965731857987,
+        "median": 4.462298588938663,
+        "std": 0.28104371362834274,
         "count": 500
       },
       "statistical_tests": {
@@ -92,16 +97,16 @@
           "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 6920856.5,
-          "pvalue": 8.411744635510769e-300,
+          "statistic": 6921160.5,
+          "pvalue": 7.444750548497175e-300,
           "significant": true,
-          "rank_biserial_r": -0.9724564303526897,
+          "rank_biserial_r": -0.9725430708941931,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 22.66944973418323,
-        "median_diff_percent": 23.25821447903447
+        "mean_diff_percent": 22.751380188822218,
+        "median_diff_percent": 23.362602985673036
       }
     },
     "avg_sentence_length": {
@@ -113,29 +118,29 @@
         "count": 14035
       },
       "real": {
-        "mean": 13.056191258911083,
-        "median": 12.321323714453486,
-        "std": 3.8678500314397772,
+        "mean": 13.034400979527932,
+        "median": 12.28170731707317,
+        "std": 3.8490793865727233,
         "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.8286184538653366,
+          "statistic": 0.8310409690060563,
           "pvalue": 0.0,
           "significant": true,
           "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 6694674.0,
-          "pvalue": 1.1871134231930328e-261,
+          "statistic": 6700408.0,
+          "pvalue": 1.378927539672274e-262,
           "significant": true,
-          "rank_biserial_r": -0.9079940149625936,
+          "rank_biserial_r": -0.9096282151763448,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 63.45686404229477,
-        "median_diff_percent": 71.06054158936563
+        "mean_diff_percent": 63.73012329986781,
+        "median_diff_percent": 71.61232174637001
       }
     },
     "char_count": {
@@ -147,29 +152,29 @@
         "count": 14035
       },
       "real": {
-        "mean": 12381.288,
-        "median": 14109.5,
-        "std": 8009.622700293441,
+        "mean": 12130.762,
+        "median": 14051.5,
+        "std": 7801.738282290428,
         "count": 500
       },
       "statistical_tests": {
         "kolmogorov_smirnov": {
-          "statistic": 0.8103762023512646,
+          "statistic": 0.8093737085856787,
           "pvalue": 0.0,
           "significant": true,
           "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 835740.0,
-          "pvalue": 8.307178628079496e-185,
+          "statistic": 853927.0,
+          "pvalue": 2.498437656116547e-182,
           "significant": true,
-          "rank_biserial_r": 0.7618126113288208,
+          "rank_biserial_r": 0.7566292839330246,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 88.10533912585369,
-        "median_diff_percent": 89.70906127077501
+        "mean_diff_percent": 87.85968911556114,
+        "median_diff_percent": 89.66658363875743
       }
     },
     "type_token_ratio": {
@@ -181,9 +186,9 @@
         "count": 14035
       },
       "real": {
-        "mean": 0.414160550527632,
+        "mean": 0.4141818280037604,
         "median": 0.3507295831528313,
-        "std": 0.14227287817995848,
+        "std": 0.14236722988716627,
         "count": 500
       },
       "statistical_tests": {
@@ -194,15 +199,15 @@
           "significant_bonferroni": true
         },
         "mann_whitney_u": {
-          "statistic": 6194203.5,
-          "pvalue": 1.6369868887910719e-186,
+          "statistic": 6191128.0,
+          "pvalue": 4.3277398123397e-186,
           "significant": true,
-          "rank_biserial_r": -0.7653590309939438,
+          "rank_biserial_r": -0.7644825080156752,
           "significant_bonferroni": true
         }
       },
       "relative_difference": {
-        "mean_diff_percent": 48.194753489245166,
+        "mean_diff_percent": 48.18714038283506,
         "median_diff_percent": 75.05038578526786
       }
     }

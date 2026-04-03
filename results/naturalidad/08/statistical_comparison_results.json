@@ -1,0 +1,127 @@
+{
+  "generated_corpus_size": 14035,
+  "real_corpus_size": 4335,
+  "protocol": {
+    "exclude_length_features": true,
+    "sanitize_real_chunks": false,
+    "real_sliding_windows": true,
+    "window_tokens": 230,
+    "stride_tokens": 230,
+    "num_real_source_documents": 500,
+    "num_real_windows": 4335,
+    "mean_synthetic_word_count_pre_window": 229.94613466334164
+  },
+  "comparisons": {
+    "avg_word_length": {
+      "feature": "avg_word_length",
+      "generated": {
+        "mean": 5.511116324305258,
+        "median": 5.5048076923076925,
+        "std": 0.27771389527898865,
+        "count": 14035
+      },
+      "real": {
+        "mean": 4.44299770395621,
+        "median": 4.413043478260869,
+        "std": 0.37908502106162384,
+        "count": 4335
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.895068310439916,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 59842762.5,
+          "pvalue": 0.0,
+          "significant": true,
+          "rank_biserial_r": -0.9671619271149856,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 24.040494538134812,
+        "median_diff_percent": 24.73948465327777
+      }
+    },
+    "avg_sentence_length": {
+      "feature": "avg_sentence_length",
+      "generated": {
+        "mean": 21.341240795180262,
+        "median": 21.076923076923077,
+        "std": 3.3509105658092277,
+        "count": 14035
+      },
+      "real": {
+        "mean": 13.91105763891788,
+        "median": 12.105263157894736,
+        "std": 6.610957637672708,
+        "count": 4335
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.7234602569207235,
+          "pvalue": 0.0,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 53020836.0,
+          "pvalue": 0.0,
+          "significant": true,
+          "rank_biserial_r": -0.7429103464768627,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 53.41206505733639,
+        "median_diff_percent": 74.11371237458194
+      }
+    },
+    "type_token_ratio": {
+      "feature": "type_token_ratio",
+      "generated": {
+        "mean": 0.6137642069041249,
+        "median": 0.6139534883720931,
+        "std": 0.03925541653602527,
+        "count": 14035
+      },
+      "real": {
+        "mean": 0.6168378513662341,
+        "median": 0.6217391304347826,
+        "std": 0.04830802518267446,
+        "count": 4335
+      },
+      "statistical_tests": {
+        "kolmogorov_smirnov": {
+          "statistic": 0.1128060553838669,
+          "pvalue": 3.622727241883534e-37,
+          "significant": true,
+          "significant_bonferroni": true
+        },
+        "mann_whitney_u": {
+          "statistic": 27790901.5,
+          "pvalue": 6.849734006022195e-18,
+          "significant": true,
+          "rank_biserial_r": 0.08645254551872095,
+          "significant_bonferroni": true
+        }
+      },
+      "relative_difference": {
+        "mean_diff_percent": 0.49829050783790446,
+        "median_diff_percent": 1.2522361359570529
+      }
+    }
+  },
+  "summary": {
+    "total_features_compared": 3,
+    "alpha": 0.05,
+    "alpha_bonferroni": 0.016666666666666666,
+    "significant_differences": 3,
+    "significant_differences_bonferroni": 3,
+    "similarity_score": 0.0,
+    "similarity_score_bonferroni": 0.0
+  }
+}

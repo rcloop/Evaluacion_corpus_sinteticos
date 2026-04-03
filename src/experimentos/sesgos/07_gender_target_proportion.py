@@ -1,27 +1,30 @@
 """
-Experimento 11 – Sesgos: Coverage/completeness.
-Resultados en: results/sesgos/11
+Experimento 07 – Sesgos: Gender vs target proportion (usa 1.1).
+Resultados en: results/sesgos/07
 """
 from pathlib import Path
 import json
 import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-OUTPUT_DIR = REPO_ROOT / "results" / "sesgos" / "11"
+OUTPUT_DIR = REPO_ROOT / "results" / "sesgos" / "07"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-OUTPUT_FILE = OUTPUT_DIR / "coverage_completeness.json"
+OUTPUT_FILE = OUTPUT_DIR / "gender_target_proportion.json"
 
 LIB_DIR = Path(__file__).resolve().parent / "_lib"
 sys.path.insert(0, str(LIB_DIR))
 
-from coverage_completeness import evaluate_coverage_completeness
+from name_gender_distribution import DEFAULT_TARGET_LABELS, evaluate_name_gender_distribution
+from gender_target_proportion import evaluate_gender_target_proportion
 import argparse
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Experimento 11 - Coverage completeness")
+    parser = argparse.ArgumentParser(description="Experimento 07 - Gender target proportion")
     parser.add_argument("--corpus_root", required=True)
     parser.add_argument("--max_docs", type=int, default=None)
     parser.add_argument("--lexicon_path", default=None)
+    parser.add_argument("--target_fem", type=float, default=0.5)
+    parser.add_argument("--target_masc", type=float, default=0.5)
     parser.add_argument("--output_path", default=str(OUTPUT_FILE), help="Ruta del JSON de salida")
     args = parser.parse_args()
     entidades = Path(args.corpus_root) / "entidades"
@@ -29,11 +32,20 @@ if __name__ == "__main__":
     n_files = len(list(entidades.glob("*.json"))) if entidades.is_dir() else 1
     if max_files is not None:
         n_files = min(n_files, max_files)
-    print(f"Experimento 11 – Coverage/completeness. Corpus: {args.corpus_root} | Documentos: {n_files}")
-    result = evaluate_coverage_completeness(
+    print(f"Experimento 07 – Gender target proportion. Corpus: {args.corpus_root} | Documentos: {n_files}")
+    result_1_1 = evaluate_name_gender_distribution(
+        annotations_path=str(entidades),
+        target_labels=DEFAULT_TARGET_LABELS,
+        lexicon_path=args.lexicon_path,
+        max_files=max_files,
+    )
+    result = evaluate_gender_target_proportion(
         annotations_path=str(entidades),
         lexicon_path=args.lexicon_path,
         max_files=max_files,
+        target_fem=args.target_fem,
+        target_masc=args.target_masc,
+        result_1_1=result_1_1,
     )
     out = Path(args.output_path)
     out.parent.mkdir(parents=True, exist_ok=True)

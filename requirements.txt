@@ -8,11 +8,11 @@ scipy>=1.9.0
 matplotlib>=3.7.0
 tqdm>=4.60.0
 
-# Privacy, naturalness, experiments (perplexity, coherence, memorization, AI detection)
+# Privacy, naturalness, experiments (coherence, memorization, AI detection)
 scikit-learn>=1.0.0,<2.0.0
 nltk>=3.8.0
 
-# PyTorch + transformers (perplexity 02, optional AI detection). Open upper bound to avoid forced downgrades.
+# PyTorch + transformers (optional AI detection with --use_transformer). Open upper bound to avoid forced downgrades.
 torch>=1.10.0
 transformers>=4.20.0
 

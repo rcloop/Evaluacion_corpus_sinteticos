@@ -1,8 +1,8 @@
 {
   "metric": "1.3_geographic_toponymic_bias",
-  "timestamp_utc": "2026-03-30T17:09:43.527104+00:00",
+  "timestamp_utc": "2026-04-03T19:35:57.421801+00:00",
   "input_summary": {
-    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
     "geo_labels": [
       "CALLE",
       "CENTRO_SALUD",

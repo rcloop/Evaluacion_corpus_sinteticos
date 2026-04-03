@@ -150,7 +150,7 @@ def evaluate_age_distribution(
     max_decade: int = 120,
     underrep_min_percent: float = 5.0,
     underrep_bins: Optional[List[str]] = None,
-    aggregation: Literal["mention", "doc_mode"] = "mention",
+    aggregation: Literal["mention", "doc_mode"] = "doc_mode",
 ) -> Dict[str, Any]:
     p = Path(annotations_path)
     if not p.exists():

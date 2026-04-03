@@ -18,7 +18,7 @@ env/
 ENV/
 
 # Privacy evaluation results (local run logs)
-results/privacidad/03/_memorization_run.log
+results/privacidad/02/_memorization_run.log
 privacy_evaluation_results/
 *.json
 !package.json

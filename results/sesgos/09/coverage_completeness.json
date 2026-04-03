@@ -1,8 +1,8 @@
 {
   "metric": "coverage_completeness",
-  "timestamp_utc": "2026-03-31T19:23:13.194556+00:00",
+  "timestamp_utc": "2026-04-03T19:37:07.114691+00:00",
   "input_summary": {
-    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
     "max_files": null,
     "docs_total": 14035
   },

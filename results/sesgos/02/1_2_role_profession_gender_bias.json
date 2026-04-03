@@ -1,8 +1,8 @@
 {
   "metric": "1.2_role_profession_vs_gender",
-  "timestamp_utc": "2026-03-30T17:59:15.509467+00:00",
+  "timestamp_utc": "2026-04-03T19:35:46.718551+00:00",
   "input_summary": {
-    "annotations_path": "corpus_repo\\corpus_v1\\entidades",
+    "annotations_path": "C:\\Users\\Usuario\\Documents\\anonimizacion\\corpus_repo\\corpus_v1\\entidades",
     "name_labels": [
       "NOMBRE_SUJETO_ASISTENCIA",
       "NOMBRE_PERSONAL_SANITARIO"

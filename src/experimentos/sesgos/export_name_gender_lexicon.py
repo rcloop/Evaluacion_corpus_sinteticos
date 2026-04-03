@@ -2,7 +2,7 @@
 Exporta el lexicón de nombres por género (fem/masc) para revisión.
 
 - Escribe el archivo CANÓNICO data/sesgos/name_gender_lexicon.json que usan por defecto
-  todos los experimentos de sesgos (01, 02, 07, 08, 09, 11, etc.). Si editas ese JSON
+  todos los experimentos de sesgos que consumen el lexicón (p. ej. 01, 02, 06, 07, …). Si editas ese JSON
   (mover nombres entre fem/masc), los scripts lo cargarán sin pasar --lexicon_path.
 - Además escribe results/sesgos/01/name_gender_lexicon_review.json y .csv para revisión.
 

@@ -9,7 +9,7 @@ import json
 import os
 import numpy as np
 from pathlib import Path
-from typing import List, Dict, Tuple, Any
+from typing import List, Dict, Tuple, Any, Optional
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -214,6 +214,10 @@ def evaluate_ai_detection(
     transformer_model: str = "dccuchile/bert-base-spanish-wwm-uncased",
     sample_size: int = None,
     seed: int = 42,
+    truncate_to_words: Optional[int] = None,
+    sanitize_real_chunks: bool = True,
+    real_sliding_windows: bool = False,
+    real_window_stride: Optional[int] = None,
 ) -> Dict:
     """
     Complete AI text detection evaluation.
@@ -242,6 +246,11 @@ def evaluate_ai_detection(
         print(f"\n2. Loading human corpus: {human_corpus_path}")
         human_texts = load_corpus(human_corpus_path)
         print(f"   Loaded {len(human_texts)} human texts")
+        if sanitize_real_chunks and not real_sliding_windows:
+            from real_corpus_sanitize import sanitize_real_note_text
+
+            human_texts = [sanitize_real_note_text(t, enabled=True) for t in human_texts]
+            print("   Applied real-corpus chunk filter (banned valoración scale headers).")
     else:
         raise ValueError(
             "human_corpus_path is required. "
@@ -256,6 +265,42 @@ def evaluate_ai_detection(
             generated_texts = rng.sample(generated_texts, sample_size)
         if len(human_texts) > sample_size:
             human_texts = rng.sample(human_texts, sample_size)
+
+    window_meta: Dict = {}
+    if real_sliding_windows:
+        if truncate_to_words is not None:
+            raise ValueError("Cannot combine real_sliding_windows with truncate_to_words.")
+        from length_norm import mean_word_count, expand_real_corpus_windows
+
+        w_mean = mean_word_count(generated_texts)
+        W = max(1, int(round(w_mean)))
+        stride = (
+            int(real_window_stride)
+            if (real_window_stride is not None and int(real_window_stride) > 0)
+            else W
+        )
+        n_real_sources = len(human_texts)
+        human_texts = expand_real_corpus_windows(human_texts, W, stride)
+        window_meta = {
+            "mode": "real_mean_synthetic_windows",
+            "mean_synthetic_word_count_pre_window": float(w_mean),
+            "window_tokens": int(W),
+            "stride_tokens": int(stride),
+            "num_real_source_documents": int(n_real_sources),
+            "num_real_windows": int(len(human_texts)),
+        }
+        print(
+            f"\n3b. Real windowing: W={W} tokens (round mean synthetic wc={w_mean:.2f}), "
+            f"stride={stride} | {n_real_sources} real files -> {len(human_texts)} windows "
+            "| synthetic = full documents (not truncated to W)"
+        )
+        if not human_texts:
+            return {
+                "error": (
+                    f"Real windowing produced zero windows (every real note shorter than W={W}). "
+                    f"Mean synthetic token count was {w_mean:.2f}."
+                )
+            }
 
     n_gen = len(generated_texts)
     n_hum = len(human_texts)
@@ -336,6 +381,9 @@ def evaluate_ai_detection(
             'sample_size_per_corpus': sample_size,
             'seed': seed,
             'balancing': 'none (class_weight=balanced)',
+            **({'real_windowing': window_meta} if window_meta else {}),
+            'sanitize_real_chunks': bool(sanitize_real_chunks),
+            'real_sliding_windows': bool(real_sliding_windows),
         },
         'tfidf_classifier': tfidf_results,
         'naturalness_assessment': {

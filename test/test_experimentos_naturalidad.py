@@ -23,7 +23,7 @@ def _run_experiment(script_path: Path, args: list, cwd: Path, timeout: int):
 # Cold CI runners may download transformers / sentence-transformers weights; keep this above HF hub latency.
 _NATURALIDAD_SUBPROCESS_TIMEOUT = {
     "01_ai_detection.py": 600,
-    "02_perplexity.py": 600,
+    "02_ai_detection_real_windows.py": 600,
     "06_coherence.py": 600,
     "03_vocabulary_richness.py": 120,
     "04_readability.py": 120,
@@ -33,7 +33,7 @@ _NATURALIDAD_SUBPROCESS_TIMEOUT = {
 
 @pytest.mark.parametrize("script", [
     "01_ai_detection.py",
-    "02_perplexity.py",
+    "02_ai_detection_real_windows.py",
     "03_vocabulary_richness.py",
     "04_readability.py",
     "05_diversity.py",
@@ -42,13 +42,13 @@ _NATURALIDAD_SUBPROCESS_TIMEOUT = {
 def test_naturalidad_script_corpus(
     repo_root, corpus_mini_documents_path, experiments_naturalidad_path, tmp_path, script
 ):
-    """Scripts de naturalidad 01-06 corren con corpus_mini; salida bajo tmp (no pisa results/)."""
+    """Scripts de naturalidad (01, 02, 03–06) corren con corpus_mini; salida bajo tmp (no pisa results/)."""
     script_path = experiments_naturalidad_path / script
     if not script_path.exists():
         pytest.skip(f"Script no encontrado: {script_path}")
     path_val = str(corpus_mini_documents_path)
     out_file = tmp_path / f"out_{script.replace('.py', '')}.json"
-    if script == "01_ai_detection.py":
+    if script in ("01_ai_detection.py", "02_ai_detection_real_windows.py"):
         # For 01, a "human" corpus is required. Use a tiny tracked test corpus.
         human_dir = repo_root / "test" / "data" / "real_corpus_mini"
         args = [
@@ -63,9 +63,6 @@ def test_naturalidad_script_corpus(
         args = ["--corpus_path", path_val, "--sample_size", "2", "--output_path", str(out_file)]
     timeout = _NATURALIDAD_SUBPROCESS_TIMEOUT.get(script, 120)
     result = _run_experiment(script_path, args, repo_root, timeout=timeout)
-    if result.returncode != 0 and "02_perplexity" in script:
-        if "PyTorch" in (result.stderr or "") or "transformers" in (result.stderr or ""):
-            pytest.skip("Perplexity requiere PyTorch/transformers")
     if result.returncode != 0 and "06_coherence" in script:
         if "sentence" in (result.stderr or "").lower() or "model" in (result.stderr or "").lower():
             pytest.skip("Coherence puede requerir sentence-transformers")
